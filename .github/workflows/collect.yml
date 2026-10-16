@@ -1,0 +1,50 @@
+name: Collect
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: dry-run lists what would be fetched; fetch downloads it
+        type: choice
+        options: [dry-run, fetch]
+        default: dry-run
+      tier:
+        description: which items to include
+        type: choice
+        options: [official, unofficial, all]
+        default: official
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest discover -s tests
+      - name: Dry run
+        if: inputs.mode == 'dry-run'
+        env:
+          TIER: ${{ inputs.tier }}
+        run: python fetch.py --dry-run --tier "$TIER"
+      - name: Fetch
+        if: inputs.mode == 'fetch'
+        env:
+          TIER: ${{ inputs.tier }}
+        run: python fetch.py --tier "$TIER"
+      - name: Job summary
+        if: always()
+        run: python summary.py state >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep the files (private download from the run page)
+        if: inputs.mode == 'fetch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: library
+          path: library/
+          retention-days: 14
+          if-no-files-found: warn
