@@ -1,0 +1,199 @@
+{
+  "note": "Official items come from Pearson hosts only. Unofficial items never download unless download is set to true by hand.",
+  "items": [
+    {
+      "id": "spec-l1-l2",
+      "level": "L1+L2",
+      "component": "both",
+      "kind": "specification",
+      "title": "Pearson Edexcel Functional Skills English L1 and L2 specification",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-english-spec-l1-l2.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "sam-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "sam",
+      "title": "Level 2 sample assessment materials (reading and writing, with mark schemes)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/SAM-L2-FS-English-plain.pdf",
+      "tier": "official",
+      "evidence": "Candidate only: filename inferred from a Pearson guidance document; hyphenation unconfirmed. fetch.py will report if it fails."
+    },
+    {
+      "id": "sam-l1",
+      "level": "L1",
+      "component": "both",
+      "kind": "sam",
+      "title": "Level 1 sample assessment materials (reading and writing, with mark schemes)",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "sample-marked-l2-writing",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "Level 2 writing: sample marked learner work",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-English-L2-Writing-SMLW-0321.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "sample-marked-l2-reading",
+      "level": "L2",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "Level 2 reading: sample marked learner work",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "sample-marked-l1-writing",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "Level 1 writing: sample marked learner work",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "sample-marked-l1-reading",
+      "level": "L1",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "Level 1 reading: sample marked learner work",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "assessor-l1-writing-q1",
+      "level": "L1",
+      "component": "writing",
+      "kind": "assessor-training",
+      "title": "You are the assessor: Level 1 writing question 1",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/you-are-the-assessor-level-1-writing-question-1.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "examiner-report-l1-writing-2024",
+      "level": "L1",
+      "component": "writing",
+      "kind": "examiner-report",
+      "title": "Level 1 writing: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l1-writing-24.pdf",
+      "tier": "official",
+      "evidence": "Linked from a Pearson slide deck; not yet fetched"
+    },
+    {
+      "id": "examiner-report-l2-writing-2024",
+      "level": "L2",
+      "component": "writing",
+      "kind": "examiner-report",
+      "title": "Level 2 writing: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l2-writing-24.pdf",
+      "tier": "official",
+      "evidence": "Linked from a Pearson slide deck; not yet fetched"
+    },
+    {
+      "id": "examiner-report-l1-reading",
+      "level": "L1",
+      "component": "reading",
+      "kind": "examiner-report",
+      "title": "Level 1 reading: principal examiner report",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "examiner-report-l2-reading",
+      "level": "L2",
+      "component": "reading",
+      "kind": "examiner-report",
+      "title": "Level 2 reading: principal examiner report",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "guidance-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "guidance-to-centres",
+      "title": "Level 2 guidance to centres (includes annotated candidate papers)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/Pearson_Edexcel_FS_English_L2_Guidance_to_Centres.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "guidance-l1",
+      "level": "L1",
+      "component": "both",
+      "kind": "guidance-to-centres",
+      "title": "Level 1 guidance to centres",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "grade-boundaries",
+      "level": "all",
+      "component": "both",
+      "kind": "grade-boundaries",
+      "title": "Functional Skills pass grade boundaries",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/reform/functional-skills-pass-grade-boundaries.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "practice-papers-l1",
+      "level": "L1",
+      "component": "both",
+      "kind": "practice-paper",
+      "title": "Level 1 practice papers with mark schemes",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "practice-papers-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "practice-paper",
+      "title": "Level 2 practice papers with mark schemes",
+      "url": null,
+      "tier": "official",
+      "evidence": "to find"
+    },
+    {
+      "id": "mirror-l2-writing-practice2-ms",
+      "level": "L2",
+      "component": "writing",
+      "kind": "mark-scheme",
+      "title": "Level 2 writing practice paper 2 mark scheme (copy on a third-party revision site)",
+      "url": "https://mmerevise.co.uk/app/uploads/2020/08/pearson-edexcel-functional-skills-english-level-2-writing-mark-scheme-component-2-practice-2.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": false,
+      "licence_note": "Pearson-copyrighted document hosted by a third party; no reuse permission stated. Link only until checked."
+    },
+    {
+      "id": "index-functionalskills-co-uk-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "index-page",
+      "title": "Third-party index of Level 2 past papers",
+      "url": "https://functionalskills.co.uk/past-papers/english-level-2-past-papers/",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": false,
+      "licence_note": "Index page only; documents it links to have their own terms."
+    }
+  ]
+}
