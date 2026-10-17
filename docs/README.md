@@ -20,7 +20,8 @@ index.html          page shell, level switch
 css/style.css       all styles (light and dark, reduced motion)
 js/app.js           routing, missions, storage, progress log and export, Send for marking
 content/
-  reading.json      reading missions: texts + questions
+  reading.json      short reading missions: texts + questions
+  reading-long.json longer Level 1 reading missions (three texts, 15 questions)
   writing.json      writing missions, length guide, marks, our own marking guide
   toolkit.json      format guides and SPaG points, each with a practice question
 docs/

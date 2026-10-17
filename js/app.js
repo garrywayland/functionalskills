@@ -85,6 +85,11 @@
     return (items || []).filter(function (it) { return !it.levels || it.levels.indexOf(l) !== -1; });
   }
 
+  function inLevel(m) {
+    // Reading missions list their levels; writing missions use `levels` for per-level overrides.
+    return !Array.isArray(m.levels) || m.levels.indexOf(level()) !== -1;
+  }
+
   function isDone(id) {
     var done = store.get('done', {});
     return !!(done[level()] && done[level()][id]);
@@ -195,22 +200,30 @@
 
   function homeView() {
     main.className = 'home';
-    var reading = content.reading.missions;
-    var writing = content.writing.missions;
+    var reading = content.reading.missions.filter(inLevel);
+    var shortReading = reading.filter(function (m) { return m.length !== 'long'; });
+    var longReading = reading.filter(function (m) { return m.length === 'long'; });
+    var writing = content.writing.missions.filter(inLevel);
     var all = reading.concat(writing);
     var doneCount = all.filter(function (m) { return isDone(m.id); }).length;
 
     return h('div', null,
       h('section', { class: 'map-intro' },
         h('h1', { text: 'Pick a mission' }),
-        h('p', { class: 'lede', text: 'Each mission takes about 10 minutes. Do one, then stop or carry on. It is up to you.' }),
+        h('p', { class: 'lede', text: 'Most missions take about 10 minutes, and the longer reading ones about 35. Do one, then stop or carry on. It is up to you.' }),
         h('p', { class: 'progress-line' }, doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '. ', h('a', { href: '#/progress', text: 'See my progress' })),
-        h('p', { class: 'muted small', text: 'Not sure which level? Every mission works at both. Use the switch at the top.' })
+        h('p', { class: 'muted small', text: 'Not sure which level? Nearly every mission works at both. Use the switch at the top.' })
       ),
       h('div', { class: 'lines-grid' },
-        lineSection('reading', 'Reading line', 'Read a short text, then answer questions one at a time.', reading.map(function (m) {
-          return { id: m.id, href: '#/reading/' + m.id, title: m.title, meta: m.topic + ' · ' + forLevel(m.questions).length + ' questions' };
-        })),
+        h('div', null,
+          lineSection('reading', 'Reading line', 'Read a short text, then answer questions one at a time.', shortReading.map(function (m) {
+            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, meta: m.topic + ' · ' + forLevel(m.questions).length + ' questions' };
+          })),
+          longReading.length ? lineSection('reading', 'Longer reading missions', 'Three linked texts and 15 questions, laid out like the real paper. Your place is saved if you stop part-way.', longReading.map(function (m) {
+            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, meta: m.topic + ' · ' + m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' };
+          }), '-long') : null,
+          level() === 'L2' ? h('p', { class: 'muted small', text: 'Longer missions for Level 2 will come once the Level 2 paper layout is confirmed.' }) : null
+        ),
         lineSection('writing', 'Writing line', 'Plan and write a short piece, then send it for marking if you want to.', writing.map(function (m) {
           return { id: m.id, href: '#/writing/' + m.id, title: m.title, meta: m.topic + ' · ' + (m.task === 1 ? 'longer task' : 'shorter task') + ' · ' + formatName(missionFor(m).format) };
         }))
@@ -223,16 +236,24 @@
     );
   }
 
-  function lineSection(kind, title, blurb, stops) {
-    return h('section', { class: 'line ' + kind, 'aria-labelledby': 'line-' + kind },
-      h('h2', { class: 'line-title', id: 'line-' + kind, text: title }),
+  // How many numbered questions a mission has (1(a) and 1(b) count as one).
+  function questionNumbers(m) {
+    var seen = {};
+    forLevel(m.questions).forEach(function (q, i) { seen[q.label ? String(q.label).split('(')[0] : 'n' + i] = true; });
+    return Object.keys(seen).length;
+  }
+
+  function lineSection(kind, title, blurb, stops, suffix) {
+    var hid = 'line-' + kind + (suffix || '');
+    return h('section', { class: 'line ' + kind, 'aria-labelledby': hid },
+      h('h2', { class: 'line-title', id: hid, text: title }),
       h('p', { text: blurb }),
       h('ol', { class: 'stops' }, stops.map(function (s) {
         var done = isDone(s.id);
         return h('li', { class: 'stop' + (done ? ' done' : '') },
           h('a', { href: s.href },
             h('span', { class: 'stop-title', text: s.title }),
-            h('span', { class: 'stop-state', text: done ? 'Done' : '10 min' }),
+            h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
             h('span', { class: 'stop-meta', text: s.meta })
           ));
       }))
@@ -274,6 +295,7 @@
   function readingView(id, stepParam) {
     var m = find(content.reading.missions, id);
     if (!m) return notFound();
+    if (!inLevel(m)) return wrongLevel(m);
     var key = 'reading:' + id + ':' + level();
     var saved = store.get(key, { answers: {}, pos: 0 });
     if (!saved.answers) saved.answers = {};
@@ -301,12 +323,14 @@
         append(wrap, h('section', { class: 'howto', 'aria-labelledby': 'howto-h' },
           h('h2', { id: 'howto-h', text: 'What to do' }),
           h('ol', null,
-            h('li', { text: multi ? 'Read Text A. Then read Text B on the next screen.' : 'Read the text below. Take your time.' }),
-            h('li', { text: 'Answer ' + questionCount + ' questions, one at a time.' }),
-            h('li', { text: 'You can look back at the text whenever you like.' })
+            h('li', { text: multi ? 'Read the texts one at a time: ' + built.texts.map(function (x) { return 'Text ' + x.id; }).join(', then ') + '. Each has its own screen.' : 'Read the text below. Take your time.' }),
+            h('li', { text: 'Answer ' + questionCount + ' questions, one at a time.' + (m.length === 'long' ? ' Some are worth more than one mark, and the screen tells you how many.' : '') }),
+            h('li', { text: 'You can look back at the texts whenever you like.' }),
+            m.length === 'long' ? h('li', { text: 'You can stop and come back later. Your place is saved on this device.' }) : null
           )
         ));
       }
+      if (step.index === 0 && m.intro) append(wrap, h('p', { class: 'lede', text: m.intro }));
       append(wrap, sourceText(t, multi));
       var last = step.index === built.texts.length - 1;
       append(wrap, h('div', { class: 'actions' },
@@ -319,14 +343,18 @@
     if (step.kind === 'question') {
       var q = step.q;
       var ans = saved.answers[q.id] || (saved.answers[q.id] = {});
-      append(wrap, h('p', { class: 'step-count', text: 'Question ' + (step.index + 1) + ' of ' + questionCount }));
+      var where = (step.index + 1) + ' of ' + questionCount;
+      append(wrap, h('p', { class: 'step-count', text: q.label
+        ? 'Question ' + q.label + (q.marks ? ' · ' + q.marks + (q.marks === 1 ? ' mark' : ' marks') : '') + ' · ' + where
+        : 'Question ' + where }));
 
       var layout = h('div', { class: 'q-layout' });
       var qCol = h('div', { class: 'q-col' });
       layout.appendChild(qCol);
 
-      var refTexts = q.text === 'both' || !q.text ? built.texts : built.texts.filter(function (t) { return t.id === q.text; });
-      if (multi) append(qCol, h('p', { class: 'look-at', text: q.text === 'both' ? 'Use both texts.' : 'Look at Text ' + q.text + '.' }));
+      var refIds = q.text && q.text !== 'both' ? String(q.text).split(',') : null;
+      var refTexts = refIds ? built.texts.filter(function (t) { return refIds.indexOf(t.id) !== -1; }) : built.texts;
+      if (multi) append(qCol, h('p', { class: 'look-at', text: refIds ? 'Look at ' + refIds.map(function (x) { return 'Text ' + x; }).join(' and ') + '.' : (built.texts.length > 2 ? 'Use all the texts.' : 'Use both texts.') }));
 
       var lead = promptFor(q);
       append(qCol, h('h1', { class: 'question-prompt', id: 'qp-' + q.id, text: lead ? lead : q.prompt }));
@@ -336,6 +364,7 @@
       var next = h('a', { class: 'btn', href: hrefFor(pos + 1), text: step.index === questionCount - 1 ? 'Finish' : 'Next question' });
 
       if (q.type === 'open') append(qCol, openQuestion(q, ans, save));
+      else if (q.type === 'multi') append(qCol, multiQuestion(q, ans, save));
       else append(qCol, closedQuestion(q, ans, save));
 
       append(qCol, h('div', { class: 'actions' },
@@ -358,7 +387,7 @@
 
     // Done
     var closed = forLevel(m.questions).filter(function (q) { return q.type !== 'open'; });
-    var matched = closed.filter(function (q) { var a = saved.answers[q.id]; return a && a.checked && a.choice === answerIndex(q); }).length;
+    var matched = closed.filter(function (q) { var a = saved.answers[q.id]; return a && a.checked && isCorrect(q, a); }).length;
     var openCount = forLevel(m.questions).length - closed.length;
     markDone(id);
     logDone({ id: id, kind: 'Reading', title: m.title, topic: m.topic, matched: matched, total: closed.length });
@@ -385,6 +414,71 @@
       scoreSlot
     );
     return wrap;
+  }
+
+  function isCorrect(q, a) {
+    if (q.type === 'multi') {
+      var got = (a.choices || []).slice().sort().join(',');
+      return got === q.answer.slice().sort().join(',');
+    }
+    return a.choice === answerIndex(q);
+  }
+
+  // "Choose TWO" style questions: tick the right number of boxes.
+  function multiQuestion(q, ans, save, onChecked) {
+    var need = q.answer.length;
+    if (!Array.isArray(ans.choices)) ans.choices = [];
+    var box = h('div');
+    var fbSlot = h('div', { 'aria-live': 'polite' });
+    var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check my answer' });
+    var fs = h('fieldset', { class: 'options', 'aria-labelledby': q.labelledBy });
+    var labels = q.options.map(function (text, i) {
+      var input = h('input', { type: 'checkbox', value: String(i) });
+      input.checked = ans.choices.indexOf(i) !== -1;
+      if (ans.checked) input.disabled = true;
+      input.addEventListener('change', function () {
+        var at = ans.choices.indexOf(i);
+        if (input.checked && at === -1) ans.choices.push(i);
+        if (!input.checked && at !== -1) ans.choices.splice(at, 1);
+        save();
+        checkBtn.disabled = ans.choices.length !== need;
+      });
+      var lab = h('label', { class: 'option' + (ans.checked ? ' locked' : '') }, input, h('span', { text: text }));
+      fs.appendChild(lab);
+      return lab;
+    });
+    box.appendChild(h('p', { class: 'look-at', text: 'Choose ' + need + ' answers.' }));
+    box.appendChild(fs);
+
+    function showFeedback() {
+      labels.forEach(function (lab, i) {
+        lab.classList.add('locked');
+        lab.querySelector('input').disabled = true;
+        if (q.answer.indexOf(i) !== -1) {
+          lab.classList.add('is-answer');
+          lab.appendChild(h('span', { class: 'tag', text: 'Answer' }));
+        }
+      });
+      var hit = ans.choices.filter(function (c) { return q.answer.indexOf(c) !== -1; }).length;
+      var all = hit === need && ans.choices.length === need;
+      fbSlot.replaceChildren(h('div', { class: 'feedback' },
+        h('p', { class: 'fb-head', text: all ? 'Yes, both match the answers.' : (hit ? 'One of your choices matches. The answers are marked above.' : 'The answers are marked above.') }),
+        h('p', { text: q.why })
+      ));
+      checkBtn.remove();
+    }
+
+    checkBtn.disabled = ans.choices.length !== need;
+    checkBtn.addEventListener('click', function () {
+      if (ans.choices.length !== need) return;
+      ans.checked = true; save(); showFeedback();
+      if (onChecked) onChecked();
+      var fb = fbSlot.querySelector('.feedback');
+      if (fb) { fb.setAttribute('tabindex', '-1'); fb.focus(); }
+    });
+    if (ans.checked) showFeedback(); else box.appendChild(h('div', { class: 'actions' }, checkBtn));
+    box.appendChild(fbSlot);
+    return box;
   }
 
   function closedQuestion(q, ans, save, onChecked) {
@@ -496,6 +590,7 @@
       if (b.h) return h(compact ? 'h4' : 'h3', { text: b.h });
       if (b.p) return h('p', { text: b.p });
       if (b.ul) return h('ul', null, b.ul.map(function (li) { return h('li', { text: li }); }));
+      if (b.ol) return h('ol', null, b.ol.map(function (li) { return h('li', { text: li }); }));
       if (b.table) {
         return h('div', { class: 'table-wrap', tabindex: '0', role: 'region', 'aria-label': 'Table' },
           h('table', null,
@@ -1027,6 +1122,13 @@
     return null;
   }
 
+  function wrongLevel(m) {
+    return h('div', null,
+      h('h1', { text: m.title }),
+      h('p', { class: 'notice', text: 'This mission is for ' + m.levels.map(function (l) { return LEVELS[l]; }).join(' and ') + '. Use the switch at the top of the page to change level.' }),
+      h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Back to the map' })));
+  }
+
   function notFound() {
     return h('div', null,
       h('h1', { text: 'That stop is not on the map' }),
@@ -1046,12 +1148,14 @@
     Promise.all([
       loadJSON('content/reading.json'),
       loadJSON('content/writing.json'),
-      loadJSON('content/toolkit.json')
+      loadJSON('content/toolkit.json'),
+      loadJSON('content/reading-long.json')
     ]).then(function (res) {
-      content = { reading: res[0], writing: res[1], toolkit: res[2] };
+      content = { reading: { missions: res[0].missions.concat(res[3].missions) }, writing: res[1], toolkit: res[2] };
       window.addEventListener('hashchange', function () { render(); });
       render({ keepFocus: true });
-    }).catch(function () {
+    }).catch(function (err) {
+      if (window.console) console.error(err);
       main.replaceChildren(h('div', { class: 'notice' },
         h('h1', { text: 'The missions did not load' }),
         h('p', { text: 'Try refreshing the page. If you opened the file straight from your computer, it needs to be served from a web address instead (for example, GitHub Pages or a local web server).' })));

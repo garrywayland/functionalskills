@@ -1,0 +1,1659 @@
+{
+  "missions": [
+    {
+      "id": "rl-pandas",
+      "topic": "Pandas",
+      "title": "A new home for the pandas",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about the same thing: a new Panda House at a wildlife park.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Web page",
+          "source": "Marlow Wildlife Park website",
+          "title": "Panda House opening day",
+          "body": [
+            {
+              "p": "Marlow Wildlife Park is proud to open its new Panda House on Saturday 14 June. Come and meet Lan and Bo, our two giant pandas."
+            },
+            {
+              "p": "On the day you can:"
+            },
+            {
+              "ul": [
+                "watch the pandas eat their breakfast at 10:00",
+                "ask a keeper your questions at 11:30",
+                "have your face painted in the Bamboo Café",
+                "pick up a free panda trail map at the gate"
+              ]
+            },
+            {
+              "p": "Entry is free for everyone on opening day. Please arrive early, because the Panda House can only hold 200 people at a time."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Magazine article",
+          "source": "Marlow Wildlife Park members' magazine",
+          "title": "Behind the scenes at the Panda House",
+          "body": [
+            {
+              "p": "It took 14 months to build the new Panda House at Marlow Wildlife Park, and almost every detail was planned with the pandas in mind. Head keeper Priya Nair showed us around before the doors opened to the public."
+            },
+            {
+              "h": "A home that feels like a forest"
+            },
+            {
+              "p": "Each panda has its own indoor room, which is kept cool all year, and a large outdoor garden. Giant pandas come from the mountain forests of south-west China, so the garden has hills to climb, trees for shade and a small stream. \"Pandas are happiest when there is plenty to climb and somewhere shady to rest,\" says Priya."
+            },
+            {
+              "h": "Bamboo, bamboo and more bamboo"
+            },
+            {
+              "p": "Bamboo makes up almost all of a giant panda's diet, but it gives very little energy, so pandas spend much of the day eating. The park grows some of its own bamboo. The rest arrives fresh by lorry every week from a specialist grower (you can see the grower's farm on the map on page 4). Keepers check every delivery by hand and throw away any stalks that look dry."
+            },
+            {
+              "h": "A keeper's day"
+            },
+            {
+              "p": "Keepers start at 7:00 am by checking that both pandas are well. Next they clean the rooms and prepare the first feed. A team of six keepers will look after Lan and Bo, and a vet visits every month to check that they are healthy. They also hide small treats around the garden so that the pandas have to search for them. This is called enrichment, and it stops the pandas from getting bored."
+            },
+            {
+              "p": "Visitors may find the pandas asleep. \"Please don't be disappointed,\" Priya adds. \"A sleeping panda is a healthy, relaxed panda.\""
+            },
+            {
+              "p": "The Panda House is, without doubt, the best thing to happen to Marlow in years. Entry is free on opening day, but the park expects it to be very busy."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Blog post",
+          "source": "The Day Out Diary blog",
+          "title": "Our first visit to the Panda House",
+          "body": [
+            {
+              "p": "We went on opening day with my sister's kids, who are six and nine, and to be honest I'm still recovering! It was the busiest day I have seen at Marlow for ages."
+            },
+            {
+              "h": "The good bits"
+            },
+            {
+              "p": "The Panda House is gorgeous. The garden looks just like a real forest, and Bo was brilliant. He sat on a rock eating bamboo for ages. The kids loved watching him. The keeper talk at 11:30 was great as well. She told us that Lan and Bo spend most of the day eating, and my nine-year-old asked three questions in a row!"
+            },
+            {
+              "h": "The not-so-good bits"
+            },
+            {
+              "p": "We queued for nearly an hour, and by the time we got inside Lan was fast asleep in the corner. The Bamboo Café was packed, and I paid £4 for a tiny cup of tea. I was gutted!"
+            },
+            {
+              "h": "My tips if you're going"
+            },
+            {
+              "ul": [
+                "Get there early, before the gates open if you can.",
+                "Bring a packed lunch, because the café queue is huge.",
+                "Check the feeding times on the website first, so you don't miss Bo at breakfast.",
+                "Wear comfy shoes. You will walk loads."
+              ]
+            },
+            {
+              "p": "Would I go again? Definitely, but on a quiet weekday!"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one thing visitors can do on opening day.",
+          "model": "Any one of: watch the pandas eat breakfast; ask a keeper questions; have their face painted; pick up a free trail map.",
+          "check": [
+            "I gave one thing that visitors can do.",
+            "It comes from the list in Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find this information?",
+          "options": [
+            "Bullet points",
+            "A text box",
+            "A menu",
+            "Bold headings"
+          ],
+          "answer": 0,
+          "why": "The things visitors can do are set out in a bulleted list, which makes each one easy to spot."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"Marlow Wildlife Park is proud to open its new Panda House.\" Give one word or phrase to replace \"proud\" that keeps the meaning the same.",
+          "model": "Pleased, happy, delighted, glad.",
+          "check": [
+            "My word means about the same as \"proud\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"the Panda House can only hold 200 people at a time.\" Give one word or phrase to replace \"hold\" that keeps the meaning the same.",
+          "model": "Fit, take, have room for, contain.",
+          "check": [
+            "My word means about the same as \"hold\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To sell panda souvenirs",
+            "To invite people to an event",
+            "To explain how pandas are looked after",
+            "To warn visitors about queues"
+          ],
+          "answer": 1,
+          "why": "The text announces the opening day and tells people what they can do there. It is inviting people to come."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three ways the Panda House has been designed to suit giant pandas.",
+          "model": "Any three of: an indoor room kept cool all year; a large outdoor garden; hills to climb; trees for shade; a small stream.",
+          "check": [
+            "I gave three different ways.",
+            "All three come from the section \"A home that feels like a forest\".",
+            "I did not repeat the same idea in different words."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why giant pandas spend much of the day eating.",
+          "model": "Bamboo makes up almost all of their diet (1), but it gives very little energy, so they have to eat a lot of it (1).",
+          "check": [
+            "I said what pandas mostly eat.",
+            "I said that bamboo gives very little energy."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer puts the words \"Pandas are happiest when there is plenty to climb and somewhere shady to rest\" inside inverted commas. Why?",
+          "options": [
+            "To show they are the exact words Priya said",
+            "To show the words are a mistake",
+            "To show the words are a title",
+            "To show the words are hard to understand"
+          ],
+          "answer": 0,
+          "why": "Inverted commas around a sentence show that someone said those exact words. Here, it is Priya Nair."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "What do keepers do to give the pandas enrichment, and why?",
+          "model": "They hide small treats around the garden so the pandas have to search for them (1). This stops the pandas getting bored (1).",
+          "check": [
+            "I said what keepers do.",
+            "I said why they do it."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "Giant pandas come from the mountain forests of south-west China.",
+            "The Panda House is the best thing to happen to Marlow in years.",
+            "A sleeping panda is a healthy, relaxed panda.",
+            "It took 14 months to build the new Panda House."
+          ],
+          "answer": [
+            0,
+            3
+          ],
+          "why": "A fact can be checked. Where pandas come from and how long the building took are facts. \"The best thing to happen\" and \"a healthy, relaxed panda\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to looking after animals.",
+          "model": "Any two of: head keeper, keepers, diet, feed, enrichment.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with looking after animals."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two things the writer of Text C did not like about the visit.",
+          "model": "Any two of: the queue of nearly an hour; Lan was asleep when they got in; the café was packed; paying £4 for a tiny cup of tea.",
+          "check": [
+            "I gave two different things.",
+            "Both are things the writer did not like.",
+            "Both come from \"The not-so-good bits\"."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which sentence best sums up the writer's view of the visit?",
+          "options": [
+            "It was a waste of time.",
+            "It was good, but could have been better.",
+            "It was too expensive to enjoy.",
+            "It was only good for children."
+          ],
+          "answer": 1,
+          "why": "The writer loved the garden and Bo, but complained about the queue and the café. They would go again, but on a quiet day."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people planning to visit.",
+          "model": "Any three of: get there early; bring a packed lunch; check the feeding times on the website; wear comfy shoes; go on a quiet weekday.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from the text.",
+            "Each one tells the reader what to do."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of informal language from Text C.",
+          "model": "Any two of: \"to be honest\", \"recovering\", \"gorgeous\", \"kids\", \"gutted\", \"loads\", \"comfy\", \"for ages\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They are chatty, everyday words, not formal ones."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "People thinking about visiting the Panda House, such as families (1). Clue, for example: the tips are written to the reader (\"if you're going\", \"Get there early\") (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue copied from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Text B and Text C both mention the pandas sleeping. Compare what each text says about this.",
+          "model": "Text B says visitors may find the pandas asleep and that this is fine, because \"a sleeping panda is a healthy, relaxed panda\" (1). Text C was disappointed that Lan was \"fast asleep in the corner\" when they got inside (1). They agree that pandas can be asleep when you visit, but Text B sees it as a good sign and Text C sees it as a let-down (1).",
+          "check": [
+            "I said what Text B says about pandas sleeping.",
+            "I said what Text C says about it.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl-israel",
+      "topic": "Israel",
+      "title": "Floating in the Dead Sea",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about a day at the Dead Sea in Israel.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Web page",
+          "source": "Wanderwise Tours website",
+          "title": "Dead Sea day trip",
+          "body": [
+            {
+              "p": "Float in the famous Dead Sea on a relaxed day out from Tel Aviv. Our friendly guide will tell you all about the area on the journey."
+            },
+            {
+              "h": "What is included"
+            },
+            {
+              "p": "A minibus, towels, a picnic lunch and entry to the beach."
+            },
+            {
+              "h": "Times"
+            },
+            {
+              "p": "We leave at 8:00 am and return at 5:00 pm. Please be at the meeting point ten minutes early."
+            },
+            {
+              "h": "What to bring"
+            },
+            {
+              "p": "Sun cream, a hat and sandals that you can wear in the water."
+            },
+            {
+              "h": "Price"
+            },
+            {
+              "p": "Adults £45. Children under 14 £30."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Magazine article",
+          "source": "Wanderwise Tours travel magazine",
+          "title": "Floating in the Dead Sea: what to expect",
+          "body": [
+            {
+              "p": "The Dead Sea is one of the most unusual places in the world. It sits more than 400 metres below sea level, which makes it the lowest place on land on Earth, and its water is so salty that it holds your body up. Even people who cannot swim can lie back and float."
+            },
+            {
+              "h": "How to get the most from your visit"
+            },
+            {
+              "p": "Local guide Noa Levi has taken hundreds of visitors to the Dead Sea, and she has some simple advice. \"Walk in slowly, sit down in the water and then lean back,\" she says. \"Never put your head under, and keep splashing to a minimum. Salt water in the eyes really stings.\""
+            },
+            {
+              "p": "Salt water also stings tiny cuts, so avoid shaving on the morning of your visit. Most people stay in the water for a short time (about 15 minutes is enough), because the salt can dry out your skin. Afterwards, rinse off in the fresh water showers on the beach, which also has changing rooms nearby."
+            },
+            {
+              "h": "Mud and minerals"
+            },
+            {
+              "p": "Many visitors cover themselves in the dark mud from the shore. The mud is full of minerals, and it makes your skin feel wonderfully soft. Let it dry for a few minutes in the sun, then wash it off in the sea. Do not forget to take a camera, but keep it somewhere dry!"
+            },
+            {
+              "h": "Sun and water"
+            },
+            {
+              "p": "It can be extremely hot by the Dead Sea, even in the early morning. Wear a hat, put on plenty of sun cream and drink lots of fresh water. Wear sandals, too, because the stones on the shore can be sharp. Children should always stay close to an adult in the water."
+            },
+            {
+              "p": "Floating there is the most relaxing thing you can do on holiday, and it is an experience you will never forget."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Forum post",
+          "source": "Travel Talk forum, thread: \"Is the Dead Sea day trip worth it?\"",
+          "title": "Re: Is the Dead Sea day trip worth it?",
+          "body": [
+            {
+              "p": "Hi! I went last spring with two friends and I'd say yes, it's worth it, but go early. The guide on our minibus was lovely and told us loads about the desert on the way, which made the long journey go quickly."
+            },
+            {
+              "p": "Floating was the weirdest and funniest thing I've ever done. You just lie back and the water holds you up, no effort at all! We took loads of photos of each other reading the paper, which I know everyone does."
+            },
+            {
+              "p": "The not-so-great bits: the beach was packed by 11 o'clock and it was boiling. I splashed water in my eye and it stung like mad, so listen when they tell you not to put your head under. The salt also dries on your skin and feels sticky, so use the showers. The picnic lunch was a bit boring too: just a cheese sandwich and an apple. Overall though, I'd go again in a heartbeat."
+            },
+            {
+              "p": "My tips:"
+            },
+            {
+              "ul": [
+                "Go as early as you can.",
+                "Take a bottle of fresh water to drink and to rinse your face.",
+                "Wear sandals, because the stones are sharp.",
+                "Don't forget sun cream."
+              ]
+            },
+            {
+              "p": "Hope that helps. Has anyone else been?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one thing that is included in the day trip.",
+          "model": "Any one of: a minibus; towels; a picnic lunch; entry to the beach.",
+          "check": [
+            "I gave one thing.",
+            "It comes from the section \"What is included\"."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find this information?",
+          "options": [
+            "Subheadings",
+            "Bullet points",
+            "A numbered list",
+            "A speech bubble"
+          ],
+          "answer": 0,
+          "why": "Each part of the page has its own subheading, such as \"What is included\", so you can go straight to the one you need."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"We leave at 8:00 am and return at 5:00 pm.\" Give one word or phrase to replace \"return\" that keeps the meaning the same.",
+          "model": "Come back, get back, arrive back, go back.",
+          "check": [
+            "My word or phrase means about the same as \"return\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"entry to the beach\". Give one word or phrase to replace \"entry\" that keeps the meaning the same.",
+          "model": "Admission, access, a ticket, getting in.",
+          "check": [
+            "My word or phrase means about the same as \"entry\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To give information about a day trip",
+            "To warn people about the heat",
+            "To explain why the Dead Sea is salty",
+            "To ask people for feedback"
+          ],
+          "answer": 0,
+          "why": "The text sets out what is included, the times, what to bring and the price, so it is giving information about the trip."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three pieces of advice for people visiting the Dead Sea.",
+          "model": "Any three of: walk in slowly and lean back; never put your head under the water; keep splashing to a minimum; avoid shaving that morning; stay in for a short time; rinse off afterwards; wear a hat, sun cream and sandals; drink lots of fresh water.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from Text B.",
+            "Each one tells the reader what to do or not to do."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why people who cannot swim can still float in the Dead Sea.",
+          "model": "The water is very salty (1), so it holds the body up (1).",
+          "check": [
+            "I said the water is very salty.",
+            "I said that this holds the body up."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer puts \"about 15 minutes is enough\" inside brackets. Why?",
+          "options": [
+            "To give extra information",
+            "To show someone is speaking",
+            "To show a question",
+            "To show a list"
+          ],
+          "answer": 0,
+          "why": "Brackets add extra detail that is useful but not essential to the sentence. Here they tell the reader how long \"a short time\" is."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Why does Noa Levi say visitors should avoid shaving on the morning of their visit?",
+          "model": "Salt water stings tiny cuts (1), and shaving can leave tiny cuts on the skin (1).",
+          "check": [
+            "I said what the salt water does.",
+            "I linked it to tiny cuts from shaving."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "Floating there is the most relaxing thing you can do on holiday.",
+            "The Dead Sea sits more than 400 metres below sea level.",
+            "The mud makes your skin feel wonderfully soft.",
+            "The water is so salty that it holds your body up."
+          ],
+          "answer": [
+            1,
+            3
+          ],
+          "why": "Facts can be checked. How far below sea level the Dead Sea sits, and the fact that very salty water holds you up, are facts. \"Most relaxing\" and \"wonderfully soft\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to nature or geography.",
+          "model": "Any two of: below sea level; salty; minerals; mud; shore; the lowest place on land.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with nature or geography."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two things the writer of Text C did not like about the day.",
+          "model": "Any two of: the beach was packed by 11 o'clock; it was boiling hot; water stung the writer's eye; the salt felt sticky on the skin; the picnic lunch was boring.",
+          "check": [
+            "I gave two different things.",
+            "Both come from \"The not-so-great bits\"."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "What does the writer think of the day trip overall?",
+          "options": [
+            "It is not worth the money.",
+            "It is worth it, but go early.",
+            "It is only suitable for children.",
+            "It is too dangerous."
+          ],
+          "answer": 1,
+          "why": "The writer says \"yes, it's worth it, but go early\"."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people planning a trip to the Dead Sea.",
+          "model": "Any three of: go as early as you can; take a bottle of fresh water; wear sandals; take sun cream; do not put your head under the water.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of informal language from Text C.",
+          "model": "Any two of: \"weirdest\", \"loads\", \"boiling\", \"stung like mad\", \"Hi!\", \"I know everyone does\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They are chatty, everyday words, not formal ones."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "People thinking about taking the day trip (1). Clue, for example: the tips (\"Go as early as you can\") or the question at the end (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about getting salt water in your eyes.",
+          "model": "Text B warns visitors never to put their head under and to keep splashing to a minimum, because salt water in the eyes \"really stings\" (1). Text C's writer splashed water in their eye and says it \"stung like mad\" (1). So both say it hurts, but Text B gives the warning and Text C shows what happens when it goes wrong (1).",
+          "check": [
+            "I said what Text B says about salt water in the eyes.",
+            "I said what Text C says about it.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl-transport",
+      "topic": "Public transport",
+      "title": "Park and Ride",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about travelling by train and by bus.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Web page",
+          "source": "Fennline Trains website",
+          "title": "Fennline Trains",
+          "body": [
+            {
+              "p": "Home | Tickets | Timetables | Railcards | Contact us"
+            },
+            {
+              "p": "Welcome to Fennline Trains. We run fast, friendly services between Fennbridge, Kettlewick and Ashby Cross every day of the week. Tickets can be bought online, at the station or on board."
+            },
+            {
+              "p": "Travelling with a bike? Bikes travel free on all our trains, except between 7:00 am and 9:30 am on weekdays, when the trains are at their busiest."
+            },
+            {
+              "p": "Need some help with your journey? Please speak to a member of staff at any station. They will be glad to help."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Newspaper article",
+          "source": "The Vale Gazette",
+          "title": "Park and Ride: is it worth it?",
+          "body": [
+            {
+              "p": "Kettlewick's new Park and Ride opened in March, and thousands of drivers have already tried it. Local people have given it a warm welcome. The idea is simple. Drivers leave their cars at the edge of town and take a bus into the centre, which takes about ten minutes."
+            },
+            {
+              "h": "How it works"
+            },
+            {
+              "p": "The car park has 600 spaces and parking costs £3 for the whole day. A bus leaves every eight minutes from 6:30 am until 7:00 pm. Parking also covers your bus fare, so there is nothing more to pay. The car park is lit at night so that drivers feel safe, and staff are on duty all day to help."
+            },
+            {
+              "h": "Who is it for?"
+            },
+            {
+              "p": "Commuters and shoppers are the biggest users, and shoppers like it too. \"I used to spend half an hour driving round looking for a space,\" says Imran Shah, who works in a bank in the town centre. \"Now I park, read my book on the bus, and I'm at my desk before nine.\""
+            },
+            {
+              "h": "What does it cost?"
+            },
+            {
+              "p": "Parking in the town centre can cost up to £9 for a day, so the Park and Ride is much cheaper. Regular users can save even more with a season ticket (a ticket that lets you travel as often as you like for a month or a year). The council says the scheme will pay for itself within five years."
+            },
+            {
+              "h": "Is it perfect?"
+            },
+            {
+              "p": "Not quite. Some passengers complain that the buses are full during the morning peak, when many people are travelling to work or school. A council spokesperson said that extra buses will be added if they are needed."
+            },
+            {
+              "p": "Even so, it is the best idea the council has had for years. If you drive into town every day, you should try it."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Email",
+          "source": "Email between friends",
+          "title": "Subject: Park and Ride report!",
+          "body": [
+            {
+              "p": "Hi Jess,"
+            },
+            {
+              "p": "Guess what? I tried the new Park and Ride in Kettlewick on Saturday and it was loads better than I expected. Parking was only £3, which is a bargain compared with the £9 I paid in town last month. The bus turned up after about two minutes and the driver was really friendly."
+            },
+            {
+              "p": "The downside? We went at 8:15 and the bus was rammed, so I had to stand all the way into town (it only took ten minutes, thankfully). The ride itself was lovely. There was Wi-Fi on the bus, so I caught up on my messages, and the seats were really comfy. Also, the last bus back is at 7:00 pm, which is far too early if you fancy a night out!"
+            },
+            {
+              "p": "My tips if you go:"
+            },
+            {
+              "ul": [
+                "Get there before eight, so you can get a seat.",
+                "Keep your ticket safe, because you need it for the bus home.",
+                "Check the last bus time before you leave the car park.",
+                "Take a coat. The bus stop is miles from the entrance!"
+              ]
+            },
+            {
+              "p": "Honestly, I'd choose it over driving every time. Let me know if you try it. Can't wait to hear what you think!"
+            },
+            {
+              "p": "Maya"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, say which part of the website you would click on to find out train times.",
+          "model": "Timetables.",
+          "check": [
+            "I named the part of the website.",
+            "It comes from the top of Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find this information?",
+          "options": [
+            "A menu bar",
+            "Bullet points",
+            "A text box",
+            "A speech bubble"
+          ],
+          "answer": 0,
+          "why": "The line at the top, \"Home | Tickets | Timetables...\", is a menu. It shows where to click to find each part of the website."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"We run fast, friendly services.\" Give one word or phrase to replace \"fast\" that keeps the meaning the same.",
+          "model": "Quick, speedy, rapid.",
+          "check": [
+            "My word means about the same as \"fast\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"except between 7:00 am and 9:30 am\". Give one word or phrase to replace \"except\" that keeps the meaning the same.",
+          "model": "Apart from, other than, but not, excluding.",
+          "check": [
+            "My word or phrase means about the same as \"except\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To advertise a train company's services",
+            "To complain about train delays",
+            "To explain how to build a bike shed",
+            "To tell people about a Park and Ride"
+          ],
+          "answer": 0,
+          "why": "The page welcomes visitors, describes the train services and offers help. It is advertising Fennline Trains."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three benefits of using the Park and Ride.",
+          "model": "Any three of: cheaper than parking in town (£3 compared with up to £9); parking covers the bus fare; a bus every eight minutes; no need to search for a space; time to read on the bus; a season ticket can save more.",
+          "check": [
+            "I gave three different benefits.",
+            "All three come from Text B.",
+            "Each one is a good thing about the Park and Ride."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why a driver might choose the Park and Ride rather than parking in the town centre.",
+          "model": "It costs much less (£3 for the day compared with up to £9) (1), and drivers do not waste time driving round looking for a space (1).",
+          "check": [
+            "I gave one reason about cost.",
+            "I gave one reason about time or finding a space."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer puts words inside brackets after \"season ticket\". Why?",
+          "options": [
+            "To explain what a season ticket is",
+            "To show someone is speaking",
+            "To show it is a question",
+            "To show it is the name of a company"
+          ],
+          "answer": 0,
+          "why": "Brackets add extra information. Here they explain a term that some readers may not know."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Why do some passengers complain about the buses in the morning?",
+          "model": "The buses are full (1) during the morning peak, when many people are travelling to work or school (1).",
+          "check": [
+            "I said that the buses are full.",
+            "I said when this happens."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "Parking at the Park and Ride costs £3 for the whole day.",
+            "It is the best idea the council has had for years.",
+            "The car park has 600 spaces.",
+            "The buses are far too crowded."
+          ],
+          "answer": [
+            0,
+            2
+          ],
+          "why": "Facts can be checked, such as the price and the number of spaces. \"The best idea\" and \"far too crowded\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to travel.",
+          "model": "Any two of: commuters; fare; season ticket; peak; Park and Ride.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with travel."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two things the writer of Text C did not like about the Park and Ride.",
+          "model": "Any two of: the bus was full at 8:15, so she had to stand; the last bus back is at 7:00 pm, which is too early for a night out; the bus stop is a long way from the entrance.",
+          "check": [
+            "I gave two different things.",
+            "Both are things the writer did not like."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which sentence best sums up the writer's view?",
+          "options": [
+            "She will never use it again.",
+            "It was better than she expected, with a few problems.",
+            "It was too expensive.",
+            "The bus driver was rude."
+          ],
+          "answer": 1,
+          "why": "The writer says it was \"loads better than I expected\", but then lists two downsides."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people who want to try the Park and Ride.",
+          "model": "Any three of: get there before eight; keep your ticket safe; check the last bus time; take a coat.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of informal language from Text C.",
+          "model": "Any two of: \"Hi Jess\", \"Guess what?\", \"loads better\", \"bargain\", \"rammed\", \"miles from\", \"fancy a night out\", \"Can't wait\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They are chatty, everyday words, not formal ones."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "A friend called Jess (1). Clue, for example: it starts \"Hi Jess\", or it asks \"Let me know if you try it\" (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about the buses at busy times.",
+          "model": "Text B says some passengers complain that buses are full in the morning peak, and the council will add extra buses if needed (1). Text C says the bus was \"rammed\" at 8:15 so the writer had to stand (1). So the texts agree that morning buses can be full, but Text B reports the council's plan to fix it and Text C gives a personal experience (1).",
+          "check": [
+            "I said what Text B says about busy buses.",
+            "I said what Text C says about it.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl-geography",
+      "topic": "UK geography",
+      "title": "New homes in the village",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about a plan to build new homes in a village.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Notice",
+          "source": "Ashby Green Parish Council",
+          "title": "Have your say on new homes in Ashby Green",
+          "body": [
+            {
+              "p": "Ashby Green Parish Council is holding a meeting about plans to build 40 new homes in the village. Everyone is welcome."
+            },
+            {
+              "p": "There are three ways to have your say:"
+            },
+            {
+              "ol": [
+                "Come to the meeting at the village hall on Thursday at 7:30 pm.",
+                "Write to the Parish Clerk at the village hall.",
+                "Fill in the short form on the council website."
+              ]
+            },
+            {
+              "p": "Please tell us what you think before the end of the month."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Information leaflet",
+          "source": "Ashby Green Parish Council",
+          "title": "New homes for Ashby Green: the facts",
+          "body": [
+            {
+              "p": "Ashby Green Parish Council has been asked to approve plans for 40 new homes on a field beside Church Lane. About 1,200 people live in the village today. This leaflet sets out the main facts so that residents can decide what they think."
+            },
+            {
+              "h": "Why build here?"
+            },
+            {
+              "p": "There are two main reasons for the plan: the village school has empty places, and the village shop is struggling to stay open. The council hopes that new families will help to keep both going. Over the last ten years, the number of children at the school has fallen and two other shops have closed. Councillor Ruth Barnes says, \"The new homes will bring the village back to life.\""
+            },
+            {
+              "h": "What kind of homes?"
+            },
+            {
+              "p": "Twenty-four of the homes will be for sale on the open market, with between two and four bedrooms. Sixteen will be affordable homes, which cost less to buy or rent than most houses in the area. These will be offered first to people who already live or work in the village. All of the new homes will have gardens and parking spaces, and they will be built to use less energy than older houses."
+            },
+            {
+              "h": "What are the worries?"
+            },
+            {
+              "p": "Not everyone is in favour. Some residents are worried about extra traffic on the narrow lanes. One resident, Tom Hendry, says, \"The lanes simply cannot cope with more traffic.\" Others do not want to lose the field, which is used by dog walkers and for the summer fair. The developer says it will pay for a new bus shelter and a safer crossing on Church Lane."
+            },
+            {
+              "h": "What happens next?"
+            },
+            {
+              "p": "The parish council will meet on Thursday to hear residents' views. The plans must then be approved by the district council, which will decide whether to grant planning permission. A decision is expected within six months."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Letter",
+          "source": "Letter to Ashby Green Parish Council",
+          "title": "Letter about the Church Lane homes",
+          "body": [
+            {
+              "p": "Dear Councillors,"
+            },
+            {
+              "p": "I am writing to say that I support the plan to build new homes on Church Lane. I am 19 and I have lived in Ashby Green all my life, but I doubt that I will be able to stay here. Even a small flat in the village costs far more than I can afford on my wage from the garden centre."
+            },
+            {
+              "p": "Several of my friends have already moved to Brayminster, where there are more homes to rent and the bus runs every fifteen minutes. If the village does not build homes for young people, it will soon have no young people left. I know that some neighbours are worried about traffic, and I understand why. However, I believe a few more cars are a small price to pay for a village that stays alive."
+            },
+            {
+              "p": "I would therefore ask the council to:"
+            },
+            {
+              "ul": [
+                "make sure the affordable homes go to local people first",
+                "keep a footpath through the field so that walkers can still use it",
+                "ask the bus company to run buses more often, as more people will need them"
+              ]
+            },
+            {
+              "p": "I would be grateful if you would consider my views at Thursday's meeting."
+            },
+            {
+              "p": "Yours faithfully,"
+            },
+            {
+              "p": "A resident of Ashby Green"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one way to have your say about the new homes.",
+          "model": "Any one of: come to the meeting at the village hall; write to the Parish Clerk; fill in the short form on the council website.",
+          "check": [
+            "I gave one way.",
+            "It comes from the list in Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find this information?",
+          "options": [
+            "A numbered list",
+            "A speech bubble",
+            "A menu",
+            "A text box"
+          ],
+          "answer": 0,
+          "why": "The three ways to have your say are set out as a numbered list: 1, 2 and 3."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"plans to build 40 new homes\". Give one word or phrase to replace \"plans\" that keeps the meaning the same.",
+          "model": "Proposals, ideas, proposed project.",
+          "check": [
+            "My word means about the same as \"plans\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"Everyone is welcome.\" Give one word or phrase to replace \"welcome\" that keeps the meaning the same.",
+          "model": "Invited, wanted, encouraged to come.",
+          "check": [
+            "My word or phrase means about the same as \"welcome\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To advertise homes for sale",
+            "To invite people to give their views",
+            "To explain why the school is closing",
+            "To complain about the council"
+          ],
+          "answer": 1,
+          "why": "The notice announces a meeting and gives three ways to say what you think, so it invites people to give their views."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three details about the new homes.",
+          "model": "Any three of: there will be 40 homes; they will be on a field beside Church Lane; 24 will be for sale; 16 will be affordable homes; they will have between two and four bedrooms.",
+          "check": [
+            "I gave three different details.",
+            "All three come from Text B.",
+            "Each one is a fact about the homes."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Give two reasons why the parish council wants new homes in the village.",
+          "model": "The village school has empty places (1), and the village shop is struggling to stay open (1).",
+          "check": [
+            "I gave two different reasons.",
+            "Both come from the section \"Why build here?\"."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "Look at the sentence: \"There are two main reasons for the plan: the village school has empty places, and the village shop is struggling.\" What does the colon (:) do?",
+          "options": [
+            "It introduces the reasons",
+            "It shows someone is speaking",
+            "It shows a question",
+            "It ends the sentence"
+          ],
+          "answer": 0,
+          "why": "A colon often comes before an explanation or list. Here it introduces the two reasons for the plan."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Why are some residents against the plan?",
+          "model": "They are worried about extra traffic on the narrow lanes (1). Others do not want to lose the field, which is used by dog walkers and for the summer fair (1).",
+          "check": [
+            "I gave one reason about traffic.",
+            "I gave one reason about the field."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "The new homes will bring the village back to life.",
+            "About 1,200 people live in Ashby Green.",
+            "Sixteen of the new homes will be affordable homes.",
+            "The lanes simply cannot cope with more traffic."
+          ],
+          "answer": [
+            1,
+            2
+          ],
+          "why": "Facts can be checked, such as the number of people and the number of affordable homes. \"Bring the village back to life\" and \"cannot cope\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to housing.",
+          "model": "Any two of: affordable homes; open market; planning permission; residents; bedrooms; parish council.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with housing."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two reasons why the writer of Text C supports the plan.",
+          "model": "Any two of: even a small flat in the village costs more than the writer can afford; friends have already moved away; without homes for young people the village will have none left.",
+          "check": [
+            "I gave two different reasons.",
+            "Both come from the first two paragraphs."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which sentence best sums up the writer's view?",
+          "options": [
+            "The plan should be stopped.",
+            "The plan is a good idea, but the council should make some changes.",
+            "The plan is not important.",
+            "The village should stay exactly as it is."
+          ],
+          "answer": 1,
+          "why": "The writer supports the plan, but asks the council to do three things as well."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three things the writer asks the council to do.",
+          "model": "Any three of: make sure affordable homes go to local people first; keep a footpath through the field; ask the bus company to run buses more often.",
+          "check": [
+            "I gave three different requests.",
+            "All three come from the list in Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of formal language from Text C.",
+          "model": "Any two of: \"Dear Councillors\", \"I am writing to say that\", \"I would therefore ask\", \"I would be grateful if\", \"Yours faithfully\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They sound polite and serious, not chatty."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "The parish councillors (1). Clue, for example: it starts \"Dear Councillors\" or it says \"consider my views at Thursday's meeting\" (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about the affordable homes.",
+          "model": "Text B says that 16 of the 40 homes will be affordable homes, which cost less to buy or rent, and that they will be offered first to people who live or work in the village (1). Text C says that the writer cannot afford even a small flat in the village, and asks the council to make sure the affordable homes go to local people first (1). Both texts say local people should come first, but Text B is giving the plan and Text C shows why it matters (1).",
+          "check": [
+            "I said what Text B says about affordable homes.",
+            "I said what Text C says about them.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -47,14 +47,18 @@ Level 2 (from the Reading exemplars): papers are split into lettered sections (A
 - **Mark bands.** The marking guide in `content/writing.json` is our own summary and splits each range into three equal bands. These may not match the official band boundaries.
 - **Level 2 reading structure** (see above).
 
-## Gaps between the site's reading missions and the real paper
+## How the site matches the real paper
 
-The M1 missions are short practice versions, not mock papers. Known differences, for a later pass:
+- **Short missions** (`content/reading.json`, about 10 minutes): practice versions with one or two texts and 7 or 8 questions of 1 mark. Not a mock paper.
+- **Longer missions** (`content/reading-long.json`, about 35 minutes, Level 1 only): follow the Level 1 layout above. Three texts linked by one theme (A about 80 to 100 words, B 300 to 320, C 200 to 220), 15 numbered questions (1(a) and 1(b), 2(a) and 2(b) count as one each) worth 30 marks, split 5 / 12 / 10 / 3 across Text A, Text B, Text C and the B-and-C comparison. Each includes: finding information and naming the layout feature, word meanings, main purpose, retrieval worth 3 marks, explaining, punctuation, fact vs opinion (as "choose two"), specialist words, informal or formal language, who a text is for, and a final comparison. The texts and questions are original; only the layout and skills follow Pearson's.
+- Checked by script: word counts per text, total marks, section marks, answer keys in range. Checked by hand: every closed answer.
 
-- Real Level 1 papers use three linked texts (about 80, 310 and 210 words). Our Level 1 missions use one text of about 250 to 300 words.
-- Real papers use 1 to 3 marks per question. Ours use 1 mark per closed question.
-- Not yet covered: finding an organisational feature, synonym questions, specialist words, formal vs informal language, comparing two texts at Level 1, and MRQ ("select all that apply") at Level 2.
-- Our Level 2 missions use two texts and comparison questions. That matches the skills listed, but the real structure is unconfirmed.
+Known gaps for a later pass:
+
+- No Level 2 longer missions yet, because the full Level 2 layout is not in the documents we have.
+- Not yet covered: inferring from images, and multiple-response questions at Level 2 beyond the "choose two" style.
+- Short missions use 1 mark per closed question.
+- Our open-question model answers are examples, not the official mark scheme. The wording of acceptable answers (for example, for word-meaning questions) comes from our own judgement, not Pearson's lists.
 
 ## Sources
 
