@@ -18,7 +18,7 @@ export function loadConfig(env = process.env) {
   const num = (k, d) => (env[k] !== undefined && env[k] !== '' && !Number.isNaN(Number(env[k])) ? Number(env[k]) : d);
   return {
     port: num('PORT', 8080),
-    model: env.MODEL || 'claude-opus-5-5',
+    model: env.MODEL || 'claude-sonnet-5-5',
     effort: env.EFFORT || 'medium',
     // The website address(es) allowed to call this service, for example https://name.github.io
     allowedOrigins: (env.ALLOWED_ORIGIN || '').split(',').map((s) => s.trim()).filter(Boolean),

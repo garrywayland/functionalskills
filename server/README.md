@@ -9,7 +9,7 @@ A small web service that gives feedback on the learner's writing. The website se
 
 ## What it costs
 
-Marking one answer uses about 3,000 tokens of input and a few thousand tokens of output. With the default model (`claude-opus-5-5`, $4 per million input tokens and $20 per million output tokens) that is usually about 5 to 10 pence per answer. The default daily cap of 60 answers keeps the worst case to a few pounds a day. For roughly half the price you can set `MODEL=claude-sonnet-5-5`; marking quality is a trade-off you can judge by trying both.
+Marking one answer uses about 3,000 tokens of input and a few thousand tokens of output. With the default model (`claude-sonnet-5-5`, $2 per million input tokens and $10 per million output tokens) that is usually about 2 to 4 pence per answer. The default daily cap of 60 answers keeps the worst case to roughly £2 a day. If you ever want to try a stronger (and about twice as expensive) model, set `MODEL=claude-opus-5-5`.
 
 Set two safety nets before you start: a **monthly spend limit** in the Anthropic Console, and a **budget alert** in Google Cloud (steps below).
 
@@ -105,7 +105,7 @@ Set these with `--set-env-vars` (separate several with commas). All are optional
 | Name | Default | What it does |
 | --- | --- | --- |
 | `ALLOWED_ORIGIN` | none (required) | The website address allowed to call the service. No slash at the end. |
-| `MODEL` | `claude-opus-5-5` | Which Claude model marks the work. |
+| `MODEL` | `claude-sonnet-5-5` | Which Claude model marks the work. |
 | `EFFORT` | `medium` | How much thinking the model does: `low`, `medium`, `high`. |
 | `RATE_PER_IP_PER_HOUR` | `12` | Answers one visitor can have marked per hour. |
 | `DAILY_CAP` | `60` | Answers the whole service will mark per day. |

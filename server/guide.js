@@ -19,9 +19,9 @@ export const GUIDE = {
         "Top band: covers every bullet point with relevant detail. Tone, words and format suit the audience and purpose. Clear opening, ideas in paragraphs, and a proper close."
       ],
       "L2": [
-        "Lowest band: some relevant ideas, but points are undeveloped or off task. The tone or format does not suit the reader well. Organisation is hard to follow.",
-        "Middle band: covers the task with mostly relevant, developed detail. Tone and format suit the reader most of the time. Paragraphs are used, with some varied linking.",
-        "Top band: every bullet point is covered and developed with well-chosen detail. Tone, vocabulary and format are consistently right for the audience and purpose. Paragraphs are well linked, with a clear opening and a strong close. Sentences are varied for effect."
+        "Lowest band: communicates some ideas with some clarity for the purpose and the reader. Format and paragraphs are used to some extent, with some linking words. A range of sentences is attempted, including some complex ones, with some accuracy. Vocabulary and tone are mostly suitable.",
+        "Middle band: communicates ideas reasonably clearly, with a suitable amount of detail and a suitable length. The format is right and paragraphs are mostly accurate, with ideas linked most of the time. A range of sentences, including complex ones, is used with general accuracy. Vocabulary is wide and the tone suits the reader.",
+        "Top band: communicates ideas with consistent clarity and uses detail effectively. The format is right, paragraphs are effective and ideas are linked clearly all the way through. A range of sentences, including complex ones, is used accurately and effectively. Vocabulary is extensive and the tone is right for the reader throughout."
       ]
     },
     "spag": {
@@ -31,9 +31,9 @@ export const GUIDE = {
         "Top band: full stops, capital letters, question marks, exclamation marks, commas and possessive apostrophes used accurately. Common and some less common words spelt correctly. Grammar accurate throughout, including tense and subject-verb agreement."
       ],
       "L2": [
-        "Lowest band: frequent errors get in the way of meaning. Sentence punctuation is unreliable. Many spelling errors, including common words.",
-        "Middle band: sentence punctuation and commas mostly accurate. Apostrophes and inverted commas used, with some errors. Most words spelt correctly, including some specialist or less common words. Grammar mostly accurate, with a range of sentence types.",
-        "Top band: a full range of punctuation used accurately, including commas, apostrophes and inverted commas. Spelling accurate, including specialist and less common words. Grammar accurate in complex as well as simple sentences."
+        "Lowest band: some correct grammar (agreement, a range of tenses, articles) and some correct punctuation from a range (commas, colons, apostrophes, inverted commas). Spelling of everyday and specialist words is sometimes accurate.",
+        "Middle band: generally correct grammar and punctuation across a range (commas, colons, apostrophes, inverted commas), and generally accurate spelling, including some specialist words.",
+        "Top band: consistently correct grammar with only occasional lapses, a wide range of punctuation used correctly, and accurate spelling including specialist words."
       ]
     }
   }

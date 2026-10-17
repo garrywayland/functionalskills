@@ -97,7 +97,7 @@ test('what is sent to the model: task and answer, with fallbacks on, and no key 
   await app.post(payload());
   const call = fake.calls[0];
   assert.match(call.url, /\/v1\/messages/);
-  assert.equal(call.body.model, 'claude-opus-5-5');
+  assert.equal(call.body.model, 'claude-sonnet-5-5');
   assert.equal(call.body.fallbacks, 'default');
   assert.match(String(call.headers['anthropic-beta']), /server-side-fallback-2026-07-01/);
   assert.equal(call.body.output_config.effort, 'medium');
