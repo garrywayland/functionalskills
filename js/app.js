@@ -198,11 +198,11 @@
 
   // ---------- Home ----------
 
+  var TOPIC_ORDER = ['Pandas', 'Israel', 'Public transport', 'UK geography'];
+
   function homeView() {
     main.className = 'home';
     var reading = content.reading.missions.filter(inLevel);
-    var shortReading = reading.filter(function (m) { return m.length !== 'long'; });
-    var longReading = reading.filter(function (m) { return m.length === 'long'; });
     var writing = content.writing.missions.filter(inLevel);
     var all = reading.concat(writing);
     var doneCount = all.filter(function (m) { return isDone(m.id); }).length;
@@ -210,23 +210,23 @@
     return h('div', null,
       h('section', { class: 'map-intro' },
         h('h1', { text: 'Pick a mission' }),
-        h('p', { class: 'lede', text: 'Most missions take about 10 minutes, and the longer reading ones about 35. Do one, then stop or carry on. It is up to you.' }),
+        h('p', { class: 'lede', text: 'Open a topic, then pick a mission. Short ones take about 10 minutes, writing tasks 15 to 25, and the longer reading missions about 35. Do one, then stop or carry on. It is up to you.' }),
         h('p', { class: 'progress-line' }, doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '. ', h('a', { href: '#/progress', text: 'See my progress' })),
         h('p', { class: 'muted small', text: 'Not sure which level? Nearly every mission works at both. Use the switch at the top.' })
       ),
       h('div', { class: 'lines-grid' },
         h('div', null,
-          lineSection('reading', 'Reading line', 'Read a short text, then answer questions one at a time.', shortReading.map(function (m) {
-            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, meta: m.topic + ' · ' + forLevel(m.questions).length + ' questions' };
-          })),
-          longReading.length ? lineSection('reading', 'Longer reading missions', 'Three linked texts and 15 questions, laid out like the real paper. Your place is saved if you stop part-way.', longReading.map(function (m) {
-            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, meta: m.topic + ' · ' + m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' };
-          }), '-long') : null,
-          level() === 'L2' ? h('p', { class: 'muted small', text: 'Longer missions for Level 2 will come once the Level 2 paper layout is confirmed.' }) : null
+          menuSection('reading', 'Reading line', 'Read the text or texts, then answer questions one at a time.', reading, function (m) {
+            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes,
+              meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
+          }, function (m) { return m.length === 'long' ? 'Longer missions (about 35 minutes)' : 'Short missions (about 10 minutes)'; }),
+          level() === 'L2' ? h('p', { class: 'muted small', text: 'Longer reading missions for Level 2 are being planned. The Level 2 paper layout is now known.' }) : null
         ),
-        lineSection('writing', 'Writing line', 'Plan and write a short piece, then send it for marking if you want to.', writing.map(function (m) {
-          return { id: m.id, href: '#/writing/' + m.id, title: m.title, meta: m.topic + ' · ' + (m.task === 1 ? 'longer task' : 'shorter task') + ' · ' + formatName(missionFor(m).format) };
-        }))
+        menuSection('writing', 'Writing line', 'Plan and write a piece, then get feedback if you want to.', writing, function (m) {
+          var mm = missionFor(m);
+          return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15,
+            meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
+        }, function (m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; })
       ),
       h('section', { class: 'line toolkit' },
         h('h2', { class: 'line-title', text: 'Toolkit' }),
@@ -243,20 +243,49 @@
     return Object.keys(seen).length;
   }
 
-  function lineSection(kind, title, blurb, stops, suffix) {
-    var hid = 'line-' + kind + (suffix || '');
+  // One folded menu per topic. Open or closed is remembered on this device.
+  function menuSection(kind, title, blurb, missions, toStop, subLabel) {
+    var hid = 'line-' + kind;
+    var topics = TOPIC_ORDER.filter(function (t) { return missions.some(function (m) { return m.topic === t; }); });
+    missions.forEach(function (m) { if (topics.indexOf(m.topic) === -1) topics.push(m.topic); });
+
+    function stopItem(m) {
+      var s = toStop(m);
+      var done = isDone(s.id);
+      return h('li', { class: 'stop' + (done ? ' done' : '') },
+        h('a', { href: s.href },
+          h('span', { class: 'stop-title', text: s.title }),
+          h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
+          h('span', { class: 'stop-meta', text: s.meta })
+        ));
+    }
+
     return h('section', { class: 'line ' + kind, 'aria-labelledby': hid },
       h('h2', { class: 'line-title', id: hid, text: title }),
       h('p', { text: blurb }),
-      h('ol', { class: 'stops' }, stops.map(function (s) {
-        var done = isDone(s.id);
-        return h('li', { class: 'stop' + (done ? ' done' : '') },
-          h('a', { href: s.href },
-            h('span', { class: 'stop-title', text: s.title }),
-            h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
-            h('span', { class: 'stop-meta', text: s.meta })
-          ));
-      }))
+      topics.map(function (topic) {
+        var items = missions.filter(function (m) { return m.topic === topic; });
+        var done = items.filter(function (m) { return isDone(m.id); }).length;
+        var key = kind + ':' + topic;
+        var labels = [];
+        items.forEach(function (m) { var l = subLabel(m); if (labels.indexOf(l) === -1) labels.push(l); });
+        var det = h('details', { class: 'menu' },
+          h('summary', null,
+            h('span', { class: 'menu-name', text: topic }),
+            h('span', { class: 'menu-count', text: done + ' of ' + items.length + ' done' })),
+          labels.map(function (l) {
+            return h('div', { class: 'menu-group' },
+              labels.length > 1 ? h('h3', { class: 'menu-sub', text: l }) : null,
+              h('ol', { class: 'stops' }, items.filter(function (m) { return subLabel(m) === l; }).map(stopItem)));
+          }));
+        if ((store.get('menus', {}) || {})[key]) det.open = true;
+        det.addEventListener('toggle', function () {
+          var o = store.get('menus', {}) || {};
+          if (det.open) o[key] = true; else delete o[key];
+          store.set('menus', o);
+        });
+        return det;
+      })
     );
   }
 
@@ -722,6 +751,10 @@
         h('p', { class: 'lede', text: 'Aim for ' + length + ' (a rough guide).' }),
         h('details', { class: 'plan-peek' }, h('summary', { text: 'Show the task' }), taskCard(m, format, length)),
         planPeek(m, saved.plan),
+        m.indicative ? h('details', { class: 'plan-peek' },
+          h('summary', { text: 'Ideas you could use (try writing first)' }),
+          h('p', { class: 'muted small', text: 'These are examples of ideas. You do not need to use them, and other good ideas count too.' }),
+          h('dl', null, m.bullets.map(function (b, i) { return [h('dt', { text: b }), h('dd', { text: m.indicative[i] || '' })]; }))) : null,
         h('label', { class: 'field', for: 'draft' }, 'Your ' + formatName(m.format)),
         box,
         h('div', { class: 'write-meta' }, countEl, status,
@@ -774,8 +807,9 @@
         live ? feedbackSection(m, format, draft, words, id) : null,
         live ? h('h2', { text: 'Or copy it to send somewhere else' }) : null,
         h('p', { class: live ? 'muted' : 'lede', text: live
-          ? 'This puts the task, a marking guide and your answer together in one block of text.'
-          : 'This puts the task, a marking guide and your answer together in one block. Copy it and paste it into a message. Nothing is sent from this page.' }),
+          ? 'This puts the task, a marking guide and your writing together in one block of text.'
+          : 'Nothing is sent from this page. It puts the task, a marking guide and your writing into one block of text, and you choose where to send it.' }),
+        aiHelp(),
         h('p', { class: 'muted', text: words + ' words. The block does not include your name.' }),
         h('label', { class: 'field', for: 'marking' }, 'Text to copy'),
         out,
@@ -793,6 +827,26 @@
     }
 
     return wrap;
+  }
+
+  // Plain steps for getting feedback by pasting into an AI chat.
+  function aiHelp() {
+    return h('section', { class: 'howto', 'aria-labelledby': 'aihelp-h' },
+      h('h2', { id: 'aihelp-h', text: 'How to get feedback from an AI chat' }),
+      h('ol', null,
+        h('li', { text: 'Press Copy below. It copies the task, a marking guide and your writing.' }),
+        h('li', { text: 'Open an AI chat that you or your family trust, and start a new conversation.' }),
+        h('li', { text: 'Paste and send. Do not add your name or any personal details.' }),
+        h('li', { text: 'Read the reply: marks, two things that worked and one thing to try. Make a change, then paste your new version and ask it to mark again.' })),
+      h('p', { class: 'muted small', text: 'Before you use any AI tool, check its privacy settings. Many free tools may keep what you type and use it to improve their systems. If there is a setting to turn that off, switch it off. AI marks are a guide and can be a mark or two out, so show your teacher too.' }),
+      h('details', { class: 'plan-peek' },
+        h('summary', { text: 'Questions you can ask next' }),
+        h('ul', null,
+          h('li', { text: 'Show me how to improve my weakest paragraph.' }),
+          h('li', { text: 'Which bullet point did I cover least?' }),
+          h('li', { text: 'Check only my spelling and punctuation.' }),
+          h('li', { text: 'Explain why you gave that SPaG mark, with examples from my writing.' }),
+          h('li', { text: 'What would I need to change to reach the top band?' }))));
   }
 
   // ---------- AI feedback (only when a marking service address is set in js/config.js) ----------
@@ -947,7 +1001,7 @@
       }).join('\n') + '\n  0 marks: nothing that can be credited.';
     }
     var lines = [
-      'Please mark this Functional Skills English writing answer.',
+      'Please mark a piece of Functional Skills English writing the way a careful examiner would. The writer is a learner aged about 17. Follow the instructions at the end.',
       '',
       'Level: ' + LEVELS[lv],
       'Task: ' + (m.task === 1 ? 'Task 1 (longer task)' : 'Task 2 (shorter task)'),
@@ -959,12 +1013,20 @@
       'Audience: ' + m.audience,
       'Purpose: ' + m.purpose,
       'Format: ' + (format ? format.name : m.format),
-      'Suggested length: ' + length + ' (rough guide).',
+      'Suggested length: ' + length + ' (a suggestion only).',
       m.instruction,
-      'Include:',
+      'The answer should include:',
       m.bullets.map(function (b) { return '- ' + b; }).join('\n'),
-      '',
-      '=== MARKING GUIDE ===',
+      ''
+    ];
+    if (m.indicative && m.indicative.length) {
+      lines.push('=== IDEAS A GOOD ANSWER MIGHT USE (indicative content) ===',
+        'These are examples only, not a checklist. Give credit for other relevant ideas.',
+        m.bullets.map(function (b, i) { return '- ' + b + ': ' + (m.indicative[i] || ''); }).join('\n'),
+        '');
+    }
+    lines.push(
+      '=== MARK SCHEME ===',
       guide.note,
       '',
       'Composition (out of ' + marks.composition + '):',
@@ -976,12 +1038,21 @@
       '=== THE ANSWER ===',
       draft.trim(),
       '',
-      '=== WHAT TO SEND BACK ===',
-      '1. A Composition mark out of ' + marks.composition + ' and a SPaG mark out of ' + marks.spag + ', with the band for each.',
-      '2. Two things that worked well, each with a short quote from the answer.',
-      '3. One thing to try next time, with a short example of how to do it.',
-      'Please keep the feedback short, plain and encouraging. Do not rewrite the whole answer.'
-    ];
+      '=== HOW TO MARK ===',
+      '1. Mark Composition and SPaG separately, using only the mark scheme above.',
+      '2. Be fair and slightly cautious. Do not inflate marks. If you are unsure between two marks, choose the lower one.',
+      '   (In Pearson\'s own trials, the average learner scored in the middle of the middle band, and grammar, especially verb tenses and articles, was the weakest area. Keep top-band marks for work that is consistently strong.)',
+      '3. Check each bullet point in the task and say whether it was covered fully, partly or not at all.',
+      '4. Use short exact quotes from the answer as evidence.',
+      '',
+      '=== PLEASE REPLY IN THIS FORMAT ===',
+      'Composition: a mark out of ' + marks.composition + ' and the band.',
+      'SPaG: a mark out of ' + marks.spag + ' and the band.',
+      'Bullet points: one line for each, saying covered, partly covered or not covered.',
+      'Two things that worked: each with a short quote from the answer.',
+      'One thing to try next time: with a short example of how to do it.',
+      'Keep it short, plain and encouraging. Do not rewrite the whole answer.'
+    );
     return lines.filter(function (l) { return l !== null; }).join('\n');
   }
 

@@ -90,6 +90,7 @@ export function buildSystem() {
     '- Composition: how well every bullet point is covered; purpose and audience; tone and format (layout, opening, close); organisation and paragraphs; vocabulary and variety of sentences.',
     '- SPaG (spelling, punctuation and grammar): judge accuracy for the level. Level 1 punctuation covers full stops, capital letters, question marks, exclamation marks, commas and possessive apostrophes. Level 2 also covers inverted commas and apostrophes more broadly.',
     '- Do not mark down for length alone, but if a bullet point is missing or thin, say so in Composition.',
+    '- Calibration, from Pearson\'s own trials of the sample papers: the average learner scored in the middle of the middle band (about 6 to 7 out of 12 for Composition and about 5 out of 9 for SPaG on the longer task), and grammar (verb tenses and articles) was the weakest area. Keep top-band marks for work that is consistently strong, and weaker answers often stay close to the information given while stronger ones add their own detail and development.',
     '- If the answer is empty, copied from the task, or unrelated to it, give very low marks and a gentle target.',
     '',
     'How to write the feedback:',

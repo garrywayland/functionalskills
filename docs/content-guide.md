@@ -62,6 +62,8 @@ Keep to the Level 1 layout in `docs/exam-notes.md`: text lengths, 15 numbered qu
 }
 ```
 
+Every writing mission needs `indicative`: one entry per bullet point, giving example ideas a good answer might use (like the indicative content in real mark schemes). It is shown to the learner after they have tried writing, and it is included in the text copied for AI marking. `tools/validate.mjs` checks the count. Task 1 has three bullet points and Task 2 has two.
+
 `format` must match a format `id` in `content/toolkit.json`. Its checklist then appears on the Write step automatically. The length guide, marks and marking guide are shared settings at the top of `writing.json`.
 
 ## Toolkit (`content/toolkit.json`)

@@ -97,6 +97,7 @@ export function checkWritingMission(m, formats, errs) {
   const sets = [m.bullets, ...Object.values(m.levels || {}).map((l) => l.bullets).filter(Boolean)];
   for (const b of sets) if (!Array.isArray(b) || b.length !== want) errs.push(`${where}: Task ${m.task} needs ${want} bullet points, has ${b ? b.length : 0}`);
   for (const k of ['context', 'audience', 'purpose', 'instruction']) if (!m[k]) errs.push(`${where}: missing ${k}`);
+  if (!Array.isArray(m.indicative) || m.indicative.length !== (m.bullets || []).length) errs.push(`${where}: needs one indicative-content entry for each bullet point`);
   if (![1, 2].includes(m.task)) errs.push(`${where}: task must be 1 or 2`);
 }
 

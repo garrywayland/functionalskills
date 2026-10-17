@@ -2,6 +2,33 @@
 
 What we rely on when writing missions. Keep verified facts separate from assumptions. Re-check against the sources before adding anything here.
 
+## Official sources now in hand
+
+The site owner supplied these from Pearson's course materials page. They are official and replace the third-party papers as the main reference:
+
+- Level 1 and Level 2 Sample Assessment Materials (SAMs), each with a Reading and a Writing paper and mark schemes.
+- Principal Examiner Feedback on the SAMs for Level 1 and Level 2, Reading and Writing.
+- Three "You are the assessor" Level 1 reading slide sets (organisational features, formal and informal language, fact and opinion), which come from Set 14 of Pearson's practice material.
+
+Only structure, marks, statistics and skills are recorded here. No question text, answer or mark-scheme wording is copied into the site.
+
+### Confirmed from the official SAMs and examiner feedback
+
+- **Level 2 reading (official SAM):** 75 minutes, 35 marks, 15 questions: Q1 to 4 Text A, Q5 to 8 Text B, Q9 to 11 Text C, Q12 to 15 more than one text. Marks per question 2,1,2,2 / 2,1,2,4 / 2,4,1 / 2,6,1,3. This matches the practice papers described below.
+- **Level 1 reading (official SAM):** 60 minutes, 30 marks, 15 questions; marks per question 2,2,1 (Text A) / 3,1,2,2,2,2 (Text B) / 1,3,2,2,2 (Text C) / 3 (Text B and C). Question skills in order: information and organisational feature; word meanings with a dictionary; main purpose; three pieces of information; what an apostrophe shows (1 mark); what a photograph tells you (2); language features that persuade (2); what quotations mean (2); how subheadings help (2); one reason (1); three ways (3); which two statements are facts (2); which two quotations are formal language (2); two quotations about benefits (2); compare ideas that are the same (3).
+- **Writing, both levels:** 60 minutes, 36 marks, suggested 35 minutes on Task 1 and 25 on Task 2. Level 1 suggestions: 200 to 250 words (Task 1) and 150 to 200 (Task 2). Level 2: 250 to 300 and 200 to 250. Word counts are suggestions only and examiners do not count words. Dictionaries are not allowed.
+- **Each writing paper** has one task built on an authentic stimulus and one that gives a direct instruction. Level 1 stimulus formats: advert, article, blog post, email, leaflet, letter, notes, notice, web forum contribution. Level 1 writing formats: articles, emails, eye-witness accounts, diary entries, formal letters, formal reports, information or advice sheets, newsletters, online feedback or reviews, reviews, webpage entries such as blogs and forums.
+- **Mark bands:** Composition 12 = 1 to 4, 5 to 8, 9 to 12; SPaG 9 = 1 to 3, 4 to 6, 7 to 9; the shorter task uses the same three bands (9 marks and 6 marks). The Composition grids assess: clarity, detail and length for purpose and audience; format, structure and paragraphs; range and accuracy of sentences including complex ones; and range of vocabulary and register. SPaG is 41.7% of the writing marks.
+- **How learners did on the SAM trials:** Level 1 writing, Task 1 mean Composition 6.49 of 12 and SPaG 4.84 of 9, Task 2 mean Composition 5.05 of 9 and SPaG 3.39 of 6; pass mark 21 of 36 (provisional). Level 2 writing, Task 1 mean Composition 7.5 and SPaG 5.3, Task 2 mean 5.5 and 3.6; pass mark 21 of 36. Level 1 reading pass mark 18 of 30. Pass marks on live papers may differ.
+- **Common weaknesses:** grammar (verb tenses and articles) was the weakest area in writing; the third bullet point (often about personal qualities or own ideas) got the least writing; weaker answers stay close to the information in the task, stronger ones add detail and development. In Level 1 reading, "which organisational feature helped you" was the hardest question (mean 0.42 of 1), synonyms with a dictionary were uneven, and three-mark questions tended to score 3 or 0.
+
+### Not yet covered in the site
+
+- **Photograph or image questions** (Level 1, "what does the photograph tell you"): our texts have no images.
+- **A stimulus on the writing tasks:** the real papers start from an advert, email, notice or similar. Our tasks describe a situation in words.
+- **Alignment of the longer reading missions:** section totals (5/12/10/3) match, but the per-question marks and the order of question skills differ from the official Level 1 paper (for example, the official punctuation question is Question 5 and worth 1; facts and opinions and formal language come in Text C).
+- **Level 2 longer reading missions:** the official layout is now known; none are written yet.
+
 ## Verified
 
 Checked against Pearson's own documents (specification, L1 Guidance to Centres, L2 Reading exemplars, L2 Writing examiner report 2024) in October 2026.
@@ -25,7 +52,7 @@ Level 1 paper structure (Guidance to Centres, v1.0, Nov 2019):
 - Text formats: adverts, articles, blogs, emails, internet discussions, leaflets, letters, reports, reviews, webpages, web forums.
 - Question skills include: fact vs opinion, formal vs informal language, specialist words, punctuation to aid understanding, inferring from images, comparing texts.
 
-Level 2 reading paper (checked in October 2026 against two Pearson-format practice papers, numbers 4 and 6, hosted on passfunctionalskills.co.uk; both had an identical layout and carry Pearson's front page and copyright line. They are third-party hosted copies, not downloaded from Pearson, so treat the structure as well supported but not official):
+Level 2 reading paper (first checked against two Pearson-format practice papers hosted on a third-party site, then confirmed against the official Level 2 SAM; see above):
 
 - 75 minutes, 35 marks, 15 questions, a separate text booklet, a dictionary allowed.
 - Section A: Questions 1 to 4 on Text A, 7 marks (marks per question 2, 1, 2, 2).
@@ -52,10 +79,9 @@ Level 2 reading paper (checked in October 2026 against two Pearson-format practi
 
 ## Not yet verified
 
-- **Level 1 writing word counts.** The site shows "about 200 to 300" (Task 1) and "about 150 to 250" (Task 2) as a working guess. We could not read the Level 1 writing sample paper (the Level 1 SAM link in the brief returned a web page, not a PDF). Level 2's figures are official.
-- **Mark bands.** Confirmed for Level 2 from a Level 2 Writing mark scheme: Task 1 Composition 1 to 4, 5 to 8, 9 to 12 and SPaG 1 to 3, 4 to 6, 7 to 9; Task 2 uses the same three-band layout. These are equal thirds, which is what the site uses. The wording of our guide is our own summary. Level 1 band boundaries are not confirmed.
-- **Level 2 formats not yet in the toolkit:** "web forum contribution" and "online form" tasks appear in Level 2 writing papers, and the toolkit has no guide for them yet.
-- **Level 2 reading:** the structure above is now known, but no longer Level 2 missions have been written yet.
+- **Wording of our marking guide:** the bands and criteria now match Pearson's, but the descriptions are our own summary, not the official wording.
+- **Pass marks on live papers:** the figures above are for the sample papers and may differ.
+- **Level 2 formats in the toolkit:** the toolkit now has guides for forum posts, online forms, advice sheets, diary entries and newsletters. Eye-witness accounts are not covered yet.
 
 ## How the site matches the real paper
 

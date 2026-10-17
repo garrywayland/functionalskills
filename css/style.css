@@ -229,6 +229,25 @@ h1:focus { outline: none; }
   main.home { max-width: 64rem; }
 }
 
+/* ---------- Folded topic menus ---------- */
+
+details.menu { border: 1px solid var(--rule); border-radius: var(--radius); background: var(--surface); margin: 0.6rem 0; }
+details.menu > summary {
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1rem; cursor: pointer;
+  list-style: none; font-weight: 650; font-size: 1.1rem; border-radius: var(--radius);
+}
+details.menu > summary::-webkit-details-marker { display: none; }
+details.menu > summary::before {
+  content: ""; flex: none; width: 0.55rem; height: 0.55rem;
+  border-right: 3px solid var(--c); border-bottom: 3px solid var(--c); transform: rotate(-45deg);
+}
+details.menu[open] > summary::before { transform: rotate(45deg); }
+details.menu[open] > summary { border-bottom: 1px solid var(--rule); border-radius: var(--radius) var(--radius) 0 0; }
+.menu-name { flex: 1; font-family: var(--serif); }
+.menu-count { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+.menu-group { padding: 0.4rem 1rem 0.9rem; }
+.menu-sub { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0.9rem 0 0.5rem; }
+
 /* ---------- Mission frame ---------- */
 
 .mission { --accent: var(--reading); }

@@ -193,6 +193,176 @@
         "answer": 0,
         "why": "It sums up the writer's view and invites the reader to respond, which suits a blog."
       }
+    },
+    {
+      "id": "forum",
+      "name": "Web forum post",
+      "summary": "A short post on an online discussion board that gives your view and invites replies.",
+      "layout": [
+        "A clear title or subject line, if the board asks for one.",
+        "A friendly start, such as \"Hi everyone\", or straight into your view.",
+        "Short paragraphs, because posts are read on screens.",
+        "Your view first, then your reasons and a short example.",
+        "A question or invitation to reply at the end."
+      ],
+      "opening": "State your view straight away: \"I think buses should be free for under-18s, and here are my reasons.\"",
+      "closing": "Invite a reply: \"What do you think? Has anyone else tried this?\"",
+      "tone": "Chatty and friendly, but still in full sentences with correct spelling and punctuation. No text-speak or emojis, and stay polite even when you disagree.",
+      "checklist": [
+        "I gave my view in the first sentence or two.",
+        "I gave at least two reasons.",
+        "I included an example or a short story.",
+        "I used short paragraphs.",
+        "I finished by inviting replies.",
+        "I kept the tone friendly but polite."
+      ],
+      "practice": {
+        "prompt": "Which is the best first sentence for a forum post giving your view on later school start times?",
+        "options": [
+          "school start times r bad lol",
+          "Dear Sir or Madam, I am writing to complain.",
+          "Hi everyone, I think school should start later, and I have three reasons.",
+          "School."
+        ],
+        "answer": 2,
+        "why": "It says what the writer thinks straight away, sounds friendly and uses full words. The others are too casual, too formal for a forum, or say nothing."
+      }
+    },
+    {
+      "id": "form",
+      "name": "Online form",
+      "summary": "A box on a website where you give your views to an organisation. Be clear, polite and to the point.",
+      "layout": [
+        "Read the label on each box before you write.",
+        "Write in full sentences, even in a small box.",
+        "Keep each answer to the question in that box.",
+        "Give a reason and a short example.",
+        "Check your spelling before you press submit."
+      ],
+      "opening": "Answer the question in the box straight away: \"The part I enjoyed most was the tasting stop at the market.\"",
+      "closing": "Finish with a polite line: \"Thank you for asking for my views.\"",
+      "tone": "Polite, clear and fairly formal, as if you were writing to a company or a council.",
+      "checklist": [
+        "I answered the question in the box.",
+        "I gave a reason for each view.",
+        "I included an example.",
+        "I wrote in full sentences.",
+        "I stayed polite, even when giving criticism.",
+        "I thanked them at the end."
+      ],
+      "practice": {
+        "prompt": "A box asks \"What did you like most?\" Which answer is best?",
+        "options": [
+          "It was good.",
+          "The guide was friendly and explained each dish, which made the tour more interesting.",
+          "IDK, everything",
+          "I did not like it at all."
+        ],
+        "answer": 1,
+        "why": "It answers the question and gives a reason. \"It was good\" gives the reader nothing to use."
+      }
+    },
+    {
+      "id": "advice",
+      "name": "Information or advice sheet",
+      "summary": "Clear, helpful guidance for readers, with a heading and short sections or tips.",
+      "layout": [
+        "A title that says who the advice is for.",
+        "A short introduction saying why the advice helps.",
+        "Subheadings or numbered tips.",
+        "Each tip says what to do, and why.",
+        "A short closing line."
+      ],
+      "opening": "Say who the advice is for and why it helps: \"If you are travelling by train for the first time, these tips will save you time and worry.\"",
+      "closing": "End with a reassuring line or repeat the most important tip: \"Remember: buy your ticket before you board.\"",
+      "tone": "Helpful and direct. Use \"you\" and short sentences, and give simple instructions.",
+      "checklist": [
+        "My title says who the advice is for.",
+        "I wrote a short introduction.",
+        "I used subheadings or numbered tips.",
+        "Each tip says what to do and why.",
+        "I used simple, direct language.",
+        "I ended with a reminder or a reassuring line."
+      ],
+      "practice": {
+        "prompt": "Which is the best subheading for an advice sheet about first train journeys?",
+        "options": [
+          "Trains",
+          "Buy your ticket before you board",
+          "Things",
+          "Why trains are great and I love them so much"
+        ],
+        "answer": 1,
+        "why": "It tells the reader exactly what to do. The others are too vague or too long, or are about the writer rather than the reader."
+      }
+    },
+    {
+      "id": "diary",
+      "name": "Diary entry",
+      "summary": "Personal writing about what happened and how you felt.",
+      "layout": [
+        "The day and date at the top.",
+        "Events in the order they happened.",
+        "Your feelings and thoughts, not only the facts.",
+        "Something you learned or noticed.",
+        "A look ahead at the end."
+      ],
+      "opening": "Start with the date and a line that sets the scene: \"Saturday 14 June. Today was the longest and best day of the whole trip.\"",
+      "closing": "End with a thought about the day or what comes next: \"I can't wait to go back tomorrow.\"",
+      "tone": "Personal and chatty, in the first person (\"I\"), but still in full sentences with correct punctuation.",
+      "checklist": [
+        "I put the day and date at the top.",
+        "I described events in order.",
+        "I said how I felt.",
+        "I included a detail that only someone there would notice.",
+        "I said what I learned.",
+        "I looked ahead at the end."
+      ],
+      "practice": {
+        "prompt": "Which sentence belongs in a diary entry?",
+        "options": [
+          "Visitors should arrive before 9 am.",
+          "I felt nervous when the bus was late, but it all worked out in the end.",
+          "Yours faithfully,",
+          "Terms and conditions apply."
+        ],
+        "answer": 1,
+        "why": "A diary says what happened and how the writer felt. The other lines belong in a notice, a formal letter or small print."
+      }
+    },
+    {
+      "id": "newsletter",
+      "name": "Newsletter",
+      "summary": "A short update for a group, with a title, headings and a friendly, informative tone.",
+      "layout": [
+        "The name of the newsletter and the date or issue.",
+        "A short welcome saying what is inside.",
+        "Headings for each item.",
+        "Short paragraphs.",
+        "Dates and contact details at the end."
+      ],
+      "opening": "Welcome readers and say what is inside: \"Welcome to this month's newsletter. Read on for news about the summer fair and our new bus service.\"",
+      "closing": "Remind readers of the next date or how to get involved: \"Come along on 12 July, and bring a friend.\"",
+      "tone": "Friendly and positive, speaking to the group as \"we\" and \"you\".",
+      "checklist": [
+        "I gave the newsletter a name.",
+        "I started with a short welcome.",
+        "I used a heading for each item.",
+        "I wrote short paragraphs.",
+        "I spoke to the readers as \"you\".",
+        "I ended with a date or a way to get involved."
+      ],
+      "practice": {
+        "prompt": "Which is the best heading for a village newsletter item about a summer fair?",
+        "options": [
+          "Fair",
+          "Summer Fair: Come and Join Us on 12 July!",
+          "An event that is going to happen in the future in the village hall",
+          "The thing"
+        ],
+        "answer": 1,
+        "why": "It says what the item is about, gives the date and invites people. The others are too short, too long or too vague."
+      }
     }
   ],
   "spag": [

@@ -14,9 +14,9 @@ export const GUIDE = {
     "note": "This is our own plain-English summary to guide feedback. It is not the official mark scheme.",
     "composition": {
       "L1": [
-        "Lowest band: a few relevant ideas, but the answer is very short or drifts away from the task. Little sense of who it is for. The format is missing or unclear, and ideas are not grouped.",
-        "Middle band: covers the task, though one or more bullet points are thin. Tone and format mostly suit the reader. Some paragraphs, and some linking words such as \"also\" or \"because\".",
-        "Top band: covers every bullet point with relevant detail. Tone, words and format suit the audience and purpose. Clear opening, ideas in paragraphs, and a proper close."
+        "Lowest band: communicates some ideas with some clarity and some awareness of the purpose and reader. The format and structure suit the task to some extent. Sentences show some range and some accuracy. Vocabulary is simple but suits the task.",
+        "Middle band: communicates ideas reasonably clearly, with a suitable amount of detail and a suitable length. The format suits the task and paragraphs are used. A range of sentences, including some complex ones, is used with reasonable accuracy. A range of vocabulary suits the task.",
+        "Top band: communicates ideas clearly and uses detail effectively for the purpose and reader. The format suits the task and paragraphs are used effectively. A range of sentences, including complex ones, is used with consistent accuracy. A wide range of vocabulary suits the task throughout."
       ],
       "L2": [
         "Lowest band: communicates some ideas with some clarity for the purpose and the reader. Format and paragraphs are used to some extent, with some linking words. A range of sentences is attempted, including some complex ones, with some accuracy. Vocabulary and tone are mostly suitable.",
@@ -26,9 +26,9 @@ export const GUIDE = {
     },
     "spag": {
       "L1": [
-        "Lowest band: frequent errors make parts hard to follow. Full stops and capital letters are often missing. Common words are often misspelt.",
-        "Middle band: mostly accurate full stops and capital letters, with some question marks, exclamation marks, commas or possessive apostrophes used correctly. Common words mostly spelt correctly. Grammar mostly accurate, with occasional slips in tense or agreement.",
-        "Top band: full stops, capital letters, question marks, exclamation marks, commas and possessive apostrophes used accurately. Common and some less common words spelt correctly. Grammar accurate throughout, including tense and subject-verb agreement."
+        "Lowest band: some correct punctuation (full stops, question marks, exclamation marks, commas, possessive apostrophes) and some accuracy in spelling the words used most often, including some specialist words. Grammar is sometimes accurate.",
+        "Middle band: reasonably correct punctuation across those marks, reasonably accurate spelling of common and specialist words, and reasonably accurate grammar.",
+        "Top band: correct punctuation across those marks with occasional lapses, accurate spelling of common and specialist words with occasional lapses, and accurate grammar with occasional lapses."
       ],
       "L2": [
         "Lowest band: some correct grammar (agreement, a range of tenses, articles) and some correct punctuation from a range (commas, colons, apostrophes, inverted commas). Spelling of everyday and specialist words is sometimes accurate.",
