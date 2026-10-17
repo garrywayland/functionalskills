@@ -282,6 +282,9 @@ h1:focus { outline: none; }
 .source-text h2 { margin-top: 0.25rem; font-size: 1.5rem; }
 .source-text h3 { font-size: 1.15rem; }
 .source-text ul, .source-text ol { padding-left: 1.3rem; }
+.text-box { border: 2px solid var(--accent); border-radius: var(--radius); padding: 0.75rem 1rem; margin: 1rem 0; font-family: var(--sans); font-size: 1rem; background: var(--paper); }
+.callout { position: relative; border-radius: 1.2rem; padding: 0.7rem 1.1rem; margin: 1.2rem 0 1.4rem 0.5rem; background: var(--calm); border: 1px solid var(--calm-edge); font-style: italic; max-width: 32rem; }
+.callout::after { content: ""; position: absolute; left: 1.4rem; bottom: -0.55rem; width: 1rem; height: 1rem; background: var(--calm); border-right: 1px solid var(--calm-edge); border-bottom: 1px solid var(--calm-edge); transform: rotate(45deg); }
 .table-wrap { overflow-x: auto; margin: 1rem 0; }
 .source-text table {
   border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 0.98rem;

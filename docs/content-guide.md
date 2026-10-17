@@ -45,9 +45,9 @@ Same shape as a reading mission, plus:
 
 - mission fields: `"length": "long"`, `"minutes": 35`, `"levels": ["L1"]` (the mission only appears at those levels), `"intro"` (one line shown before Text A).
 - question fields: `"label"` (such as `"1(b)"`, shown to the learner), `"marks"` (shown as "2 marks"), and `"text"` can name more than one text, for example `"B,C"`.
-- text bodies can also use `{ "ol": [ ... ] }` for a numbered list.
+- text bodies can also use `{ "ol": [ ... ] }` (numbered list), `{ "box": "..." }` (text box) and `{ "callout": "..." }` (speech bubble). Wrap words in `**double asterisks**` for bold, in any paragraph, list item, box or bubble. Question 1(b) asks which of these features helped, so give each mission a different one.
 
-Keep to the Level 1 layout in `docs/exam-notes.md`: text lengths, 15 numbered questions, 30 marks. Check word counts and mark totals with a script before adding a mission.
+Keep to the Level 1 layout in `docs/exam-notes.md`: text lengths, 15 numbered questions, 30 marks. Check a new mission with `node tools/validate.mjs`, which tests text lengths, mark totals, answer keys and references. Run it before every commit.
 
 ## Writing mission (`content/writing.json`)
 

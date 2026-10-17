@@ -24,6 +24,8 @@ content/
   reading-long.json longer Level 1 reading missions (three texts, 15 questions)
   writing.json      writing missions, length guide, marks, our own marking guide
   toolkit.json      format guides and SPaG points, each with a practice question
+tools/
+  validate.mjs      checks all content (word counts, marks, answer keys)
 docs/
   exam-notes.md     what is verified about the exam, and what is not yet
   content-guide.md  how to add a mission

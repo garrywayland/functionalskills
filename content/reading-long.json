@@ -417,6 +417,405 @@
       ]
     },
     {
+      "id": "rl-pandas-2",
+      "topic": "Pandas",
+      "title": "Helping the pandas",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about adopting a panda and how pandas are protected.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Leaflet",
+          "source": "Ferndale Zoo",
+          "title": "Adopt a panda",
+          "body": [
+            {
+              "p": "Help to look after the giant pandas at Ferndale Zoo by becoming a panda adopter. Ferndale Zoo is home to two giant pandas, who arrived last year. They love to eat, play and sleep in the sun."
+            },
+            {
+              "box": "**Your adoption pack:** a certificate, a photo of your panda, a cuddly toy and a free family ticket."
+            },
+            {
+              "p": "Adopting costs just £4 a month. Your money pays for the pandas' bamboo, health checks and toys. You can sign up at the zoo shop or online, and it only takes five minutes."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Magazine article",
+          "source": "Wild Places magazine",
+          "title": "How are giant pandas helped in the wild?",
+          "body": [
+            {
+              "p": "Giant pandas live in only a few mountain areas of China, and they depend on bamboo forests for food and shelter. Years ago, many of these forests were cleared to make room for farms and new buildings. As the forests shrank, the pandas lost their homes."
+            },
+            {
+              "h": "Protected reserves"
+            },
+            {
+              "p": "To help the pandas, China has set up protected nature reserves, where trees cannot be cut down. There are now dozens of reserves across the mountains, and together they protect large areas of forest. Rangers walk through the forests every week to check on the wildlife. They look for paw prints and droppings, and they also place cameras that take photographs when an animal walks past."
+            },
+            {
+              "h": "Joining the forests together"
+            },
+            {
+              "p": "Many pandas now live in small patches of forest that are cut off from each other. The corridors – strips of forest that join one area to another – allow pandas to move safely between patches, so that they can find food and meet mates. Planting new bamboo along the corridors takes years, but the forest is slowly joining up again. \"Without the corridors, the pandas would be trapped,\" says ranger Li Na."
+            },
+            {
+              "h": "How can zoos help?"
+            },
+            {
+              "p": "Zoos cannot return pandas to the wild by themselves, but they can still make a difference. Money raised by zoos and their visitors helps to pay for the reserves and the rangers. Zoos also run breeding programmes, so that scientists can learn how to care for baby pandas. Visitors can also help by adopting a panda, which pays for food and care."
+            },
+            {
+              "h": "A success story"
+            },
+            {
+              "p": "Conservation work takes many years, and it is not easy. Even so, the work to save the giant panda is the most inspiring conservation story of recent times. Nothing is more important than protecting the forests where these animals live."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "School newsletter article",
+          "source": "Ferndale High School newsletter",
+          "title": "Our class adopted a panda. Will you?",
+          "body": [
+            {
+              "p": "Last term, Year 10 voted to adopt a giant panda. Why? In geography we learned that pandas are losing their forest homes, and we wanted to do something about it."
+            },
+            {
+              "p": "Imagine a world without pandas. Some people ask why we should care about animals so far away. We believe that every living thing matters, and pandas are a symbol of hope for nature all over the world. Would you want a world without them? Of course not! Every pound we raise helps to pay for bamboo, health checks and toys, so it really does make a difference."
+            },
+            {
+              "p": "We have already raised £86 from our cake sale, but we need your help to reach £200 by the end of term. Our teacher, Mr Dale, thinks we can do it, and we are determined to prove him right. It will be fun, and you will be helping a great cause."
+            },
+            {
+              "p": "Here is how you can help:"
+            },
+            {
+              "ul": [
+                "Donate any amount at the school office.",
+                "Join our sponsored silent hour on Friday.",
+                "Bake something for our second cake sale."
+              ]
+            },
+            {
+              "p": "Just £2 buys a day's bamboo for one panda, so please give whatever you can. Together, we can help to protect these amazing animals!"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one thing that comes in the adoption pack.",
+          "model": "Any one of: a certificate; a photo of your panda; a cuddly toy; a free family ticket.",
+          "check": [
+            "I gave one thing.",
+            "It comes from the box in Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find this information?",
+          "options": [
+            "A speech bubble",
+            "A text box",
+            "A numbered list",
+            "A menu"
+          ],
+          "answer": 1,
+          "why": "The adoption pack is shown inside a box, which makes it stand out from the rest of the text."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"Help to look after the giant pandas.\" Give one word or phrase to replace \"look after\" that keeps the meaning the same.",
+          "model": "Care for, take care of, protect, feed and care for.",
+          "check": [
+            "My word or phrase means about the same as \"look after\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"You can sign up at the zoo shop.\" Give one word or phrase to replace \"sign up\" that keeps the meaning the same.",
+          "model": "Join, register, enrol, put your name down.",
+          "check": [
+            "My word or phrase means about the same as \"sign up\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To explain how baby pandas are born",
+            "To report news about a panda",
+            "To encourage people to adopt a panda",
+            "To advertise cheap zoo tickets"
+          ],
+          "answer": 2,
+          "why": "The leaflet explains what you get and what it costs. It is trying to persuade people to adopt a panda."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three ways that people are helping giant pandas.",
+          "model": "Any three of: protected nature reserves; rangers checking the forests; cameras that photograph animals; corridors joining forest patches; zoos raising money; breeding programmes.",
+          "check": [
+            "I gave three different ways.",
+            "All three come from Text B.",
+            "Each one is something people do to help pandas."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why giant pandas lost their homes.",
+          "model": "Many forests were cleared (1) to make room for farms and new buildings (1).",
+          "check": [
+            "I said that forests were cleared.",
+            "I said why they were cleared."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer uses dashes in: \"The corridors – strips of forest that join one area to another – allow pandas to move safely.\" Why?",
+          "options": [
+            "To show someone is speaking",
+            "To give extra information about the corridors",
+            "To show a list",
+            "To show the end of a sentence"
+          ],
+          "answer": 1,
+          "why": "Dashes can be used in pairs to add extra detail. Here they explain what the corridors are."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Why are the forest corridors useful for pandas?",
+          "model": "They let pandas move safely between patches of forest (1), so they can find food and meet mates (1).",
+          "check": [
+            "I said what the corridors let pandas do.",
+            "I said why this helps them."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "Protected nature reserves have been set up for pandas.",
+            "The work to save the giant panda is the most inspiring conservation story of recent times.",
+            "Nothing is more important than protecting the forests where pandas live.",
+            "Many pandas live in small patches of forest."
+          ],
+          "answer": [
+            0,
+            3
+          ],
+          "why": "Facts can be checked. Reserves existing and pandas living in small patches of forest are facts. \"The most inspiring\" and \"nothing is more important\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to protecting wildlife.",
+          "model": "Any two of: nature reserves; rangers; conservation; breeding programmes; corridors; wildlife.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with protecting wildlife."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two reasons why Year 10 decided to adopt a panda.",
+          "model": "They learned in geography that pandas are losing their forest homes (1), and they wanted to do something about it (1).",
+          "check": [
+            "I gave two reasons.",
+            "Both come from the first paragraph of Text C."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text C?",
+          "options": [
+            "To persuade readers to give money",
+            "To explain how pandas are born",
+            "To warn readers about a danger",
+            "To describe a trip to the zoo"
+          ],
+          "answer": 0,
+          "why": "The writers ask readers to donate and to join in, so they are trying to persuade."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three ways that readers can help.",
+          "model": "Any three of: donate at the school office; join the sponsored silent hour; bake for the second cake sale; give whatever they can.",
+          "check": [
+            "I gave three different ways.",
+            "All three come from Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of persuasive language from Text C.",
+          "model": "Any two of: \"Imagine a world without pandas.\"; \"Would you want a world without them?\"; \"Of course not!\"; \"it really does make a difference\"; \"please give whatever you can\"; \"Together, we can...\"; \"these amazing animals\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "Both try to make the reader want to help."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "Pupils, parents and staff at the school (1). Clue, for example: it asks people to donate at the school office or join the sponsored silent hour (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Text B and Text C both talk about helping pandas. Compare how each text says people can help.",
+          "model": "Text B describes the work done by rangers and reserves in China, and says zoos help by raising money and running breeding programmes (1). Text C asks readers to give money directly by donating, joining a sponsored silent hour or baking for a cake sale (1). Both texts say money matters, but Text B explains what is done in the forests and Text C asks the reader to take part (1).",
+          "check": [
+            "I said what Text B says about how people help.",
+            "I said what Text C says about it.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
       "id": "rl-israel",
       "topic": "Israel",
       "title": "Floating in the Dead Sea",
@@ -835,6 +1234,405 @@
       ]
     },
     {
+      "id": "rl-israel-2",
+      "topic": "Israel",
+      "title": "Markets and food",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about food in Israel.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Recipe web page",
+          "source": "Everyday Kitchen website",
+          "title": "Easy shakshuka",
+          "body": [
+            {
+              "p": "Shakshuka is a tasty breakfast dish from Israel. It is made with eggs cooked in a spicy tomato sauce."
+            },
+            {
+              "p": "You will need: **4 eggs**, **1 onion**, **2 red peppers**, **1 tin of tomatoes** and **1 teaspoon of cumin**."
+            },
+            {
+              "p": "Cook the chopped onion and peppers for ten minutes. Add the tomatoes and cumin, then cook for five more minutes. Next, crack the eggs into the sauce and cook until they are firm. Serve with fresh bread. It takes about thirty minutes to make, and it serves four people."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Magazine article",
+          "source": "Table & Trail food magazine",
+          "title": "Eating your way around the markets of Israel",
+          "body": [
+            {
+              "p": "If you want to understand a country, visit its food markets. In Israel, the biggest markets, such as the Carmel Market in Tel Aviv and the Mahane Yehuda Market in Jerusalem, are noisy, colourful places where stallholders shout out their prices and the smell of fresh bread fills the air. Markets are also where local people do their everyday shopping, not just tourists. Allow at least two hours to explore."
+            },
+            {
+              "h": "What can you eat?"
+            },
+            {
+              "p": "Almost every market has a stall selling falafel, which are crispy balls made from chickpeas, usually served in warm pitta bread with salad. You will also find hummus, a smooth dip made from chickpeas, tahini (a paste made from sesame seeds) and lemon. Many cafés serve small dishes called \"mezze\", which are shared by everyone at the table. Fresh pitta is baked in the market every hour, so it is often still warm when you buy it."
+            },
+            {
+              "h": "More than food"
+            },
+            {
+              "p": "Look out for the spice stalls, which sell bags of colourful spices piled high in sacks. There are also stalls selling fresh fruit and vegetables, olives, cheese, dried fruit and nuts. Many vendors are happy to let customers taste before they buy. Some markets also have musicians, so you can enjoy a tune while you shop."
+            },
+            {
+              "h": "When should you go?"
+            },
+            {
+              "p": "Friday is the busiest day. Many shops close for Shabbat, the day of rest, which begins on Friday evening, so people shop for the weekend before it starts. Food writer Yael Cohen advises going in the morning: \"The crowds are smaller and the fruit and vegetables are at their freshest.\""
+            },
+            {
+              "p": "Whatever time you go, bring cash and wear comfortable shoes. The falafel at the Carmel Market is the best in the world, and you will fall in love with the food."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Online review",
+          "source": "Taste Tours review page",
+          "title": "Review: Tel Aviv market food tour",
+          "body": [
+            {
+              "p": "Rating: 4 out of 5 stars"
+            },
+            {
+              "p": "We booked this three-hour food tour on our second day in Tel Aviv, and it was a delicious way to see the city. Our guide, Dani, was friendly and funny, and he knew everyone at the market."
+            },
+            {
+              "p": "The best part was the tasting stops. We tried warm falafel, creamy hummus and sweet, sticky pastries, and every single dish was fantastic. Dani also took us to a spice stall, where we learned how to tell fresh spices from old ones. He also told us the story behind each dish, and he gave us a map so we could find our favourite stalls again the next day. The tour started on time and finished exactly when promised."
+            },
+            {
+              "p": "However, the tour was too crowded. There were 25 people in our group, so it was hard to hear Dani over the noise of the market. It was also very hot, and we only stopped for water once."
+            },
+            {
+              "p": "Top tips:"
+            },
+            {
+              "ul": [
+                "Come hungry, because there is a lot to eat.",
+                "Wear a hat and bring a bottle of water.",
+                "Book the morning tour to avoid the crowds."
+              ]
+            },
+            {
+              "p": "I would definitely recommend this tour, but only if the group were smaller!"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one thing you need to make shakshuka.",
+          "model": "Any one of: 4 eggs; 1 onion; 2 red peppers; 1 tin of tomatoes; 1 teaspoon of cumin.",
+          "check": [
+            "I gave one thing.",
+            "It comes from the \"You will need\" list in Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find the things you need?",
+          "options": [
+            "Bold words",
+            "A menu",
+            "A speech bubble",
+            "A text box"
+          ],
+          "answer": 0,
+          "why": "The amounts are printed in bold, so they stand out from the rest of the sentence."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"Shakshuka is a tasty breakfast dish.\" Give one word or phrase to replace \"tasty\" that keeps the meaning the same.",
+          "model": "Delicious, yummy, flavoursome, appetising.",
+          "check": [
+            "My word means about the same as \"tasty\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"Next, crack the eggs into the sauce.\" Give one word or phrase to replace \"crack\" that keeps the meaning the same.",
+          "model": "Break, split open, break open.",
+          "check": [
+            "My word or phrase means about the same as \"crack\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To describe a trip to Israel",
+            "To explain how to make a dish",
+            "To advertise a restaurant",
+            "To compare breakfast around the world"
+          ],
+          "answer": 1,
+          "why": "The text lists what you need, then gives steps in order. It is telling the reader how to make shakshuka."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three things you can buy at a market in Israel.",
+          "model": "Any three of: falafel; hummus; pitta bread; spices; fresh fruit and vegetables; olives; cheese; dried fruit; nuts; fresh bread.",
+          "check": [
+            "I gave three different things.",
+            "All three come from Text B.",
+            "Each one is something you can buy."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why Friday is the busiest day at the markets.",
+          "model": "Many shops close for Shabbat, the day of rest, which begins on Friday evening (1), so people shop for the weekend before it starts (1).",
+          "check": [
+            "I said that shops close for Shabbat.",
+            "I said that people shop before it starts."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer puts the word \"mezze\" inside inverted commas. Why?",
+          "options": [
+            "To show it is a special word that is then explained",
+            "To show someone is speaking",
+            "To show it is a mistake",
+            "To show it is a place"
+          ],
+          "answer": 0,
+          "why": "Inverted commas can mark a special or unfamiliar word. Here the writer goes on to explain what \"mezze\" are."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Why does Yael Cohen advise visitors to go in the morning?",
+          "model": "The crowds are smaller (1), and the fruit and vegetables are at their freshest (1).",
+          "check": [
+            "I said that the crowds are smaller.",
+            "I said that the produce is fresher."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "The falafel at the Carmel Market is the best in the world.",
+            "Falafel are made from chickpeas.",
+            "You will fall in love with the food.",
+            "The Carmel Market is in Tel Aviv."
+          ],
+          "answer": [
+            1,
+            3
+          ],
+          "why": "Facts can be checked. What falafel are made from and where the Carmel Market is are facts. \"The best in the world\" and \"you will fall in love\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to food.",
+          "model": "Any two of: falafel; hummus; tahini; mezze; spices; stallholders; produce; vendors; chickpeas.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with food."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two things the writer of Text C did not like about the tour.",
+          "model": "Any two of: the group was too crowded (25 people); it was hard to hear the guide; it was very hot; they only stopped for water once.",
+          "check": [
+            "I gave two different things.",
+            "Both come from the fourth paragraph."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "What does the writer think of the tour overall?",
+          "options": [
+            "It was terrible.",
+            "It was good, but the group was too big.",
+            "It was too expensive.",
+            "It was too short."
+          ],
+          "answer": 1,
+          "why": "The writer gave four out of five stars, praised the food and the guide, but said the group was too crowded."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people booking the tour.",
+          "model": "Any three of: come hungry; wear a hat; bring a bottle of water; book the morning tour.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from the list in Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of words or phrases from Text C that show the writer's opinion.",
+          "model": "Any two of: \"delicious\"; \"friendly and funny\"; \"fantastic\"; \"too crowded\"; \"definitely recommend\"; \"creamy\"; \"sweet, sticky\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "Both show what the writer thinks or feels."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "People who are thinking of booking the tour (1). Clue, for example: it gives \"Top tips\" and says \"Book the morning tour\" (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about crowds at the markets.",
+          "model": "Text B says Friday is the busiest day and that crowds are smaller in the morning, which is also when fruit and vegetables are freshest (1). Text C says the tour was too crowded and recommends booking the morning tour to avoid the crowds (1). Both texts say mornings are the best time to avoid crowds, but Text C is about a tour group and Text B is about the markets themselves (1).",
+          "check": [
+            "I said what Text B says about crowds.",
+            "I said what Text C says about them.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
       "id": "rl-transport",
       "topic": "Public transport",
       "title": "Park and Ride",
@@ -1237,6 +2035,408 @@
           "model": "Text B says some passengers complain that buses are full in the morning peak, and the council will add extra buses if needed (1). Text C says the bus was \"rammed\" at 8:15 so the writer had to stand (1). So the texts agree that morning buses can be full, but Text B reports the council's plan to fix it and Text C gives a personal experience (1).",
           "check": [
             "I said what Text B says about busy buses.",
+            "I said what Text C says about it.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl-transport-2",
+      "topic": "Public transport",
+      "title": "Hire a bike",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about a town's bike hire scheme.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Web page",
+          "source": "Fennbridge Bikes website",
+          "title": "Fennbridge Bikes: hire a bike for £1",
+          "body": [
+            {
+              "p": "Pick up a bike at any of our 20 docking stations and return it to any other station. The first 30 minutes cost just £1. Bikes are available every day from 6 am to 10 pm."
+            },
+            {
+              "callout": "I cycle to work now and I save £30 a month on bus fares! - Sam, a Fennbridge Bikes user"
+            },
+            {
+              "p": "Download our free app to find your nearest bike. You can also see how many bikes are waiting at each station."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Council report",
+          "source": "Vale of Fenn Council",
+          "title": "Fennbridge Bikes: six months on",
+          "body": [
+            {
+              "h": "Introduction"
+            },
+            {
+              "p": "Fennbridge Bikes began six months ago with 200 bikes and 20 docking stations. This report looks at how the scheme has been used and suggests ways to improve it. The scheme is run by Vale of Fenn Council and is paid for partly by a grant."
+            },
+            {
+              "h": "How many people have used it?"
+            },
+            {
+              "p": "Since the launch, there have been over 14,000 hires. Saturday is the busiest day, and the most popular journey is from the railway station to Market Square. Most users are commuters and students, and hires are highest in the summer, when the weather is dry and the evenings are light. The council leader said, \"The scheme has been a huge success.\""
+            },
+            {
+              "h": "Costs and savings"
+            },
+            {
+              "p": "The first 30 minutes of every hire cost £1, which is cheaper than the bus fare for the same journey. Bike hire also cuts traffic, which helps to keep the air cleaner. Users who cycle to work every day could save up to £30 a month. Running the scheme costs the council about £2,000 a month, which is covered by hire fees and a grant."
+            },
+            {
+              "h": "Problems"
+            },
+            {
+              "p": "Not everything has gone well. The docking station at the railway station is often full in the evening, so cyclists have to ride to another station to return their bikes. Some bikes have also been damaged, and these must be repaired before they can be used again. Staff visit each docking station every day to move bikes from full stations to empty ones. A small number of users' comments say that there are not enough stations in the east of the town."
+            },
+            {
+              "h": "Recommendations"
+            },
+            {
+              "p": "The council should add a second docking station near the railway station, buy 50 more bikes and open three new stations in the east of the town. These changes are the best way to improve the scheme."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Forum post",
+          "source": "Fennbridge Talk forum, thread: \"Anyone tried the bikes?\"",
+          "title": "Re: Anyone tried the bikes?",
+          "body": [
+            {
+              "p": "Hey everyone! I've been using the bikes for about two months now and honestly I love them."
+            },
+            {
+              "p": "I live near the market and I work at the hospital, so it takes me ten minutes to get there instead of half an hour on the bus. I also like that you can go through the park, where cars aren't allowed. Honestly, I haven't used my bus pass since, and it's saving me loads of money too. The app is brilliant too. It shows you exactly how many bikes are free at each station."
+            },
+            {
+              "p": "But there are a few problems. Last Friday I got to the station at about 6 pm and the dock was totally full. I had to cycle round for ages to find a free space, and I nearly missed my train! Also, a couple of the bikes I picked up had wonky brakes, which is scary."
+            },
+            {
+              "p": "My tips:"
+            },
+            {
+              "ul": [
+                "Check the app before you set off, so you know where there are free spaces.",
+                "Test the brakes before you ride away.",
+                "Take the bike back within 30 minutes if you can, because it costs more after that."
+              ]
+            },
+            {
+              "p": "Has anyone else had trouble finding a space at the station?"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one reason why Sam likes using the bikes.",
+          "model": "Any one of: cycling to work; saving £30 a month on bus fares.",
+          "check": [
+            "I gave one reason.",
+            "It comes from what Sam says in Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A shows what a user thinks?",
+          "options": [
+            "A speech bubble",
+            "A numbered list",
+            "A menu",
+            "Bold headings"
+          ],
+          "answer": 0,
+          "why": "Sam's words are shown in a speech bubble, which shows that they are what a real user says."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"Pick up a bike at any of our 20 docking stations.\" Give one word or phrase to replace \"pick up\" that keeps the meaning the same.",
+          "model": "Collect, take, get, borrow.",
+          "check": [
+            "My word or phrase means about the same as \"pick up\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"Download our free app to find your nearest bike.\" Give one word or phrase to replace \"nearest\" that keeps the meaning the same.",
+          "model": "Closest, most local, next to you.",
+          "check": [
+            "My word or phrase means about the same as \"nearest\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To warn people about problems with bikes",
+            "To advertise a bike hire scheme",
+            "To explain how to repair a bike",
+            "To report on a council meeting"
+          ],
+          "answer": 1,
+          "why": "The page explains how the scheme works and what it costs, and includes a user's positive comment. It is advertising the scheme."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three facts about how the scheme has been used.",
+          "model": "Any three of: over 14,000 hires; Saturday is the busiest day; the most popular journey is from the railway station to Market Square; most users are commuters and students; the scheme began with 200 bikes and 20 docking stations.",
+          "check": [
+            "I gave three different facts.",
+            "All three come from Text B.",
+            "Each one is about how the scheme is used."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why cyclists sometimes have to ride to a different station in the evening.",
+          "model": "The docking station at the railway station is often full in the evening (1), so cyclists cannot return their bikes there (1).",
+          "check": [
+            "I said that the station is full.",
+            "I said what cyclists then have to do."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The report says: \"A small number of users' comments say that there are not enough stations in the east of the town.\" What does the apostrophe in \"users'\" show?",
+          "options": [
+            "That the comments belong to the users",
+            "That some letters are missing",
+            "That someone is speaking",
+            "That it is the end of a sentence"
+          ],
+          "answer": 0,
+          "why": "An apostrophe after the s in a plural word shows that something belongs to more than one person. Here, the comments belong to the users."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Give two problems with the scheme that are mentioned in Text B.",
+          "model": "Any two of: the docking station at the railway station is often full in the evening; some bikes have been damaged; there are not enough stations in the east of the town.",
+          "check": [
+            "I gave two different problems.",
+            "Both come from the section \"Problems\"."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "The scheme has been a huge success.",
+            "There have been over 14,000 hires.",
+            "These changes are the best way to improve the scheme.",
+            "Fennbridge Bikes began with 200 bikes."
+          ],
+          "answer": [
+            1,
+            3
+          ],
+          "why": "Facts can be checked. The number of hires and the number of bikes at the start are facts. \"A huge success\" and \"the best way\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to travel.",
+          "model": "Any two of: docking stations; hires; commuters; bus fare; journey; scheme.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with travel."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two things the writer of Text C does not like about the scheme.",
+          "model": "Any two of: the dock was full at the station; having to cycle around to find a space; nearly missing the train; bikes with wonky brakes.",
+          "check": [
+            "I gave two different things.",
+            "Both come from the third paragraph."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which sentence best sums up the writer's view?",
+          "options": [
+            "The scheme is a waste of money.",
+            "The scheme is great, but it has a few problems.",
+            "The scheme is only for students.",
+            "The bikes are too expensive."
+          ],
+          "answer": 1,
+          "why": "The writer says they \"love\" the bikes, then lists problems with full docks and faulty brakes."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people using the bikes.",
+          "model": "Any three of: check the app before you set off; test the brakes; take the bike back within 30 minutes.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from the list in Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of informal language from Text C.",
+          "model": "Any two of: \"Hey everyone!\"; \"honestly\"; \"brilliant\"; \"totally full\"; \"for ages\"; \"wonky\"; \"scary\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They are chatty, everyday words, not formal ones."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "Other people in Fennbridge, such as people thinking of using the bikes (1). Clue, for example: it starts \"Hey everyone!\" or asks \"Has anyone else had trouble?\" (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about the docking station at the railway station.",
+          "model": "Text B says the railway station dock is often full in the evening, so cyclists have to ride to another station, and recommends adding a second dock there (1). Text C describes arriving at about 6 pm to a totally full dock and nearly missing a train (1). Both texts agree it is a problem, but Text B suggests a solution and Text C gives a personal experience (1).",
+          "check": [
+            "I said what Text B says about the railway station dock.",
             "I said what Text C says about it.",
             "I said how the two are the same or different."
           ]
@@ -1650,6 +2850,414 @@
           "check": [
             "I said what Text B says about affordable homes.",
             "I said what Text C says about them.",
+            "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl-geography-2",
+      "topic": "UK geography",
+      "title": "Moving to the coast",
+      "length": "long",
+      "minutes": 35,
+      "levels": [
+        "L1"
+      ],
+      "intro": "Three texts about living in a seaside town instead of a city.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Web page",
+          "source": "Marram Bay Town Council website",
+          "title": "Welcome to Marram Bay",
+          "body": [
+            {
+              "p": "Marram Bay is a friendly seaside town with a busy harbour and a lively market."
+            },
+            {
+              "p": "**Population:** about 9,000"
+            },
+            {
+              "p": "**Distance to Northcaster:** 40 miles"
+            },
+            {
+              "p": "**Trains to Northcaster:** every hour"
+            },
+            {
+              "p": "**Schools:** two primary schools and one secondary school"
+            },
+            {
+              "p": "We hope you will visit us soon, and perhaps even stay."
+            },
+            {
+              "p": "Our long, sandy beach is open all year, and there is a weekly market on Saturdays. Many families live here because homes cost less than in the city, and the countryside is close by."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Magazine article",
+          "source": "Home & Away magazine",
+          "title": "Should you move to the coast?",
+          "body": [
+            {
+              "p": "Every year, thousands of people leave the cities for life by the sea. Some want cheaper homes, some want fresh air, and some simply want a change. But is the seaside really the dream it seems?"
+            },
+            {
+              "h": "The good points"
+            },
+            {
+              "p": "Property prices in small seaside towns are usually lower than in big cities, so your money often goes further. Estate agent Karen Webb says, \"You get more for your money by the sea.\" There is plenty to do, too, with cafés, shops, boat trips and a market in many towns. Life can also feel calmer, and the beach is often only a short walk from home. Many people also say that the air feels cleaner and that their children have more space to play outdoors."
+            },
+            {
+              "h": "The not-so-good points"
+            },
+            {
+              "p": "Many seaside towns have far more visitors in summer than in winter, so a lot of the jobs are seasonal. A café or hotel may employ extra staff from May to September, but then lay them off when the weather turns cold. People who work in cities often have to commute by train, which can be expensive. Some small towns have fewer services too, such as hospitals and large shops, and buses to nearby towns can be infrequent, particularly in the evenings."
+            },
+            {
+              "h": "What should you check first?"
+            },
+            {
+              "p": "Before you move, visit the town in the middle of winter, not just on a sunny weekend in August. Check how often the trains run, how far away the nearest hospital is, and whether there are good schools nearby. Talk to people who already live there, because they will give you an honest view."
+            },
+            {
+              "p": "Living by the sea is a wonderful experience, and nothing beats waking up to the sound of the waves. With careful planning, it could be the best decision you ever make."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L1"
+          ],
+          "kind": "Blog post",
+          "source": "Our Seaside Life blog",
+          "title": "One year since we left the city",
+          "body": [
+            {
+              "p": "A year ago, we swapped a tiny flat in Northcaster for a little house in Marram Bay. Everyone said we were mad, but we've never looked back and we have never been happier."
+            },
+            {
+              "p": "The house cost far less than our flat would have sold for, and we now have a garden! The beach is five minutes away, and I swim most mornings, even in the cold. I'd never have done that in the city. The winters are wild but beautiful, and we have met more neighbours in a year than in five years in Northcaster."
+            },
+            {
+              "p": "But it hasn't all been easy. I work at a café on the harbour, and in January there were hardly any customers, so I only had two shifts a week. My partner commutes to Northcaster by train, which costs a fortune, and the last train home is far too early."
+            },
+            {
+              "p": "My advice if you're thinking of moving:"
+            },
+            {
+              "ul": [
+                "Visit in winter, not just in summer.",
+                "Work out the cost of the train before you buy a house.",
+                "Be ready to find a second job for the quiet months."
+              ]
+            },
+            {
+              "p": "Would we move back? No way! But we're a lot wiser than we were."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1(a)",
+          "marks": 1,
+          "prompt": "Using Text A, give one fact about Marram Bay.",
+          "model": "Any one of: about 9,000 people live there; it is 40 miles from Northcaster; there are trains to Northcaster every hour; it has two primary schools and one secondary school; it has a harbour and a market.",
+          "check": [
+            "I gave one fact.",
+            "It comes from Text A."
+          ]
+        },
+        {
+          "id": "q1b",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "1(b)",
+          "marks": 1,
+          "prompt": "Which feature of Text A helped you find these facts?",
+          "options": [
+            "A speech bubble",
+            "A numbered list",
+            "Bold words",
+            "A menu"
+          ],
+          "answer": 2,
+          "why": "The labels, such as \"Population:\", are in bold, so each fact is easy to spot."
+        },
+        {
+          "id": "q2a",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(a)",
+          "marks": 1,
+          "prompt": "Text A says: \"a friendly seaside town\". Give one word or phrase to replace \"friendly\" that keeps the meaning the same.",
+          "model": "Welcoming, kind, pleasant, warm.",
+          "check": [
+            "My word means about the same as \"friendly\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q2b",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "2(b)",
+          "marks": 1,
+          "prompt": "Text A says: \"a lively market\". Give one word or phrase to replace \"lively\" that keeps the meaning the same.",
+          "model": "Busy, full of life, bustling, energetic.",
+          "check": [
+            "My word or phrase means about the same as \"lively\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "3",
+          "marks": 1,
+          "prompt": "What is the main purpose of Text A?",
+          "options": [
+            "To warn people about the cost of living",
+            "To explain how the harbour works",
+            "To welcome people and tell them about the town",
+            "To compare Marram Bay with Northcaster"
+          ],
+          "answer": 2,
+          "why": "The page welcomes visitors and gives useful facts about the town. It ends by hoping people will visit or stay."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "4",
+          "marks": 3,
+          "prompt": "Using Text B, give three good points about living by the sea.",
+          "model": "Any three of: property prices are usually lower; your money goes further; there is plenty to do; life feels calmer; the beach is a short walk from home; fresh air.",
+          "check": [
+            "I gave three different points.",
+            "All three come from Text B.",
+            "Each one is something good about living by the sea."
+          ]
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "Explain why many seaside jobs are seasonal.",
+          "model": "Seaside towns have far more visitors in summer than in winter (1), so businesses need extra staff in summer but not in winter (1).",
+          "check": [
+            "I said that there are more visitors in summer.",
+            "I said what this means for jobs."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "The writer says: \"with cafés, shops, boat trips and a market in many towns.\" What do the commas do?",
+          "options": [
+            "They separate the items in a list",
+            "They show someone is speaking",
+            "They show a question",
+            "They show something is missing"
+          ],
+          "answer": 0,
+          "why": "Commas separate the items in a list. The last two items are joined with \"and\" instead."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7",
+          "marks": 2,
+          "prompt": "Give two problems that Text B says people may face when living in a small seaside town.",
+          "model": "Any two of: jobs are seasonal; commuting by train can be expensive; fewer services, such as hospitals and large shops; buses to nearby towns can be infrequent, particularly in the evenings.",
+          "check": [
+            "I gave two different problems.",
+            "Both come from \"The not-so-good points\"."
+          ]
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "multi",
+          "text": "B",
+          "label": "8",
+          "marks": 2,
+          "prompt": "Which TWO of these statements are facts?",
+          "options": [
+            "Living by the sea is a wonderful experience.",
+            "Property prices in small seaside towns are usually lower than in big cities.",
+            "Nothing beats waking up to the sound of the waves.",
+            "Many seaside towns have more visitors in summer than in winter."
+          ],
+          "answer": [
+            1,
+            3
+          ],
+          "why": "Facts can be checked. Property prices and visitor numbers are facts. \"A wonderful experience\" and \"nothing beats\" are views, so they are opinions."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Give two specialist words or phrases from Text B that are connected to housing or work.",
+          "model": "Any two of: property prices; estate agent; seasonal; commute; services; staff; employ.",
+          "check": [
+            "I gave two words or phrases.",
+            "I copied them from Text B.",
+            "Both are to do with housing or work."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 2,
+          "prompt": "Give two good things about life in Marram Bay, according to the writer of Text C.",
+          "model": "Any two of: the house cost less than their flat would have sold for; they have a garden; the beach is five minutes away; the writer swims most mornings.",
+          "check": [
+            "I gave two different things.",
+            "Both come from the second paragraph."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which sentence best sums up the writer's view?",
+          "options": [
+            "Moving was a mistake.",
+            "Moving was worth it, but it has not been easy.",
+            "Moving was too expensive.",
+            "Everyone should move to the coast."
+          ],
+          "answer": 1,
+          "why": "The writer says \"No way!\" to moving back, but describes quiet winter work and expensive trains."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "12",
+          "marks": 3,
+          "prompt": "Using Text C, give three pieces of advice for people thinking of moving.",
+          "model": "Any three of: visit in winter; work out the cost of the train; be ready to find a second job for the quiet months.",
+          "check": [
+            "I gave three different pieces of advice.",
+            "All three come from the list in Text C."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "13",
+          "marks": 2,
+          "prompt": "Give two examples of informal language from Text C.",
+          "model": "Any two of: \"we swapped\"; \"mad\"; \"we've never looked back\"; \"costs a fortune\"; \"No way!\"; \"a lot wiser\".",
+          "check": [
+            "I copied two words or phrases exactly.",
+            "They are chatty, everyday words, not formal ones."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "14",
+          "marks": 2,
+          "prompt": "Who is Text C written for? Give one clue from the text that tells you.",
+          "model": "People who are thinking of moving to the coast (1). Clue, for example: \"My advice if you're thinking of moving:\" (1).",
+          "check": [
+            "I said who the text is for.",
+            "I gave a clue from the text."
+          ]
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Compare what Text B and Text C say about work in seaside towns.",
+          "model": "Text B says many seaside jobs are seasonal, because there are more visitors in summer than in winter (1). Text C describes this in real life: the writer works at a café and had only two shifts a week in January (1). Both texts agree that winter work can be hard to find, and Text C advises being ready to find a second job (1).",
+          "check": [
+            "I said what Text B says about work.",
+            "I said what Text C says about it.",
             "I said how the two are the same or different."
           ]
         }

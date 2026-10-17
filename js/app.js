@@ -585,12 +585,21 @@
     );
   }
 
+  // Text with **bold** words, built from text nodes only (never innerHTML).
+  function rich(text) {
+    return String(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(function (part) {
+      return /^\*\*[^*]+\*\*$/.test(part) ? h('strong', { text: part.slice(2, -2) }) : part;
+    });
+  }
+
   function blocks(list, compact) {
     return (list || []).map(function (b) {
       if (b.h) return h(compact ? 'h4' : 'h3', { text: b.h });
-      if (b.p) return h('p', { text: b.p });
-      if (b.ul) return h('ul', null, b.ul.map(function (li) { return h('li', { text: li }); }));
-      if (b.ol) return h('ol', null, b.ol.map(function (li) { return h('li', { text: li }); }));
+      if (b.p) return h('p', null, rich(b.p));
+      if (b.box) return h('div', { class: 'text-box' }, rich(b.box));
+      if (b.callout) return h('p', { class: 'callout' }, rich(b.callout));
+      if (b.ul) return h('ul', null, b.ul.map(function (li) { return h('li', null, rich(li)); }));
+      if (b.ol) return h('ol', null, b.ol.map(function (li) { return h('li', null, rich(li)); }));
       if (b.table) {
         return h('div', { class: 'table-wrap', tabindex: '0', role: 'region', 'aria-label': 'Table' },
           h('table', null,
