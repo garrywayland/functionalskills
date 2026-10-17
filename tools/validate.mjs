@@ -10,10 +10,15 @@ import { fileURLToPath } from 'node:url';
 export const root = process.env.NEXTSTOP_ROOT || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
-// Word-count ranges for the three texts in a longer Level 1 reading mission (Pearson guidance to centres).
+// Longer missions follow the official layouts.
+// Level 1: Q1-3 (Text A), Q4-9 (Text B), Q10-14 (Text C), Q15 (B and C); 30 marks.
+// Level 2: Q1-4, Q5-8, Q9-11, Q12-15 (more than one text); 35 marks. Level 2 text lengths are
+// taken from the official sample paper and two practice papers (about 285 to 420 words, getting longer).
 export const TEXT_RANGES = { A: [80, 100], B: [300, 320], C: [200, 220] };
-// Marks per section of a longer mission: Q1-3 (Text A), Q4-9 (Text B), Q10-14 (Text C), Q15 (B and C).
 export const SECTION_MARKS = [5, 12, 10, 3];
+export const TEXT_RANGES_L2 = { A: [280, 330], B: [345, 400], C: [370, 420] };
+export const SECTION_MARKS_L2 = [7, 9, 7, 12];
+export const SECTION_BOUNDS = { L1: [[1, 3], [4, 9], [10, 14], [15, 15]], L2: [[1, 4], [5, 8], [9, 11], [12, 15]] };
 
 const stripMarks = (t) => String(t).replace(/\*\*/g, '');
 const countWords = (t) => stripMarks(t).split(/\s+/).filter(Boolean).length;
@@ -30,7 +35,7 @@ export function textWords(text) {
 function checkQuestion(where, q, textIds, errs) {
   const need = (cond, msg) => { if (!cond) errs.push(`${where} ${q.id}: ${msg}`); };
   need(q.id && q.prompt, 'missing id or prompt');
-  need(['choice', 'tfns', 'factopinion', 'multi', 'open'].includes(q.type), `unknown type ${q.type}`);
+  need(['choice', 'tfns', 'factopinion', 'multi', 'match', 'open'].includes(q.type), `unknown type ${q.type}`);
   need(Array.isArray(q.levels) && q.levels.length, 'missing levels');
   if (q.text && q.text !== 'both') {
     for (const r of String(q.text).split(',')) need(textIds.includes(r), `refers to missing text ${r}`);
@@ -42,6 +47,13 @@ function checkQuestion(where, q, textIds, errs) {
   }
   if (q.type === 'tfns') { need(['true', 'false', 'notstated'].includes(q.answer), 'bad answer'); need(q.why, 'missing why'); }
   if (q.type === 'factopinion') { need(['fact', 'opinion'].includes(q.answer), 'bad answer'); need(q.why, 'missing why'); }
+  if (q.type === 'match') {
+    need(Array.isArray(q.items) && q.items.length >= 2 && Number.isInteger(q.paragraphs), 'needs items and paragraphs');
+    need((q.items || []).every((it) => it.label && Number.isInteger(it.answer) && it.answer >= 1 && it.answer <= q.paragraphs), 'item answer out of range');
+    need((q.items || []).some((it) => !it.given), 'needs at least one item for the learner to place');
+    need(new Set((q.items || []).map((it) => it.answer)).size === (q.items || []).length, 'two items share a paragraph');
+    need(q.why, 'missing why');
+  }
   if (q.type === 'multi') {
     need(Array.isArray(q.answer) && q.answer.length >= 2, 'answer must list indexes');
     need((q.answer || []).every((a) => Number.isInteger(a) && a >= 0 && a < (q.options || []).length), 'answer index out of range');
@@ -61,19 +73,22 @@ export function checkReadingMission(m, name, errs, notes) {
   const qids = m.questions.map((q) => q.id);
   if (new Set(qids).size !== qids.length) errs.push(`${where}: duplicate question id`);
   if (m.length === 'long') {
+    const lvl = (m.levels || []).includes('L2') ? 'L2' : 'L1';
+    const ranges = lvl === 'L2' ? TEXT_RANGES_L2 : TEXT_RANGES;
+    const wantMarks = lvl === 'L2' ? SECTION_MARKS_L2 : SECTION_MARKS;
     if (textIds.join('') !== 'ABC') errs.push(`${where}: long missions need texts A, B and C`);
     for (const t of m.texts) {
-      const n = textWords(t); const r = TEXT_RANGES[t.id];
+      const n = textWords(t); const r = ranges[t.id];
       if (r && (n < r[0] || n > r[1])) errs.push(`${where}: Text ${t.id} has ${n} words (needs ${r[0]} to ${r[1]})`);
     }
     const num = (q) => parseInt(String(q.label || '').split('(')[0], 10);
     const sum = (lo, hi) => m.questions.filter((q) => num(q) >= lo && num(q) <= hi).reduce((a, q) => a + (q.marks || 0), 0);
-    const got = [sum(1, 3), sum(4, 9), sum(10, 14), sum(15, 15)];
-    if (got.join() !== SECTION_MARKS.join()) errs.push(`${where}: section marks ${got.join('/')} (needs ${SECTION_MARKS.join('/')})`);
+    const got = SECTION_BOUNDS[lvl].map(([lo, hi]) => sum(lo, hi));
+    if (got.join() !== wantMarks.join()) errs.push(`${where}: section marks ${got.join('/')} (needs ${wantMarks.join('/')})`);
     const numbers = new Set(m.questions.map(num));
     if (numbers.size !== 15) errs.push(`${where}: has ${numbers.size} numbered questions (needs 15)`);
     if (!m.questions.every((q) => q.label && q.marks)) errs.push(`${where}: every question needs a label and marks`);
-    notes.push(`${where}: ${m.texts.map((t) => textWords(t)).join('/')} words, ${m.questions.reduce((a, q) => a + (q.marks || 0), 0)} marks`);
+    notes.push(`${where} (${lvl}): ${m.texts.map((t) => textWords(t)).join('/')} words, ${m.questions.reduce((a, q) => a + (q.marks || 0), 0)} marks`);
   } else {
     notes.push(`${where}: ${m.questions.length} questions`);
   }

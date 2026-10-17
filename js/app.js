@@ -210,7 +210,7 @@
     return h('div', null,
       h('section', { class: 'map-intro' },
         h('h1', { text: 'Pick a mission' }),
-        h('p', { class: 'lede', text: 'Open a topic, then pick a mission. Short ones take about 10 minutes, writing tasks 15 to 25, and the longer reading missions about 35. Do one, then stop or carry on. It is up to you.' }),
+        h('p', { class: 'lede', text: 'Open a topic, then pick a mission. Short ones take about 10 minutes, writing tasks 15 to 25, and the longer reading missions 35 to 45. Do one, then stop or carry on. It is up to you.' }),
         h('p', { class: 'progress-line' }, doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '. ', h('a', { href: '#/progress', text: 'See my progress' })),
         h('p', { class: 'muted small', text: 'Not sure which level? Nearly every mission works at both. Use the switch at the top.' })
       ),
@@ -219,8 +219,7 @@
           menuSection('reading', 'Reading line', 'Read the text or texts, then answer questions one at a time.', reading, function (m) {
             return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes,
               meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
-          }, function (m) { return m.length === 'long' ? 'Longer missions (about 35 minutes)' : 'Short missions (about 10 minutes)'; }),
-          level() === 'L2' ? h('p', { class: 'muted small', text: 'Longer reading missions for Level 2 are being planned. The Level 2 paper layout is now known.' }) : null
+          }, function (m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; })
         ),
         menuSection('writing', 'Writing line', 'Plan and write a piece, then get feedback if you want to.', writing, function (m) {
           var mm = missionFor(m);
@@ -353,7 +352,7 @@
           h('h2', { id: 'howto-h', text: 'What to do' }),
           h('ol', null,
             h('li', { text: multi ? 'Read the texts one at a time: ' + built.texts.map(function (x) { return 'Text ' + x.id; }).join(', then ') + '. Each has its own screen.' : 'Read the text below. Take your time.' }),
-            h('li', { text: 'Answer ' + questionCount + ' questions, one at a time.' + (m.length === 'long' ? ' Some are worth more than one mark, and the screen tells you how many.' : '') }),
+            h('li', { text: 'Answer ' + (m.length === 'long' ? questionNumbers(m) : questionCount) + ' questions, one at a time.' + (m.length === 'long' ? ' Some are worth more than one mark, and the screen tells you how many.' : '') }),
             h('li', { text: 'You can look back at the texts whenever you like.' }),
             m.length === 'long' ? h('li', { text: 'You can stop and come back later. Your place is saved on this device.' }) : null
           )
@@ -394,6 +393,7 @@
 
       if (q.type === 'open') append(qCol, openQuestion(q, ans, save));
       else if (q.type === 'multi') append(qCol, multiQuestion(q, ans, save));
+      else if (q.type === 'match') append(qCol, matchQuestion(q, ans, save));
       else append(qCol, closedQuestion(q, ans, save));
 
       append(qCol, h('div', { class: 'actions' },
@@ -446,11 +446,71 @@
   }
 
   function isCorrect(q, a) {
+    if (q.type === 'match') {
+      return q.items.every(function (it, i) { return it.given || String((a.map || {})[i]) === String(it.answer); });
+    }
     if (q.type === 'multi') {
       var got = (a.choices || []).slice().sort().join(',');
       return got === q.answer.slice().sort().join(',');
     }
     return a.choice === answerIndex(q);
+  }
+
+  // Matching: give each heading the number of the paragraph it fits. Some are done for the learner.
+  function matchQuestion(q, ans, save, onChecked) {
+    if (!ans.map) ans.map = {};
+    var box = h('div');
+    var fbSlot = h('div', { 'aria-live': 'polite' });
+    var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check my answer' });
+    var selects = [];
+    var list = h('ul', { class: 'match-list', 'aria-labelledby': q.labelledBy });
+
+    function ready() {
+      return q.items.every(function (it, i) { return it.given || ans.map[i]; });
+    }
+
+    q.items.forEach(function (it, i) {
+      var sel = h('select', { id: 'match-' + q.id + '-' + i, 'aria-label': 'Paragraph number for: ' + it.label });
+      sel.appendChild(h('option', { value: '', text: 'Choose' }));
+      for (var n = 1; n <= q.paragraphs; n++) sel.appendChild(h('option', { value: String(n), text: 'Paragraph ' + n }));
+      if (it.given) { sel.value = String(it.answer); sel.disabled = true; }
+      else if (ans.map[i]) sel.value = String(ans.map[i]);
+      if (ans.checked) sel.disabled = true;
+      sel.addEventListener('change', function () { ans.map[i] = sel.value; save(); checkBtn.disabled = !ready(); });
+      selects.push(sel);
+      list.appendChild(h('li', { class: 'match-row' },
+        h('label', { for: sel.id, class: 'match-label', text: it.label }),
+        sel,
+        it.given ? h('span', { class: 'muted small', text: 'done for you' }) : null));
+    });
+    box.appendChild(list);
+
+    function showFeedback() {
+      var gaps = q.items.filter(function (it) { return !it.given; });
+      var right = 0;
+      q.items.forEach(function (it, i) {
+        selects[i].disabled = true;
+        if (it.given) return;
+        if (String(ans.map[i]) === String(it.answer)) right++;
+      });
+      fbSlot.replaceChildren(h('div', { class: 'feedback' },
+        h('p', { class: 'fb-head', text: right === gaps.length ? 'Yes, they all match.' : right + ' of ' + gaps.length + ' match. Here is the full set.' }),
+        h('ul', null, q.items.map(function (it) { return h('li', { text: it.label + ': paragraph ' + it.answer }); })),
+        h('p', { text: q.why })));
+      checkBtn.remove();
+    }
+
+    checkBtn.disabled = !ready();
+    checkBtn.addEventListener('click', function () {
+      if (!ready()) return;
+      ans.checked = true; save(); showFeedback();
+      if (onChecked) onChecked();
+      var fb = fbSlot.querySelector('.feedback');
+      if (fb) { fb.setAttribute('tabindex', '-1'); fb.focus(); }
+    });
+    if (ans.checked) showFeedback(); else box.appendChild(h('div', { class: 'actions' }, checkBtn));
+    box.appendChild(fbSlot);
+    return box;
   }
 
   // "Choose TWO" style questions: tick the right number of boxes.
@@ -610,7 +670,7 @@
     return h('section', { class: 'source-text', 'aria-label': (multi ? 'Text ' + t.id + ': ' : '') + t.title },
       h('p', { class: 'text-label', text: (multi ? 'Text ' + t.id + ' · ' : '') + t.kind + ' · ' + t.source }),
       h(compact ? 'h3' : 'h2', { text: t.title }),
-      blocks(t.body, compact)
+      blocks(t.body, compact, t.numbered)
     );
   }
 
@@ -621,10 +681,15 @@
     });
   }
 
-  function blocks(list, compact) {
+  function blocks(list, compact, numbered) {
+    var pn = 0;
     return (list || []).map(function (b) {
       if (b.h) return h(compact ? 'h4' : 'h3', { text: b.h });
-      if (b.p) return h('p', null, rich(b.p));
+      if (b.p) {
+        if (!numbered) return h('p', null, rich(b.p));
+        pn += 1;
+        return h('p', { class: 'numbered' }, h('span', { class: 'pnum', 'aria-label': 'Paragraph ' + pn, text: String(pn) }), rich(b.p));
+      }
       if (b.box) return h('div', { class: 'text-box' }, rich(b.box));
       if (b.callout) return h('p', { class: 'callout' }, rich(b.callout));
       if (b.ul) return h('ul', null, b.ul.map(function (li) { return h('li', null, rich(li)); }));

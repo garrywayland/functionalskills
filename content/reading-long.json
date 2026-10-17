@@ -816,6 +816,464 @@
       ]
     },
     {
+      "id": "rl2-pandas",
+      "topic": "Pandas",
+      "title": "Working with wildlife",
+      "length": "long",
+      "minutes": 45,
+      "levels": [
+        "L2"
+      ],
+      "intro": "Three texts about starting a career in animal care and conservation.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Fenland College careers service",
+          "numbered": true,
+          "title": "Starting out in animal care",
+          "body": [
+            {
+              "p": "Do you dream of a career that involves working with animals? The wildlife and animal care sector is far bigger than most people realise, with roles for keepers, vets' assistants, conservation officers and educators. Some of the best people in the field started with no experience at all, so please do not rule yourself out."
+            },
+            {
+              "p": "The first step is to find out which job might suit you. Visit a local zoo, farm or rescue centre, and ask the staff what an ordinary day involves. Most workers are happy to have a quick chat, and what you learn will be more useful than any brochure."
+            },
+            {
+              "p": "You are not on your own. Careers advisers can explain the qualifications that each role requires, and your family and friends may know someone in the industry who would be glad to offer advice. Many colleges also run free taster days, which are well worth attending."
+            },
+            {
+              "p": "Employers value practical experience above almost everything else, so volunteer as early as you can. Even a few hours a week at an animal charity shows commitment, and the skills you pick up, such as patience and teamwork, will stay with you. If you are unsure about a placement, give it a go."
+            },
+            {
+              "p": "When you start applying, read each advert carefully and tailor your CV to it. Keep your application short, check it for mistakes and always include a covering letter. Do not be put off by rejection, because many successful keepers applied several times before they were offered a post."
+            },
+            {
+              "p": "Finally, prepare for interviews. Research the organisation, think of examples that prove you are reliable and practise answering questions aloud. Arrive early, dress smartly and, above all, show that you genuinely care about animals. If you do all that, you're good to go."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Magazine article",
+          "source": "Green Futures magazine",
+          "title": "Why conservation needs young people",
+          "body": [
+            {
+              "p": "Behind every successful conservation project is a team of skilled people, yet the sector is struggling to find them. The shortage is not new, but it is growing. A survey of 1,200 wildlife employers found that almost three quarters had been unable to fill at least one vacancy last year, and nearly half said that applicants simply lacked practical experience."
+            },
+            {
+              "p": "The consequences are serious. Giant pandas, for example, depend on a network of keepers, researchers and forest rangers who monitor their health, track their numbers and protect the bamboo forests they live in. When posts stay empty, vital work is delayed, and projects that took years to build can quickly lose momentum."
+            },
+            {
+              "p": "Young people face real obstacles. Many entry-level jobs are seasonal and poorly paid, and competition for places on the best courses is fierce. Others are put off because they believe that you need a degree before you can even volunteer, which is not true. Some also worry that conservation is \"a vocation rather than a career\", a path that demands long hours and offers little security."
+            },
+            {
+              "p": "Employers are keen to change that picture. Conservation is, after all, \"the long game\", and a single breeding programme can take a decade to show results. That is why organisations are offering more apprenticeships, short courses and paid trainee posts than ever before, and why many now accept volunteering as proof of ability."
+            },
+            {
+              "box": "**Advice from the Wildlife Skills Council:** Thinking of a career in conservation? Start by volunteering locally. Ask about an apprenticeship rather than assuming you need a degree. Join a short course to build your confidence. And remember: you do not have to choose a path straight away."
+            },
+            {
+              "p": "The Council has also launched a mentoring scheme that pairs students with experienced keepers for a year, giving them hands-on training and a reference they can use when they apply for their first post."
+            },
+            {
+              "p": "In my view, working with wildlife is the most rewarding job anyone can do, and it deserves far more attention from schools and colleges. If you care about the natural world, there has never been a better time to get involved."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Transcript of a speech",
+          "source": "Careers evening at Fenland College",
+          "title": "Speech to the college careers evening",
+          "body": [
+            {
+              "p": "Thank you for inviting me to speak this evening. I have been a keeper for nineteen years, and I can honestly say that I have never had a boring day. Look around this room: some of you could be doing my job in ten years' time."
+            },
+            {
+              "p": "I did not start at the top. At seventeen I was a volunteer, cleaning enclosures and carrying buckets of food. I was cold, tired and often muddy, but I was hooked. That first year taught me how little I knew, and I am still learning something new every single day."
+            },
+            {
+              "p": "So what does it take? First, you need passion. Without it, you will not survive the early starts and the long winters. Second, you need experience, and the only way to get it is by getting your hands dirty. Third, you need resilience, because things do not always go to plan. Animals are unpredictable, and so is life. I know that sounds like a lot, but nobody here learned it all at once."
+            },
+            {
+              "p": "Is it hard work? Of course it is. You will work again and again and again to improve your skills, and you will be asked to do a million different things before lunch. But where else could you start the day weighing a giant panda cub and finish it planning a conservation project overseas?"
+            },
+            {
+              "p": "The results speak for themselves. Over the past decade, our breeding programme has helped to protect a dozen species, and the number of children visiting our education centre has doubled. None of that would have happened without a team of dedicated people."
+            },
+            {
+              "p": "People often ask me what jobs exist. Apart from keepers like me, we employ nutritionists, vet nurses, education officers and a volunteer coordinator, who has the hardest job of all: keeping people like me in order."
+            },
+            {
+              "p": "Last month, a student who started with us as a volunteer was offered a full-time post. She was nervous, as we all are, but she kept turning up and she kept learning. That is all it takes to begin."
+            },
+            {
+              "p": "You will find the work exhausting, exhilarating and utterly worthwhile. Not every day will be easy, but every day will matter. So jump in with both feet, apply for the placements and show them what you can do. Thank you."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1",
+          "marks": 2,
+          "prompt": "Your friend wants to find out what working with animals is really like. Using Text A, identify two ways of finding out.",
+          "model": "Any two of: visit a local zoo, farm or rescue centre and ask the staff what a normal day involves (1); speak to someone you know who works in the industry (1); go to a free taster day at a college (1).",
+          "check": [
+            "I gave two different ways.",
+            "Both come from Text A.",
+            "Each is a way of finding out what the job is like."
+          ]
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "2",
+          "marks": 1,
+          "prompt": "Which word best describes the tone of Text A?",
+          "options": [
+            "Sarcastic",
+            "Threatening",
+            "Encouraging",
+            "Nostalgic"
+          ],
+          "answer": 2,
+          "why": "The writer keeps reassuring the reader (\"do not rule yourself out\", \"you are not on your own\"). That is encouraging."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L2"
+          ],
+          "type": "multi",
+          "text": "A",
+          "label": "3",
+          "marks": 2,
+          "prompt": "Which TWO of these quotations from Text A are examples of formal language?",
+          "options": [
+            "\"The wildlife and animal care sector is far bigger than most people realise\"",
+            "\"happy to have a quick chat\"",
+            "\"give it a go\"",
+            "\"Employers value practical experience above almost everything else\"",
+            "\"you're good to go\""
+          ],
+          "answer": [
+            0,
+            3
+          ],
+          "why": "Formal language sounds serious and careful, with no slang or shortened words. \"Chat\", \"give it a go\" and \"you're good to go\" are casual, everyday phrases, so they are informal."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L2"
+          ],
+          "type": "match",
+          "text": "A",
+          "label": "4",
+          "marks": 2,
+          "prompt": "You have been asked to add subheadings to each paragraph in Text A. Choose the paragraph number that best matches each subheading. Three have been done for you.",
+          "paragraphs": 6,
+          "items": [
+            {
+              "label": "Interview tips",
+              "answer": 6,
+              "given": true
+            },
+            {
+              "label": "Find out first",
+              "answer": 2
+            },
+            {
+              "label": "Applying",
+              "answer": 5
+            },
+            {
+              "label": "Why animal care?",
+              "answer": 1,
+              "given": true
+            },
+            {
+              "label": "Gain experience",
+              "answer": 4
+            },
+            {
+              "label": "Who can help",
+              "answer": 3,
+              "given": true
+            }
+          ],
+          "why": "Each subheading sums up one paragraph: paragraph 2 is about finding out what jobs involve, paragraph 4 about gaining experience, and paragraph 5 about applying."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "What does each of these quotations from Text B suggest about conservation work? \"a vocation rather than a career\" and \"the long game\"",
+          "model": "\"A vocation rather than a career\" suggests it is something people do out of deep commitment or passion, not just for the pay (1). \"The long game\" suggests that results take many years, so people need patience (1).",
+          "check": [
+            "I explained the first quotation in my own words.",
+            "I explained the second quotation in my own words.",
+            "I did not just copy the quotations."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "Text B includes both facts and opinions. Which one of these statements is an opinion?",
+          "options": [
+            "Almost three quarters of wildlife employers could not fill a vacancy last year.",
+            "Giant pandas depend on keepers, researchers and rangers.",
+            "Working with wildlife is the most rewarding job anyone can do.",
+            "The Wildlife Skills Council has launched a mentoring scheme."
+          ],
+          "answer": 2,
+          "why": "The first, second and fourth statements can be checked. \"The most rewarding job anyone can do\" is a personal view, so it is an opinion."
+        },
+        {
+          "id": "q7a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7(a)",
+          "marks": 1,
+          "prompt": "Who provides advice for young people in Text B?",
+          "model": "The Wildlife Skills Council.",
+          "check": [
+            "I named the organisation.",
+            "It comes from the box in Text B."
+          ]
+        },
+        {
+          "id": "q7b",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "7(b)",
+          "marks": 1,
+          "prompt": "Which organisational feature is used to present this advice?",
+          "options": [
+            "A text box",
+            "A numbered list",
+            "Subheadings",
+            "A table"
+          ],
+          "answer": 0,
+          "why": "The advice is set apart in a box, so readers can find it quickly."
+        },
+        {
+          "id": "q8a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(a)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two problems that young people face when trying to enter conservation.",
+          "model": "Any two of: many entry-level jobs are seasonal and poorly paid (1); competition for the best courses is fierce (1); they believe they need a degree even to volunteer (1); they worry it demands long hours and offers little security (1).",
+          "check": [
+            "I gave two different problems.",
+            "Both are problems for young people, not employers."
+          ]
+        },
+        {
+          "id": "q8b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(b)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two suggestions to help young people get started in conservation.",
+          "model": "Any two of: volunteer locally (1); ask about an apprenticeship (1); join a short course (1); take part in the mentoring scheme (1); take paid trainee posts (1).",
+          "check": [
+            "I gave two different suggestions.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Using Text C, give two quotations that suggest there is a lot to learn if you want to work in conservation.",
+          "model": "Any two of: \"That first year taught me how little I knew\" (1); \"I am still learning something new every single day\" (1); \"you need experience, and the only way to get it is by getting your hands dirty\" (1); \"you will work again and again and again to improve your skills\" (1).",
+          "check": [
+            "I copied two quotations.",
+            "Each one suggests there is a lot to learn.",
+            "I did not just paraphrase."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 4,
+          "prompt": "Using Text C, identify two language features used to inspire the audience to consider a career in conservation. Give an example to support each answer.",
+          "model": "Any two features, each with a linked example: direct address (1), e.g. \"Thank you for inviting me\" or \"Look around this room\" (1); first person or personal experience (1), e.g. \"I did not start at the top\" (1); rule of three (1), e.g. \"exhausting, exhilarating and utterly worthwhile\" or \"First... Second... Third...\" (1); rhetorical question (1), e.g. \"Is it hard work?\" (1); hyperbole (1), e.g. \"a million different things before lunch\" (1); repetition (1), e.g. \"again and again and again\" (1); statistics or figures (1), e.g. \"nineteen years\" or \"has doubled\" (1); positive language (1), e.g. \"worthwhile\" (1).",
+          "check": [
+            "I named one language feature.",
+            "I gave an example that matches it.",
+            "I named a second, different feature.",
+            "I gave an example that matches the second one."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which one of these quotations from Text C shows that the speaker has a positive view of working in conservation?",
+          "options": [
+            "\"I was cold, tired and often muddy\"",
+            "\"Animals are unpredictable, and so is life\"",
+            "\"I can honestly say that I have never had a boring day\"",
+            "\"things do not always go to plan\""
+          ],
+          "answer": 2,
+          "why": "The first, second and fourth quotations describe difficulties. \"Never had a boring day\" shows the speaker enjoys the work."
+        },
+        {
+          "id": "q12a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(a)",
+          "marks": 1,
+          "prompt": "You may use a dictionary. Text A says: \"shows commitment\". Give one word or phrase to replace \"commitment\" that keeps the meaning the same.",
+          "model": "Dedication, determination, loyalty, devotion, dependability.",
+          "check": [
+            "My word means about the same as \"commitment\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q12b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(b)",
+          "marks": 1,
+          "prompt": "Text C says: \"you need resilience\". Give one word or phrase to replace \"resilience\" that keeps the meaning the same.",
+          "model": "Toughness, strength, perseverance, the ability to cope or recover after problems.",
+          "check": [
+            "My word or phrase means about the same as \"resilience\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "13",
+          "marks": 6,
+          "prompt": "Compare similar ideas from Text A and Text C about how people can prepare for a career in animal care. In your answer you should: give two similarities from these texts; give one quotation from Text A and one quotation from Text C to support each similarity.",
+          "model": "Any two similarities, each with a supporting quotation from each text. Passion or caring about animals (1): A \"show that you genuinely care about animals\" (1), C \"you need passion\" (1). Practical experience (1): A \"Employers value practical experience above almost everything else\" (1), C \"you need experience, and the only way to get it is by getting your hands dirty\" (1). Not giving up after setbacks (1): A \"Do not be put off by rejection\" (1), C \"you need resilience, because things do not always go to plan\" (1).",
+          "check": [
+            "I gave a first similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it.",
+            "I gave a second, different similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A,B",
+          "label": "14",
+          "marks": 1,
+          "prompt": "Which one of these statements about the language used in Text A and Text B is correct?",
+          "options": [
+            "Both use statistics to support their points.",
+            "Both use direct address to speak to the reader.",
+            "Both use humour to appeal to the reader.",
+            "Both use personal stories from the writer's own life."
+          ],
+          "answer": 1,
+          "why": "Both talk to the reader as \"you\" (for example \"You are not on your own\" and \"Thinking of a career in conservation?\"). Only Text B uses statistics, and neither is humorous or tells a personal story."
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Your friend wants information about different jobs in animal care and conservation. Identify one job role from each of the three texts.",
+          "model": "Text A: keepers, vets' assistants, conservation officers or educators (1). Text B: researchers or forest rangers (1) (keepers is also in Text B). Text C: nutritionists, vet nurses, education officers or a volunteer coordinator (1).",
+          "check": [
+            "I gave one job from Text A.",
+            "I gave one job from Text B.",
+            "I gave one job from Text C."
+          ]
+        }
+      ]
+    },
+    {
       "id": "rl-israel",
       "topic": "Israel",
       "title": "Floating in the Dead Sea",
@@ -1633,6 +2091,463 @@
       ]
     },
     {
+      "id": "rl2-israel",
+      "topic": "Israel",
+      "title": "Slow travel in Israel",
+      "length": "long",
+      "minutes": 45,
+      "levels": [
+        "L2"
+      ],
+      "intro": "Three texts about travelling independently and slowly in Israel.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Wayfarer Travel Guides",
+          "numbered": true,
+          "title": "Planning an independent trip",
+          "body": [
+            {
+              "p": "Travelling independently means choosing your own route, your own pace and your own surprises. Israel is small enough to cross in a day, yet varied enough to fill several weeks, with beaches, deserts, mountains and ancient cities all within a few hours of each other."
+            },
+            {
+              "p": "Getting around is easier than many visitors expect. Trains run along the coast and between the larger cities, and buses reach most towns and villages. Shared taxis, which follow set routes and leave when full, are a cheap way to cover short distances. It is worth buying a rechargeable travel card as soon as you arrive."
+            },
+            {
+              "p": "There is a place to stay for every budget. Hostels are popular with younger travellers, while family-run guesthouses offer a warm welcome and a home-cooked breakfast. Some kibbutz guesthouses, set among orchards and fields, are surprisingly affordable. Book your first night in advance, then see where the road takes you."
+            },
+            {
+              "p": "Food is half the adventure. Markets are the best place to start: you can sample fresh bread, olives and spices before you buy, and a plate of hummus with warm pitta rarely costs much. Do not be shy about asking what is in a dish, and always give the local shakshuka a go."
+            },
+            {
+              "p": "Be prepared for the weather. Summers are very hot, so carry water, wear a hat and plan long walks for early morning. Winters are mild but can be wet, especially in the north, so pack a light waterproof as well."
+            },
+            {
+              "p": "Finally, respect local customs. Many businesses close from Friday afternoon until Saturday evening for Shabbat, so shop for supplies early, and dress modestly when you visit places of worship. A friendly greeting in Hebrew costs nothing, and you will be amazed at how far it goes."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Magazine article",
+          "source": "Slow Journeys magazine",
+          "title": "The rise of slow travel",
+          "body": [
+            {
+              "p": "More travellers are rejecting the whirlwind tour in favour of a gentler pace. A survey of 2,000 holidaymakers by the Slow Journeys Panel found that 62 per cent now prefer to stay in fewer places for longer, and more than half said they wanted a trip that left a lighter footprint on the places they visited. Travel companies are taking notice, and more itineraries now include free days and local homestays."
+            },
+            {
+              "p": "Slow travel is not simply about moving less. It is about spending time in markets, cafés and small villages, which offer \"a window into everyday life\" that no guidebook can match. In Israel, where a morning's drive can take you from a Mediterranean beach to a desert canyon, that approach can transform a trip, because there is always something new within reach."
+            },
+            {
+              "p": "Walkers are leading the way. Long-distance trails attract growing numbers each year, and many follow routes \"off the beaten track\", passing through farmland, forests and quiet communities that few tourists ever see. Cyclists and campers are following close behind, pitching their tents beside streams and hilltop viewpoints."
+            },
+            {
+              "p": "Of course, there are difficulties. Taking more time costs more money, and some travellers find language barriers daunting. Others struggle to plan a flexible route, particularly in summer, when daytime temperatures can make walking uncomfortable. A few simply worry that they will miss the famous sights, and return home feeling that they have not done enough."
+            },
+            {
+              "box": "**Advice from the Travel Better Network:** Learn a few words of the local language. Book your first night, but leave the rest open. Use public transport whenever you can. And remember: slow travel is about quality, not quantity."
+            },
+            {
+              "p": "The Network also runs a free phrase-sharing website, where experienced travellers post tips on everything from bargaining in markets to finding the best walking routes. It has attracted thousands of members in its first year."
+            },
+            {
+              "p": "In my opinion, slow travel is the best way to see any country, and every traveller should try it at least once. If you have ever returned from a holiday feeling more tired than when you left, this may be the answer."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Transcript of a talk",
+          "source": "Wanderlust Travel Fair",
+          "title": "Talk given at a travel fair",
+          "body": [
+            {
+              "p": "Good afternoon, everyone, and thank you for coming. I have been travelling around Israel for eleven years, and I still find something new on every trip. Today I want to convince you to put down the itinerary, pick up a rucksack and go."
+            },
+            {
+              "p": "My first visit was a disaster, and I loved every minute of it. I missed my train, lost my map and ended up in a village I had never heard of. An old man invited me for coffee, and three hours later I knew his whole family story. That is when I realised that the best moments are never on the schedule."
+            },
+            {
+              "p": "So what do you really need? First, you need curiosity. Ask questions, taste everything and talk to strangers. Second, you need flexibility, because buses are late and plans change. Third, you need patience, because the best stories take time to unfold."
+            },
+            {
+              "p": "Will it always be comfortable? Honestly, no. You will be hot, hungry and lost at least once. But where else could you float in the Dead Sea at breakfast, eat the best hummus of your life at lunch, and watch the sun set over the desert before dinner?"
+            },
+            {
+              "p": "The numbers back me up. Last year, more than forty thousand people took part in our walking festival, and nine out of ten said they would come back. That is not bad for an event that began with twelve friends and a single map."
+            },
+            {
+              "p": "People often ask where to stay. My answer is simple: wherever you are welcome. I have slept in hostels, in a tent under the stars, in a kibbutz guesthouse among the orange groves and, once, on a friend's sofa in Haifa. Every one of those places taught me something."
+            },
+            {
+              "p": "I have also learned to be spontaneous. If someone says, \"Come with us,\" say yes. If the path looks interesting, take it. If the market smells wonderful, follow your nose. Nobody ever regretted saying yes to a good adventure, and I have never met a traveller who wished they had planned more."
+            },
+            {
+              "p": "You will find it exhausting, funny, humbling and unforgettable. Not every day will go to plan, but every day will be yours. So take a deep breath, buy the ticket and go. Thank you."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1",
+          "marks": 2,
+          "prompt": "Your friend wants advice on getting around. Using Text A, identify two types of transport.",
+          "model": "Any two of: trains (1); buses (1); shared taxis (1).",
+          "check": [
+            "I gave two different types of transport.",
+            "Both come from Text A."
+          ]
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "2",
+          "marks": 1,
+          "prompt": "Which word best describes the style of Text A?",
+          "options": [
+            "Poetic",
+            "Practical",
+            "Sarcastic",
+            "Mournful"
+          ],
+          "answer": 1,
+          "why": "The writer gives clear, useful tips about transport, accommodation, food and weather in a friendly way. That is practical."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L2"
+          ],
+          "type": "multi",
+          "text": "A",
+          "label": "3",
+          "marks": 2,
+          "prompt": "Which TWO of these quotations from Text A are examples of informal language?",
+          "options": [
+            "\"Hostels are popular with younger travellers\"",
+            "\"a cheap way to cover short distances\"",
+            "\"see where the road takes you\"",
+            "\"always give the local shakshuka a go\"",
+            "\"Many businesses close from Friday afternoon\""
+          ],
+          "answer": [
+            2,
+            3
+          ],
+          "why": "Informal language is relaxed and chatty, using everyday expressions. \"See where the road takes you\" and \"give the local shakshuka a go\" are casual, everyday phrases. The other quotations sound more factual and neutral."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L2"
+          ],
+          "type": "match",
+          "text": "A",
+          "label": "4",
+          "marks": 2,
+          "prompt": "You have been asked to add subheadings to each paragraph in Text A. Choose the paragraph number that best matches each subheading. Three have been done for you.",
+          "paragraphs": 6,
+          "items": [
+            {
+              "label": "Local customs",
+              "answer": 6,
+              "given": true
+            },
+            {
+              "label": "Weather and packing",
+              "answer": 5
+            },
+            {
+              "label": "Why go it alone?",
+              "answer": 1,
+              "given": true
+            },
+            {
+              "label": "Food and markets",
+              "answer": 4
+            },
+            {
+              "label": "Where to stay",
+              "answer": 3,
+              "given": true
+            },
+            {
+              "label": "Getting around",
+              "answer": 2
+            }
+          ],
+          "why": "Each subheading sums up one paragraph: paragraph 2 is about transport, paragraph 4 about food and paragraph 5 about the weather."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "What does each of these quotations from Text B suggest about slow travel? \"a window into everyday life\" and \"off the beaten track\"",
+          "model": "\"A window into everyday life\" suggests that slow travel shows you how local people really live (1). \"Off the beaten track\" suggests going to quiet places that most tourists never visit (1).",
+          "check": [
+            "I explained the first quotation in my own words.",
+            "I explained the second quotation in my own words.",
+            "I did not just copy the quotations."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "Text B includes both facts and opinions. Which one of these statements is an opinion?",
+          "options": [
+            "62 per cent of the holidaymakers surveyed prefer to stay in fewer places for longer.",
+            "Long-distance trails attract growing numbers each year.",
+            "The Travel Better Network runs a free phrase-sharing website.",
+            "Slow travel is the best way to see any country."
+          ],
+          "answer": 3,
+          "why": "The first three statements report things that can be checked. \"The best way to see any country\" is a personal view, so it is an opinion."
+        },
+        {
+          "id": "q7a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7(a)",
+          "marks": 1,
+          "prompt": "Who provides advice for travellers in Text B?",
+          "model": "The Travel Better Network.",
+          "check": [
+            "I named the organisation.",
+            "It comes from the box in Text B."
+          ]
+        },
+        {
+          "id": "q7b",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "7(b)",
+          "marks": 1,
+          "prompt": "Which organisational feature is used to present this advice?",
+          "options": [
+            "Subheadings",
+            "A text box",
+            "A bulleted list",
+            "A table"
+          ],
+          "answer": 1,
+          "why": "The advice is set in a box, which makes it stand out from the rest of the article."
+        },
+        {
+          "id": "q8a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(a)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two problems that slow travellers may face.",
+          "model": "Any two of: taking more time costs more money (1); language barriers can be daunting (1); it can be hard to plan a flexible route (1); daytime heat in summer makes walking uncomfortable (1); some worry they will miss the famous sights (1).",
+          "check": [
+            "I gave two different problems.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q8b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(b)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two suggestions to help people travel slowly.",
+          "model": "Any two of: learn a few words of the local language (1); book the first night but leave the rest open (1); use public transport (1); use the free phrase-sharing website (1).",
+          "check": [
+            "I gave two different suggestions.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Using Text C, give two quotations that suggest you should not plan every detail of a trip.",
+          "model": "Any two of: \"the best moments are never on the schedule\" (1); \"buses are late and plans change\" (1); \"put down the itinerary\" (1); \"I have never met a traveller who wished they had planned more\" (1); \"If the path looks interesting, take it\" (1).",
+          "check": [
+            "I copied two quotations.",
+            "Each one suggests not planning everything.",
+            "I did not just paraphrase."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 4,
+          "prompt": "Using Text C, identify two language features used to persuade the audience to travel in this way. Give an example to support each answer.",
+          "model": "Any two features, each with a linked example: direct address (1), e.g. \"thank you for coming\" or \"put down the itinerary\" (1); personal experience or first person (1), e.g. \"My first visit was a disaster\" (1); rule of three (1), e.g. \"curiosity... flexibility... patience\" or \"exhausting, funny, humbling and unforgettable\" (1); rhetorical question (1), e.g. \"Will it always be comfortable?\" (1); hyperbole (1), e.g. \"the best hummus of your life\" (1); statistics (1), e.g. \"more than forty thousand people\" (1); positive language (1), e.g. \"unforgettable\" (1).",
+          "check": [
+            "I named one language feature.",
+            "I gave an example that matches it.",
+            "I named a second, different feature.",
+            "I gave an example that matches the second one."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which one of these quotations from Text C shows that the speaker has a positive view of travelling around Israel?",
+          "options": [
+            "\"buses are late and plans change\"",
+            "\"I still find something new on every trip\"",
+            "\"You will be hot, hungry and lost at least once\"",
+            "\"I missed my train, lost my map\""
+          ],
+          "answer": 1,
+          "why": "The other quotations describe things that go wrong. \"Something new on every trip\" shows the speaker is still excited after eleven years."
+        },
+        {
+          "id": "q12a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(a)",
+          "marks": 1,
+          "prompt": "You may use a dictionary. Text A says: \"surprisingly affordable\". Give one word or phrase to replace \"affordable\" that keeps the meaning the same.",
+          "model": "Cheap, inexpensive, reasonably priced, low-cost, within budget.",
+          "check": [
+            "My word means about the same as \"affordable\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q12b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(b)",
+          "marks": 1,
+          "prompt": "Text C says: \"I have also learned to be spontaneous\". Give one word or phrase to replace \"spontaneous\" that keeps the meaning the same.",
+          "model": "Unplanned, impulsive, flexible, carefree, willing to act on the spur of the moment.",
+          "check": [
+            "My word or phrase means about the same as \"spontaneous\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "13",
+          "marks": 6,
+          "prompt": "Compare similar ideas from Text A and Text C about how travellers can get the most from a trip. In your answer you should: give two similarities from these texts; give one quotation from Text A and one quotation from Text C to support each similarity.",
+          "model": "Any two similarities, each with a supporting quotation from each text. Trying local food (1): A \"always give the local shakshuka a go\" (1), C \"taste everything\" (1). Being friendly to local people (1): A \"A friendly greeting in Hebrew costs nothing\" (1), C \"talk to strangers\" (1). Staying flexible about plans (1): A \"see where the road takes you\" (1), C \"plans change\" (1).",
+          "check": [
+            "I gave a first similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it.",
+            "I gave a second, different similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A,B",
+          "label": "14",
+          "marks": 1,
+          "prompt": "Which one of these statements about the language used in Text A and Text B is correct?",
+          "options": [
+            "Both use statistics to support their points.",
+            "Both use humour to appeal to the reader.",
+            "Both speak directly to the reader.",
+            "Both use rhetorical questions."
+          ],
+          "answer": 2,
+          "why": "Both talk to the reader as \"you\" (for example \"you can sample fresh bread\" and \"If you have ever returned from a holiday\"). Only Text B gives statistics, and neither is humorous or asks rhetorical questions."
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Your friend wants information about different places to stay. Identify one place to stay from each of the three texts.",
+          "model": "Text A: hostels, family-run guesthouses or kibbutz guesthouses (1). Text B: camping, or pitching a tent (1). Text C: hostels, a tent, a kibbutz guesthouse or a friend's sofa (1).",
+          "check": [
+            "I gave one place to stay from Text A.",
+            "I gave one place to stay from Text B.",
+            "I gave one place to stay from Text C."
+          ]
+        }
+      ]
+    },
+    {
       "id": "rl-transport",
       "topic": "Public transport",
       "title": "Park and Ride",
@@ -2439,6 +3354,464 @@
             "I said what Text B says about the railway station dock.",
             "I said what Text C says about it.",
             "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl2-transport",
+      "topic": "Public transport",
+      "title": "Leaving the car behind",
+      "length": "long",
+      "minutes": 45,
+      "levels": [
+        "L2"
+      ],
+      "intro": "Three texts about persuading people to use buses and trains.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Vale Active Travel",
+          "numbered": true,
+          "title": "Leaving the car at home",
+          "body": [
+            {
+              "p": "Most of us know that driving everywhere is expensive, but few of us realise by how much. Between fuel, insurance, parking and repairs, running a car can cost thousands of pounds a year, and sitting in traffic can eat up hours of your week. Switching even a few journeys to the bus or train could make a real difference to both your wallet and your wellbeing."
+            },
+            {
+              "p": "Start by working out what is available. Look at timetables for buses and trains on your usual route, and compare the journey time with driving. You may discover that a quick check saves a lot of faff, and that a stop you had never noticed is only a short walk from your door."
+            },
+            {
+              "p": "Next, add up the true cost of each option. A weekly or monthly ticket is usually much cheaper than paying for single journeys, and railcards can reduce fares by a third for those who qualify. Remember to include parking charges when you compare the figures."
+            },
+            {
+              "p": "Make the journey as easy as possible. Download a timetable app, keep your ticket on your phone and pack a book or some music. Time on the bus is time you get back, whereas time behind the wheel is time you can never use for anything else."
+            },
+            {
+              "p": "Start small. Try leaving the car at home one day a week and see how you get on. Most people find that the first week is the hardest, and that the habit is easier to keep than they feared."
+            },
+            {
+              "p": "Finally, keep going. If a service is late or full, do not give up; try a different route or a different time. With a little patience and planning, you will soon find the best way to get around, and you may never look back."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Magazine article",
+          "source": "Transport Weekly",
+          "title": "Why are we still driving?",
+          "body": [
+            {
+              "p": "Every weekday morning, millions of people sit alone in their cars, crawling towards offices, schools and shops. A study of 3,000 commuters by the Fenland Travel Panel found that 68 per cent of those who drive to work live within five miles of a bus or train route, yet fewer than one in five had ever tried it."
+            },
+            {
+              "p": "So what is stopping them? Many point to unreliable services. If a bus is late twice in a week, most passengers lose faith, and a car offers \"door to door\" convenience that no timetable can match. Others complain that fares rise every year, and that evening and weekend services are too limited to be useful."
+            },
+            {
+              "p": "The result is what experts call \"a vicious circle\". Poor services lead to fewer passengers, fewer passengers lead to less money, and less money leads to even poorer services. Breaking the cycle will take investment, but the rewards could be large: less congestion, cleaner air and quieter streets."
+            },
+            {
+              "p": "Safety also matters. Passengers who wait for buses in the dark, at stops without shelter or lighting, often feel vulnerable, and some, particularly young people and the elderly, simply choose to stay at home instead. Cost, too, remains a barrier for students and part-time workers, who may spend a large share of their wages on fares."
+            },
+            {
+              "box": "**Advice from the Passenger Users' Alliance:** Try your journey once at the weekend, when there is no pressure. Ask your employer about season ticket loans. Report broken lighting and missing shelters to the council. And tell the operator when things go well, as well as when they go wrong."
+            },
+            {
+              "p": "There are signs of progress. Several towns have introduced simple, capped fares, and one operator has fitted every bus with free Wi-Fi and charging points. Passenger numbers on these routes have risen by almost a fifth."
+            },
+            {
+              "p": "In my view, public transport is the only sensible way to travel into a busy town centre, and councils that ignore it are storing up problems for the future. If you are thinking about changing the way you travel, now is the moment."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Transcript of a speech",
+          "source": "Vale of Fenn community meeting",
+          "title": "Speech to a public meeting",
+          "body": [
+            {
+              "p": "Good evening, everyone, and thank you for turning out on such a wet night. I have driven the number 14 for twenty-two years, and I want to tell you why I still believe that public transport is worth fighting for."
+            },
+            {
+              "p": "I used to be sceptical myself. When I first joined the company, I thought buses were slow, noisy and old-fashioned. Then I started talking to my passengers. There was a nurse who could not afford a car, a student who read two novels a month on the way to college, and an old gentleman who told me that my bus was the only reason he saw another person all week."
+            },
+            {
+              "p": "So what makes a good service? First, it must be reliable, because nobody will wait for a bus that never comes. Second, it must be affordable, because nobody should have to choose between a ticket and a meal. Third, it must be safe, because everyone deserves to feel comfortable at a stop, whatever the hour."
+            },
+            {
+              "p": "Will it cost money to get this right? Of course it will. But what is the cost of doing nothing? Empty streets, full car parks and a town centre that nobody can breathe in. I have heard people call a good bus service a luxury. I call it a lifeline for the lonely, a lifeline for the young and a lifeline for the whole town."
+            },
+            {
+              "p": "Last year, my route carried more than 400,000 passengers, and 90 per cent of those surveyed said they would recommend it to a friend. Those are not my figures. They are yours."
+            },
+            {
+              "p": "I also know about the problems. Buses run late when roadworks block the high street, and shelters are often broken or missing. But when we built a new shelter at the hospital stop, passenger numbers went up within a month. That tells me something simple: people will use a good service if we give them one."
+            },
+            {
+              "p": "My advice is this. Try it for a week. Leave the car at home, take a book and see how you feel. You might be surprised at how much more relaxed you arrive, and how much money is left in your pocket at the end of the month."
+            },
+            {
+              "p": "I promise you the journey will be worth it. It will be cheaper, greener and, I suspect, a good deal more interesting than another morning in traffic. Thank you, and please, come aboard."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1",
+          "marks": 2,
+          "prompt": "Your friend wants to cut the cost of travelling to work. Using Text A, identify two ways to do this.",
+          "model": "Any two of: buy a weekly or monthly ticket (1); use a railcard (1); include parking charges when comparing costs (1); leave the car at home some days (1).",
+          "check": [
+            "I gave two different ways.",
+            "Both come from Text A.",
+            "Each one would reduce the cost."
+          ]
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "2",
+          "marks": 1,
+          "prompt": "Which word best describes the tone of Text A?",
+          "options": [
+            "Hostile",
+            "Supportive",
+            "Gloomy",
+            "Humorous"
+          ],
+          "answer": 1,
+          "why": "The writer offers helpful tips and reassurance (\"do not give up\", \"keep going\"). That is supportive."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L2"
+          ],
+          "type": "multi",
+          "text": "A",
+          "label": "3",
+          "marks": 2,
+          "prompt": "Which TWO of these quotations from Text A are examples of formal language?",
+          "options": [
+            "\"Between fuel, insurance, parking and repairs, running a car can cost thousands of pounds a year\"",
+            "\"saves a lot of faff\"",
+            "\"see how you get on\"",
+            "\"Remember to include parking charges when you compare the figures\"",
+            "\"you may never look back\""
+          ],
+          "answer": [
+            0,
+            3
+          ],
+          "why": "Formal language is careful and serious. \"A lot of faff\", \"see how you get on\" and \"you may never look back\" are casual, everyday expressions, so they are informal."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L2"
+          ],
+          "type": "match",
+          "text": "A",
+          "label": "4",
+          "marks": 2,
+          "prompt": "You have been asked to add subheadings to each paragraph in Text A. Choose the paragraph number that best matches each subheading. Three have been done for you.",
+          "paragraphs": 6,
+          "items": [
+            {
+              "label": "Keep going",
+              "answer": 6,
+              "given": true
+            },
+            {
+              "label": "Count the cost",
+              "answer": 3
+            },
+            {
+              "label": "Why change?",
+              "answer": 1,
+              "given": true
+            },
+            {
+              "label": "Start small",
+              "answer": 5
+            },
+            {
+              "label": "Make it easy",
+              "answer": 4,
+              "given": true
+            },
+            {
+              "label": "Know your options",
+              "answer": 2
+            }
+          ],
+          "why": "Each subheading sums up one paragraph: paragraph 2 is about checking your options, paragraph 3 about costs and paragraph 5 about starting small."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "What does each of these quotations from Text B suggest about public transport? \"door to door\" and \"a vicious circle\"",
+          "model": "\"Door to door\" suggests that a car takes you directly from your home to where you are going, which is very convenient (1). \"A vicious circle\" suggests a cycle in which each problem makes the next one worse (1).",
+          "check": [
+            "I explained the first quotation in my own words.",
+            "I explained the second quotation in my own words.",
+            "I did not just copy the quotations."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "Text B includes both facts and opinions. Which one of these statements is an opinion?",
+          "options": [
+            "Public transport is the only sensible way to travel into a busy town centre.",
+            "68 per cent of commuters who drive live within five miles of a bus or train route.",
+            "Several towns have introduced capped fares.",
+            "The Passenger Users' Alliance gives advice to travellers."
+          ],
+          "answer": 0,
+          "why": "The other statements can be checked. \"The only sensible way\" is the writer's personal view, so it is an opinion."
+        },
+        {
+          "id": "q7a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7(a)",
+          "marks": 1,
+          "prompt": "Who provides advice for travellers in Text B?",
+          "model": "The Passenger Users' Alliance.",
+          "check": [
+            "I named the organisation.",
+            "It comes from the box in Text B."
+          ]
+        },
+        {
+          "id": "q7b",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "7(b)",
+          "marks": 1,
+          "prompt": "Which organisational feature is used to present this advice?",
+          "options": [
+            "A speech bubble",
+            "A table",
+            "A text box",
+            "A numbered list"
+          ],
+          "answer": 2,
+          "why": "The advice is set in a box, so it stands out from the article."
+        },
+        {
+          "id": "q8a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(a)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two problems that stop people from using public transport.",
+          "model": "Any two of: services are unreliable or late (1); fares rise every year (1); evening and weekend services are limited (1); waiting in the dark at stops without shelter or lighting feels unsafe (1); fares are costly for students and part-time workers (1).",
+          "check": [
+            "I gave two different problems.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q8b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(b)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two suggestions to help people start using public transport.",
+          "model": "Any two of: try the journey at the weekend (1); ask your employer about season ticket loans (1); report broken lighting and missing shelters to the council (1); tell the operator when things go well (1).",
+          "check": [
+            "I gave two different suggestions.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Using Text C, give two quotations that suggest public transport benefits people's lives beyond simply getting from place to place.",
+          "model": "Any two of: \"a student who read two novels a month on the way to college\" (1); \"my bus was the only reason he saw another person all week\" (1); \"a lifeline for the lonely\" (1); \"a lifeline for the young\" (1).",
+          "check": [
+            "I copied two quotations.",
+            "Each one shows a benefit beyond travel.",
+            "I did not just paraphrase."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 4,
+          "prompt": "Using Text C, identify two language features used to persuade the audience to support public transport. Give an example to support each answer.",
+          "model": "Any two features, each with a linked example: direct address (1), e.g. \"thank you for turning out\" or \"Try it for a week\" (1); personal experience or first person (1), e.g. \"I have driven the number 14 for twenty-two years\" (1); rule of three (1), e.g. \"reliable... affordable... safe\" or \"a lifeline for the lonely, a lifeline for the young...\" (1); rhetorical question (1), e.g. \"Will it cost money to get this right?\" (1); statistics (1), e.g. \"more than 400,000 passengers\" (1); repetition (1), e.g. \"a lifeline... a lifeline...\" (1); emotive language (1), e.g. \"lifeline\" (1).",
+          "check": [
+            "I named one language feature.",
+            "I gave an example that matches it.",
+            "I named a second, different feature.",
+            "I gave an example that matches the second one."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which one of these quotations from Text C shows that the speaker has a positive view of public transport?",
+          "options": [
+            "\"Buses run late when roadworks block the high street\"",
+            "\"shelters are often broken or missing\"",
+            "\"I still believe that public transport is worth fighting for\"",
+            "\"I used to be sceptical myself\""
+          ],
+          "answer": 2,
+          "why": "The other quotations describe problems or an earlier doubt. \"Worth fighting for\" shows a positive view."
+        },
+        {
+          "id": "q12a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(a)",
+          "marks": 1,
+          "prompt": "You may use a dictionary. Text A says: \"your wallet and your wellbeing\". Give one word or phrase to replace \"wellbeing\" that keeps the meaning the same.",
+          "model": "Health, happiness, welfare, comfort, quality of life.",
+          "check": [
+            "My word means about the same as \"wellbeing\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q12b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(b)",
+          "marks": 1,
+          "prompt": "Text C says: \"I used to be sceptical myself\". Give one word or phrase to replace \"sceptical\" that keeps the meaning the same.",
+          "model": "Doubtful, unconvinced, suspicious, cynical, not sure it worked.",
+          "check": [
+            "My word or phrase means about the same as \"sceptical\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "13",
+          "marks": 6,
+          "prompt": "Compare similar ideas from Text A and Text C about how people can start using public transport. In your answer you should: give two similarities from these texts; give one quotation from Text A and one quotation from Text C to support each similarity.",
+          "model": "Any two similarities, each with a supporting quotation from each text. Try it for a short time first (1): A \"Try leaving the car at home one day a week\" (1), C \"Try it for a week\" (1). Use the journey to read or relax (1): A \"pack a book or some music\" (1), C \"take a book\" (1). Save money (1): A \"A weekly or monthly ticket is usually much cheaper\" (1), C \"It will be cheaper, greener\" (1).",
+          "check": [
+            "I gave a first similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it.",
+            "I gave a second, different similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A,B",
+          "label": "14",
+          "marks": 1,
+          "prompt": "Which one of these statements about the language used in Text A and Text B is correct?",
+          "options": [
+            "Both use statistics to support their points.",
+            "Both use humour to appeal to the reader.",
+            "Both include personal experience from the writer.",
+            "Both speak directly to the reader."
+          ],
+          "answer": 3,
+          "why": "Both talk to the reader as \"you\" (\"you may never look back\", \"If you are thinking about changing the way you travel\"). Only Text B has statistics, and neither is humorous or tells a personal story."
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Your friend wants to know about the benefits of using public transport. Identify one benefit from each of the three texts.",
+          "model": "Text A: saves money, gives time to read or listen to music, or is good for your wellbeing (1). Text B: less congestion, cleaner air or quieter streets (1). Text C: helps lonely people, is cheaper and greener, or lets you arrive more relaxed (1).",
+          "check": [
+            "I gave one benefit from Text A.",
+            "I gave one benefit from Text B.",
+            "I gave one benefit from Text C."
           ]
         }
       ]
@@ -3259,6 +4632,463 @@
             "I said what Text B says about work.",
             "I said what Text C says about it.",
             "I said how the two are the same or different."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rl2-geography",
+      "topic": "UK geography",
+      "title": "The future of the village",
+      "length": "long",
+      "minutes": 45,
+      "levels": [
+        "L2"
+      ],
+      "intro": "Three texts about village life, housing and young people.",
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Fenland Rural Housing Advice",
+          "numbered": true,
+          "title": "Moving to a village: what to consider",
+          "body": [
+            {
+              "p": "Many people dream of swapping the city for a village, with its open views, quiet lanes and friendly faces. Village life can be wonderful, but it works best for those who have thought carefully about what they are choosing. A little research now will help you avoid disappointment later."
+            },
+            {
+              "p": "Think first about getting around. Many villages have only a few buses each day, and some have none at all in the evening, so a car is often essential. If you do not drive, check the timetable before you commit, because a short journey can turn into a bit of a trek."
+            },
+            {
+              "p": "Next, look at local services. A village shop with a post office, a primary school and a doctor's surgery can make daily life much easier, but each of these is hard to keep open when the population is small. Find out which facilities are within walking distance and which are a drive away."
+            },
+            {
+              "p": "Housing is the next big question. Homes in villages are often older, with larger gardens, and they can cost more than similar properties in towns because so few come up for sale. Rented homes are scarce, so you may have to wait. Ask the parish council whether any new houses are planned."
+            },
+            {
+              "p": "Community matters too. Villages thrive when people take part, whether by helping at the summer fair, joining the church committee or simply popping into the pub. Why not go along to an event before you move? You will soon get a feel for the place."
+            },
+            {
+              "p": "Finally, visit at different times of year. A village in June is a picture postcard, but in January it can feel very different. Spend a weekend there in winter if you can, and make sure you are happy with what you find. If you are, you're all set."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Magazine article",
+          "source": "Rural Review magazine",
+          "title": "Why are young people leaving our villages?",
+          "body": [
+            {
+              "p": "Walk through almost any English village on a weekday afternoon and you will notice who is missing. A survey of 2,500 people aged 18 to 30 by the Rural Futures Group found that 57 per cent of those raised in villages had moved away by the age of 25, and only one in eight of them expected to return."
+            },
+            {
+              "p": "The reasons are not mysterious. House prices in villages are often far higher than local wages can support, and homes to rent are rare. For many young people, a village home is not so much the first rung of the ladder as \"a ladder with the bottom rungs missing\". Others leave for work, since jobs in the countryside tend to be scarce, seasonal or poorly paid."
+            },
+            {
+              "p": "Transport is another barrier. Without a car, a young person who lives in a village may depend on a bus that runs twice a day, which makes college, evening jobs and friendships difficult to sustain. Some say the situation leaves them feeling cut off, and no wonder."
+            },
+            {
+              "p": "The effect on the villages themselves can be severe. As young families leave, schools lose pupils and shops lose customers. Eventually, the village risks \"a hollowing out\": the buildings remain, but the life drains away. Rural pubs, post offices and clubs are closing at a worrying rate."
+            },
+            {
+              "box": "**Advice from the Rural Communities Forum:** Parish councils should survey local young people about what they need. Landowners should consider selling small plots for affordable homes. Bus operators should trial evening and weekend routes. And villagers should welcome newcomers, whatever their age."
+            },
+            {
+              "p": "There are encouraging examples. In one village, a community land trust has built eight low-cost homes, all reserved for local people, and the primary school has since gained a dozen pupils. Residents say that the change has brought new energy to the place."
+            },
+            {
+              "p": "In my view, a village without young people is a village without a future, and it is the duty of everyone who lives there to do something about it. Waiting for someone else to act is not an option."
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Transcript of a speech",
+          "source": "Parish council meeting",
+          "title": "Speech to a parish council meeting",
+          "body": [
+            {
+              "p": "Good evening, everyone, and thank you for coming to what I know is a difficult discussion. I have lived in this village for forty years, I have served on this council for twelve, and I am asking you tonight to say yes to the new homes on Mill Field."
+            },
+            {
+              "p": "Let me begin with a story. Last spring, a young woman I know, born and raised in this parish, told me she was leaving. She had a job at the surgery, a family nearby and a love for this place, but she could not find a home she could afford. When she left, we did not just lose a neighbour. We lost a future."
+            },
+            {
+              "p": "So what do we need? First, we need homes that local people can afford. Second, we need young families, because without them the school will close. Third, we need to keep our shop, our hall and our pub alive, and they can only survive if people live here all year round."
+            },
+            {
+              "p": "Will there be disruption? Of course there will. Will some of you miss the view across the field? I will, too. But what is the alternative? A village of empty houses, shuttered windows and a bus stop that nobody uses. I refuse to let that happen on my watch."
+            },
+            {
+              "p": "The figures speak for themselves. Eighteen of the twenty-four new homes will be reserved for people with a local connection, and the developer has promised to pay for a new footpath, a play area and a bus shelter. Since our school roll fell by a third in five years, we cannot afford to hesitate."
+            },
+            {
+              "p": "I have heard the worry about traffic. It is a fair worry, and I share it. That is why I have asked for a speed limit on the lane and a crossing by the school. We can protect our village and still make room for the next generation."
+            },
+            {
+              "p": "Think of the Saturday fair in ten years' time. I picture young families with pushchairs, children running between the stalls and every volunteer wearing a smile. That is the village I want to leave behind, and I believe it is the village you want, too."
+            },
+            {
+              "p": "It will be difficult, but it will be worth it. Please vote with your hearts, and vote for the future. Thank you."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "label": "1",
+          "marks": 2,
+          "prompt": "Your friend wants to find out more about a village before moving. Using Text A, identify two things to check.",
+          "model": "Any two of: bus or transport timetables (1); local services such as a shop, school or doctor's surgery (1); whether new houses are planned (1); what the village is like in winter (1); what community events are held (1).",
+          "check": [
+            "I gave two different things.",
+            "Both come from Text A."
+          ]
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "label": "2",
+          "marks": 1,
+          "prompt": "Which word best describes the tone of Text A?",
+          "options": [
+            "Cautionary",
+            "Boastful",
+            "Mocking",
+            "Nostalgic"
+          ],
+          "answer": 0,
+          "why": "The writer praises village life but warns the reader to choose \"carefully\" and tells them how to \"avoid disappointment\". That is cautionary."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L2"
+          ],
+          "type": "multi",
+          "text": "A",
+          "label": "3",
+          "marks": 2,
+          "prompt": "Which TWO of these quotations from Text A are examples of informal language?",
+          "options": [
+            "\"a short journey can turn into a bit of a trek\"",
+            "\"Rented homes are scarce\"",
+            "\"Ask the parish council whether any new houses are planned\"",
+            "\"simply popping into the pub\"",
+            "\"Homes in villages are often older\""
+          ],
+          "answer": [
+            0,
+            3
+          ],
+          "why": "Informal language is casual and conversational. \"A bit of a trek\" and \"popping into the pub\" are everyday expressions. The other quotations sound more factual and formal."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L2"
+          ],
+          "type": "match",
+          "text": "A",
+          "label": "4",
+          "marks": 2,
+          "prompt": "You have been asked to add subheadings to each paragraph in Text A. Choose the paragraph number that best matches each subheading. Three have been done for you.",
+          "paragraphs": 6,
+          "items": [
+            {
+              "label": "Check the seasons",
+              "answer": 6,
+              "given": true
+            },
+            {
+              "label": "Local services",
+              "answer": 3
+            },
+            {
+              "label": "Why a village?",
+              "answer": 1,
+              "given": true
+            },
+            {
+              "label": "Community life",
+              "answer": 5
+            },
+            {
+              "label": "Getting around",
+              "answer": 2,
+              "given": true
+            },
+            {
+              "label": "Housing",
+              "answer": 4
+            }
+          ],
+          "why": "Each subheading sums up one paragraph: paragraph 3 is about shops, schools and surgeries, paragraph 4 about housing and paragraph 5 about community life."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "5",
+          "marks": 2,
+          "prompt": "What does each of these quotations from Text B suggest about young people in villages? \"a ladder with the bottom rungs missing\" and \"a hollowing out\"",
+          "model": "\"A ladder with the bottom rungs missing\" suggests that young people cannot take the first steps to owning a home because the cheapest options do not exist (1). \"A hollowing out\" suggests that the village looks the same on the outside but loses its life and activity inside (1).",
+          "check": [
+            "I explained the first quotation in my own words.",
+            "I explained the second quotation in my own words.",
+            "I did not just copy the quotations."
+          ]
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "6",
+          "marks": 1,
+          "prompt": "Text B includes both facts and opinions. Which one of these statements is an opinion?",
+          "options": [
+            "57 per cent of those raised in villages had moved away by the age of 25.",
+            "A community land trust has built eight low-cost homes.",
+            "A village without young people is a village without a future.",
+            "Some villages have a bus that runs twice a day."
+          ],
+          "answer": 2,
+          "why": "The other statements report things that can be checked. \"A village without young people is a village without a future\" is a personal view, so it is an opinion."
+        },
+        {
+          "id": "q7a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "7(a)",
+          "marks": 1,
+          "prompt": "Who provides advice about helping young people in Text B?",
+          "model": "The Rural Communities Forum.",
+          "check": [
+            "I named the organisation.",
+            "It comes from the box in Text B."
+          ]
+        },
+        {
+          "id": "q7b",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "label": "7(b)",
+          "marks": 1,
+          "prompt": "Which organisational feature is used to present this advice?",
+          "options": [
+            "Subheadings",
+            "A text box",
+            "A speech bubble",
+            "A bulleted list"
+          ],
+          "answer": 1,
+          "why": "The advice is shown in a box, which separates it from the rest of the article."
+        },
+        {
+          "id": "q8a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(a)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two problems that young people in villages face.",
+          "model": "Any two of: house prices are higher than local wages can support (1); homes to rent are rare (1); jobs are scarce, seasonal or poorly paid (1); public transport is poor (1); they can feel cut off (1).",
+          "check": [
+            "I gave two different problems.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q8b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "B",
+          "label": "8(b)",
+          "marks": 2,
+          "prompt": "Using Text B, identify two suggestions to help young people stay in villages.",
+          "model": "Any two of: parish councils should survey local young people (1); landowners should sell small plots for affordable homes (1); bus operators should trial evening and weekend routes (1); villagers should welcome newcomers (1); build low-cost homes through a community land trust (1).",
+          "check": [
+            "I gave two different suggestions.",
+            "Both come from Text B."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "9",
+          "marks": 2,
+          "prompt": "Using Text C, give two quotations that suggest the speaker is worried about the future of the village.",
+          "model": "Any two of: \"we did not just lose a neighbour. We lost a future\" (1); \"without them the school will close\" (1); \"A village of empty houses, shuttered windows and a bus stop that nobody uses\" (1); \"I refuse to let that happen on my watch\" (1); \"we cannot afford to hesitate\" (1).",
+          "check": [
+            "I copied two quotations.",
+            "Each one shows worry about the future.",
+            "I did not just paraphrase."
+          ]
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "C",
+          "label": "10",
+          "marks": 4,
+          "prompt": "Using Text C, identify two language features used to persuade the audience to support the new homes. Give an example to support each answer.",
+          "model": "Any two features, each with a linked example: direct address (1), e.g. \"thank you for coming\" or \"Please vote with your hearts\" (1); personal experience or first person (1), e.g. \"I have lived in this village for forty years\" (1); rule of three (1), e.g. \"empty houses, shuttered windows and a bus stop...\" or \"First... Second... Third...\" (1); rhetorical question (1), e.g. \"Will there be disruption?\" (1); statistics (1), e.g. \"Eighteen of the twenty-four new homes\" or \"fell by a third in five years\" (1); anecdote or story (1), e.g. \"Let me begin with a story\" (1); emotive language (1), e.g. \"We lost a future\" (1).",
+          "check": [
+            "I named one language feature.",
+            "I gave an example that matches it.",
+            "I named a second, different feature.",
+            "I gave an example that matches the second one."
+          ]
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "C",
+          "label": "11",
+          "marks": 1,
+          "prompt": "Which one of these quotations from Text C shows that the speaker has a positive view of the village's future with the new homes?",
+          "options": [
+            "\"Will some of you miss the view across the field?\"",
+            "\"I have heard the worry about traffic\"",
+            "\"We can protect our village and still make room for the next generation\"",
+            "\"a difficult discussion\""
+          ],
+          "answer": 2,
+          "why": "The other quotations mention worries or difficulty. \"Make room for the next generation\" shows the speaker is hopeful."
+        },
+        {
+          "id": "q12a",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(a)",
+          "marks": 1,
+          "prompt": "You may use a dictionary. Text A says: \"Rented homes are scarce\". Give one word or phrase to replace \"scarce\" that keeps the meaning the same.",
+          "model": "Rare, hard to find, in short supply, uncommon, limited.",
+          "check": [
+            "My word means about the same as \"scarce\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q12b",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "12(b)",
+          "marks": 1,
+          "prompt": "Text C says: \"we cannot afford to hesitate\". Give one word or phrase to replace \"hesitate\" that keeps the meaning the same.",
+          "model": "Delay, wait, pause, put it off, be unsure.",
+          "check": [
+            "My word or phrase means about the same as \"hesitate\".",
+            "It still makes sense in the sentence."
+          ]
+        },
+        {
+          "id": "q13",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,C",
+          "label": "13",
+          "marks": 6,
+          "prompt": "Compare similar ideas from Text A and Text C about what keeps a village alive. In your answer you should: give two similarities from these texts; give one quotation from Text A and one quotation from Text C to support each similarity.",
+          "model": "Any two similarities, each with a supporting quotation from each text. Local services matter (1): A \"A village shop with a post office, a primary school and a doctor's surgery\" (1), C \"keep our shop, our hall and our pub alive\" (1). People taking part in community life (1): A \"Villages thrive when people take part\" (1), C \"Think of the Saturday fair in ten years' time\" (1). The need for suitable homes (1): A \"Ask the parish council whether any new houses are planned\" (1), C \"homes that local people can afford\" (1).",
+          "check": [
+            "I gave a first similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it.",
+            "I gave a second, different similarity.",
+            "I gave a quotation from Text A for it.",
+            "I gave a quotation from Text C for it."
+          ]
+        },
+        {
+          "id": "q14",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A,B",
+          "label": "14",
+          "marks": 1,
+          "prompt": "Which one of these statements about the language used in Text A and Text B is correct?",
+          "options": [
+            "Both use rhetorical questions to challenge the reader.",
+            "Both include statistics to support their points.",
+            "Both speak directly to the reader.",
+            "Both use humour to appeal to the reader."
+          ],
+          "answer": 2,
+          "why": "Both talk to the reader as \"you\" (\"You will soon get a feel for the place\" and \"you will notice who is missing\"). Only Text B has statistics, only Text A asks a question, and neither is humorous."
+        },
+        {
+          "id": "q15",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "A,B,C",
+          "label": "15",
+          "marks": 3,
+          "prompt": "Your friend wants to know about the services a village needs. Identify one service from each of the three texts.",
+          "model": "Text A: a shop, post office, primary school, doctor's surgery or bus service (1). Text B: school, shops, pubs, post offices, clubs or bus services (1). Text C: the school, shop, village hall, pub, footpath or bus shelter (1).",
+          "check": [
+            "I gave one service from Text A.",
+            "I gave one service from Text B.",
+            "I gave one service from Text C."
           ]
         }
       ]

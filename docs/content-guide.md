@@ -35,6 +35,7 @@ Each question has `id`, `levels` (`["L1"]`, `["L2"]` or both), `text` (`"A"`, `"
 | `tfns`        | `prompt` (the statement), `answer`: `true`, `false` or `notstated`, `why` |
 | `factopinion` | `prompt` (the quote), `answer`: `fact` or `opinion`, `why` |
 | `multi`       | `prompt`, `options`, `answer` (array of 0-based indexes, e.g. `[1, 3]`), `why`. "Choose two" style; `marks` should equal the number of answers |
+| `match`       | `prompt`, `paragraphs` (how many), `items` (each `{label, answer, given}`; `given: true` is done for the learner), `why`. Used with texts that have `"numbered": true` |
 | `open`        | `prompt`, `model` (a model answer), `check` (self-check list) |
 
 Aim for 4 to 8 questions per level. Vary the position of the correct option.
@@ -45,6 +46,7 @@ Same shape as a reading mission, plus:
 
 - mission fields: `"length": "long"`, `"minutes": 35`, `"levels": ["L1"]` (the mission only appears at those levels), `"intro"` (one line shown before Text A).
 - question fields: `"label"` (such as `"1(b)"`, shown to the learner), `"marks"` (shown as "2 marks"), and `"text"` can name more than one text, for example `"B,C"`.
+- Level 2 longer missions use `"levels": ["L2"]`, `"minutes": 45`, 35 marks, and sections Q1 to 4, 5 to 8, 9 to 11 and 12 to 15. Set `"numbered": true` on a text to show paragraph numbers.
 - text bodies can also use `{ "ol": [ ... ] }` (numbered list), `{ "box": "..." }` (text box) and `{ "callout": "..." }` (speech bubble). Wrap words in `**double asterisks**` for bold, in any paragraph, list item, box or bubble. Question 1(b) asks which of these features helped, so give each mission a different one.
 
 Keep to the Level 1 layout in `docs/exam-notes.md`: text lengths, 15 numbered questions, 30 marks. Check a new mission with `node tools/validate.mjs`, which tests text lengths, mark totals, answer keys and references. Run it before every commit.

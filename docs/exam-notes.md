@@ -27,7 +27,6 @@ Only structure, marks, statistics and skills are recorded here. No question text
 - **Photograph or image questions** (Level 1, "what does the photograph tell you"): our texts have no images.
 - **A stimulus on the writing tasks:** the real papers start from an advert, email, notice or similar. Our tasks describe a situation in words.
 - **Alignment of the longer reading missions:** section totals (5/12/10/3) match, but the per-question marks and the order of question skills differ from the official Level 1 paper (for example, the official punctuation question is Question 5 and worth 1; facts and opinions and formal language come in Text C).
-- **Level 2 longer reading missions:** the official layout is now known; none are written yet.
 
 ## Verified
 
@@ -82,6 +81,12 @@ Level 2 reading paper (first checked against two Pearson-format practice papers 
 - **Wording of our marking guide:** the bands and criteria now match Pearson's, but the descriptions are our own summary, not the official wording.
 - **Pass marks on live papers:** the figures above are for the sample papers and may differ.
 - **Level 2 formats in the toolkit:** the toolkit now has guides for forum posts, online forms, advice sheets, diary entries and newsletters. Eye-witness accounts are not covered yet.
+
+## Level 2 longer reading missions
+
+Four Level 2 longer missions (`rl2-*`, one per topic) follow the official Level 2 sample paper: three texts on one theme in three formats (a numbered-paragraph web page, an article with an advice box, a transcript of a speech or talk), 15 numbered questions and 35 marks, with marks per question of 2,1,2,2 / 2,1,2,4 / 2,4,1 / 2,6,1,3. The question skills follow the official pattern: identify two items, choose the style or tone, choose two quotations of formal or informal language, match subheadings to paragraphs (some done for the learner; 1 mark for one correct, 2 for two or three on the real paper), explain what quotations suggest, pick the opinion, find who gives advice and how it is presented, two problems and two suggestions, two quotations, two language features with examples, the positive-view quotation, synonyms with a dictionary, a 6-mark comparison, a statement about language across two texts, and a 3-mark question drawing on all three texts. Text lengths are about 295 to 306 (A), 350 to 358 (B) and 379 to 404 (C) words.
+
+Not yet done at Level 2: the questions always put the advice in a text box and the shared language feature is always direct address, which is predictable; later missions should vary both.
 
 ## How the site matches the real paper
 
