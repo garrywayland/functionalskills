@@ -1,0 +1,637 @@
+{
+  "note": "Official items come from Pearson hosts only. Unofficial items never download unless download is set to true by hand.",
+  "items": [
+    {
+      "id": "spec-l1-l2",
+      "level": "L1+L2",
+      "component": "both",
+      "kind": "specification",
+      "title": "Pearson Edexcel Functional Skills English L1 and L2 specification",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/pearson-edexcel-functional-skills-in-english-spec-l1-l2.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "sample-marked-l2-writing",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "Level 2 writing: sample marked learner work",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-English-L2-Writing-SMLW-0321.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "assessor-l1-writing-q1",
+      "level": "L1",
+      "component": "writing",
+      "kind": "assessor-training",
+      "title": "You are the assessor: Level 1 writing question 1",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/you-are-the-assessor-level-1-writing-question-1.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "examiner-report-l1-writing-2024",
+      "level": "L1",
+      "component": "writing",
+      "kind": "examiner-report",
+      "title": "Level 1 writing: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l1-writing-24.pdf",
+      "tier": "official",
+      "evidence": "Linked from a Pearson slide deck; not yet fetched"
+    },
+    {
+      "id": "examiner-report-l2-writing-2024",
+      "level": "L2",
+      "component": "writing",
+      "kind": "examiner-report",
+      "title": "Level 2 writing: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l2-writing-24.pdf",
+      "tier": "official",
+      "evidence": "Linked from a Pearson slide deck; not yet fetched"
+    },
+    {
+      "id": "guidance-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "guidance-to-centres",
+      "title": "Level 2 guidance to centres (includes annotated candidate papers)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/Pearson_Edexcel_FS_English_L2_Guidance_to_Centres.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "grade-boundaries",
+      "level": "all",
+      "component": "both",
+      "kind": "grade-boundaries",
+      "title": "Functional Skills pass grade boundaries",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/reform/functional-skills-pass-grade-boundaries.pdf",
+      "tier": "official",
+      "evidence": "URL appeared in Pearson search results on 2026-10-16"
+    },
+    {
+      "id": "guidance-l1",
+      "level": "L1",
+      "component": "both",
+      "kind": "guidance-to-centres",
+      "title": "Level 1 guidance to centres",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/Pearson_Edexcel_FS_English_L1_Guidance_to_Centres.pdf",
+      "tier": "official",
+      "evidence": "Seen in Pearson search results 2026-10-16"
+    },
+    {
+      "id": "sample-marked-l1-writing",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "Level 1 writing: sample marked learner work",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-English-L1-Writing-SMLW-0321.pdf",
+      "tier": "official",
+      "evidence": "Seen in Pearson search results 2026-10-16"
+    },
+    {
+      "id": "exemplar-l1-email",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L1 writing exemplar: email",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/FS_English_L1_Email_Task_Exemplar_Response.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l1-online-feedback",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L1 writing exemplar: online feedback form",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-1-online-feedback-form-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l1-review",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L1 writing exemplar: review",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-1-review-learner-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l1-web-forum",
+      "level": "L1",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L1 writing exemplar: web forum contribution",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-1-web-forum-contribution-learner-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l2-online-feedback",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L2 writing exemplar: online feedback form",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-2-online-feedback-form-learner-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l2-report",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L2 writing exemplar: report",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-2-report-learner-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l2-article",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L2 writing exemplar: article",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/FS_English_L2_Article_Task_Exemplar_Response.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l2-formal-letter",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L2 writing exemplar: formal letter",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/level-2-formal-letter-learner-response-and-examiner-comments.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "exemplar-l2-online-forum",
+      "level": "L2",
+      "component": "writing",
+      "kind": "sample-marked-work",
+      "title": "L2 writing exemplar: online forum",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/forms-and-administration/FS_English_L2_Online_Forum_Task_Exemplar_Response.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "assessor-l2-writing-q1",
+      "level": "L2",
+      "component": "writing",
+      "kind": "assessor-training",
+      "title": "You are the assessor: L2 writing question 1",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/you-are-the-assessor-level-2-writing-question-1.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "assessor-l2-writing-q2",
+      "level": "L2",
+      "component": "writing",
+      "kind": "assessor-training",
+      "title": "You are the assessor: L2 writing question 2",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/you-are-the-assessor-level-2-writing-question-2.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "assessor-l1-reading-1",
+      "level": "L1",
+      "component": "reading",
+      "kind": "assessor-training",
+      "title": "You are the assessor: L1 reading",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/you-are-the-assessor-level-1-reading-1.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-mini-test-1",
+      "level": "L1",
+      "component": "reading",
+      "kind": "practice-paper",
+      "title": "L1 reading mini test 1 (with mark scheme)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Functional%20Skills%20English%20-%20Level%201%20Reading%20-%20Mini%20Test%201.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-mini-test-2",
+      "level": "L1",
+      "component": "reading",
+      "kind": "practice-paper",
+      "title": "L1 reading mini test 2",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-English-L1-Reading-Mini-Test2.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-exemplification",
+      "level": "L1",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "L1 reading exemplification",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Reading_Exemplification_FS_English_L1_Guidance%20to%20Centres.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-exemplars",
+      "level": "L1",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "L1 reading exemplars",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Reading_Exemplars_FS_English_L1_Guidance%20to%20Centres.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-exemplification",
+      "level": "L2",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "L2 reading exemplification",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Reading_Exemplification_FS_English_L2_Guidance%20to%20Centres.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-exemplars",
+      "level": "L2",
+      "component": "reading",
+      "kind": "sample-marked-work",
+      "title": "L2 reading exemplars",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Reading_Exemplars_FS_English_L2_Guidance%20to%20Centres.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-language-features",
+      "level": "L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L2 reading: language features",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Reading_Lanuage_Features_L2_Reformed_FS__English.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-comparing-ideas",
+      "level": "L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L2 reading: comparing ideas",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/teaching-the-fundamentals-level-2-comparing-ideas.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-features-matching",
+      "level": "L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L2 reading: language features matching exercise",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/fs-english-l2-reading-language-features-matching-exercise.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-features-naming",
+      "level": "L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L2 reading: naming language features",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/fs-english-l2-reading-language-features-naming-examples.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l2-reading-features-finding",
+      "level": "L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L2 reading: finding language features",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/fs-english-l2-reading-language-features-finding-examples.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "reading-fact-vs-opinion",
+      "level": "L1+L2",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "Reading: fact vs opinion",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Functional_Skills_English_Reading_Fact_vs_Opinion.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-punctuation",
+      "level": "L1",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L1 reading: punctuation for the reading assessment",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-English-L1-Punctunation-Reading-Assessment.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-words-choose",
+      "level": "L1",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L1 reading: specialist words (choose the quotation)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-reading-specialist-words-in-context-choose-the-quotation.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "l1-reading-words-explain",
+      "level": "L1",
+      "component": "reading",
+      "kind": "teaching-resource",
+      "title": "L1 reading: specialist words (explain the quotation)",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-reading-specialist-words-in-context-explain-the-quotation.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "writing-formats",
+      "level": "L1+L2",
+      "component": "writing",
+      "kind": "teaching-resource",
+      "title": "L1 and L2 writing formats",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Writing_Formats_L1_L2_Reformed_FS__English.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "glossary",
+      "level": "L1+L2",
+      "component": "both",
+      "kind": "teaching-resource",
+      "title": "L1 and L2 glossary of terms",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/FS-english-glossary-of-terms.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "writing-cohesion",
+      "level": "L1+L2",
+      "component": "writing",
+      "kind": "teaching-resource",
+      "title": "Writing cohesion",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-writing-cohesion.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "spelling-strategies",
+      "level": "all",
+      "component": "writing",
+      "kind": "teaching-resource",
+      "title": "Spelling strategies",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/Spelling_Strategies_Reformed_FS_English.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-article",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: article",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-article-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-diary-entry",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: diary entry",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-diary-entry-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-letter",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: letter",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-letter-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-letter-2",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: letter 2",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-letter-templated-structured-writing-frame-2.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-email",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: email",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-email-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-review",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: review",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-review-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l1-web-form",
+      "level": "L1",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L1 writing frame: web form",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-1-web-form-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-article",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: article",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-article-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-email",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: email",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-email-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-review",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: review",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-review-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-eyewitness-account",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: eyewitness account",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-eyewitness-account-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-letter",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: letter",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-letter-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "frame-l2-web-forum",
+      "level": "L2",
+      "component": "writing",
+      "kind": "writing-frame",
+      "title": "L2 writing frame: web forum",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/specification-and-sample-assessments/functional-skills-english-level-2-web-forum-templated-structured-writing-frame.pdf",
+      "tier": "official",
+      "evidence": "Listed on Pearson's Functional Skills English resources hub page (checked 2026-10-16)"
+    },
+    {
+      "id": "examiner-report-l1-reading-2024",
+      "level": "L1",
+      "component": "reading",
+      "kind": "examiner-report",
+      "title": "L1 reading: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l1-reading-24.pdf",
+      "tier": "official",
+      "evidence": "Guessed from the writing report's filename; fetch will confirm"
+    },
+    {
+      "id": "examiner-report-l2-reading-2024",
+      "level": "L2",
+      "component": "reading",
+      "kind": "examiner-report",
+      "title": "L2 reading: principal examiner report 2024",
+      "url": "https://qualifications.pearson.com/content/dam/pdf/Functional-skills/English/2019/Exam-materials/principal-examiner-report-l2-reading-24.pdf",
+      "tier": "official",
+      "evidence": "Guessed from the writing report's filename; fetch will confirm"
+    },
+    {
+      "id": "retired-papers",
+      "level": "L1+L2",
+      "component": "both",
+      "kind": "practice-paper",
+      "title": "Retired paper-based assessments (Pearson course materials page)",
+      "url": null,
+      "tier": "official",
+      "evidence": "Pearson lists these on a page built by JavaScript; open it in a browser and copy the PDF links"
+    },
+    {
+      "id": "sam-l1-mirror",
+      "level": "L1",
+      "component": "both",
+      "kind": "sam",
+      "title": "Level 1 sample assessment materials (Pearson SAM, third-party copy)",
+      "url": "https://pastpapers.papacambridge.com/directories/Pearson/Pearson-pastpapers/upload/sam-l1-fs-english-plain.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16. Pearson's own link returns a web page, not the PDF.",
+      "download": true,
+      "licence_note": "Pearson-published free sample assessment, copied by a third-party site. Private study only."
+    },
+    {
+      "id": "sam-l2-mirror",
+      "level": "L2",
+      "component": "both",
+      "kind": "sam",
+      "title": "Level 2 sample assessment materials (Pearson SAM, third-party copy)",
+      "url": "https://pastpapers.papacambridge.com/directories/Pearson/Pearson-pastpapers/upload/sam-l2-fs-english-plain.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16. Pearson's own link returns a web page, not the PDF.",
+      "download": true,
+      "licence_note": "Pearson-published free sample assessment, copied by a third-party site. Private study only."
+    },
+    {
+      "id": "practice-l2-reading-2",
+      "level": "L2",
+      "component": "reading",
+      "kind": "practice-paper",
+      "title": "L2 reading practice paper 2 (PENR2, third-party copy)",
+      "url": "https://www.thinkonlinetraining.com/app/uploads/2020/07/pearson-edexcel-functional-skills-english-level-2-reading-practice-paper-component-2-practice-2.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": true,
+      "licence_note": "Pearson practice paper copied by a training provider. Private study only."
+    },
+    {
+      "id": "practice-l2-reading-2-ms",
+      "level": "L2",
+      "component": "reading",
+      "kind": "mark-scheme",
+      "title": "L2 reading practice paper 2 mark scheme (third-party copy)",
+      "url": "https://www.thinkonlinetraining.com/app/uploads/2020/07/pearson-edexcel-functional-skills-english-level-2-reading-mark-scheme-practice-2.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": true,
+      "licence_note": "Pearson mark scheme copied by a training provider. Private study only."
+    },
+    {
+      "id": "mirror-l2-writing-practice2-ms",
+      "level": "L2",
+      "component": "writing",
+      "kind": "mark-scheme",
+      "title": "Level 2 writing practice paper 2 mark scheme (copy on a third-party revision site)",
+      "url": "https://mmerevise.co.uk/app/uploads/2020/08/pearson-edexcel-functional-skills-english-level-2-writing-mark-scheme-component-2-practice-2.pdf",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": true,
+      "licence_note": "Pearson mark scheme copied by a revision site. Private study only."
+    },
+    {
+      "id": "index-functionalskills-co-uk-l2",
+      "level": "L2",
+      "component": "both",
+      "kind": "index-page",
+      "title": "Third-party index of Level 2 past papers",
+      "url": "https://functionalskills.co.uk/past-papers/english-level-2-past-papers/",
+      "tier": "unofficial",
+      "evidence": "Seen in search results 2026-10-16",
+      "download": false,
+      "licence_note": "Index page only; documents it links to have their own terms."
+    }
+  ]
+}
