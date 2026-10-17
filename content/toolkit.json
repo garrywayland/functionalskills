@@ -1,0 +1,450 @@
+{
+  "formats": [
+    {
+      "id": "email",
+      "name": "Email",
+      "summary": "Short, clear and polite, with a subject line that says what it is about.",
+      "layout": [
+        "To: the person's email address.",
+        "Subject: a few words that say what the email is about, such as \"Volunteer application for Panda Week\".",
+        "A greeting on its own line.",
+        "Short paragraphs, one main point each.",
+        "A sign-off and your name (in practice tasks, use a made-up name)."
+      ],
+      "opening": "Say who you are and why you are writing in the first one or two sentences. For example: \"I am writing to apply for a place as a Panda Week volunteer.\"",
+      "closing": "Say what you would like to happen next, then sign off. For example: \"I look forward to hearing from you. Kind regards,\"",
+      "tone": "If you don't know the person, keep it formal: \"Dear Mr Patel\", no slang, no text-speak, no emojis. If you know them well, you can be friendlier, but still use full sentences.",
+      "checklist": [
+        "I included a subject line.",
+        "I started with a greeting, such as \"Dear ...\".",
+        "My first paragraph says why I am writing.",
+        "I used a new paragraph for each main point.",
+        "I ended with what I want to happen next.",
+        "I signed off, such as \"Kind regards\" and a name."
+      ],
+      "practice": {
+        "prompt": "You are emailing someone you have never met. Which opening is best?",
+        "options": [
+          "Hiya! Hope ur well :)",
+          "Dear Mr Patel, I am writing to ask about volunteering at Panda Week.",
+          "To whoever reads this, I want to volunteer.",
+          "Hey Sam, quick question."
+        ],
+        "answer": 1,
+        "why": "It uses a formal greeting and says straight away why you are writing. The others are too casual for someone you don't know."
+      }
+    },
+    {
+      "id": "letter",
+      "name": "Formal letter",
+      "summary": "Like a formal email, but with addresses and a date.",
+      "layout": [
+        "Your address in the top right corner.",
+        "The date underneath your address.",
+        "The other person's name or job title and address on the left, a little lower.",
+        "A greeting: \"Dear Ms Khan\" if you know the name, \"Dear Sir or Madam\" if you don't.",
+        "Paragraphs, then a sign-off and your name."
+      ],
+      "opening": "State your purpose clearly: \"I am writing to complain about ...\" or \"I am writing to ask for ...\"",
+      "closing": "Use \"Yours sincerely\" if you used their name, and \"Yours faithfully\" if you wrote \"Dear Sir or Madam\".",
+      "tone": "Formal and polite, even when you are complaining. Explain calmly, give reasons, and suggest what should happen.",
+      "checklist": [
+        "I included my address and the date.",
+        "I included the other person's name or job title and address.",
+        "My greeting and sign-off match (sincerely or faithfully).",
+        "My first paragraph says why I am writing.",
+        "I stayed polite throughout."
+      ],
+      "practice": {
+        "prompt": "You started your letter with \"Dear Sir or Madam\". How should you sign off?",
+        "options": [
+          "Yours faithfully",
+          "Yours sincerely",
+          "Love from",
+          "Cheers"
+        ],
+        "answer": 0,
+        "why": "When you don't know the person's name, you use \"Yours faithfully\". \"Yours sincerely\" goes with a named person, such as \"Dear Ms Khan\"."
+      }
+    },
+    {
+      "id": "article",
+      "name": "Article",
+      "summary": "For a newsletter, magazine or website. It needs a headline and should grab the reader.",
+      "layout": [
+        "A headline that is short and catches attention.",
+        "A subheading (optional) that adds a little more detail.",
+        "Paragraphs. You can use subheadings to break up a longer article.",
+        "Your name as the writer (a by-line) is optional."
+      ],
+      "opening": "Hook the reader. You could ask a question, give a surprising fact (from the task), or describe a scene. Then make it clear what the article is about.",
+      "closing": "End with a memorable final thought or a call to action, such as \"So next Monday, leave the car at home and catch the bus.\"",
+      "tone": "Match the readers. For students you can be lively and direct (\"you\"), but keep it in full sentences without slang.",
+      "checklist": [
+        "I wrote a headline.",
+        "My opening hooks the reader.",
+        "I used paragraphs, and subheadings if it is long.",
+        "I spoke to the reader directly where it helps.",
+        "I ended with a strong final thought or call to action."
+      ],
+      "practice": {
+        "prompt": "Which is the best headline for a college newsletter article encouraging students to use buses?",
+        "options": [
+          "Buses",
+          "This article is about buses and why you should use them more often than you do now",
+          "bus",
+          "Get On Board: Why the Bus Beats the School Run"
+        ],
+        "answer": 3,
+        "why": "It is short, catches attention and hints at the article's point. The others are too plain or too long."
+      }
+    },
+    {
+      "id": "review",
+      "name": "Review",
+      "summary": "Your opinion of something, with reasons, to help other people decide.",
+      "layout": [
+        "A title that names what you are reviewing.",
+        "A star rating or score (optional).",
+        "Paragraphs: what it is, what was good, what was not so good.",
+        "A final recommendation."
+      ],
+      "opening": "Say what you are reviewing and give a quick first impression: \"I visited Hollins Park with my family last weekend, and it was better than I expected.\"",
+      "closing": "Give a clear recommendation and who it would suit: \"I'd recommend it to families with young children, but go early.\"",
+      "tone": "Friendly and honest. Give reasons and examples for every opinion, not just \"it was good\".",
+      "checklist": [
+        "I named what I am reviewing.",
+        "I gave good points with reasons.",
+        "I gave at least one thing that could be better.",
+        "I ended with a clear recommendation."
+      ],
+      "practice": {
+        "prompt": "Which sentence would work best in a review?",
+        "options": [
+          "It was good.",
+          "I went there.",
+          "The feeding talk was the highlight, because the keeper answered every question from the children.",
+          "Everything was bad and nobody should go."
+        ],
+        "answer": 2,
+        "why": "It gives an opinion and a reason with a specific example, which helps the reader decide."
+      }
+    },
+    {
+      "id": "report",
+      "name": "Report",
+      "summary": "Information and recommendations for a group, laid out in clear sections.",
+      "layout": [
+        "A title that says what the report is about.",
+        "To, From and Date lines (optional, but useful).",
+        "An introduction that says why the report was written.",
+        "Subheadings for each section.",
+        "A final section called \"Recommendations\" or \"Conclusion\"."
+      ],
+      "opening": "Explain the purpose: \"This report looks at what there is for young people in Hawsden and Brayminster, and suggests ways to improve it.\"",
+      "closing": "Give clear recommendations. Numbered points work well: \"1. Run a later bus on Fridays.\"",
+      "tone": "Formal and factual. Avoid \"I think\" in most of it. Save opinions for the recommendations, and explain them.",
+      "checklist": [
+        "I gave the report a title.",
+        "My introduction explains the purpose.",
+        "I used subheadings for each section.",
+        "I kept the tone formal and factual.",
+        "I finished with clear recommendations."
+      ],
+      "practice": {
+        "prompt": "Which subheading suits a formal report?",
+        "options": [
+          "Stuff that's rubbish",
+          "Transport",
+          "OMG the buses!!",
+          "so yeah"
+        ],
+        "answer": 1,
+        "why": "Report subheadings should be short and plain, so the reader can find each section quickly."
+      }
+    },
+    {
+      "id": "blog",
+      "name": "Blog post",
+      "summary": "A personal, chatty piece for a website, with a clear view.",
+      "layout": [
+        "A title that catches attention.",
+        "Short paragraphs, which are easier to read on a screen.",
+        "Subheadings or a list are fine if they help."
+      ],
+      "opening": "Start in a personal way, such as a question or a short story, and make your view clear early on.",
+      "closing": "Sum up your view and invite readers to respond: \"Where would you rather live? Let me know in the comments.\"",
+      "tone": "Personal and friendly (\"I\", \"you\"), but still in full sentences with accurate spelling and punctuation. No text-speak.",
+      "checklist": [
+        "I wrote a title.",
+        "My opening is personal and makes my view clear.",
+        "I used short paragraphs.",
+        "I gave reasons for my view.",
+        "I ended by summing up or inviting a response."
+      ],
+      "practice": {
+        "prompt": "Which is the best final sentence for a blog post?",
+        "options": [
+          "So that's why I'd pick a village every time. Would you? Tell me in the comments.",
+          "The end.",
+          "Bye.",
+          "That's all I have to say about towns and villages and stuff."
+        ],
+        "answer": 0,
+        "why": "It sums up the writer's view and invites the reader to respond, which suits a blog."
+      }
+    }
+  ],
+  "spag": [
+    {
+      "id": "full-stops",
+      "name": "Full stops and capital letters",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "A sentence starts with a capital letter and ends with a full stop (or a question mark or exclamation mark).",
+        "Use capital letters for names of people, places, days and months, and for \"I\".",
+        "If you have two complete sentences, don't join them with a comma. Use a full stop instead."
+      ],
+      "example": {
+        "wrong": "the bus was late, we missed the start.",
+        "right": "The bus was late. We missed the start."
+      },
+      "practice": {
+        "prompt": "Which is punctuated correctly?",
+        "options": [
+          "we went to tel aviv in may.",
+          "We went to tel aviv in may.",
+          "We went to Tel Aviv in may",
+          "We went to Tel Aviv in May."
+        ],
+        "answer": 3,
+        "why": "The sentence starts with a capital, \"Tel Aviv\" and \"May\" are names so they need capitals, and it ends with a full stop."
+      }
+    },
+    {
+      "id": "question-marks",
+      "name": "Question marks",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "Use a question mark at the end of a direct question.",
+        "Questions often start with who, what, where, when, why, how, can, could, do or is.",
+        "In emails and letters, questions are a good way to ask for information politely."
+      ],
+      "example": {
+        "wrong": "Could you tell me what time the talk starts.",
+        "right": "Could you tell me what time the talk starts?"
+      },
+      "practice": {
+        "prompt": "Which sentence needs a question mark at the end?",
+        "options": [
+          "I would like to book two tickets",
+          "The bus leaves at ten",
+          "Is lunch included in the price",
+          "Please send me a timetable"
+        ],
+        "answer": 2,
+        "why": "\"Is lunch included in the price\" is asking something, so it ends with a question mark."
+      }
+    },
+    {
+      "id": "exclamation-marks",
+      "name": "Exclamation marks",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "Use an exclamation mark to show strong feeling, surprise or a command.",
+        "Use only one at a time, and not too often. In formal writing, you may not need any.",
+        "They work well in an article or a blog: \"Leave the car at home!\""
+      ],
+      "example": {
+        "wrong": "It was amazing!!!",
+        "right": "It was amazing!"
+      },
+      "practice": {
+        "prompt": "Which sentence uses an exclamation mark best?",
+        "options": [
+          "Dear Sir or Madam!",
+          "I am writing to ask about tickets!",
+          "Try the bus for one week and see the difference!",
+          "Yours faithfully!"
+        ],
+        "answer": 2,
+        "why": "This is a call to action in a persuasive piece, so an exclamation mark adds energy. The others are formal phrases that should not have one."
+      }
+    },
+    {
+      "id": "commas",
+      "name": "Commas",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "Use commas to separate items in a list: \"falafel, hummus and salad\". You usually don't need one before \"and\".",
+        "Use a comma after an opening word or phrase: \"However, the bus was late.\" \"In the morning, we went to the market.\"",
+        "Don't use a comma to join two full sentences."
+      ],
+      "example": {
+        "wrong": "We saw pandas monkeys and meerkats.",
+        "right": "We saw pandas, monkeys and meerkats."
+      },
+      "practice": {
+        "prompt": "Which is punctuated correctly?",
+        "options": [
+          "After lunch, we walked to the beach.",
+          "After lunch we, walked to the beach.",
+          "After, lunch we walked to the beach.",
+          "After lunch we walked, to the beach."
+        ],
+        "answer": 0,
+        "why": "\"After lunch\" is an opening phrase, so the comma goes straight after it."
+      }
+    },
+    {
+      "id": "apostrophes-possession",
+      "name": "Apostrophes for belonging",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "Use an apostrophe to show something belongs to someone: \"the keeper's talk\" (one keeper).",
+        "If the owner is a plural ending in s, put the apostrophe after the s: \"the pandas' enclosure\" (more than one panda).",
+        "Plurals that don't own anything don't need an apostrophe: \"two pandas\", not \"two panda's\"."
+      ],
+      "example": {
+        "wrong": "The pandas tail's are ringed.",
+        "right": "The pandas' tails are ringed."
+      },
+      "practice": {
+        "prompt": "Which is correct?",
+        "options": [
+          "The bus's were all late.",
+          "The drivers seat was broken.",
+          "The driver's seat was broken.",
+          "The drivers' seat's was broken."
+        ],
+        "answer": 2,
+        "why": "The seat belongs to one driver, so it is \"driver's\". \"Buses\" is just a plural, so it never needs an apostrophe."
+      }
+    },
+    {
+      "id": "apostrophes-omission",
+      "name": "Apostrophes for missing letters",
+      "levels": [
+        "L2"
+      ],
+      "explain": [
+        "An apostrophe can show where letters have been left out: \"don't\" (do not), \"we're\" (we are), \"it's\" (it is).",
+        "\"Its\" without an apostrophe means \"belonging to it\": \"The bus changed its route.\"",
+        "In formal writing, such as a report or a formal letter, it is often better to write the full words: \"do not\" instead of \"don't\"."
+      ],
+      "example": {
+        "wrong": "Its a long walk and the hill has it's own bus stop.",
+        "right": "It's a long walk and the hill has its own bus stop."
+      },
+      "practice": {
+        "prompt": "Which is correct?",
+        "options": [
+          "The council changed it's mind.",
+          "Its going to rain later.",
+          "It's going to rain later.",
+          "The village has it's own shop."
+        ],
+        "answer": 2,
+        "why": "\"It's going to rain\" means \"it is going to rain\", so it needs the apostrophe. In the other sentences, \"its\" means \"belonging to it\" and should have no apostrophe."
+      }
+    },
+    {
+      "id": "inverted-commas",
+      "name": "Inverted commas (speech marks)",
+      "levels": [
+        "L2"
+      ],
+      "explain": [
+        "Put inverted commas around the exact words someone said: The keeper said, \"Red pandas are shy.\"",
+        "The punctuation at the end of the spoken words goes inside the inverted commas.",
+        "You can also use inverted commas around a short quotation or a title: the council calls it \"a better route\"."
+      ],
+      "example": {
+        "wrong": "The driver said \"next stop, Station Road\".",
+        "right": "The driver said, \"Next stop, Station Road.\""
+      },
+      "practice": {
+        "prompt": "Which is punctuated correctly?",
+        "options": [
+          "My friend said, \"The train is quicker.\"",
+          "My friend said \"the train is quicker\".",
+          "My friend said, The train is \"quicker.\"",
+          "\"My friend said\", the train is quicker."
+        ],
+        "answer": 0,
+        "why": "There is a comma before the speech, the spoken words start with a capital letter, and the full stop goes inside the inverted commas."
+      }
+    },
+    {
+      "id": "spelling",
+      "name": "Words that sound the same",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "\"There\" is a place (over there). \"Their\" means belonging to them. \"They're\" means they are.",
+        "\"Your\" means belonging to you. \"You're\" means you are.",
+        "\"To\" is for direction (to the bus stop). \"Too\" means also or very (too late). \"Two\" is the number 2."
+      ],
+      "example": {
+        "wrong": "Their going too the station at to o'clock.",
+        "right": "They're going to the station at two o'clock."
+      },
+      "practice": {
+        "prompt": "Which is correct?",
+        "options": [
+          "Your going to love the food.",
+          "Youre going to love the food.",
+          "Your' going to love the food.",
+          "You're going to love the food."
+        ],
+        "answer": 3,
+        "why": "\"You're\" is short for \"you are\": \"You are going to love the food.\""
+      }
+    },
+    {
+      "id": "grammar",
+      "name": "Grammar: was or were, and staying in one tense",
+      "levels": [
+        "L1",
+        "L2"
+      ],
+      "explain": [
+        "Use \"was\" with I, he, she and it. Use \"were\" with we, you and they: \"We were late.\"",
+        "Pick a tense and stick to it. If you start in the past (\"we went\"), keep going in the past (\"we saw\", not \"we see\").",
+        "Write \"should have\" or \"could have\", not \"should of\" or \"could of\"."
+      ],
+      "example": {
+        "wrong": "We was on the train and then we see the sea.",
+        "right": "We were on the train and then we saw the sea."
+      },
+      "practice": {
+        "prompt": "Which is correct?",
+        "options": [
+          "The buses was all full.",
+          "We should of left earlier.",
+          "They were waiting at the stop.",
+          "Yesterday we go to the park."
+        ],
+        "answer": 2,
+        "why": "\"They\" goes with \"were\". The others mix up was and were, use \"should of\" instead of \"should have\", or use the wrong tense for yesterday."
+      }
+    }
+  ]
+}
