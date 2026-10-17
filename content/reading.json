@@ -17,13 +17,13 @@
           "title": "Panda Week is coming",
           "body": [
             {
-              "p": "This summer, Hollins Park Wildlife Centre is holding its first ever Panda Week. For nine days, our two red pandas, Juniper and Tao, will be the stars of the park. We think they are the most charming animals you will ever meet."
+              "p": "This summer, Hollins Park Wildlife Centre is holding its first ever Panda Week. For nine days, our two giant pandas, Juniper and Tao, will be the stars of the park. We think they are the most charming animals you will ever meet."
             },
             {
-              "h": "About red pandas"
+              "h": "About giant pandas"
             },
             {
-              "p": "Red pandas live in mountain forests in the Himalayas and south-west China. They are about the size of a large house cat and have a long, ringed tail, which helps them balance in the trees. Like giant pandas, they eat mostly bamboo. Despite the shared name, the two animals are not closely related."
+              "p": "Giant pandas live in mountain forests in south-west China. They are covered in thick black and white fur, and they spend much of the day eating bamboo, which makes up almost all of their diet. Bamboo gives very little energy, so a panda has to eat a great deal of it."
             },
             {
               "h": "What's on every day"
@@ -81,7 +81,7 @@
             },
             {
               "ul": [
-                "Red pandas are shy. Please keep your voice low on the Bamboo Walk.",
+                "Pandas like a quiet space. Please keep your voice low on the Bamboo Walk.",
                 "Flash photography is not allowed near the panda enclosure.",
                 "The Bamboo Walk has steps. A step-free route is signposted from the Visitor Hub."
               ]
@@ -98,13 +98,13 @@
           "title": "We went to Panda Week. Was it worth it?",
           "body": [
             {
-              "p": "Last Saturday, my partner, our two children and I spent the day at Hollins Park for Panda Week. I'll be honest: I wasn't sure a whole week about two small animals would be worth the drive. I was wrong."
+              "p": "Last Saturday, my partner, our two children and I spent the day at Hollins Park for Panda Week. I'll be honest: I wasn't sure a whole week about two animals would be worth the drive. I was wrong."
             },
             {
-              "p": "We arrived just before the 10:30 feeding talk, and it was the best part of the day. The keeper explained that bamboo gives red pandas very little energy, so they have to eat a lot of it. My eight-year-old hasn't stopped talking about it since."
+              "p": "We arrived just before the 10:30 feeding talk, and it was the best part of the day. The keeper explained that bamboo gives pandas very little energy, so they have to eat a lot of it. My eight-year-old hasn't stopped talking about it since."
             },
             {
-              "p": "By the afternoon, things were less exciting. Tao was nowhere to be seen, and Juniper slept on a high branch for the whole of the 14:00 question time. The Bamboo Walk was also very crowded, and we struggled to hear the keeper over the noise."
+              "p": "By the afternoon, things were less exciting. Tao was nowhere to be seen, and Juniper slept in the corner of the enclosure for the whole of the 14:00 question time. The Bamboo Walk was also very crowded, and we struggled to hear the keeper over the noise."
             },
             {
               "p": "Booking online the day before saved us a few pounds on our family ticket, which helped, because the café prices were shocking: nearly £4 for a small juice."
@@ -126,9 +126,9 @@
           "text": "A",
           "prompt": "What is the main purpose of the web page?",
           "options": [
-            "To persuade people to adopt a red panda",
+            "To persuade people to adopt a giant panda",
             "To tell people about Panda Week and encourage them to visit",
-            "To explain how to look after a red panda at home",
+            "To explain how to look after a giant panda at home",
             "To complain about ticket prices"
           ],
           "answer": 1,
@@ -159,9 +159,9 @@
           ],
           "type": "tfns",
           "text": "A",
-          "prompt": "Red pandas are closely related to giant pandas.",
+          "prompt": "Bamboo gives giant pandas a lot of energy.",
           "answer": "false",
-          "why": "The page says: \"Despite the shared name, the two animals are not closely related.\""
+          "why": "The page says: \"Bamboo gives very little energy, so a panda has to eat a great deal of it.\""
         },
         {
           "id": "q4",
@@ -203,9 +203,9 @@
           ],
           "type": "factopinion",
           "text": "A",
-          "prompt": "\"They are about the size of a large house cat and have a long, ringed tail.\"",
+          "prompt": "\"Giant pandas live in mountain forests in south-west China.\"",
           "answer": "fact",
-          "why": "This can be checked by measuring or looking at a red panda. It is not someone's view."
+          "why": "This can be checked in books or by studying where pandas live in the wild. It is information, not someone's view."
         },
         {
           "id": "q8",
@@ -222,7 +222,7 @@
             "Use the steps instead of the step-free route"
           ],
           "answer": 2,
-          "why": "Under \"Please remember\", the page says red pandas are shy and asks visitors to \"keep your voice low on the Bamboo Walk\"."
+          "why": "Under \"Please remember\", the page says pandas like a quiet space and asks visitors to \"keep your voice low on the Bamboo Walk\"."
         },
         {
           "id": "q9",

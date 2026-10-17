@@ -4,30 +4,57 @@ What we rely on when writing missions. Keep verified facts separate from assumpt
 
 ## Verified
 
+Checked against Pearson's own documents (specification, L1 Guidance to Centres, L2 Reading exemplars, L2 Writing examiner report 2024) in October 2026.
+
+### Reading
+
+| | Level 1 | Level 2 |
+|---|---|---|
+| Time | 60 minutes | 75 minutes |
+| Marks | 30 | 35 |
+| Question styles | controlled and open response | multiple choice (MCQ), multiple response (MRQ, "select all that apply"), short open and medium open response |
+
+Level 1 paper structure (Guidance to Centres, v1.0, Nov 2019):
+
+- 3 texts and 15 questions, all linked by a common topic or theme.
+- Text A (80 to 100 words): Q1 to 3, 5 marks. Q1 asks for a piece of information and which organisational feature helped (bullets, text box, speech bubble, numbering, bold, web menu). Q2 asks for a word or phrase with the same meaning (a dictionary is allowed). Q3 is a multiple-choice question on the main purpose.
+- Text B (300 to 320 words): Q4 to 9, 12 marks. Includes retrieval questions worth up to 3 marks.
+- Text C (200 to 220 words): Q10 to 14, 10 marks.
+- Q15: 3 marks, comparing Text B and Text C.
+- Text purposes: instruct, describe, explain, persuade.
+- Text formats: adverts, articles, blogs, emails, internet discussions, leaflets, letters, reports, reviews, webpages, web forums.
+- Question skills include: fact vs opinion, formal vs informal language, specialist words, punctuation to aid understanding, inferring from images, comparing texts.
+
+Level 2 (from the Reading exemplars): papers are split into lettered sections (A to D in the example), with MCQ and MRQ questions alongside short written ones. Examples seen: naming a subheading, explaining a word in context, picking out a feature, finding synonyms, and asking for several suggestions from a text. The full L2 structure (number of texts, text lengths, marks per section) is **not** in the documents we have.
+
 ### Writing (both levels)
 
-- Two tasks.
-- Task 1: 21 marks (Composition 12 + SPaG 9).
-- Task 2: 15 marks (Composition 9 + SPaG 6).
-- SPaG is about 40% of the writing marks.
+- 60 minutes, 36 marks, two tasks.
+- Task 1: 21 marks (Composition 12 + SPaG 9). Task 2: 15 marks (Composition 9 + SPaG 6).
+- SPaG is 42% of the writing marks (15 of 36).
+- **Task 1 has three bullet points. Task 2 has two** (L2 examiner report 2024).
+- Level 2 suggested word counts: **250 to 300 (Task 1), 200 to 250 (Task 2)**. Advisory only. Not writing less than the lower figure gives room to develop ideas; going far over the upper figure makes control harder.
+- Candidates are given a suggested word range in each Writing assessment (specification).
 - SPaG punctuation range:
   - Level 1 descriptors: full stops, question marks, exclamation marks, commas, possessive apostrophes.
   - Level 2 descriptors add inverted commas / quotation marks, and apostrophes more broadly.
-- Level 2 examiner report (2024): tasks give three bullet points. Strong answers cover all three, often with one or two paragraphs per bullet, an opening that states the purpose, and a proper close. Format must suit audience and purpose. Task 1 deserves slightly more time.
+- Level 2 examiner report (2024): strong answers cover every bullet point, often with one or two paragraphs per bullet, an introduction that states the purpose, and a concluding paragraph. Format must suit audience and purpose (letters and reports are formal; a forum post can be chatty). Task 1 deserves slightly more time.
+- Composition at Level 2 is judged on four things: communication of ideas for audience and purpose; format and structure; range of sentences; language, register and vocabulary.
 
 ## Not yet verified
 
-These are used in the site as rough guides or working assumptions only.
+- **Level 1 writing word counts.** The site shows "about 200 to 300" (Task 1) and "about 150 to 250" (Task 2) as a working guess. We could not read the Level 1 writing sample paper (the Level 1 SAM link in the brief returned a web page, not a PDF). Level 2's figures are official.
+- **Mark bands.** The marking guide in `content/writing.json` is our own summary and splits each range into three equal bands. These may not match the official band boundaries.
+- **Level 2 reading structure** (see above).
 
-- **Reading paper structure:** number of texts, question types, marks, timings and any word-count guidance. The official sample assessments and Guidance to Centres could not be read when M1 was built: the build environment's network policy blocked the Pearson hosts. The M1 reading missions use only the question styles listed in the project brief: multiple choice, true / false / not stated, fact or opinion, and short open answers. Comparison questions appear at Level 2 only, which is also an assumption.
-- **Writing length guidance:** the site shows "about 200–300 words" (L1) and "about 250–350 words" (L2) for Task 1, and "about 150–250" (L1) and "about 200–300" (L2) for Task 2, always labelled as a rough guide. These are in `content/writing.json` (`lengthGuide`) and can be changed without touching code.
-- **Mark bands:** the marking guide in `content/writing.json` is our own plain-English summary. It splits each mark range into three equal bands, which may not match the official band boundaries.
+## Gaps between the site's reading missions and the real paper
 
-## To do before M3
+The M1 missions are short practice versions, not mock papers. Known differences, for a later pass:
 
-1. Read the L1 and L2 sample assessment materials and the Guidance to Centres. Record the reading paper structure above.
-2. Adjust reading question mixes, text lengths and the L1 / L2 split to match.
-3. Check the writing length guidance and band boundaries against the official materials.
+- Real Level 1 papers use three linked texts (about 80, 310 and 210 words). Our Level 1 missions use one text of about 250 to 300 words.
+- Real papers use 1 to 3 marks per question. Ours use 1 mark per closed question.
+- Not yet covered: finding an organisational feature, synonym questions, specialist words, formal vs informal language, comparing two texts at Level 1, and MRQ ("select all that apply") at Level 2.
+- Our Level 2 missions use two texts and comparison questions. That matches the skills listed, but the real structure is unconfirmed.
 
 ## Sources
 

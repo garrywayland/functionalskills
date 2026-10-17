@@ -1,9 +1,9 @@
 {
   "lengthGuide": {
-    "1": { "L1": "about 200 to 300 words", "L2": "about 250 to 350 words" },
-    "2": { "L1": "about 150 to 250 words", "L2": "about 200 to 300 words" }
+    "1": { "L1": "about 200 to 300 words", "L2": "250 to 300 words" },
+    "2": { "L1": "about 150 to 250 words", "L2": "200 to 250 words" }
   },
-  "lengthNote": "This is a rough guide only. Covering all three points well matters more than hitting a number.",
+  "lengthNote": "This is a rough guide only. Covering every bullet point well matters more than hitting a number.",
   "marks": {
     "1": { "composition": 12, "spag": 9 },
     "2": { "composition": 9, "spag": 6 }
@@ -14,12 +14,12 @@
       "L1": [
         "Lowest band: a few relevant ideas, but the answer is very short or drifts away from the task. Little sense of who it is for. The format is missing or unclear, and ideas are not grouped.",
         "Middle band: covers the task, though one or more bullet points are thin. Tone and format mostly suit the reader. Some paragraphs, and some linking words such as \"also\" or \"because\".",
-        "Top band: covers all three bullet points with relevant detail. Tone, words and format suit the audience and purpose. Clear opening, ideas in paragraphs, and a proper close."
+        "Top band: covers every bullet point with relevant detail. Tone, words and format suit the audience and purpose. Clear opening, ideas in paragraphs, and a proper close."
       ],
       "L2": [
         "Lowest band: some relevant ideas, but points are undeveloped or off task. The tone or format does not suit the reader well. Organisation is hard to follow.",
         "Middle band: covers the task with mostly relevant, developed detail. Tone and format suit the reader most of the time. Paragraphs are used, with some varied linking.",
-        "Top band: all three bullet points are covered and developed with well-chosen detail. Tone, vocabulary and format are consistently right for the audience and purpose. Paragraphs are well linked, with a clear opening and a strong close. Sentences are varied for effect."
+        "Top band: every bullet point is covered and developed with well-chosen detail. Tone, vocabulary and format are consistently right for the audience and purpose. Paragraphs are well linked, with a clear opening and a strong close. Sentences are varied for effect."
       ]
     },
     "spag": {
@@ -72,8 +72,7 @@
       "purpose": "To review your day out and help others decide.",
       "instruction": "Write a review for the website.",
       "bullets": [
-        "where you went and what you saw",
-        "what was good about the visit",
+        "where you went, what you saw and what was good about the visit",
         "what could be better, and whether you would recommend it"
       ]
     },
@@ -110,8 +109,7 @@
       "instruction": "Write an article for the website. You can use the information above.",
       "bullets": [
         "one or two dishes and what they are like",
-        "why trying local food is a good way to get to know a place",
-        "tips for young travellers trying new food for the first time"
+        "why trying local food is a good way to get to know a place, with a tip for young travellers trying new food"
       ]
     },
     {
@@ -142,8 +140,7 @@
       "instruction": "Write an article for the college newsletter.",
       "bullets": [
         "the benefits of using buses and trains",
-        "worries students might have, and how to deal with them",
-        "practical tips, such as tickets, timetables or apps"
+        "worries students might have, and practical tips (such as tickets, timetables or apps) that could help"
       ]
     },
     {
@@ -173,8 +170,7 @@
       "purpose": "To share and explain your opinion.",
       "instruction": "Write a blog post giving your view.",
       "bullets": [
-        "where you would rather live, and what it would be like",
-        "your reasons",
+        "where you would rather live, what it would be like, and your reasons",
         "what you would miss about the other kind of place"
       ]
     }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420" fill="none">
+  <defs>
+    <g id="panda">
+      <circle cx="-30" cy="-30" r="13" fill="#000"/>
+      <circle cx="30" cy="-30" r="13" fill="#000"/>
+      <ellipse cx="0" cy="0" rx="40" ry="35" fill="#fff" stroke="#000" stroke-width="3"/>
+      <ellipse cx="-16" cy="-3" rx="9" ry="13" transform="rotate(25 -16 -3)" fill="#000"/>
+      <ellipse cx="16" cy="-3" rx="9" ry="13" transform="rotate(-25 16 -3)" fill="#000"/>
+      <circle cx="-14" cy="-5" r="2.6" fill="#fff"/>
+      <circle cx="14" cy="-5" r="2.6" fill="#fff"/>
+      <ellipse cx="0" cy="11" rx="6.5" ry="4.5" fill="#000"/>
+      <path d="M0 15 Q-5 23 -12 19 M0 15 Q5 23 12 19" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+    <g id="bamboo">
+      <rect x="-5" y="0" width="10" height="420" rx="5" fill="#fff" stroke="#000" stroke-width="2.5"/>
+      <path d="M-5 70H5M-5 150H5M-5 235H5M-5 320H5M-5 395H5" stroke="#000" stroke-width="2.5"/>
+      <path d="M5 150 q38 -6 52 -34 q-36 0 -52 34z M-5 320 q-38 -6 -52 -34 q36 0 52 34z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <use href="#bamboo" x="372" y="0"/>
+  <use href="#panda" transform="translate(78 84) rotate(-6)"/>
+  <use href="#panda" transform="translate(250 214) rotate(7) scale(.8)"/>
+  <use href="#panda" transform="translate(110 328) rotate(-9) scale(.62)"/>
+</svg>

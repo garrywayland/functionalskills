@@ -97,6 +97,42 @@
     store.set('done', done);
   }
 
+  // ---------- Progress log (dates of finished missions) ----------
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+
+  function readLog() {
+    var log = store.get('log', []);
+    return Array.isArray(log) ? log : [];
+  }
+
+  // One entry per mission, level and day. Finishing it again the same day updates that entry.
+  function logDone(entry) {
+    var log = readLog();
+    entry.level = level();
+    entry.date = today();
+    for (var i = 0; i < log.length; i++) {
+      if (log[i].id === entry.id && log[i].level === entry.level && log[i].date === entry.date) {
+        log[i] = entry;
+        store.set('log', log);
+        return;
+      }
+    }
+    log.push(entry);
+    store.set('log', log);
+  }
+
+  function prettyDate(iso) {
+    var p = String(iso).split('-');
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    return isNaN(d) ? String(iso) : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+
   // ---------- Level switch ----------
 
   function setupLevelSwitch() {
@@ -133,6 +169,7 @@
     else if (parts[0] === 'writing' && parts[1]) view = writingView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit') view = toolkitView();
+    else if (parts[0] === 'progress') view = progressView();
     else view = homeView();
 
     main.replaceChildren(view);
@@ -167,7 +204,7 @@
       h('section', { class: 'map-intro' },
         h('h1', { text: 'Pick a mission' }),
         h('p', { class: 'lede', text: 'Each mission takes about 10 minutes. Do one, then stop or carry on. It is up to you.' }),
-        h('p', { class: 'progress-line', text: doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '.' }),
+        h('p', { class: 'progress-line' }, doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '. ', h('a', { href: '#/progress', text: 'See my progress' })),
         h('p', { class: 'muted small', text: 'Not sure which level? Every mission works at both. Use the switch at the top.' })
       ),
       h('div', { class: 'lines-grid' },
@@ -320,10 +357,11 @@
     }
 
     // Done
-    markDone(id);
     var closed = forLevel(m.questions).filter(function (q) { return q.type !== 'open'; });
     var matched = closed.filter(function (q) { var a = saved.answers[q.id]; return a && a.checked && a.choice === answerIndex(q); }).length;
     var openCount = forLevel(m.questions).length - closed.length;
+    markDone(id);
+    logDone({ id: id, kind: 'Reading', title: m.title, topic: m.topic, matched: matched, total: closed.length });
     var scoreSlot = h('div', { 'aria-live': 'polite' });
 
     append(wrap,
@@ -618,6 +656,7 @@
         copyText(out).then(function (ok) {
           if (ok) {
             markDone(id);
+            logDone({ id: id, kind: 'Writing', title: m.title, topic: m.topic, words: words, task: m.task });
             msg.textContent = 'Copied. Paste it into a message to whoever is marking your work.';
           } else {
             out.focus(); out.select();
@@ -634,6 +673,7 @@
         h('div', { class: 'actions' }, copyBtn,
           h('button', { type: 'button', class: 'btn secondary', onclick: function () {
             markDone(id);
+            logDone({ id: id, kind: 'Writing', title: m.title, topic: m.topic, words: words, task: m.task });
             msg.textContent = 'Marked as done. You can still come back and change it.';
           }, text: "I'm done with this one" }),
           h('span', { class: 'spacer' }),
@@ -748,6 +788,166 @@
       textarea.select();
       return document.execCommand('copy');
     } catch (e) { return false; }
+  }
+
+  // ---------- Progress and export ----------
+
+  function csvCell(v) {
+    var t = v === null || v === undefined ? '' : String(v);
+    if (/^[=+\-@\t\r]/.test(t)) t = "'" + t; // stop spreadsheets reading text as a formula
+    return /[",\n\r]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+  }
+
+  function exportRows(entries, withResults) {
+    return entries.map(function (e) {
+      var detail = e.kind === 'Writing' ? (e.words ? e.words + ' words written' : '') : '';
+      if (e.kind === 'Reading' && withResults && typeof e.total === 'number') detail = e.matched + ' of ' + e.total + ' choice answers matched';
+      return { date: e.date, kind: e.kind, title: e.title, topic: e.topic, level: LEVELS[e.level] || e.level, detail: detail, words: e.kind === 'Writing' ? (e.words || 0) : '', matched: withResults && e.kind === 'Reading' ? e.matched : '', total: withResults && e.kind === 'Reading' ? e.total : '' };
+    });
+  }
+
+  function summaryOf(entries) {
+    var days = {};
+    var words = 0, reading = 0, writing = 0;
+    entries.forEach(function (e) {
+      days[e.date] = true;
+      if (e.kind === 'Writing') { writing++; words += e.words || 0; } else reading++;
+    });
+    var dates = Object.keys(days).sort();
+    return { missions: entries.length, days: dates.length, words: words, reading: reading, writing: writing, first: dates[0], last: dates[dates.length - 1] };
+  }
+
+  function textExport(entries, name, withResults) {
+    var sum = summaryOf(entries);
+    var lines = ['Next Stop: English practice record'];
+    if (name) lines.push('Name: ' + name);
+    lines.push('Printed: ' + prettyDate(today()));
+    lines.push('');
+    lines.push(sum.missions + ' missions done on ' + sum.days + (sum.days === 1 ? ' day' : ' different days') + (sum.first ? ' (' + prettyDate(sum.first) + ' to ' + prettyDate(sum.last) + ')' : '') + '.');
+    lines.push(sum.reading + ' reading, ' + sum.writing + ' writing, ' + sum.words + ' words written.');
+    lines.push('');
+    exportRows(entries, withResults).forEach(function (r) {
+      lines.push(prettyDate(r.date) + ' | ' + r.kind + ' | ' + r.title + ' (' + r.topic + ', ' + r.level + ')' + (r.detail ? ' | ' + r.detail : ''));
+    });
+    lines.push('');
+    lines.push('Kept by the learner in their own browser. Each line is added when a mission is finished.');
+    return lines.join('\n');
+  }
+
+  function csvExport(entries, name, withResults) {
+    var cols = ['Date', 'Type', 'Mission', 'Topic', 'Level', 'Words written'];
+    if (withResults) cols.push('Choice answers matched', 'Choice questions');
+    if (name) cols.unshift('Name');
+    var out = [cols.map(csvCell).join(',')];
+    exportRows(entries, withResults).forEach(function (r) {
+      var row = [r.date, r.kind, r.title, r.topic, r.level, r.words];
+      if (withResults) row.push(r.matched, r.total);
+      if (name) row.unshift(name);
+      out.push(row.map(csvCell).join(','));
+    });
+    return out.join('\r\n') + '\r\n';
+  }
+
+  function download(filename, text, type) {
+    var url = URL.createObjectURL(new Blob([text], { type: type }));
+    var a = h('a', { href: url, download: filename });
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function progressView() {
+    var all = readLog().slice().reverse();
+    all.sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+    var state = { name: '', results: false };
+
+    var wrap = h('article', { class: 'mission progress' });
+    append(wrap, h('p', { class: 'eyebrow no-print', text: 'Progress' }));
+    append(wrap, h('h1', { text: 'My progress' }));
+
+    if (!all.length) {
+      append(wrap,
+        h('p', { class: 'lede', text: 'Nothing here yet. Each mission you finish is added, with the date.' }),
+        h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Pick a mission' })));
+      return wrap;
+    }
+
+    var sum = summaryOf(all);
+    var printHead = h('p', { class: 'print-only' });
+    function setPrintHead() { printHead.textContent = (state.name ? 'Name: ' + state.name + '. ' : '') + 'Printed ' + prettyDate(today()) + '.'; }
+    setPrintHead();
+
+    var statsEl = h('dl', { class: 'stats' },
+      stat(sum.missions, sum.missions === 1 ? 'mission done' : 'missions done'),
+      stat(sum.days, sum.days === 1 ? 'day practised' : 'days practised'),
+      stat(sum.words, 'words written'));
+    function stat(n, label) { return h('div', null, h('dt', { text: label }), h('dd', { text: String(n) })); }
+
+    var tableSlot = h('div', { class: 'table-wrap', tabindex: '0', role: 'region', 'aria-label': 'Finished missions' });
+    function drawTable() {
+      var rows = exportRows(all, state.results);
+      tableSlot.replaceChildren(h('table', { class: 'log-table' },
+        h('thead', null, h('tr', null, ['Date', 'Mission', 'Level', 'Details'].map(function (c) { return h('th', { scope: 'col', text: c }); }))),
+        h('tbody', null, rows.map(function (r) {
+          return h('tr', null,
+            h('td', { text: prettyDate(r.date) }),
+            h('td', null, r.title, h('span', { class: 'muted small' }, ' · ' + r.kind + ' · ' + r.topic)),
+            h('td', { text: r.level }),
+            h('td', { text: r.detail }));
+        }))));
+    }
+    drawTable();
+
+    var nameInput = h('input', { type: 'text', id: 'export-name', autocomplete: 'off', maxlength: '60' });
+    nameInput.addEventListener('input', function () { state.name = nameInput.value.trim(); setPrintHead(); });
+    var resultsBox = h('input', { type: 'checkbox' });
+    resultsBox.addEventListener('change', function () { state.results = resultsBox.checked; drawTable(); });
+
+    var msg = h('p', { class: 'status no-print', role: 'status' });
+    var area = h('textarea', { class: 'marking-block', readonly: true, rows: '8', 'aria-label': 'Progress as text' });
+    area.hidden = true;
+
+    var copyBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Copy as text' });
+    copyBtn.addEventListener('click', function () {
+      area.hidden = false;
+      area.value = textExport(all, state.name, state.results);
+      copyText(area).then(function (ok) {
+        if (ok) { msg.textContent = 'Copied. Paste it into an email or message.'; area.hidden = true; }
+        else { area.focus(); area.select(); msg.textContent = 'Could not copy automatically. The text is selected: press Ctrl+C, or long-press and choose Copy.'; }
+      });
+    });
+
+    var clearBtn = h('button', { type: 'button', class: 'btn quiet', text: 'Start a fresh record' });
+    var armed = false;
+    clearBtn.addEventListener('click', function () {
+      if (!armed) { armed = true; clearBtn.textContent = 'Really clear it? Click again'; msg.textContent = 'This removes the dates and the done ticks on this device. Drafts stay.'; return; }
+      store.remove('log'); store.remove('done');
+      render({ keepFocus: true });
+    });
+
+    append(wrap,
+      h('p', { class: 'lede no-print', text: 'Every finished mission is listed here with its date. You can print this page, save it as a PDF, or send it to your teacher.' }),
+      printHead,
+      statsEl,
+      h('section', { class: 'no-print', 'aria-labelledby': 'exp-h' },
+        h('h2', { id: 'exp-h', text: 'Before you export' }),
+        h('label', { class: 'field', for: 'export-name' }, 'Your name (optional)', h('span', { class: 'hint', text: 'Only used in the export. It is not saved anywhere.' })),
+        nameInput,
+        h('p', null, h('label', { class: 'toggle' }, resultsBox, 'Include how many reading choice answers matched'))),
+      tableSlot,
+      h('div', { class: 'actions no-print' },
+        h('button', { type: 'button', class: 'btn', onclick: function () { window.print(); }, text: 'Print or save as PDF' }),
+        h('button', { type: 'button', class: 'btn secondary', onclick: function () {
+          download('next-stop-progress.csv', csvExport(all, state.name, state.results), 'text/csv;charset=utf-8');
+          msg.textContent = 'Downloaded as a spreadsheet file.';
+        }, text: 'Download spreadsheet (CSV)' }),
+        copyBtn),
+      area, msg,
+      h('p', { class: 'muted small no-print', text: 'This record lives only in this browser. If you clear your browser data, or use another device, it will not come with you, so export it from time to time.' }),
+      h('div', { class: 'actions no-print' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back to the map' }), h('span', { class: 'spacer' }), clearBtn)
+    );
+    return wrap;
   }
 
   // ---------- Toolkit ----------

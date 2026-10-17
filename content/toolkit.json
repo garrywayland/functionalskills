@@ -321,8 +321,8 @@
         "Plurals that don't own anything don't need an apostrophe: \"two pandas\", not \"two panda's\"."
       ],
       "example": {
-        "wrong": "The pandas tail's are ringed.",
-        "right": "The pandas' tails are ringed."
+        "wrong": "The pandas ear's are black.",
+        "right": "The pandas' ears are black."
       },
       "practice": {
         "prompt": "Which is correct?",
@@ -370,7 +370,7 @@
         "L2"
       ],
       "explain": [
-        "Put inverted commas around the exact words someone said: The keeper said, \"Red pandas are shy.\"",
+        "Put inverted commas around the exact words someone said: The keeper said, \"Pandas like a quiet space.\"",
         "The punctuation at the end of the spoken words goes inside the inverted commas.",
         "You can also use inverted commas around a short quotation or a title: the council calls it \"a better route\"."
       ],
