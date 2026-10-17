@@ -605,7 +605,7 @@
       });
       var same = ans.choice === right;
       fbSlot.replaceChildren(h('div', { class: 'feedback' },
-        h('p', { class: 'fb-head', text: same ? 'Yes, that matches the answer.' : 'The answer is: ' + opts[right] + '.' }),
+        h('p', { class: 'fb-head', text: same ? 'Yes, that matches the answer.' : 'The answer is: ' + opts[right] + (/[.?!"\u201d]$/.test(opts[right]) ? '' : '.') }),
         h('p', { text: q.why })
       ));
       checkBtn.remove();
@@ -1147,7 +1147,7 @@
 
   function exportRows(entries, withResults) {
     return entries.map(function (e) {
-      var detail = e.kind === 'Writing' ? (e.words ? e.words + ' words written' : '') : '';
+      var detail = e.kind === 'Writing' ? (e.words ? e.words + ' words written' : '') : e.kind === 'Toolkit' ? (e.total + ' practice questions' + (withResults && typeof e.matched === 'number' ? ', ' + e.matched + ' matched' : '')) : '';
       if (e.kind === 'Reading' && withResults && typeof e.total === 'number') detail = e.matched + ' of ' + e.total + ' choice answers matched';
       return { date: e.date, kind: e.kind, title: e.title, topic: e.topic, level: LEVELS[e.level] || e.level, detail: detail, words: e.kind === 'Writing' ? (e.words || 0) : '', matched: withResults && e.kind === 'Reading' ? e.matched : '', total: withResults && e.kind === 'Reading' ? e.total : '' };
     });
@@ -1155,13 +1155,15 @@
 
   function summaryOf(entries) {
     var days = {};
-    var words = 0, reading = 0, writing = 0;
+    var words = 0, reading = 0, writing = 0, practice = 0;
     entries.forEach(function (e) {
       days[e.date] = true;
-      if (e.kind === 'Writing') { writing++; words += e.words || 0; } else reading++;
+      if (e.kind === 'Writing') { writing++; words += e.words || 0; }
+      else if (e.kind === 'Toolkit') practice++;
+      else reading++;
     });
     var dates = Object.keys(days).sort();
-    return { missions: entries.length, days: dates.length, words: words, reading: reading, writing: writing, first: dates[0], last: dates[dates.length - 1] };
+    return { missions: reading + writing, practice: practice, days: dates.length, words: words, reading: reading, writing: writing, first: dates[0], last: dates[dates.length - 1] };
   }
 
   function textExport(entries, name, withResults) {
@@ -1171,7 +1173,7 @@
     lines.push('Printed: ' + prettyDate(today()));
     lines.push('');
     lines.push(sum.missions + ' missions done on ' + sum.days + (sum.days === 1 ? ' day' : ' different days') + (sum.first ? ' (' + prettyDate(sum.first) + ' to ' + prettyDate(sum.last) + ')' : '') + '.');
-    lines.push(sum.reading + ' reading, ' + sum.writing + ' writing, ' + sum.words + ' words written.');
+    lines.push(sum.reading + ' reading, ' + sum.writing + ' writing, ' + sum.practice + ' toolkit practice sets, ' + sum.words + ' words written.');
     lines.push('');
     exportRows(entries, withResults).forEach(function (r) {
       lines.push(prettyDate(r.date) + ' | ' + r.kind + ' | ' + r.title + ' (' + r.topic + ', ' + r.level + ')' + (r.detail ? ' | ' + r.detail : ''));
@@ -1225,10 +1227,11 @@
     function setPrintHead() { printHead.textContent = (state.name ? 'Name: ' + state.name + '. ' : '') + 'Printed ' + prettyDate(today()) + '.'; }
     setPrintHead();
 
-    var statsEl = h('dl', { class: 'stats' },
+    var statsEl = h('dl', { class: 'stats' + (sum.practice ? ' four' : '') },
       stat(sum.missions, sum.missions === 1 ? 'mission done' : 'missions done'),
       stat(sum.days, sum.days === 1 ? 'day practised' : 'days practised'),
-      stat(sum.words, 'words written'));
+      stat(sum.words, 'words written'),
+      sum.practice ? stat(sum.practice, sum.practice === 1 ? 'practice set' : 'practice sets') : null);
     function stat(n, label) { return h('div', null, h('dt', { text: label }), h('dd', { text: String(n) })); }
 
     var tableSlot = h('div', { class: 'table-wrap', tabindex: '0', role: 'region', 'aria-label': 'Finished missions' });
@@ -1305,19 +1308,89 @@
     return h('div', { class: 'mission toolkit' },
       h('p', { class: 'eyebrow', text: 'Toolkit · ' + LEVELS[level()] }),
       h('h1', { text: 'Toolkit' }),
-      h('p', { class: 'lede', text: 'Short guides you can dip into at any time. Each one ends with a quick practice question.' }),
+      h('p', { class: 'lede', text: 'Short guides you can dip into at any time. Each one ends with ten practice questions, one at a time, in a different order each time.' }),
       h('h2', { text: 'Kinds of writing' }),
       h('ul', { class: 'tool-list' }, formats.map(function (f) {
         return h('li', null, h('a', { href: '#/toolkit/format/' + f.id },
-          h('span', { class: 't-name', text: f.name }), h('span', { class: 't-sum', text: f.summary })));
+          h('span', { class: 't-name', text: f.name }), isDone('tool-' + f.id) ? h('span', { class: 't-done', text: 'Practised' }) : null, h('span', { class: 't-sum', text: f.summary })));
       })),
       h('h2', { text: 'Punctuation, spelling and grammar' }),
       h('p', { class: 'muted small', text: level() === 'L2' ? 'Showing everything for Level 2, including inverted commas and apostrophes for missing letters.' : 'Showing the points for Level 1. Switch to Level 2 to see two more.' }),
       h('ul', { class: 'tool-list' }, spag.map(function (s) {
         return h('li', null, h('a', { href: '#/toolkit/spag/' + s.id },
-          h('span', { class: 't-name', text: s.name }), h('span', { class: 't-sum', text: s.explain[0] })));
+          h('span', { class: 't-name', text: s.name }), isDone('tool-' + s.id) ? h('span', { class: 't-done', text: 'Practised' }) : null, h('span', { class: 't-sum', text: s.explain[0] })));
       }))
     );
+  }
+
+  // Ten practice questions, one at a time, in a different order each time.
+  function shuffled(n) {
+    var a = [];
+    for (var i = 0; i < n; i++) a.push(i);
+    for (var j = n - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var t = a[j]; a[j] = a[k]; a[k] = t;
+    }
+    return a;
+  }
+
+  function drillSection(kind, id, item) {
+    var qs = item.questions || [];
+    var key = 'drill:' + kind + ':' + id;
+    var section = h('section', { class: 'practice', 'aria-labelledby': 'practice-h' });
+    var st = store.get(key, null);
+    if (!st || !Array.isArray(st.order) || st.order.length !== qs.length) {
+      st = { order: shuffled(qs.length), pos: 0, answers: {} };
+      store.set(key, st);
+    }
+    function save() { store.set(key, st); }
+
+    function draw(focus) {
+      var n = qs.length;
+      var kids = [h('h2', { id: 'practice-h', text: 'Practice' })];
+      if (st.pos < n) {
+        var qi = st.order[st.pos];
+        var src = qs[qi];
+        var ans = st.answers[qi] || (st.answers[qi] = {});
+        var q = { id: 'tool-' + id + '-' + qi, type: 'choice', prompt: src.prompt, options: src.options, answer: src.answer, why: src.why, labelledBy: 'practice-q' };
+        var prompt = h('p', { class: 'question-prompt', id: 'practice-q', tabindex: '-1', text: src.prompt });
+        kids.push(
+          h('p', { class: 'step-count', text: 'Question ' + (st.pos + 1) + ' of ' + n }),
+          prompt,
+          closedQuestion(q, ans, save),
+          h('div', { class: 'actions' },
+            st.pos > 0 ? h('button', { type: 'button', class: 'btn quiet', text: 'Back', onclick: function () { st.pos -= 1; save(); draw(true); } }) : null,
+            h('button', { type: 'button', class: 'btn', text: st.pos === n - 1 ? 'Finish' : 'Next question', onclick: function () { st.pos += 1; save(); draw(true); } })));
+        section.replaceChildren.apply(section, kids);
+        if (focus) prompt.focus();
+        return;
+      }
+      // Finished
+      var matched = 0;
+      st.order.forEach(function (qi) { var a = st.answers[qi]; if (a && a.checked && a.choice === qs[qi].answer) matched++; });
+      markDone('tool-' + id);
+      logDone({ id: 'tool-' + id, kind: 'Toolkit', title: item.name + ' practice', topic: 'Toolkit', matched: matched, total: n });
+      var scoreSlot = h('div', { 'aria-live': 'polite' });
+      var heading = h('h3', { text: 'Practice done', tabindex: '-1' });
+      kids.push(
+        heading,
+        h('p', { class: 'lede', text: 'That is all ' + n + ' questions. Nicely done.' }),
+        h('div', { class: 'actions' },
+          h('button', { type: 'button', class: 'btn secondary', text: 'Show how many matched', onclick: function (e) {
+            e.currentTarget.disabled = true;
+            scoreSlot.replaceChildren(h('div', { class: 'score-box' }, h('p', { text: matched + ' of ' + n + ' matched the answers.' })));
+          } }),
+          h('button', { type: 'button', class: 'btn', text: 'Practise again', onclick: function () {
+            st = { order: shuffled(n), pos: 0, answers: {} }; save(); draw(true);
+          } }),
+          h('a', { class: 'btn quiet', href: '#/toolkit', text: 'Back to the toolkit' })),
+        scoreSlot);
+      section.replaceChildren.apply(section, kids);
+      if (focus) heading.focus();
+    }
+
+    draw(false);
+    return section;
   }
 
   function toolView(kind, id) {
@@ -1348,21 +1421,7 @@
       );
     }
 
-    var key = 'tool:' + kind + ':' + id;
-    var ans = store.get(key, {});
-    var q = { id: kind + '-' + id, type: 'choice', prompt: item.practice.prompt, options: item.practice.options, answer: item.practice.answer, why: item.practice.why, labelledBy: 'practice-q' };
-    var again = h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn quiet', onclick: function () {
-      store.remove(key); render({ keepFocus: true });
-      var first = main.querySelector('.practice input');
-      if (first) first.focus();
-    }, text: 'Try it again' }));
-    var section = h('section', { class: 'practice', 'aria-labelledby': 'practice-h' },
-      h('h2', { id: 'practice-h', text: 'Quick practice' }),
-      h('p', { class: 'question-prompt', id: 'practice-q', text: q.prompt }),
-      closedQuestion(q, ans, function () { store.set(key, ans); }, function () { section.appendChild(again); }),
-      ans.checked ? again : null
-    );
-    append(wrap, section);
+    append(wrap, drillSection(kind, id, item));
     append(wrap, h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/toolkit', text: 'Back to the toolkit' })));
     return wrap;
   }

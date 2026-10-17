@@ -22,17 +22,118 @@
         "I ended with what I want to happen next.",
         "I signed off, such as \"Kind regards\" and a name."
       ],
-      "practice": {
-        "prompt": "You are emailing someone you have never met. Which opening is best?",
-        "options": [
-          "Hiya! Hope ur well :)",
-          "Dear Mr Patel, I am writing to ask about volunteering at Panda Week.",
-          "To whoever reads this, I want to volunteer.",
-          "Hey Sam, quick question."
-        ],
-        "answer": 1,
-        "why": "It uses a formal greeting and says straight away why you are writing. The others are too casual for someone you don't know."
-      }
+      "questions": [
+        {
+          "prompt": "You are emailing someone you have never met. Which opening is best?",
+          "options": [
+            "Hiya! Hope ur well :)",
+            "Dear Mr Patel, I am writing to ask about volunteering at Panda Week.",
+            "To whoever reads this, I want to volunteer.",
+            "Hey Sam, quick question."
+          ],
+          "answer": 1,
+          "why": "It uses a formal greeting and says straight away why you are writing. The others are too casual for someone you don't know."
+        },
+        {
+          "prompt": "What should the subject line of an email do?",
+          "options": [
+            "Repeat the whole email",
+            "Give your home address",
+            "Stay blank so the reader opens it",
+            "Say in a few words what the email is about"
+          ],
+          "answer": 3,
+          "why": "A good subject line tells the reader at a glance why you are writing, for example \"Volunteer application for Panda Week\"."
+        },
+        {
+          "prompt": "Which sentence is best for explaining why you are writing?",
+          "options": [
+            "I am writing to apply for the weekend job advertised on your website.",
+            "So, yeah, I saw something.",
+            "Writing to you now.",
+            "This email is an email about a job."
+          ],
+          "answer": 0,
+          "why": "It says clearly who you are writing about and why, in a polite, formal way."
+        },
+        {
+          "prompt": "Which closing and sign-off suits an email to someone you have never met?",
+          "options": [
+            "See ya!",
+            "Love from",
+            "Kind regards, followed by your name",
+            "Cheers mate"
+          ],
+          "answer": 2,
+          "why": "\"Kind regards\" is polite without being stiff. The others are too casual or too personal for a stranger."
+        },
+        {
+          "prompt": "Which request is the politest?",
+          "options": [
+            "Tell me the price.",
+            "Price?",
+            "You need to tell me how much it is.",
+            "Could you please let me know the cost of a group ticket?"
+          ],
+          "answer": 3,
+          "why": "\"Could you please\" is polite and clear. The others sound abrupt or bossy."
+        },
+        {
+          "prompt": "What should each paragraph of an email usually do?",
+          "options": [
+            "Cover every point in one big block",
+            "Cover one main point",
+            "Be a single short sentence",
+            "Start with the sign-off"
+          ],
+          "answer": 1,
+          "why": "One main point per paragraph makes an email easy to follow."
+        },
+        {
+          "prompt": "What should you do before you press send?",
+          "options": [
+            "Read it through and check spelling and punctuation",
+            "Add lots of emojis",
+            "Delete the greeting to save time",
+            "Write it all in capital letters"
+          ],
+          "answer": 0,
+          "why": "Proof-reading catches mistakes and makes a better impression."
+        },
+        {
+          "prompt": "Which sentence is the best way to ask for a reply?",
+          "options": [
+            "Reply when you feel like it.",
+            "Reply or else.",
+            "I would be grateful for a reply by Friday 12 June.",
+            "That is all, bye."
+          ],
+          "answer": 2,
+          "why": "It is polite and gives a clear date."
+        },
+        {
+          "prompt": "Which greeting suits a friendly email to a friend?",
+          "options": [
+            "Dear Sir or Madam,",
+            "To whom it may concern,",
+            "Dear Customer Service Manager,",
+            "Hi Maya,"
+          ],
+          "answer": 3,
+          "why": "A friend can be greeted by first name. The other greetings are formal."
+        },
+        {
+          "prompt": "Which is the best order for an email of application?",
+          "options": [
+            "Greeting, reason for writing, details, polite close, sign-off",
+            "Sign-off, details, greeting, reason for writing",
+            "Details, greeting, sign-off, reason for writing",
+            "Reason for writing, sign-off, greeting, details"
+          ],
+          "answer": 0,
+          "why": "A reader expects to be greeted first, told why you are writing, given the details, and then thanked."
+        }
+      ]
     },
     {
       "id": "letter",
@@ -55,17 +156,118 @@
         "My first paragraph says why I am writing.",
         "I stayed polite throughout."
       ],
-      "practice": {
-        "prompt": "You started your letter with \"Dear Sir or Madam\". How should you sign off?",
-        "options": [
-          "Yours faithfully",
-          "Yours sincerely",
-          "Love from",
-          "Cheers"
-        ],
-        "answer": 0,
-        "why": "When you don't know the person's name, you use \"Yours faithfully\". \"Yours sincerely\" goes with a named person, such as \"Dear Ms Khan\"."
-      }
+      "questions": [
+        {
+          "prompt": "You started your letter with \"Dear Sir or Madam\". How should you sign off?",
+          "options": [
+            "Yours sincerely",
+            "Love from",
+            "Cheers",
+            "Yours faithfully"
+          ],
+          "answer": 3,
+          "why": "When you don't know the person's name, you use \"Yours faithfully\". \"Yours sincerely\" goes with a named person, such as \"Dear Ms Khan\"."
+        },
+        {
+          "prompt": "You know the person's name and start with \"Dear Ms Khan\". How should you sign off?",
+          "options": [
+            "Yours sincerely",
+            "Yours faithfully",
+            "Love from",
+            "Cheers"
+          ],
+          "answer": 0,
+          "why": "When you use a name, you sign off with \"Yours sincerely\". \"Yours faithfully\" goes with \"Dear Sir or Madam\"."
+        },
+        {
+          "prompt": "Where does your own address go in a formal letter?",
+          "options": [
+            "At the bottom of the page",
+            "After the sign-off",
+            "In the top right-hand corner",
+            "In the greeting"
+          ],
+          "answer": 2,
+          "why": "The sender's address goes at the top right, with the date underneath."
+        },
+        {
+          "prompt": "Where does the date go?",
+          "options": [
+            "On the last line",
+            "Next to your signature",
+            "In the first paragraph",
+            "Under your address"
+          ],
+          "answer": 3,
+          "why": "The date goes under the sender's address near the top."
+        },
+        {
+          "prompt": "Which first sentence suits a letter of complaint?",
+          "options": [
+            "Your company is terrible.",
+            "I am writing to complain about the coach trip that was cancelled on 14 May.",
+            "Hello, it's me again.",
+            "I was really annoyed!!!"
+          ],
+          "answer": 1,
+          "why": "It states the purpose clearly and politely, with a date."
+        },
+        {
+          "prompt": "Which sentence keeps a complaint polite but firm?",
+          "options": [
+            "I would be grateful if you could refund my fare in full.",
+            "Give me my money back now.",
+            "I demand a refund immediately, or else.",
+            "You had better sort this out."
+          ],
+          "answer": 0,
+          "why": "It makes a clear request without being rude."
+        },
+        {
+          "prompt": "What should the last paragraph of a formal letter usually do?",
+          "options": [
+            "Repeat your address",
+            "Add a brand new complaint",
+            "Say what you want to happen and thank the reader",
+            "Apologise for writing"
+          ],
+          "answer": 2,
+          "why": "Ending with a clear request and a thank-you leaves the reader knowing what to do next."
+        },
+        {
+          "prompt": "Which greeting is correct if you do not know the person's name?",
+          "options": [
+            "Hi there,",
+            "Dear you,",
+            "To the boss,",
+            "Dear Sir or Madam,"
+          ],
+          "answer": 3,
+          "why": "\"Dear Sir or Madam\" is the standard formal greeting when you do not have a name."
+        },
+        {
+          "prompt": "Which phrase is too informal for a formal letter?",
+          "options": [
+            "I was totally gutted about it.",
+            "I was extremely disappointed.",
+            "I would like to explain what happened.",
+            "Thank you for your time."
+          ],
+          "answer": 0,
+          "why": "\"Totally gutted\" is slang. A formal letter uses a more measured phrase such as \"extremely disappointed\"."
+        },
+        {
+          "prompt": "Which sentence uses a formal register?",
+          "options": [
+            "Write back soon, yeah?",
+            "I should be grateful for a reply within fourteen days.",
+            "Get back to me quick.",
+            "Just reply whenever."
+          ],
+          "answer": 1,
+          "why": "It is polite, precise and fully formal."
+        }
+      ]
     },
     {
       "id": "article",
@@ -87,17 +289,118 @@
         "I spoke to the reader directly where it helps.",
         "I ended with a strong final thought or call to action."
       ],
-      "practice": {
-        "prompt": "Which is the best headline for a college newsletter article encouraging students to use buses?",
-        "options": [
-          "Buses",
-          "This article is about buses and why you should use them more often than you do now",
-          "bus",
-          "Get On Board: Why the Bus Beats the School Run"
-        ],
-        "answer": 3,
-        "why": "It is short, catches attention and hints at the article's point. The others are too plain or too long."
-      }
+      "questions": [
+        {
+          "prompt": "Which is the best headline for a college newsletter article encouraging students to use buses?",
+          "options": [
+            "Get On Board: Why the Bus Beats the School Run",
+            "Buses",
+            "This article is about buses and why you should use them more often than you do now",
+            "bus"
+          ],
+          "answer": 0,
+          "why": "It is short, catches attention and hints at the article's point. The others are too plain or too long."
+        },
+        {
+          "prompt": "What is the job of the opening paragraph of an article?",
+          "options": [
+            "Give the writer's address",
+            "List every fact in the article",
+            "Hook the reader and show what the article is about",
+            "Finish the argument"
+          ],
+          "answer": 2,
+          "why": "A good opening grabs attention and tells readers what to expect."
+        },
+        {
+          "prompt": "Which opening is best for an article about healthy eating?",
+          "options": [
+            "Food.",
+            "This article is about food.",
+            "I will now write about food and stuff.",
+            "Have you ever wondered why a packed lunch can beat a canteen meal?"
+          ],
+          "answer": 3,
+          "why": "A question speaks to the reader and makes them want to read on."
+        },
+        {
+          "prompt": "Why do articles often use subheadings?",
+          "options": [
+            "They replace paragraphs",
+            "They break up the text and help readers find sections",
+            "They must always be full sentences",
+            "They show the writer's name"
+          ],
+          "answer": 1,
+          "why": "Subheadings make an article easier to scan and follow."
+        },
+        {
+          "prompt": "Which ending suits a persuasive article?",
+          "options": [
+            "So next Monday, leave the car at home and give the bus a try.",
+            "That's it.",
+            "I have run out of things to say.",
+            "Thank you for reading my homework."
+          ],
+          "answer": 0,
+          "why": "A call to action leaves the reader with something to do."
+        },
+        {
+          "prompt": "Which sentence uses direct address?",
+          "options": [
+            "People may be surprised how much money could be saved.",
+            "Money can be saved by some.",
+            "You may be surprised how much money you could save.",
+            "Savings were found."
+          ],
+          "answer": 2,
+          "why": "Direct address speaks straight to the reader with \"you\"."
+        },
+        {
+          "prompt": "Which of these is a rhetorical question?",
+          "options": [
+            "What time does the bus leave?",
+            "Where is the nearest station?",
+            "How much is a day ticket?",
+            "Who wants to sit in traffic for an hour every morning?"
+          ],
+          "answer": 3,
+          "why": "A rhetorical question is asked for effect, and the writer expects the answer to be \"nobody\"."
+        },
+        {
+          "prompt": "Which tone suits an article for students?",
+          "options": [
+            "Lively and friendly, in full sentences",
+            "Slang and text-speak",
+            "Very formal legal language",
+            "Rude and sarcastic"
+          ],
+          "answer": 0,
+          "why": "A lively, friendly tone keeps readers interested, while full sentences keep it correct."
+        },
+        {
+          "prompt": "What is the best way to support a point in an article?",
+          "options": [
+            "Repeat the point more loudly",
+            "Give a reason and an example or fact",
+            "Add three exclamation marks",
+            "Say that everyone knows it"
+          ],
+          "answer": 1,
+          "why": "Reasons and evidence make a point convincing."
+        },
+        {
+          "prompt": "Which set of features belongs in an article for a college newsletter?",
+          "options": [
+            "A postal address and the date",
+            "A subject line and \"Dear...\"",
+            "A sign-off of \"Yours faithfully\"",
+            "A headline, paragraphs and a clear ending"
+          ],
+          "answer": 3,
+          "why": "A headline, paragraphs and an ending are the basic features of an article."
+        }
+      ]
     },
     {
       "id": "review",
@@ -118,17 +421,118 @@
         "I gave at least one thing that could be better.",
         "I ended with a clear recommendation."
       ],
-      "practice": {
-        "prompt": "Which sentence would work best in a review?",
-        "options": [
-          "It was good.",
-          "I went there.",
-          "The feeding talk was the highlight, because the keeper answered every question from the children.",
-          "Everything was bad and nobody should go."
-        ],
-        "answer": 2,
-        "why": "It gives an opinion and a reason with a specific example, which helps the reader decide."
-      }
+      "questions": [
+        {
+          "prompt": "Which sentence would work best in a review?",
+          "options": [
+            "It was good.",
+            "I went there.",
+            "The feeding talk was the highlight, because the keeper answered every question from the children.",
+            "Everything was bad and nobody should go."
+          ],
+          "answer": 2,
+          "why": "It gives an opinion and a reason with a specific example, which helps the reader decide."
+        },
+        {
+          "prompt": "What should the first paragraph of a review do?",
+          "options": [
+            "List every price",
+            "Say goodbye to the reader",
+            "Repeat the leaflet",
+            "Say what you are reviewing and give a first impression"
+          ],
+          "answer": 3,
+          "why": "Readers need to know what is being reviewed and what you thought, straight away."
+        },
+        {
+          "prompt": "Which comment is balanced?",
+          "options": [
+            "The café was perfect in every way.",
+            "The café was friendly, although the prices were high.",
+            "The café was awful.",
+            "The café was a café."
+          ],
+          "answer": 1,
+          "why": "It gives a good point and a not-so-good point."
+        },
+        {
+          "prompt": "What should a good recommendation include?",
+          "options": [
+            "Who it would suit and why",
+            "The writer's address",
+            "A question for the reader's teacher",
+            "An apology"
+          ],
+          "answer": 0,
+          "why": "Telling readers who would enjoy it helps them decide."
+        },
+        {
+          "prompt": "Which sentence gives a reason?",
+          "options": [
+            "I enjoyed it.",
+            "It was fun.",
+            "I enjoyed it because the guide made every dish easy to understand.",
+            "Good."
+          ],
+          "answer": 2,
+          "why": "\"Because\" shows the reason behind the opinion."
+        },
+        {
+          "prompt": "Which comment is the most helpful to someone deciding whether to go?",
+          "options": [
+            "It was fine.",
+            "Loved it!!",
+            "Not great.",
+            "Tickets cost £12, but the queue at lunchtime lasted forty minutes."
+          ],
+          "answer": 3,
+          "why": "It gives specific facts a reader can act on."
+        },
+        {
+          "prompt": "Which critical comment is fair and helpful?",
+          "options": [
+            "The seats were uncomfortable, so I would bring a cushion.",
+            "The seats were rubbish.",
+            "The seats existed.",
+            "I hated the seats."
+          ],
+          "answer": 0,
+          "why": "It gives the problem and a useful tip."
+        },
+        {
+          "prompt": "Which tone is best for a review?",
+          "options": [
+            "Angry and rude",
+            "Honest and friendly, with reasons",
+            "Bored and brief",
+            "Copied from the leaflet"
+          ],
+          "answer": 1,
+          "why": "Readers trust honest opinions that come with reasons."
+        },
+        {
+          "prompt": "Which is the best final sentence for a review?",
+          "options": [
+            "The end.",
+            "Bye.",
+            "I rest my case.",
+            "Overall, I would recommend it for families, but go early to avoid queues."
+          ],
+          "answer": 3,
+          "why": "It sums up the view, says who it suits and gives a tip."
+        },
+        {
+          "prompt": "Which group of words shows the writer's opinion?",
+          "options": [
+            "Delicious, disappointing, brilliant",
+            "Tuesday, bus, seventeen",
+            "And, but, so",
+            "Ticket, shelf, door"
+          ],
+          "answer": 0,
+          "why": "Opinion words describe how good or bad something was."
+        }
+      ]
     },
     {
       "id": "report",
@@ -151,17 +555,118 @@
         "I kept the tone formal and factual.",
         "I finished with clear recommendations."
       ],
-      "practice": {
-        "prompt": "Which subheading suits a formal report?",
-        "options": [
-          "Stuff that's rubbish",
-          "Transport",
-          "OMG the buses!!",
-          "so yeah"
-        ],
-        "answer": 1,
-        "why": "Report subheadings should be short and plain, so the reader can find each section quickly."
-      }
+      "questions": [
+        {
+          "prompt": "Which subheading suits a formal report?",
+          "options": [
+            "Stuff that's rubbish",
+            "OMG the buses!!",
+            "so yeah",
+            "Transport"
+          ],
+          "answer": 3,
+          "why": "Report subheadings should be short and plain, so the reader can find each section quickly."
+        },
+        {
+          "prompt": "What does the introduction of a report do?",
+          "options": [
+            "Gives the final recommendations",
+            "Explains the purpose of the report",
+            "Tells a joke",
+            "Repeats the title"
+          ],
+          "answer": 1,
+          "why": "A report starts by saying why it was written."
+        },
+        {
+          "prompt": "Which sentence is suited to a formal report?",
+          "options": [
+            "It was found that most students travel to college by bus.",
+            "Loads of students go by bus lol.",
+            "Basically everyone is on the bus.",
+            "Guess what, buses rule."
+          ],
+          "answer": 0,
+          "why": "A report uses a formal, factual tone."
+        },
+        {
+          "prompt": "Where do recommendations usually go in a report?",
+          "options": [
+            "Before the title",
+            "In the middle of the introduction",
+            "In a final section, often as numbered points",
+            "Nowhere, reports never have them"
+          ],
+          "answer": 2,
+          "why": "Recommendations come last, after the findings."
+        },
+        {
+          "prompt": "Which is a clear recommendation?",
+          "options": [
+            "Bikes are bad.",
+            "Maybe stuff could happen.",
+            "I think it's whatever.",
+            "The council should install a covered cycle store by the main entrance."
+          ],
+          "answer": 3,
+          "why": "It says who should do what, and where."
+        },
+        {
+          "prompt": "The survey found that 18 out of 40 students use the bus. Which sentence reports this best?",
+          "options": [
+            "Nearly half of the students (18 out of 40) travel by bus.",
+            "Bus 18.",
+            "18 students, bus, 40.",
+            "Bus is 18 of 40 so yeah."
+          ],
+          "answer": 0,
+          "why": "A good report turns figures into a clear sentence."
+        },
+        {
+          "prompt": "Which should be avoided in a formal report?",
+          "options": [
+            "Subheadings",
+            "Slang and personal chat",
+            "Facts and figures",
+            "Clear paragraphs"
+          ],
+          "answer": 1,
+          "why": "Slang and chat do not suit a formal report."
+        },
+        {
+          "prompt": "Which opening line suits a report for a head teacher?",
+          "options": [
+            "Hiya, here's what I think.",
+            "Dear Diary,",
+            "Read this now.",
+            "This report describes how Panda Day went and suggests improvements for next year."
+          ],
+          "answer": 3,
+          "why": "It states the purpose formally and clearly."
+        },
+        {
+          "prompt": "Which heading fits a section about what went wrong?",
+          "options": [
+            "Problems",
+            "Yay!",
+            "Stuff",
+            "My feelings about lunch"
+          ],
+          "answer": 0,
+          "why": "Headings should be short, plain and informative."
+        },
+        {
+          "prompt": "What are the \"To\", \"From\" and \"Date\" lines at the top of a report for?",
+          "options": [
+            "To make the page look full",
+            "To show the price",
+            "To show who it is for, who wrote it and when",
+            "To list the page numbers"
+          ],
+          "answer": 2,
+          "why": "They tell the reader the basic facts about the report."
+        }
+      ]
     },
     {
       "id": "blog",
@@ -182,17 +687,118 @@
         "I gave reasons for my view.",
         "I ended by summing up or inviting a response."
       ],
-      "practice": {
-        "prompt": "Which is the best final sentence for a blog post?",
-        "options": [
-          "So that's why I'd pick a village every time. Would you? Tell me in the comments.",
-          "The end.",
-          "Bye.",
-          "That's all I have to say about towns and villages and stuff."
-        ],
-        "answer": 0,
-        "why": "It sums up the writer's view and invites the reader to respond, which suits a blog."
-      }
+      "questions": [
+        {
+          "prompt": "Which is the best final sentence for a blog post?",
+          "options": [
+            "The end.",
+            "So that's why I'd pick a village every time. Would you? Tell me in the comments.",
+            "Bye.",
+            "That's all I have to say about towns and villages and stuff."
+          ],
+          "answer": 1,
+          "why": "It sums up the writer's view and invites the reader to respond, which suits a blog."
+        },
+        {
+          "prompt": "Which title would catch a reader's attention?",
+          "options": [
+            "I Moved from a Village to a Town: Here's What Surprised Me",
+            "Blog",
+            "A text about moving",
+            "Thoughts"
+          ],
+          "answer": 0,
+          "why": "A good title is specific and makes you want to read on."
+        },
+        {
+          "prompt": "Why does a blog post use short paragraphs?",
+          "options": [
+            "They use less ink",
+            "They are required by law",
+            "They are easier to read on a screen",
+            "They hide spelling mistakes"
+          ],
+          "answer": 2,
+          "why": "Short paragraphs stop the page looking like a solid block of text."
+        },
+        {
+          "prompt": "Which opening is personal and clear?",
+          "options": [
+            "Moving is a thing that people do.",
+            "In this blog post the following will be explained.",
+            "Dear Sir or Madam,",
+            "Last month I swapped fields for pavements, and I have a lot to say about it."
+          ],
+          "answer": 3,
+          "why": "It sounds like a real person and tells you what is coming."
+        },
+        {
+          "prompt": "Which tone is right for a blog?",
+          "options": [
+            "Friendly and honest, in full sentences",
+            "Slang and emojis only",
+            "Cold and legal",
+            "Shouting in capital letters"
+          ],
+          "answer": 0,
+          "why": "A blog can be personal, but it should still be clear and correct."
+        },
+        {
+          "prompt": "Which sentence gives a reason for a view?",
+          "options": [
+            "I prefer the town.",
+            "I prefer the town because I can reach my friends on foot.",
+            "Town is good.",
+            "It is town."
+          ],
+          "answer": 1,
+          "why": "\"Because\" introduces a reason."
+        },
+        {
+          "prompt": "Which closing invites readers to join in?",
+          "options": [
+            "Do not reply.",
+            "Bye forever.",
+            "That is my last word and nobody can change it.",
+            "What do you think? Tell me in the comments."
+          ],
+          "answer": 3,
+          "why": "Ending with a question encourages readers to respond."
+        },
+        {
+          "prompt": "Which is a good way to add interest to a blog post?",
+          "options": [
+            "A short story about something that happened to you",
+            "A list of random words",
+            "A copy of a leaflet",
+            "Your first sentence repeated"
+          ],
+          "answer": 0,
+          "why": "Personal stories bring a blog to life."
+        },
+        {
+          "prompt": "Which should you avoid in a blog post?",
+          "options": [
+            "Full stops",
+            "Paragraphs",
+            "Text-speak such as \"cuz\" and \"ur\"",
+            "A title"
+          ],
+          "answer": 2,
+          "why": "Text-speak looks careless, even in a friendly post."
+        },
+        {
+          "prompt": "Which ending is balanced and honest?",
+          "options": [
+            "Everything is perfect.",
+            "Everything is terrible.",
+            "I have nothing to say.",
+            "I miss the quiet, but I would not go back."
+          ],
+          "answer": 3,
+          "why": "It admits something good about the old place while being clear about the choice."
+        }
+      ]
     },
     {
       "id": "forum",
@@ -216,17 +822,118 @@
         "I finished by inviting replies.",
         "I kept the tone friendly but polite."
       ],
-      "practice": {
-        "prompt": "Which is the best first sentence for a forum post giving your view on later school start times?",
-        "options": [
-          "school start times r bad lol",
-          "Dear Sir or Madam, I am writing to complain.",
-          "Hi everyone, I think school should start later, and I have three reasons.",
-          "School."
-        ],
-        "answer": 2,
-        "why": "It says what the writer thinks straight away, sounds friendly and uses full words. The others are too casual, too formal for a forum, or say nothing."
-      }
+      "questions": [
+        {
+          "prompt": "Which is the best first sentence for a forum post giving your view on later school start times?",
+          "options": [
+            "Hi everyone, I think school should start later, and I have three reasons.",
+            "school start times r bad lol",
+            "Dear Sir or Madam, I am writing to complain.",
+            "School."
+          ],
+          "answer": 0,
+          "why": "It says what the writer thinks straight away, sounds friendly and uses full words. The others are too casual, too formal for a forum, or say nothing."
+        },
+        {
+          "prompt": "Where in a forum post should your view appear?",
+          "options": [
+            "In the very last line only",
+            "Nowhere, keep it secret",
+            "In the first sentence or two",
+            "In the sign-off"
+          ],
+          "answer": 2,
+          "why": "Readers should know your view straight away."
+        },
+        {
+          "prompt": "Which reply to a question is the most helpful?",
+          "options": [
+            "No.",
+            "Whatever.",
+            "Why are you asking?",
+            "I'd say yes, because the guided tour answers questions you would otherwise miss."
+          ],
+          "answer": 3,
+          "why": "It gives a view and a reason."
+        },
+        {
+          "prompt": "How can you disagree politely?",
+          "options": [
+            "I see your point, but I think evening buses matter more.",
+            "You are wrong and silly.",
+            "That is the dumbest idea.",
+            "Nobody agrees with you."
+          ],
+          "answer": 0,
+          "why": "It acknowledges the other view before giving yours."
+        },
+        {
+          "prompt": "A good forum post usually ends with...",
+          "options": [
+            "Your full address",
+            "A question or an invitation to reply",
+            "Yours faithfully",
+            "A long list of rules"
+          ],
+          "answer": 1,
+          "why": "Inviting a reply keeps the discussion going."
+        },
+        {
+          "prompt": "Which tone suits a web forum?",
+          "options": [
+            "Cold and legal",
+            "Rude and angry",
+            "Silent",
+            "Friendly and chatty, but still clear"
+          ],
+          "answer": 3,
+          "why": "A forum is informal, but readers still need to understand you."
+        },
+        {
+          "prompt": "Which sentence includes an example?",
+          "options": [
+            "For example, last winter my bus was cancelled three times in a week.",
+            "Buses are sometimes late.",
+            "I do not like buses.",
+            "Buses exist."
+          ],
+          "answer": 0,
+          "why": "A specific example makes a point real."
+        },
+        {
+          "prompt": "Why are short paragraphs useful in a forum post?",
+          "options": [
+            "They are quicker to type backwards",
+            "They are required by the website",
+            "They are easier to read on a screen",
+            "They hide spelling mistakes"
+          ],
+          "answer": 2,
+          "why": "Short paragraphs keep a post readable."
+        },
+        {
+          "prompt": "Which is NOT suitable in a forum post?",
+          "options": [
+            "A polite greeting",
+            "A reason for your view",
+            "A question at the end",
+            "ALL CAPITALS to show anger"
+          ],
+          "answer": 3,
+          "why": "Capital letters look like shouting and make a post harder to read."
+        },
+        {
+          "prompt": "Which opening shows you are replying to another member?",
+          "options": [
+            "Dear Sir,",
+            "Hi Dani, I agree with your point about late buses.",
+            "To whom it may concern,",
+            "Yours sincerely,"
+          ],
+          "answer": 1,
+          "why": "It names the person and links to what they said."
+        }
+      ]
     },
     {
       "id": "form",
@@ -250,17 +957,118 @@
         "I stayed polite, even when giving criticism.",
         "I thanked them at the end."
       ],
-      "practice": {
-        "prompt": "A box asks \"What did you like most?\" Which answer is best?",
-        "options": [
-          "It was good.",
-          "The guide was friendly and explained each dish, which made the tour more interesting.",
-          "IDK, everything",
-          "I did not like it at all."
-        ],
-        "answer": 1,
-        "why": "It answers the question and gives a reason. \"It was good\" gives the reader nothing to use."
-      }
+      "questions": [
+        {
+          "prompt": "A box asks \"What did you like most?\" Which answer is best?",
+          "options": [
+            "It was good.",
+            "IDK, everything",
+            "The guide was friendly and explained each dish, which made the tour more interesting.",
+            "I did not like it at all."
+          ],
+          "answer": 2,
+          "why": "It answers the question and gives a reason. \"It was good\" gives the reader nothing to use."
+        },
+        {
+          "prompt": "What should you do first when you reach a box on an online form?",
+          "options": [
+            "Start typing at once",
+            "Skip to the next box",
+            "Delete the label",
+            "Read the label on the box"
+          ],
+          "answer": 3,
+          "why": "The label tells you what to write."
+        },
+        {
+          "prompt": "Which answer is best for the box \"What could be improved?\"",
+          "options": [
+            "The group was large, so a smaller group would make it easier to hear the guide.",
+            "Nothing.",
+            "Everything.",
+            "idk"
+          ],
+          "answer": 0,
+          "why": "It gives a clear point, a reason and a suggestion."
+        },
+        {
+          "prompt": "Why should you write in full sentences on a form?",
+          "options": [
+            "They use up more space",
+            "They make your meaning clear to the reader",
+            "They are required by law",
+            "They hide mistakes"
+          ],
+          "answer": 1,
+          "why": "A reader who is not in front of you needs clear sentences."
+        },
+        {
+          "prompt": "Which is a polite way to complain on a form?",
+          "options": [
+            "Your tour was a joke.",
+            "Terrible. Do better.",
+            "Sort it out.",
+            "I was disappointed that the tour started late, and I would appreciate a smaller group next time."
+          ],
+          "answer": 3,
+          "why": "It is honest, polite and constructive."
+        },
+        {
+          "prompt": "A box asks \"Would you recommend this?\" Which answer is best?",
+          "options": [
+            "Yes, I would, especially for families, because the guide was friendly and the food was excellent.",
+            "Yes.",
+            "yeah why not",
+            "Maybe if I feel like it."
+          ],
+          "answer": 0,
+          "why": "It gives an answer, a reason and who it suits."
+        },
+        {
+          "prompt": "What should you do before pressing submit?",
+          "options": [
+            "Add more boxes",
+            "Write in capitals",
+            "Check your spelling and punctuation",
+            "Delete your answer"
+          ],
+          "answer": 2,
+          "why": "Proof-reading avoids mistakes."
+        },
+        {
+          "prompt": "The box is small and you have a lot to say. What should you do?",
+          "options": [
+            "Write very tiny so everything fits",
+            "Leave it blank",
+            "Copy the label",
+            "Choose the most important points and write them clearly"
+          ],
+          "answer": 3,
+          "why": "Clear, short answers are better than cramming."
+        },
+        {
+          "prompt": "Which line suits the end of a feedback form?",
+          "options": [
+            "Done.",
+            "Thank you for asking for my views.",
+            "Bye.",
+            "Whatever you say."
+          ],
+          "answer": 1,
+          "why": "A polite thank-you is a good finish."
+        },
+        {
+          "prompt": "Which sentence gives a reason for a view?",
+          "options": [
+            "I enjoyed the tasting stops because I tried foods I had never eaten before.",
+            "I enjoyed it.",
+            "It was good.",
+            "Nice."
+          ],
+          "answer": 0,
+          "why": "\"Because\" shows the reason."
+        }
+      ]
     },
     {
       "id": "advice",
@@ -284,17 +1092,118 @@
         "I used simple, direct language.",
         "I ended with a reminder or a reassuring line."
       ],
-      "practice": {
-        "prompt": "Which is the best subheading for an advice sheet about first train journeys?",
-        "options": [
-          "Trains",
-          "Buy your ticket before you board",
-          "Things",
-          "Why trains are great and I love them so much"
-        ],
-        "answer": 1,
-        "why": "It tells the reader exactly what to do. The others are too vague or too long, or are about the writer rather than the reader."
-      }
+      "questions": [
+        {
+          "prompt": "Which is the best subheading for an advice sheet about first train journeys?",
+          "options": [
+            "Trains",
+            "Things",
+            "Why trains are great and I love them so much",
+            "Buy your ticket before you board"
+          ],
+          "answer": 3,
+          "why": "It tells the reader exactly what to do. The others are too vague or too long, or are about the writer rather than the reader."
+        },
+        {
+          "prompt": "Which title shows who an advice sheet is for?",
+          "options": [
+            "Your First Train Journey: Tips for Travelling Alone",
+            "Train",
+            "Things to know",
+            "Advice"
+          ],
+          "answer": 0,
+          "why": "A good title says who the advice is for and what it covers."
+        },
+        {
+          "prompt": "Which tip explains what to do and why?",
+          "options": [
+            "Charge your phone.",
+            "Charge your phone the night before, so you can show your ticket on the screen.",
+            "Phones are useful.",
+            "Phone."
+          ],
+          "answer": 1,
+          "why": "A tip with a reason is more helpful and more convincing."
+        },
+        {
+          "prompt": "Which sentence uses direct, simple language?",
+          "options": [
+            "It might be advisable that early arrival be considered in the context of platform location.",
+            "Maybe get there at some time.",
+            "Arriving early is a thing.",
+            "Arrive ten minutes early so that you can find the right platform."
+          ],
+          "answer": 3,
+          "why": "Advice should be clear and direct."
+        },
+        {
+          "prompt": "When are numbered tips the best choice?",
+          "options": [
+            "When the order of the steps matters",
+            "When you want to hide the order",
+            "When there is only one tip",
+            "When the tips are jokes"
+          ],
+          "answer": 0,
+          "why": "Numbers show a sequence."
+        },
+        {
+          "prompt": "Which is a good opening line for an advice sheet?",
+          "options": [
+            "I am a person who walks.",
+            "Walking.",
+            "If you are walking in the desert for the first time, these tips will keep you safe and comfortable.",
+            "This is a document."
+          ],
+          "answer": 2,
+          "why": "It says who the advice is for and why it helps."
+        },
+        {
+          "prompt": "Which closing line reassures the reader?",
+          "options": [
+            "Good luck, you will need it.",
+            "That is all.",
+            "Do not blame us.",
+            "Follow these steps and you will be fine, and staff are always happy to help."
+          ],
+          "answer": 3,
+          "why": "A reassuring ending leaves the reader feeling confident."
+        },
+        {
+          "prompt": "Which sentence is written as an instruction?",
+          "options": [
+            "The timetable could have been checked.",
+            "Check the timetable before you leave.",
+            "Checking is something people do.",
+            "You will have checked."
+          ],
+          "answer": 1,
+          "why": "Instructions use the base form of the verb and speak to the reader."
+        },
+        {
+          "prompt": "Which heading is the clearest?",
+          "options": [
+            "What to bring",
+            "Stuff",
+            "Bag things?",
+            "Misc"
+          ],
+          "answer": 0,
+          "why": "A clear heading tells the reader what is in the section."
+        },
+        {
+          "prompt": "Which sentence is too vague to be good advice?",
+          "options": [
+            "Carry at least two litres of water.",
+            "Wear a hat and sun cream.",
+            "Be careful and do things properly.",
+            "Keep with the group."
+          ],
+          "answer": 2,
+          "why": "Good advice is specific, so the reader knows exactly what to do."
+        }
+      ]
     },
     {
       "id": "diary",
@@ -318,17 +1227,118 @@
         "I said what I learned.",
         "I looked ahead at the end."
       ],
-      "practice": {
-        "prompt": "Which sentence belongs in a diary entry?",
-        "options": [
-          "Visitors should arrive before 9 am.",
-          "I felt nervous when the bus was late, but it all worked out in the end.",
-          "Yours faithfully,",
-          "Terms and conditions apply."
-        ],
-        "answer": 1,
-        "why": "A diary says what happened and how the writer felt. The other lines belong in a notice, a formal letter or small print."
-      }
+      "questions": [
+        {
+          "prompt": "Which sentence belongs in a diary entry?",
+          "options": [
+            "I felt nervous when the bus was late, but it all worked out in the end.",
+            "Visitors should arrive before 9 am.",
+            "Yours faithfully,",
+            "Terms and conditions apply."
+          ],
+          "answer": 0,
+          "why": "A diary says what happened and how the writer felt. The other lines belong in a notice, a formal letter or small print."
+        },
+        {
+          "prompt": "How should a diary entry usually start?",
+          "options": [
+            "With \"Yours faithfully\"",
+            "With the day and the date",
+            "With a subject line",
+            "With a list of prices"
+          ],
+          "answer": 1,
+          "why": "The date shows when the events happened."
+        },
+        {
+          "prompt": "Which sentence shows feelings?",
+          "options": [
+            "The gate opened.",
+            "The keeper opened the gate at nine.",
+            "There was a gate.",
+            "I was nervous when the keeper opened the gate, but I soon relaxed."
+          ],
+          "answer": 3,
+          "why": "A diary says how the writer felt, not only what happened."
+        },
+        {
+          "prompt": "Which sentence keeps events in the order they happened?",
+          "options": [
+            "First we fed the animals, then we cleaned the garden, and after lunch we watched a talk.",
+            "After lunch we watched a talk, first we fed the animals, then we cleaned the garden.",
+            "We cleaned, talk, fed, lunch.",
+            "The garden talk fed lunch."
+          ],
+          "answer": 0,
+          "why": "A diary usually follows time order."
+        },
+        {
+          "prompt": "Which person is a diary written in?",
+          "options": [
+            "Second person (you)",
+            "Third person (he or she)",
+            "First person (I)",
+            "Passive only"
+          ],
+          "answer": 2,
+          "why": "A diary is a personal record, so it uses \"I\"."
+        },
+        {
+          "prompt": "Which is a good descriptive detail?",
+          "options": [
+            "It smelled.",
+            "There was bamboo.",
+            "Bamboo exists.",
+            "The bamboo smelled like fresh-cut grass."
+          ],
+          "answer": 3,
+          "why": "Specific detail makes writing vivid."
+        },
+        {
+          "prompt": "Which ending looks ahead?",
+          "options": [
+            "That was Tuesday.",
+            "Tomorrow I am helping the keepers with the afternoon feed, and I can't wait.",
+            "The end.",
+            "I wrote this."
+          ],
+          "answer": 1,
+          "why": "Looking ahead is a natural way to finish a diary."
+        },
+        {
+          "prompt": "Which tone suits a diary entry?",
+          "options": [
+            "Personal and chatty, in full sentences",
+            "Formal and legal",
+            "Rude to the reader",
+            "A list of numbers"
+          ],
+          "answer": 0,
+          "why": "A diary sounds like the writer, but should still be written in correct sentences."
+        },
+        {
+          "prompt": "Which of these does NOT belong in a diary entry?",
+          "options": [
+            "Today I felt...",
+            "I can't wait for tomorrow",
+            "Yours faithfully",
+            "I was surprised by..."
+          ],
+          "answer": 2,
+          "why": "\"Yours faithfully\" is the ending of a formal letter."
+        },
+        {
+          "prompt": "Which sentence uses the past tense correctly?",
+          "options": [
+            "We arrive at eight and the keepers was already working.",
+            "We arrives at eight and the keepers were already working.",
+            "We arriving at eight and the keepers is already working.",
+            "We arrived at eight and the keepers were already working."
+          ],
+          "answer": 3,
+          "why": "A diary about today usually uses the past tense, with correct verbs."
+        }
+      ]
     },
     {
       "id": "newsletter",
@@ -352,17 +1362,118 @@
         "I spoke to the readers as \"you\".",
         "I ended with a date or a way to get involved."
       ],
-      "practice": {
-        "prompt": "Which is the best heading for a village newsletter item about a summer fair?",
-        "options": [
-          "Fair",
-          "Summer Fair: Come and Join Us on 12 July!",
-          "An event that is going to happen in the future in the village hall",
-          "The thing"
-        ],
-        "answer": 1,
-        "why": "It says what the item is about, gives the date and invites people. The others are too short, too long or too vague."
-      }
+      "questions": [
+        {
+          "prompt": "Which is the best heading for a village newsletter item about a summer fair?",
+          "options": [
+            "Fair",
+            "Summer Fair: Come and Join Us on 12 July!",
+            "An event that is going to happen in the future in the village hall",
+            "The thing"
+          ],
+          "answer": 1,
+          "why": "It says what the item is about, gives the date and invites people. The others are too short, too long or too vague."
+        },
+        {
+          "prompt": "What goes at the top of a newsletter?",
+          "options": [
+            "A sign-off",
+            "The price list",
+            "The writer's address",
+            "The name of the newsletter and the date"
+          ],
+          "answer": 3,
+          "why": "Readers want to know what it is and when it is from."
+        },
+        {
+          "prompt": "Which welcome works best?",
+          "options": [
+            "Welcome to this month's newsletter. Read on for news about the summer fair and our new bus service.",
+            "Hello.",
+            "Newsletter.",
+            "Read."
+          ],
+          "answer": 0,
+          "why": "It welcomes readers and tells them what is inside."
+        },
+        {
+          "prompt": "Why use a heading for each item?",
+          "options": [
+            "It makes the newsletter longer",
+            "It hides the text",
+            "Readers can scan and find what interests them",
+            "It is required by law"
+          ],
+          "answer": 2,
+          "why": "Headings make a newsletter easy to scan."
+        },
+        {
+          "prompt": "Which tone suits a newsletter?",
+          "options": [
+            "Cold and formal",
+            "Rude and sarcastic",
+            "Silent",
+            "Friendly and positive, speaking to \"you\" and \"we\""
+          ],
+          "answer": 3,
+          "why": "A newsletter builds a sense of community."
+        },
+        {
+          "prompt": "Which closing line works well?",
+          "options": [
+            "That is all.",
+            "Come along on 12 July and bring a friend.",
+            "Do not come.",
+            "Bye."
+          ],
+          "answer": 1,
+          "why": "It gives a date and invites people to join in."
+        },
+        {
+          "prompt": "Which is best for event details?",
+          "options": [
+            "The date, time and place in a short list",
+            "Hidden in a long paragraph",
+            "Left out",
+            "Written as a riddle"
+          ],
+          "answer": 0,
+          "why": "Event details should be easy to find."
+        },
+        {
+          "prompt": "Which heading is best for news of a bus timetable change?",
+          "options": [
+            "Bus",
+            "News",
+            "New Evening Bus from 1 September",
+            "A thing about buses"
+          ],
+          "answer": 2,
+          "why": "It is specific and tells the reader what and when."
+        },
+        {
+          "prompt": "Which sentence invites people to get involved?",
+          "options": [
+            "Do not help.",
+            "The fair is held.",
+            "Fairs exist.",
+            "If you would like to help at the fair, please speak to Maya at the village hall."
+          ],
+          "answer": 3,
+          "why": "It says what to do and who to ask."
+        },
+        {
+          "prompt": "Which does NOT belong in a newsletter item?",
+          "options": [
+            "Rude comments about neighbours",
+            "Dates of events",
+            "A thank-you",
+            "Contact details"
+          ],
+          "answer": 0,
+          "why": "A newsletter should be friendly and respectful."
+        }
+      ]
     }
   ],
   "spag": [
@@ -382,17 +1493,118 @@
         "wrong": "the bus was late, we missed the start.",
         "right": "The bus was late. We missed the start."
       },
-      "practice": {
-        "prompt": "Which is punctuated correctly?",
-        "options": [
-          "we went to tel aviv in may.",
-          "We went to tel aviv in may.",
-          "We went to Tel Aviv in may",
-          "We went to Tel Aviv in May."
-        ],
-        "answer": 3,
-        "why": "The sentence starts with a capital, \"Tel Aviv\" and \"May\" are names so they need capitals, and it ends with a full stop."
-      }
+      "questions": [
+        {
+          "prompt": "Which is punctuated correctly?",
+          "options": [
+            "we went to tel aviv in may.",
+            "We went to tel aviv in may.",
+            "We went to Tel Aviv in may",
+            "We went to Tel Aviv in May."
+          ],
+          "answer": 3,
+          "why": "The sentence starts with a capital, \"Tel Aviv\" and \"May\" are names so they need capitals, and it ends with a full stop."
+        },
+        {
+          "prompt": "Which pair of sentences is punctuated correctly?",
+          "options": [
+            "The bus was late. We missed the start.",
+            "The bus was late, we missed the start.",
+            "The bus was late we missed the start.",
+            "the bus was late. We missed the start."
+          ],
+          "answer": 0,
+          "why": "Two complete sentences need a full stop between them, and each starts with a capital letter. A comma is not strong enough."
+        },
+        {
+          "prompt": "Which sentence has the right capital letters?",
+          "options": [
+            "On friday we visit the zoo.",
+            "On Friday we visit The zoo.",
+            "On Friday we visit the zoo.",
+            "on Friday we visit the zoo."
+          ],
+          "answer": 2,
+          "why": "Days of the week need capitals, and so does the first word of a sentence, but not \"the\" in the middle."
+        },
+        {
+          "prompt": "Which sentence uses \"I\" correctly?",
+          "options": [
+            "Yesterday i went to the market.",
+            "yesterday I went to the market.",
+            "Yesterday, i went to the market.",
+            "Yesterday I went to the market."
+          ],
+          "answer": 3,
+          "why": "\"I\" is always a capital letter."
+        },
+        {
+          "prompt": "Which sentence uses capital letters correctly for names?",
+          "options": [
+            "maya lives in brayminster, near northcaster.",
+            "Maya lives in Brayminster, near Northcaster.",
+            "Maya lives in brayminster, near Northcaster.",
+            "Maya Lives In Brayminster, Near Northcaster."
+          ],
+          "answer": 1,
+          "why": "Names of people and places start with capitals. Other words in the sentence do not."
+        },
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "I love pandas. They eat bamboo all day.",
+            "I love pandas, they eat bamboo all day.",
+            "I love pandas they eat bamboo all day.",
+            "I love pandas. they eat bamboo all day."
+          ],
+          "answer": 0,
+          "why": "Each sentence starts with a capital letter and ends with a full stop."
+        },
+        {
+          "prompt": "Which sentence ends correctly?",
+          "options": [
+            "The tour starts at nine?",
+            "The tour starts at nine,",
+            "The tour starts at nine.",
+            "The tour starts at nine"
+          ],
+          "answer": 2,
+          "why": "A statement ends with a full stop."
+        },
+        {
+          "prompt": "Which fixes the run-on sentence \"The train was late the platform was empty\"?",
+          "options": [
+            "The train was late the platform. Was empty.",
+            "The train. Was late the platform was empty.",
+            "the train was late. the platform was empty.",
+            "The train was late. The platform was empty."
+          ],
+          "answer": 3,
+          "why": "There are two complete ideas, so they need a full stop between them and a capital letter on the second."
+        },
+        {
+          "prompt": "Which sentence has the right capitals for days and months?",
+          "options": [
+            "My birthday is on Tuesday 5 March.",
+            "My birthday is on tuesday 5 march.",
+            "My Birthday Is On Tuesday 5 March.",
+            "my birthday is on Tuesday 5 march."
+          ],
+          "answer": 0,
+          "why": "Days and months start with capital letters."
+        },
+        {
+          "prompt": "Which line punctuates a list and two sentences correctly?",
+          "options": [
+            "We saw lions, tigers and bears then. We had lunch.",
+            "We saw lions, tigers and bears. Then we had lunch.",
+            "We saw lions, tigers and bears. then we had lunch.",
+            "We saw lions tigers and bears. Then we had lunch."
+          ],
+          "answer": 1,
+          "why": "The list has commas, the first sentence ends with a full stop, and the next one starts with a capital letter."
+        }
+      ]
     },
     {
       "id": "question-marks",
@@ -410,17 +1622,118 @@
         "wrong": "Could you tell me what time the talk starts.",
         "right": "Could you tell me what time the talk starts?"
       },
-      "practice": {
-        "prompt": "Which sentence needs a question mark at the end?",
-        "options": [
-          "I would like to book two tickets",
-          "The bus leaves at ten",
-          "Is lunch included in the price",
-          "Please send me a timetable"
-        ],
-        "answer": 2,
-        "why": "\"Is lunch included in the price\" is asking something, so it ends with a question mark."
-      }
+      "questions": [
+        {
+          "prompt": "Which sentence needs a question mark at the end?",
+          "options": [
+            "Is lunch included in the price",
+            "I would like to book two tickets",
+            "The bus leaves at ten",
+            "Please send me a timetable"
+          ],
+          "answer": 0,
+          "why": "\"Is lunch included in the price\" is asking something, so it ends with a question mark."
+        },
+        {
+          "prompt": "Which sentence is punctuated correctly?",
+          "options": [
+            "Could you tell me where the station is.",
+            "Could you tell me where the station is!",
+            "Could you tell me where the station is?",
+            "Could you tell me where the station is,"
+          ],
+          "answer": 2,
+          "why": "It is a direct question, so it ends with a question mark."
+        },
+        {
+          "prompt": "Which of these should NOT end with a question mark?",
+          "options": [
+            "When does the tour start",
+            "Is the café open",
+            "Can we bring our own lunch",
+            "I wonder when the tour starts"
+          ],
+          "answer": 3,
+          "why": "\"I wonder when the tour starts\" is a statement about a question, not a direct question, so it ends with a full stop."
+        },
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "Why are the buses always late.",
+            "Why are the buses always late?",
+            "Why. Are the buses always late?",
+            "Why are the buses always late,"
+          ],
+          "answer": 1,
+          "why": "A direct question ends with a question mark."
+        },
+        {
+          "prompt": "Which request is the politest and punctuated correctly?",
+          "options": [
+            "Would you mind telling me what time the tour starts?",
+            "Tell me what time the tour starts?",
+            "What time the tour starts?",
+            "Would you mind telling me what time the tour starts."
+          ],
+          "answer": 0,
+          "why": "A polite request that asks a direct question ends with a question mark."
+        },
+        {
+          "prompt": "Which question is written correctly for an email asking for information?",
+          "options": [
+            "Children under five is free?",
+            "Are children under five free.",
+            "Are children under five free?",
+            "Are children under five free,"
+          ],
+          "answer": 2,
+          "why": "It is a proper question with the verb first, and it ends with a question mark."
+        },
+        {
+          "prompt": "Which tag question is punctuated correctly?",
+          "options": [
+            "It's a long walk, isn't it.",
+            "It's a long walk isn't it?",
+            "It's a long walk? isn't it.",
+            "It's a long walk, isn't it?"
+          ],
+          "answer": 3,
+          "why": "A tag question has a comma before it and a question mark at the end."
+        },
+        {
+          "prompt": "Which pair is punctuated correctly?",
+          "options": [
+            "Where do you live? How do you travel to college?",
+            "Where do you live? How do you travel to college.",
+            "Where do you live. How do you travel to college?",
+            "Where do you live? how do you travel to college?"
+          ],
+          "answer": 0,
+          "why": "Each question ends with a question mark and the next one starts with a capital letter."
+        },
+        {
+          "prompt": "Which of these is a question?",
+          "options": [
+            "Floating in the Dead Sea is easy",
+            "Have you ever floated in the Dead Sea",
+            "I have floated in the Dead Sea",
+            "Float in the Dead Sea"
+          ],
+          "answer": 1,
+          "why": "Only the first asks something, so it needs a question mark."
+        },
+        {
+          "prompt": "Which sentence should end with a full stop, not a question mark?",
+          "options": [
+            "Is the bus running",
+            "Will the bus be late",
+            "Does the bus run on Sundays",
+            "She asked whether the bus was running"
+          ],
+          "answer": 3,
+          "why": "It reports a question rather than asking one directly."
+        }
+      ]
     },
     {
       "id": "exclamation-marks",
@@ -438,17 +1751,118 @@
         "wrong": "It was amazing!!!",
         "right": "It was amazing!"
       },
-      "practice": {
-        "prompt": "Which sentence uses an exclamation mark best?",
-        "options": [
-          "Dear Sir or Madam!",
-          "I am writing to ask about tickets!",
-          "Try the bus for one week and see the difference!",
-          "Yours faithfully!"
-        ],
-        "answer": 2,
-        "why": "This is a call to action in a persuasive piece, so an exclamation mark adds energy. The others are formal phrases that should not have one."
-      }
+      "questions": [
+        {
+          "prompt": "Which sentence uses an exclamation mark best?",
+          "options": [
+            "Dear Sir or Madam!",
+            "I am writing to ask about tickets!",
+            "Try the bus for one week and see the difference!",
+            "Yours faithfully!"
+          ],
+          "answer": 2,
+          "why": "This is a call to action in a persuasive piece, so an exclamation mark adds energy. The others are formal phrases that should not have one."
+        },
+        {
+          "prompt": "Which sentence suits an exclamation mark?",
+          "options": [
+            "The train leaves at six",
+            "Please send me a timetable",
+            "My name is Dani",
+            "What a brilliant view"
+          ],
+          "answer": 3,
+          "why": "Exclamation marks show strong feeling, such as delight or surprise."
+        },
+        {
+          "prompt": "Which line uses exclamation marks sensibly?",
+          "options": [
+            "It was amazing!!!!!",
+            "It was amazing!",
+            "It was amazing!?!",
+            "It was amazing!!!"
+          ],
+          "answer": 1,
+          "why": "One exclamation mark is enough."
+        },
+        {
+          "prompt": "What should a formal letter of complaint usually do about exclamation marks?",
+          "options": [
+            "Avoid them",
+            "End every sentence with one",
+            "Use three in a row",
+            "Put one after the greeting"
+          ],
+          "answer": 0,
+          "why": "A formal letter stays calm and measured."
+        },
+        {
+          "prompt": "Which command suits an exclamation mark?",
+          "options": [
+            "The shop is closed",
+            "I shall be late",
+            "Watch out",
+            "It was a long journey"
+          ],
+          "answer": 2,
+          "why": "A sudden warning or command is often followed by an exclamation mark."
+        },
+        {
+          "prompt": "How many exclamation marks should you normally use at one time?",
+          "options": [
+            "Three",
+            "As many as you like",
+            "Five",
+            "One"
+          ],
+          "answer": 3,
+          "why": "A single exclamation mark makes the point. More looks careless."
+        },
+        {
+          "prompt": "Which blog line uses an exclamation mark well?",
+          "options": [
+            "We made it to the top, and the view was incredible!",
+            "Dear Mr Patel!",
+            "Thank you for your letter of 3 May!",
+            "The meeting is at 3 pm!"
+          ],
+          "answer": 0,
+          "why": "It shows genuine excitement. The others are formal or neutral lines."
+        },
+        {
+          "prompt": "Which sentence shows strong surprise?",
+          "options": [
+            "I found a table.",
+            "I can't believe we found a free table!",
+            "A table was found.",
+            "The table is free."
+          ],
+          "answer": 1,
+          "why": "The words and the exclamation mark together show surprise."
+        },
+        {
+          "prompt": "Which is punctuated correctly?",
+          "options": [
+            "What a long queue?",
+            "What a long queue.!",
+            "What a long queue!?!",
+            "What a long queue!"
+          ],
+          "answer": 3,
+          "why": "It is an exclamation, so it ends with a single exclamation mark."
+        },
+        {
+          "prompt": "In an article for students, which is the strongest call to action?",
+          "options": [
+            "Give the bus a try this week!",
+            "The bus is a form of transport.",
+            "Buses have wheels.",
+            "Some people take buses."
+          ],
+          "answer": 0,
+          "why": "It tells the reader what to do, with energy."
+        }
+      ]
     },
     {
       "id": "commas",
@@ -466,17 +1880,118 @@
         "wrong": "We saw pandas monkeys and meerkats.",
         "right": "We saw pandas, monkeys and meerkats."
       },
-      "practice": {
-        "prompt": "Which is punctuated correctly?",
-        "options": [
-          "After lunch, we walked to the beach.",
-          "After lunch we, walked to the beach.",
-          "After, lunch we walked to the beach.",
-          "After lunch we walked, to the beach."
-        ],
-        "answer": 0,
-        "why": "\"After lunch\" is an opening phrase, so the comma goes straight after it."
-      }
+      "questions": [
+        {
+          "prompt": "Which is punctuated correctly?",
+          "options": [
+            "After lunch we, walked to the beach.",
+            "After, lunch we walked to the beach.",
+            "After lunch we walked, to the beach.",
+            "After lunch, we walked to the beach."
+          ],
+          "answer": 3,
+          "why": "\"After lunch\" is an opening phrase, so the comma goes straight after it."
+        },
+        {
+          "prompt": "Which sentence has the commas in the right place for a list?",
+          "options": [
+            "We bought bread olives, cheese and, fruit.",
+            "We bought bread, olives, cheese and fruit.",
+            "We bought, bread olives cheese and fruit.",
+            "We bought bread, olives cheese, and fruit"
+          ],
+          "answer": 1,
+          "why": "Commas separate the items in a list, and \"and\" joins the last two."
+        },
+        {
+          "prompt": "Which sentence uses a comma correctly after an opening word?",
+          "options": [
+            "However, the bus was late.",
+            "However the bus, was late.",
+            "However the bus was, late.",
+            "However the bus was late,"
+          ],
+          "answer": 0,
+          "why": "A comma follows an opening word such as \"However\"."
+        },
+        {
+          "prompt": "Which sentence has the comma in the right place?",
+          "options": [
+            "When the bus arrived we, got on.",
+            "When, the bus arrived we got on.",
+            "When the bus arrived, we got on.",
+            "When the bus, arrived we got on."
+          ],
+          "answer": 2,
+          "why": "A comma follows the opening clause."
+        },
+        {
+          "prompt": "Which sentence uses a comma incorrectly to join two sentences?",
+          "options": [
+            "The bus was late, so we missed the start.",
+            "The bus was late, and we missed the start.",
+            "Because the bus was late, we missed the start.",
+            "The bus was late, we missed the start."
+          ],
+          "answer": 3,
+          "why": "A comma alone cannot join two complete sentences. You need a full stop or a joining word such as \"so\" or \"and\"."
+        },
+        {
+          "prompt": "Which sentence puts commas round extra information correctly?",
+          "options": [
+            "Maya, who lives nearby, walks to college.",
+            "Maya who lives nearby, walks to college.",
+            "Maya, who lives nearby walks to college.",
+            "Maya who, lives nearby walks to college."
+          ],
+          "answer": 0,
+          "why": "Extra information in the middle goes between a pair of commas."
+        },
+        {
+          "prompt": "Which sentence punctuates the person being spoken to correctly?",
+          "options": [
+            "Thank you Mr, Patel for your reply.",
+            "Thank you, Mr Patel, for your reply.",
+            "Thank, you Mr Patel for your reply.",
+            "Thank you Mr Patel, for, your reply."
+          ],
+          "answer": 1,
+          "why": "The name of the person you are addressing goes between commas."
+        },
+        {
+          "prompt": "Which sentence has commas round \"in my opinion\"?",
+          "options": [
+            "The bus in my opinion is, better value.",
+            "The, bus in my opinion, is better value.",
+            "The bus in, my opinion is better value.",
+            "The bus, in my opinion, is better value."
+          ],
+          "answer": 3,
+          "why": "A phrase such as \"in my opinion\" in the middle of a sentence is set off by commas."
+        },
+        {
+          "prompt": "Which sentence punctuates a list of describing words correctly?",
+          "options": [
+            "It was a long, hot, tiring walk.",
+            "It was a long hot, tiring, walk.",
+            "It was a, long hot tiring walk.",
+            "It was a long, hot tiring, walk."
+          ],
+          "answer": 0,
+          "why": "Describing words in a list are separated by commas."
+        },
+        {
+          "prompt": "Which sentence has a comma after \"Firstly\"?",
+          "options": [
+            "Firstly I would, like to ask about prices.",
+            "Firstly I would like, to ask about prices.",
+            "Firstly, I would like to ask about prices.",
+            "Firstly I would like to ask, about prices."
+          ],
+          "answer": 2,
+          "why": "A comma follows an opening word like \"Firstly\"."
+        }
+      ]
     },
     {
       "id": "apostrophes-possession",
@@ -494,17 +2009,118 @@
         "wrong": "The pandas ear's are black.",
         "right": "The pandas' ears are black."
       },
-      "practice": {
-        "prompt": "Which is correct?",
-        "options": [
-          "The bus's were all late.",
-          "The drivers seat was broken.",
-          "The driver's seat was broken.",
-          "The drivers' seat's was broken."
-        ],
-        "answer": 2,
-        "why": "The seat belongs to one driver, so it is \"driver's\". \"Buses\" is just a plural, so it never needs an apostrophe."
-      }
+      "questions": [
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "The bus's were all late.",
+            "The driver's seat was broken.",
+            "The drivers seat was broken.",
+            "The drivers' seat's was broken."
+          ],
+          "answer": 1,
+          "why": "The seat belongs to one driver, so it is \"driver's\". \"Buses\" is just a plural, so it never needs an apostrophe."
+        },
+        {
+          "prompt": "Which sentence is correct if one girl owns the bag?",
+          "options": [
+            "The girl's bag was heavy.",
+            "The girls bag was heavy.",
+            "The girl's bag's was heavy.",
+            "The girls' bag was heavy."
+          ],
+          "answer": 0,
+          "why": "For one owner, the apostrophe goes before the s."
+        },
+        {
+          "prompt": "Which sentence is correct if several girls own the bags?",
+          "options": [
+            "The girl's bags were heavy.",
+            "The girls bags were heavy.",
+            "The girls' bags were heavy.",
+            "The girls's bags were heavy."
+          ],
+          "answer": 2,
+          "why": "For a plural ending in s, the apostrophe goes after the s."
+        },
+        {
+          "prompt": "Which sentence has no apostrophe error?",
+          "options": [
+            "Two bus's arrived at the stop.",
+            "Two buses' arrived at the stop.",
+            "Two buse's arrived at the stop.",
+            "Two buses arrived at the stop."
+          ],
+          "answer": 3,
+          "why": "\"Buses\" is just a plural. Nothing belongs to the buses, so no apostrophe is needed."
+        },
+        {
+          "prompt": "Which is correct for the ears of several pandas?",
+          "options": [
+            "The pandas' ears",
+            "The panda's ears",
+            "The pandas ears",
+            "The pandas's ears"
+          ],
+          "answer": 0,
+          "why": "Several pandas, so the apostrophe goes after the s."
+        },
+        {
+          "prompt": "Which shows that the games belong to the children?",
+          "options": [
+            "The childrens games",
+            "The children's games",
+            "The childrens' games",
+            "The children games"
+          ],
+          "answer": 1,
+          "why": "\"Children\" is already plural without an s, so the apostrophe goes before an added s."
+        },
+        {
+          "prompt": "Which sentence shows that the letter belongs to Mr Patel?",
+          "options": [
+            "Mr Patels letter arrived today.",
+            "Mr Patel letter's arrived today.",
+            "Mr Patels' letter arrived today.",
+            "Mr Patel's letter arrived today."
+          ],
+          "answer": 3,
+          "why": "The letter belongs to Mr Patel, so add 's."
+        },
+        {
+          "prompt": "Which is correct for the library that belongs to one college?",
+          "options": [
+            "The college's library is open late.",
+            "The colleges library is open late.",
+            "The college library's is open late.",
+            "The colleges' library is open late."
+          ],
+          "answer": 0,
+          "why": "One college owns the library, so the apostrophe goes before the s."
+        },
+        {
+          "prompt": "Which sentence has an apostrophe error?",
+          "options": [
+            "The tickets were expensive.",
+            "The ticket's price was high.",
+            "The tickets' were expensive.",
+            "The tickets' prices were high."
+          ],
+          "answer": 2,
+          "why": "\"Tickets\" is a plural, but nothing belongs to the tickets in this sentence."
+        },
+        {
+          "prompt": "Which is the correct way to write the work of one day?",
+          "options": [
+            "A days work",
+            "A days' work",
+            "A day work's",
+            "A day's work"
+          ],
+          "answer": 3,
+          "why": "The work belongs to one day, so the apostrophe goes before the s."
+        }
+      ]
     },
     {
       "id": "apostrophes-omission",
@@ -521,17 +2137,118 @@
         "wrong": "Its a long walk and the hill has it's own bus stop.",
         "right": "It's a long walk and the hill has its own bus stop."
       },
-      "practice": {
-        "prompt": "Which is correct?",
-        "options": [
-          "The council changed it's mind.",
-          "Its going to rain later.",
-          "It's going to rain later.",
-          "The village has it's own shop."
-        ],
-        "answer": 2,
-        "why": "\"It's going to rain\" means \"it is going to rain\", so it needs the apostrophe. In the other sentences, \"its\" means \"belonging to it\" and should have no apostrophe."
-      }
+      "questions": [
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "It's going to rain later.",
+            "The council changed it's mind.",
+            "Its going to rain later.",
+            "The village has it's own shop."
+          ],
+          "answer": 0,
+          "why": "\"It's going to rain\" means \"it is going to rain\", so it needs the apostrophe. In the other sentences, \"its\" means \"belonging to it\" and should have no apostrophe."
+        },
+        {
+          "prompt": "Which sentence is correct?",
+          "options": [
+            "Their waiting at the station.",
+            "There waiting at the station.",
+            "They're waiting at the station.",
+            "Theyre waiting at the station."
+          ],
+          "answer": 2,
+          "why": "\"They're\" is short for \"they are\"."
+        },
+        {
+          "prompt": "Which is the correct short form of \"do not\"?",
+          "options": [
+            "dont'",
+            "do'nt",
+            "d'ont",
+            "don't"
+          ],
+          "answer": 3,
+          "why": "The apostrophe goes where the \"o\" has been left out."
+        },
+        {
+          "prompt": "Which word completes the sentence correctly? \"The bus changed ___ route.\"",
+          "options": [
+            "its",
+            "it's",
+            "its'",
+            "it is'"
+          ],
+          "answer": 0,
+          "why": "\"Its\" without an apostrophe means \"belonging to it\"."
+        },
+        {
+          "prompt": "Which sentence uses the short forms of \"we are\" and \"did not\" correctly?",
+          "options": [
+            "Were late because the train didnt arrive.",
+            "We're late because the train didn't arrive.",
+            "We're late because the train did'nt arrive.",
+            "We'er late because the train didn't arrive."
+          ],
+          "answer": 1,
+          "why": "\"We're\" is \"we are\" and \"didn't\" is \"did not\", with the apostrophe where the letter is missing."
+        },
+        {
+          "prompt": "Which sentence asks who something belongs to, correctly?",
+          "options": [
+            "Who's bag is this?",
+            "Whos bag is this?",
+            "Whose' bag is this?",
+            "Whose bag is this?"
+          ],
+          "answer": 3,
+          "why": "\"Whose\" asks who something belongs to. \"Who's\" means \"who is\"."
+        },
+        {
+          "prompt": "Which is most suitable for a formal letter?",
+          "options": [
+            "I do not agree with the proposal.",
+            "I don't agree with the proposal.",
+            "I dont agree with the proposal.",
+            "I do'nt agree with the proposal."
+          ],
+          "answer": 0,
+          "why": "Formal writing usually avoids short forms."
+        },
+        {
+          "prompt": "Which sentence uses the short form of \"I would\" correctly?",
+          "options": [
+            "Id like a refund.",
+            "I'ld like a refund.",
+            "I'd like a refund.",
+            "I'd'like a refund."
+          ],
+          "answer": 2,
+          "why": "\"I'd\" is short for \"I would\"."
+        },
+        {
+          "prompt": "Which sentence uses \"you're\" correctly?",
+          "options": [
+            "Your going to love the food.",
+            "Youre going to love the food.",
+            "You'r going to love the food.",
+            "You're going to love the food."
+          ],
+          "answer": 3,
+          "why": "\"You're\" means \"you are\"."
+        },
+        {
+          "prompt": "Which sentence is punctuated correctly?",
+          "options": [
+            "Thats the café where weve eaten before.",
+            "That's the café where we've eaten before.",
+            "That's the café where we'ave eaten before.",
+            "Thats' the café where we've eaten before."
+          ],
+          "answer": 1,
+          "why": "\"That's\" is \"that is\" and \"we've\" is \"we have\"."
+        }
+      ]
     },
     {
       "id": "inverted-commas",
@@ -548,17 +2265,118 @@
         "wrong": "The driver said \"next stop, Station Road\".",
         "right": "The driver said, \"Next stop, Station Road.\""
       },
-      "practice": {
-        "prompt": "Which is punctuated correctly?",
-        "options": [
-          "My friend said, \"The train is quicker.\"",
-          "My friend said \"the train is quicker\".",
-          "My friend said, The train is \"quicker.\"",
-          "\"My friend said\", the train is quicker."
-        ],
-        "answer": 0,
-        "why": "There is a comma before the speech, the spoken words start with a capital letter, and the full stop goes inside the inverted commas."
-      }
+      "questions": [
+        {
+          "prompt": "Which is punctuated correctly?",
+          "options": [
+            "My friend said \"the train is quicker\".",
+            "My friend said, The train is \"quicker.\"",
+            "My friend said, \"The train is quicker.\"",
+            "\"My friend said\", the train is quicker."
+          ],
+          "answer": 2,
+          "why": "There is a comma before the speech, the spoken words start with a capital letter, and the full stop goes inside the inverted commas."
+        },
+        {
+          "prompt": "Which sentence is punctuated correctly?",
+          "options": [
+            "The keeper said \"Please keep your voice low\".",
+            "The keeper said, \"please keep your voice low.\"",
+            "The keeper said, Please keep your voice low.",
+            "The keeper said, \"Please keep your voice low.\""
+          ],
+          "answer": 3,
+          "why": "There is a comma before the speech, the spoken sentence starts with a capital, and the full stop is inside the inverted commas."
+        },
+        {
+          "prompt": "Which sentence uses inverted commas correctly for a short quotation?",
+          "options": [
+            "The council calls the new route \"a better service\".",
+            "The council calls the new route a better service\".",
+            "The council calls the \"new route a better service.",
+            "The council \"calls\" the new route a better service."
+          ],
+          "answer": 0,
+          "why": "The inverted commas go round exactly the words quoted."
+        },
+        {
+          "prompt": "Which sentence is correct for a spoken question?",
+          "options": [
+            "She asked, \"Where is the nearest stop\"?",
+            "She asked, \"Where is the nearest stop?\"",
+            "She asked \"Where is the nearest stop?\".",
+            "She asked, Where is the \"nearest stop?\""
+          ],
+          "answer": 1,
+          "why": "The question mark belongs to the spoken question, so it goes inside the inverted commas."
+        },
+        {
+          "prompt": "Which sentence has split speech punctuated correctly?",
+          "options": [
+            "\"I would, said Dani, like a window seat.\"",
+            "\"I would\" said Dani \"like a window seat.\"",
+            "\"I would, said Dani\", \"like a window seat.\"",
+            "\"I would,\" said Dani, \"like a window seat.\""
+          ],
+          "answer": 3,
+          "why": "Each part of the speech has its own inverted commas, and commas separate the speech from \"said Dani\"."
+        },
+        {
+          "prompt": "Which sentence gives the speaker's exact words and so needs inverted commas?",
+          "options": [
+            "Priya said, \"Pandas are happiest when there is plenty to climb.\"",
+            "Priya said that pandas are happiest when there is plenty to climb.",
+            "Priya said pandas are happiest when there is plenty to climb.",
+            "Priya told us about pandas."
+          ],
+          "answer": 0,
+          "why": "Inverted commas show the exact words spoken. The others report them indirectly."
+        },
+        {
+          "prompt": "Which sentence has the punctuation in the right place?",
+          "options": [
+            "He said, \"The bus is late\".",
+            "He said \"The bus is late.\"",
+            "He said, \"The bus is late.\"",
+            "He said, \"the bus is late.\""
+          ],
+          "answer": 2,
+          "why": "The full stop belongs to the spoken sentence, so it goes inside."
+        },
+        {
+          "prompt": "When a new person starts speaking, what should you do?",
+          "options": [
+            "Stay on the same line",
+            "Write the words in capitals",
+            "Use brackets",
+            "Start a new line"
+          ],
+          "answer": 3,
+          "why": "A new speaker gets a new line, which makes dialogue easy to follow."
+        },
+        {
+          "prompt": "Which sentence quotes the text correctly?",
+          "options": [
+            "The writer says that buses are slow, noisy and old-fashioned\".",
+            "The writer says that buses are \"slow, noisy and old-fashioned\".",
+            "The writer says that \"buses are slow, noisy and old-fashioned.",
+            "The writer says that buses are \"slow, noisy and old-fashioned."
+          ],
+          "answer": 1,
+          "why": "Both opening and closing inverted commas are needed, round exactly the words quoted."
+        },
+        {
+          "prompt": "Which sentence punctuates speech followed by \"said Maya\" correctly?",
+          "options": [
+            "\"We should go now,\" said Maya.",
+            "\"We should go now\", said Maya.",
+            "\"We should go now.\" said Maya.",
+            "We should go now, \"said Maya.\""
+          ],
+          "answer": 0,
+          "why": "A comma, not a full stop, goes inside the closing inverted commas before \"said Maya\"."
+        }
+      ]
     },
     {
       "id": "spelling",
@@ -576,17 +2394,118 @@
         "wrong": "Their going too the station at to o'clock.",
         "right": "They're going to the station at two o'clock."
       },
-      "practice": {
-        "prompt": "Which is correct?",
-        "options": [
-          "Your going to love the food.",
-          "Youre going to love the food.",
-          "Your' going to love the food.",
-          "You're going to love the food."
-        ],
-        "answer": 3,
-        "why": "\"You're\" is short for \"you are\": \"You are going to love the food.\""
-      }
+      "questions": [
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "Your going to love the food.",
+            "Youre going to love the food.",
+            "Your' going to love the food.",
+            "You're going to love the food."
+          ],
+          "answer": 3,
+          "why": "\"You're\" is short for \"you are\": \"You are going to love the food.\""
+        },
+        {
+          "prompt": "Which word completes the sentence? \"___ going to arrive at six.\"",
+          "options": [
+            "They're",
+            "Their",
+            "There",
+            "Thair"
+          ],
+          "answer": 0,
+          "why": "\"They're\" means \"they are\"."
+        },
+        {
+          "prompt": "Which word completes the sentence? \"It was ___ hot to walk.\"",
+          "options": [
+            "to",
+            "too",
+            "two",
+            "tu"
+          ],
+          "answer": 1,
+          "why": "\"Too\" means \"very\" or \"more than is wanted\"."
+        },
+        {
+          "prompt": "Which word completes the sentence? \"The weather will ___ our plans.\"",
+          "options": [
+            "effect",
+            "afect",
+            "effekt",
+            "affect"
+          ],
+          "answer": 3,
+          "why": "\"Affect\" is the verb meaning \"to change or influence\"."
+        },
+        {
+          "prompt": "Which is the correct spelling of the word meaning \"for certain\"?",
+          "options": [
+            "definitely",
+            "definately",
+            "definitly",
+            "defanitely"
+          ],
+          "answer": 0,
+          "why": "Remember \"finite\" in the middle: de-finite-ly."
+        },
+        {
+          "prompt": "Which is the correct spelling of the word meaning \"apart\"?",
+          "options": [
+            "seperate",
+            "separete",
+            "separate",
+            "seprate"
+          ],
+          "answer": 2,
+          "why": "There is \"a rat\" in sep-a-rate."
+        },
+        {
+          "prompt": "Which is the correct way to write the phrase meaning \"many\"?",
+          "options": [
+            "alot",
+            "a'lot",
+            "allott",
+            "a lot"
+          ],
+          "answer": 3,
+          "why": "\"A lot\" is two words."
+        },
+        {
+          "prompt": "Which is the correct spelling of the word meaning \"to get\"?",
+          "options": [
+            "recieve",
+            "receive",
+            "receeve",
+            "receve"
+          ],
+          "answer": 1,
+          "why": "\"I before E, except after C.\""
+        },
+        {
+          "prompt": "Which sentence uses \"whether\" and \"weather\" correctly?",
+          "options": [
+            "I wonder whether the weather will be good.",
+            "I wonder weather the whether will be good.",
+            "I wonder whether the whether will be good.",
+            "I wonder weather the weather will be good."
+          ],
+          "answer": 0,
+          "why": "\"Whether\" means \"if\". \"Weather\" is about rain and sunshine."
+        },
+        {
+          "prompt": "Which is the correct spelling of the word meaning \"a place to stay\"?",
+          "options": [
+            "accomodation",
+            "acommodation",
+            "accommodation",
+            "accommodasion"
+          ],
+          "answer": 2,
+          "why": "It has a double c and a double m."
+        }
+      ]
     },
     {
       "id": "grammar",
@@ -604,17 +2523,118 @@
         "wrong": "We was on the train and then we see the sea.",
         "right": "We were on the train and then we saw the sea."
       },
-      "practice": {
-        "prompt": "Which is correct?",
-        "options": [
-          "The buses was all full.",
-          "We should of left earlier.",
-          "They were waiting at the stop.",
-          "Yesterday we go to the park."
-        ],
-        "answer": 2,
-        "why": "\"They\" goes with \"were\". The others mix up was and were, use \"should of\" instead of \"should have\", or use the wrong tense for yesterday."
-      }
+      "questions": [
+        {
+          "prompt": "Which is correct?",
+          "options": [
+            "They were waiting at the stop.",
+            "The buses was all full.",
+            "We should of left earlier.",
+            "Yesterday we go to the park."
+          ],
+          "answer": 0,
+          "why": "\"They\" goes with \"were\". The others mix up was and were, use \"should of\" instead of \"should have\", or use the wrong tense for yesterday."
+        },
+        {
+          "prompt": "Which sentence uses the right tense for yesterday?",
+          "options": [
+            "Yesterday we visit the market and bought some olives.",
+            "Yesterday we visited the market and bought some olives.",
+            "Yesterday we visited the market and buy some olives.",
+            "Yesterday we visiting the market and bought olives."
+          ],
+          "answer": 1,
+          "why": "Both verbs are in the past tense."
+        },
+        {
+          "prompt": "Which sentence uses \"doesn't\" correctly?",
+          "options": [
+            "She don't like crowded buses.",
+            "She not like crowded buses.",
+            "She doesn't likes crowded buses.",
+            "She doesn't like crowded buses."
+          ],
+          "answer": 3,
+          "why": "\"She\" goes with \"doesn't\", and the main verb stays in its base form."
+        },
+        {
+          "prompt": "Which uses \"a\" and \"an\" correctly?",
+          "options": [
+            "An apple and a banana",
+            "A apple and an banana",
+            "An apple and an banana",
+            "A apple and a banana"
+          ],
+          "answer": 0,
+          "why": "\"An\" goes before a vowel sound and \"a\" before a consonant sound."
+        },
+        {
+          "prompt": "Which sentence uses \"should have\" correctly?",
+          "options": [
+            "We should of left earlier.",
+            "We should has left earlier.",
+            "We should have left earlier.",
+            "We should had left earlier."
+          ],
+          "answer": 2,
+          "why": "It is always \"should have\", never \"should of\"."
+        },
+        {
+          "prompt": "Which word completes the sentence? \"The bus and the train ___ both late.\"",
+          "options": [
+            "was",
+            "is",
+            "be",
+            "were"
+          ],
+          "answer": 3,
+          "why": "Two things joined by \"and\" take the plural verb \"were\"."
+        },
+        {
+          "prompt": "Which sentence keeps the same tense all the way through?",
+          "options": [
+            "I opened the door, look outside and saw the bus.",
+            "I opened the door, looked outside and saw the bus.",
+            "I open the door, looked outside and saw the bus.",
+            "I opened the door, looked outside and see the bus."
+          ],
+          "answer": 1,
+          "why": "All three verbs are in the past tense."
+        },
+        {
+          "prompt": "Which sentence uses \"fewer\" correctly?",
+          "options": [
+            "There are fewer buses on Sundays.",
+            "There are less buses on Sundays.",
+            "There is fewer buses on Sundays.",
+            "There are lesser buses on Sundays."
+          ],
+          "answer": 0,
+          "why": "Use \"fewer\" for things you can count, such as buses."
+        },
+        {
+          "prompt": "Which sentence is correct when two people went to the zoo?",
+          "options": [
+            "Me and my friend went to the zoo.",
+            "My friend and me went to the zoo.",
+            "My friend and I went to the zoo.",
+            "I and my friend goes to the zoo."
+          ],
+          "answer": 2,
+          "why": "Try it with \"I\" alone: \"I went to the zoo.\" So \"My friend and I\" is right."
+        },
+        {
+          "prompt": "Which sentence uses \"good\" and \"well\" correctly?",
+          "options": [
+            "She writes good and has well ideas.",
+            "She writes good and has good ideas.",
+            "She writes well and has well ideas.",
+            "She writes well and has good ideas."
+          ],
+          "answer": 3,
+          "why": "\"Well\" describes how she writes (an adverb), and \"good\" describes the ideas (an adjective)."
+        }
+      ]
     }
   ]
 }

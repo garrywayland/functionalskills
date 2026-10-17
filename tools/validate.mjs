@@ -134,11 +134,25 @@ export function checkWritingFile(file, errs, notes) {
 
 export function checkToolkit(file, errs, notes) {
   const data = read(file);
+  let total = 0;
   for (const x of [...data.formats, ...data.spag]) {
-    const p = x.practice;
-    if (!p || !(p.answer >= 0 && p.answer < p.options.length)) errs.push(`toolkit.json ${x.id}: practice answer out of range`);
+    const qs = x.questions;
+    if (!Array.isArray(qs) || qs.length < 10) { errs.push(`toolkit.json ${x.id}: needs at least 10 practice questions`); continue; }
+    total += qs.length;
+    const seen = new Set(); const pos = [0, 0, 0, 0];
+    qs.forEach((q, i) => {
+      const w = `toolkit.json ${x.id} question ${i + 1}`;
+      if (!q.prompt || !q.why) errs.push(`${w}: needs a prompt and a why`);
+      if (seen.has(q.prompt)) errs.push(`${w}: repeats a prompt in the same skill`);
+      seen.add(q.prompt);
+      if (!Array.isArray(q.options) || q.options.length !== 4) { errs.push(`${w}: needs exactly four options`); return; }
+      if (new Set(q.options).size !== 4) errs.push(`${w}: two options are the same`);
+      if (!(Number.isInteger(q.answer) && q.answer >= 0 && q.answer < 4)) errs.push(`${w}: answer index out of range`);
+      else pos[q.answer]++;
+    });
+    if (Math.max(...pos) > Math.ceil(qs.length * 0.4)) errs.push(`toolkit.json ${x.id}: too many correct answers in one position (${pos.join('/')})`);
   }
-  notes.push(`toolkit.json: ${data.formats.length} formats, ${data.spag.length} SPaG points`);
+  notes.push(`toolkit.json: ${data.formats.length} formats, ${data.spag.length} SPaG points, ${total} practice questions`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

@@ -462,10 +462,12 @@ label.field { display: block; font-weight: 600; margin: 1.25rem 0 0.4rem; }
 .stats dt { color: var(--muted); font-size: 0.9rem; order: 2; }
 .stats dd { margin: 0; font-family: var(--serif); font-size: 1.8rem; font-weight: 700; }
 .stats div { display: flex; flex-direction: column; }
+.stats.four { grid-template-columns: repeat(4, 1fr); }
+.t-done { float: right; font-size: 0.85rem; font-weight: 700; color: var(--accent); }
 .log-table { border-collapse: collapse; width: 100%; font-size: 0.98rem; }
 .log-table th, .log-table td { border-bottom: 1px solid var(--rule); padding: 0.55rem 0.6rem; text-align: left; vertical-align: top; }
 .log-table th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-@media (max-width: 520px) { .stats { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .stats, .stats.four { grid-template-columns: 1fr; } }
 
 @media print {
   .site-header, .site-footer, .actions, .route, .no-print, .skip { display: none !important; }

@@ -70,10 +70,10 @@ Every writing mission needs `indicative`: one entry per bullet point, giving exa
 
 ## Toolkit (`content/toolkit.json`)
 
-- `formats`: `id`, `name`, `summary`, `layout`, `opening`, `closing`, `tone`, `checklist`, `practice`.
-- `spag`: `id`, `name`, `levels`, `explain`, `example` (`wrong` / `right`), `practice`.
+- `formats`: `id`, `name`, `summary`, `layout`, `opening`, `closing`, `tone`, `checklist`, `questions` (ten practice questions).
+- `spag`: `id`, `name`, `levels`, `explain`, `example` (`wrong` / `right`), `questions` (ten practice questions).
 
-A `practice` entry is `{ "prompt", "options", "answer", "why" }`.
+Each skill has a `questions` list of at least ten, each `{ "prompt", "options", "answer", "why" }` with exactly four options, a different prompt in every question, and the correct answers spread across all four positions (no position more than 40% of the time). The site shows them one at a time in a shuffled order. `node tools/validate.mjs` checks all of this.
 
 ## Drafting more with AI
 
