@@ -768,9 +768,14 @@
           }
         });
       });
+      var live = markingEndpoint();
       append(wrap,
-        h('h1', { text: 'Send for marking' }),
-        h('p', { class: 'lede', text: 'This puts the task, a marking guide and your answer together in one block. Copy it and paste it into a message. Nothing is sent from this page.' }),
+        h('h1', { text: live ? 'Get feedback' : 'Send for marking' }),
+        live ? feedbackSection(m, format, draft, words, id) : null,
+        live ? h('h2', { text: 'Or copy it to send somewhere else' }) : null,
+        h('p', { class: live ? 'muted' : 'lede', text: live
+          ? 'This puts the task, a marking guide and your answer together in one block of text.'
+          : 'This puts the task, a marking guide and your answer together in one block. Copy it and paste it into a message. Nothing is sent from this page.' }),
         h('p', { class: 'muted', text: words + ' words. The block does not include your name.' }),
         h('label', { class: 'field', for: 'marking' }, 'Text to copy'),
         out,
@@ -788,6 +793,108 @@
     }
 
     return wrap;
+  }
+
+  // ---------- AI feedback (only when a marking service address is set in js/config.js) ----------
+
+  function markingEndpoint() {
+    var c = window.NEXTSTOP_CONFIG;
+    var url = c && typeof c.markingEndpoint === 'string' ? c.markingEndpoint.trim() : '';
+    return /^https:\/\/[^\s]+$/.test(url) || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(url) ? url.replace(/\/+$/, '') : '';
+  }
+
+  function hashText(t) {
+    var n = 0;
+    for (var i = 0; i < t.length; i++) n = (n * 31 + t.charCodeAt(i)) | 0;
+    return n;
+  }
+
+  function feedbackSection(m, format, draft, words, id) {
+    var key = 'feedback:' + id + ':' + level();
+    var shown = store.get(key, null);
+    var box = h('section', { 'aria-labelledby': 'fb-h' });
+    var results = h('div', { 'aria-live': 'polite' });
+    var status = h('p', { class: 'status', role: 'status' });
+    var btn = h('button', { type: 'button', class: 'btn', text: shown ? 'Get new feedback' : 'Get feedback' });
+
+    function renderResult(saved) {
+      var fb = saved.feedback;
+      var stale = saved.hash !== hashText(draft);
+      var marksBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Show my marks' });
+      var marksSlot = h('div');
+      marksBtn.addEventListener('click', function () {
+        marksBtn.remove();
+        marksSlot.appendChild(h('div', { class: 'score-box' },
+          h('p', null, h('strong', { text: 'Composition: ' + fb.composition.mark + ' out of ' + fb.composition.max }), ' (' + fb.composition.band + ' band)'),
+          h('p', { class: 'muted small', text: fb.composition.description }),
+          h('p', null, h('strong', { text: 'Spelling, punctuation and grammar: ' + fb.spag.mark + ' out of ' + fb.spag.max }), ' (' + fb.spag.band + ' band)'),
+          h('p', { class: 'muted small', text: fb.spag.description }),
+          h('p', { class: 'muted small', text: 'These marks come from an AI using our own plain-English marking guide. They are a guide, not an official mark, and could be a mark or two out either way.' })));
+      });
+      var card = h('div', { class: 'feedback', tabindex: '-1' },
+        stale ? h('p', { class: 'muted small', text: 'You have changed your writing since this feedback was given.' }) : null,
+        h('h3', { text: 'Two things that worked' }),
+        h('ul', { class: 'worked' }, fb.worked.map(function (w) {
+          return h('li', null, w.what, w.quote ? h('blockquote', { text: '\u201c' + w.quote + '\u201d' }) : null);
+        })),
+        h('h3', { text: 'One thing to try' }),
+        h('p', { text: fb.target.what }),
+        h('p', { class: 'try-example' }, h('strong', { text: 'For example: ' }), fb.target.example.replace(/^\s*for example[:,]?\s*/i, '')),
+        marksBtn, marksSlot);
+      results.replaceChildren(card);
+      return card;
+    }
+
+    if (shown && shown.feedback) renderResult(shown);
+
+    btn.addEventListener('click', function () {
+      var format_ = format ? format.name : m.format;
+      var payload = {
+        level: level(), task: m.task, format: format_, context: m.context, audience: m.audience, purpose: m.purpose,
+        instruction: m.instruction, bullets: m.bullets, answer: draft
+      };
+      if (m.info && m.info.length) payload.info = m.info;
+      btn.disabled = true;
+      status.textContent = 'Marking your writing. This can take up to a minute.';
+      var controller = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (controller) controller.abort(); }, 110000);
+      fetch(markingEndpoint() + '/mark', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+        signal: controller ? controller.signal : undefined
+      }).then(function (r) {
+        return r.json().then(function (j) { return { status: r.status, body: j }; }, function () { return { status: r.status, body: {} }; });
+      }).then(function (res) {
+        clearTimeout(timer);
+        btn.disabled = false;
+        var b = res.body || {};
+        if (b.ok && b.feedback && Array.isArray(b.feedback.worked)) {
+          var saved = { hash: hashText(draft), date: today(), feedback: b.feedback };
+          store.set(key, saved);
+          markDone(id);
+          logDone({ id: id, kind: 'Writing', title: m.title, topic: m.topic, words: words, task: m.task });
+          status.textContent = 'Here is your feedback.';
+          btn.textContent = 'Get new feedback';
+          var card = renderResult(saved);
+          card.focus();
+        } else if (b.ok === false && b.reason === 'declined') {
+          status.textContent = 'The marking service could not mark this one. Your writing is safe. Please use Copy instead.';
+        } else {
+          status.textContent = (typeof b.error === 'string' && b.error ? b.error : 'Marking is not available right now.') + ' Your writing is safe.';
+        }
+      }).catch(function () {
+        clearTimeout(timer);
+        btn.disabled = false;
+        status.textContent = 'Could not reach the marking service. Your writing is safe. Please try again, or use Copy.';
+      });
+    });
+
+    append(box,
+      h('h2', { id: 'fb-h', text: 'Feedback on your writing' }),
+      h('p', { text: 'You will get two things that worked and one thing to try. You choose whether to see the marks.' }),
+      h('p', { class: 'muted small', text: 'When you press the button, your task and your writing are sent to our marking service, which uses AI (Anthropic\u2019s Claude). Your name is not sent and nothing is kept. AI feedback is a guide, not an official mark.' }),
+      h('div', { class: 'actions' }, btn),
+      status, results);
+    return box;
   }
 
   function taskCard(m, format, length) {

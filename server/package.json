@@ -1,0 +1,16 @@
+{
+  "name": "next-stop-marking",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marking service for the Next Stop practice site. Receives a writing task and answer, returns feedback.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test --test-force-exit test.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "zod": "^4.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "next-stop-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tools for drafting, checking and adding practice missions. Not part of the website.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test --test-force-exit test.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "zod": "^4.0.0"
+  }
+}

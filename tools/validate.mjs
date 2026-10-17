@@ -7,7 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+export const root = process.env.NEXTSTOP_ROOT || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 // Word-count ranges for the three texts in a longer Level 1 reading mission (Pearson guidance to centres).
@@ -54,52 +54,64 @@ function checkQuestion(where, q, textIds, errs) {
   }
 }
 
+export function checkReadingMission(m, name, errs, notes) {
+  const where = `${name} ${m.id}`;
+  const textIds = m.texts.map((t) => t.id);
+  m.questions.forEach((q) => checkQuestion(where, q, textIds, errs));
+  const qids = m.questions.map((q) => q.id);
+  if (new Set(qids).size !== qids.length) errs.push(`${where}: duplicate question id`);
+  if (m.length === 'long') {
+    if (textIds.join('') !== 'ABC') errs.push(`${where}: long missions need texts A, B and C`);
+    for (const t of m.texts) {
+      const n = textWords(t); const r = TEXT_RANGES[t.id];
+      if (r && (n < r[0] || n > r[1])) errs.push(`${where}: Text ${t.id} has ${n} words (needs ${r[0]} to ${r[1]})`);
+    }
+    const num = (q) => parseInt(String(q.label || '').split('(')[0], 10);
+    const sum = (lo, hi) => m.questions.filter((q) => num(q) >= lo && num(q) <= hi).reduce((a, q) => a + (q.marks || 0), 0);
+    const got = [sum(1, 3), sum(4, 9), sum(10, 14), sum(15, 15)];
+    if (got.join() !== SECTION_MARKS.join()) errs.push(`${where}: section marks ${got.join('/')} (needs ${SECTION_MARKS.join('/')})`);
+    const numbers = new Set(m.questions.map(num));
+    if (numbers.size !== 15) errs.push(`${where}: has ${numbers.size} numbered questions (needs 15)`);
+    if (!m.questions.every((q) => q.label && q.marks)) errs.push(`${where}: every question needs a label and marks`);
+    notes.push(`${where}: ${m.texts.map((t) => textWords(t)).join('/')} words, ${m.questions.reduce((a, q) => a + (q.marks || 0), 0)} marks`);
+  } else {
+    notes.push(`${where}: ${m.questions.length} questions`);
+  }
+}
+
 export function checkReadingFile(file, errs, notes) {
   const data = read(file);
   const name = path.basename(file);
   const ids = new Set();
   for (const m of data.missions) {
-    const where = `${name} ${m.id}`;
-    if (ids.has(m.id)) errs.push(`${where}: duplicate mission id`);
+    if (ids.has(m.id)) errs.push(`${name} ${m.id}: duplicate mission id`);
     ids.add(m.id);
-    const textIds = m.texts.map((t) => t.id);
-    m.questions.forEach((q) => checkQuestion(where, q, textIds, errs));
-    const qids = m.questions.map((q) => q.id);
-    if (new Set(qids).size !== qids.length) errs.push(`${where}: duplicate question id`);
-    if (m.length === 'long') {
-      if (textIds.join('') !== 'ABC') errs.push(`${where}: long missions need texts A, B and C`);
-      for (const t of m.texts) {
-        const n = textWords(t); const r = TEXT_RANGES[t.id];
-        if (r && (n < r[0] || n > r[1])) errs.push(`${where}: Text ${t.id} has ${n} words (needs ${r[0]} to ${r[1]})`);
-      }
-      const num = (q) => parseInt(String(q.label || '').split('(')[0], 10);
-      const sum = (lo, hi) => m.questions.filter((q) => num(q) >= lo && num(q) <= hi).reduce((a, q) => a + (q.marks || 0), 0);
-      const got = [sum(1, 3), sum(4, 9), sum(10, 14), sum(15, 15)];
-      if (got.join() !== SECTION_MARKS.join()) errs.push(`${where}: section marks ${got.join('/')} (needs ${SECTION_MARKS.join('/')})`);
-      const numbers = new Set(m.questions.map(num));
-      if (numbers.size !== 15) errs.push(`${where}: has ${numbers.size} numbered questions (needs 15)`);
-      if (!m.questions.every((q) => q.label && q.marks)) errs.push(`${where}: every question needs a label and marks`);
-      notes.push(`${where}: ${m.texts.map((t) => textWords(t)).join('/')} words, ${m.questions.reduce((a, q) => a + q.marks, 0)} marks`);
-    } else {
-      notes.push(`${where}: ${m.questions.length} questions`);
-    }
+    checkReadingMission(m, name, errs, notes);
   }
+}
+
+export function checkWritingMission(m, formats, errs) {
+  const where = `writing.json ${m.id}`;
+  if (!formats.has(m.format)) errs.push(`${where}: format "${m.format}" is not in toolkit.json`);
+  const want = m.task === 1 ? 3 : 2;
+  const sets = [m.bullets, ...Object.values(m.levels || {}).map((l) => l.bullets).filter(Boolean)];
+  for (const b of sets) if (!Array.isArray(b) || b.length !== want) errs.push(`${where}: Task ${m.task} needs ${want} bullet points, has ${b ? b.length : 0}`);
+  for (const k of ['context', 'audience', 'purpose', 'instruction']) if (!m[k]) errs.push(`${where}: missing ${k}`);
+  if (![1, 2].includes(m.task)) errs.push(`${where}: task must be 1 or 2`);
+}
+
+export function readFormats() {
+  return new Set(read(path.join(root, 'content', 'toolkit.json')).formats.map((f) => f.id));
 }
 
 export function checkWritingFile(file, errs, notes) {
   const data = read(file);
-  const tool = read(path.join(root, 'content', 'toolkit.json'));
-  const formats = new Set(tool.formats.map((f) => f.id));
+  const formats = readFormats();
   const ids = new Set();
   for (const m of data.missions) {
-    const where = `writing.json ${m.id}`;
-    if (ids.has(m.id)) errs.push(`${where}: duplicate id`);
+    if (ids.has(m.id)) errs.push(`writing.json ${m.id}: duplicate id`);
     ids.add(m.id);
-    if (!formats.has(m.format)) errs.push(`${where}: format "${m.format}" is not in toolkit.json`);
-    const want = m.task === 1 ? 3 : 2;
-    const sets = [m.bullets, ...Object.values(m.levels || {}).map((l) => l.bullets).filter(Boolean)];
-    for (const b of sets) if (b.length !== want) errs.push(`${where}: Task ${m.task} needs ${want} bullet points, has ${b.length}`);
-    for (const k of ['context', 'audience', 'purpose', 'instruction']) if (!m[k]) errs.push(`${where}: missing ${k}`);
+    checkWritingMission(m, formats, errs);
   }
   notes.push(`writing.json: ${data.missions.length} missions`);
 }

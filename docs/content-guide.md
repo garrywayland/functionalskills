@@ -70,3 +70,7 @@ Keep to the Level 1 layout in `docs/exam-notes.md`: text lengths, 15 numbered qu
 - `spag`: `id`, `name`, `levels`, `explain`, `example` (`wrong` / `right`), `practice`.
 
 A `practice` entry is `{ "prompt", "options", "answer", "why" }`.
+
+## Drafting more with AI
+
+`tools/` can draft new missions with Claude, check them automatically, get an independent AI review, and add them once a person has read them. See `tools/README.md`. Whoever drafts a mission, the rules above still apply, and a person reads every mission before it goes live.

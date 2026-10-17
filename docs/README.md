@@ -24,8 +24,8 @@ content/
   reading-long.json longer Level 1 reading missions (three texts, 15 questions)
   writing.json      writing missions, length guide, marks, our own marking guide
   toolkit.json      format guides and SPaG points, each with a practice question
-tools/
-  validate.mjs      checks all content (word counts, marks, answer keys)
+tools/             checking, drafting, reviewing and merging missions (see tools/README.md)
+server/            the marking service (see server/README.md)
 docs/
   exam-notes.md     what is verified about the exam, and what is not yet
   content-guide.md  how to add a mission
@@ -36,6 +36,7 @@ docs/
 - **No personal data** in code, content, commits or comments. This repo is public.
 - **Writing stays in the browser.** The only way out is the explicit "Send for marking" step, which builds a text block for the learner to copy. No analytics, trackers, web fonts or third-party scripts. A Content-Security-Policy in `index.html` blocks requests to other origins.
 - **Progress record:** each finished mission is logged in localStorage with its date (and word count for writing). The Progress page can print or save as PDF, download a CSV, or copy as text, all built in the browser. An optional name is typed at export time and is never stored. Reading results are left out unless the learner ticks the box.
+- **Marking:** the Send step can ask a marking service for feedback (`server/`), or copy a block of text. The service address is set in `js/config.js`; while it is empty, nothing is ever sent and only Copy is shown. When it is set, pressing **Get feedback** sends the task and the answer to that service (no name, nothing else). The service uses the paid Anthropic API with a key held in Google Cloud, stores nothing, and never logs the writing. Marks stay hidden until the learner chooses to see them.
 - **Storage** is `localStorage` only, every access wrapped in `try/catch`, with an in-memory fallback so the site works when storage is blocked.
 - **Copyright:** all texts, questions and marking descriptors are original. Nothing is copied from Pearson papers, texts or mark schemes.
 - **Wording:** activities are "missions". Learner-facing text avoids "exam", "test" and "fail". Feedback shows the answer and the reason, calmly, with no crosses.

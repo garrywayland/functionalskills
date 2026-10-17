@@ -343,6 +343,11 @@ label.field { display: block; font-weight: 600; margin: 1.25rem 0 0.4rem; }
 .feedback p { margin: 0.3rem 0; }
 .feedback .fb-head { font-weight: 700; }
 
+.feedback h3 { font-family: var(--sans); font-size: 1.05rem; margin: 1rem 0 0.3rem; }
+.feedback ul.worked { padding-left: 1.2rem; margin: 0.3rem 0; }
+.feedback ul.worked li { margin: 0.5rem 0; }
+.feedback blockquote { margin: 0.35rem 0 0; padding: 0.3rem 0.8rem; border-left: 3px solid var(--calm-edge); font-family: var(--serif); font-style: italic; color: var(--muted); }
+.try-example { margin-top: 0.2rem; }
 .model {
   margin-top: 1.5rem; padding: 1rem 1.25rem;
   background: var(--note); border-radius: var(--radius); border: 1px solid var(--rule);
