@@ -1366,6 +1366,83 @@
     } catch (e) { return false; }
   }
 
+  // ---------- Save and restore my work (one file; restoring merges, it never replaces) ----------
+
+  var backupNote = null;
+
+  function collectWork() {
+    var B = window.NextStopBackup, data = {};
+    store.keys('').forEach(function (k) { if (B.isBackupKey(k)) data[k] = store.get(k, undefined); });
+    return data;
+  }
+
+  function mergeSentence(rep) {
+    var bits = [];
+    if (rep.added.records) bits.push(rep.added.records + ' new piece' + (rep.added.records === 1 ? '' : 's') + ' of work (answers, writing or practice)');
+    if (rep.updated) bits.push(rep.updated + ' ' + (rep.updated === 1 ? 'piece' : 'pieces') + ' of work brought up to date with newer changes');
+    if (rep.added.steps) bits.push(rep.added.steps + ' progress entr' + (rep.added.steps === 1 ? 'y' : 'ies'));
+    if (rep.added.packs) bits.push(rep.added.packs + ' pack' + (rep.added.packs === 1 ? '' : 's') + ' you made');
+    return bits;
+  }
+
+  function backupSection() {
+    var B = window.NextStopBackup;
+    var msg = h('div', { 'aria-live': 'polite' });
+    if (backupNote) { msg.appendChild(backupNote); backupNote = null; }
+    if (!B) return null;
+
+    var saveBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Save my work to a file' });
+    saveBtn.addEventListener('click', function () {
+      var file = B.make(collectWork(), today());
+      var n = Object.keys(file.data).length;
+      if (!n) { msg.replaceChildren(h('p', { class: 'muted', text: 'There is nothing to save yet. Do a mission first, then come back.' })); return; }
+      download('next-stop-my-work-' + today() + '.json', JSON.stringify(file), 'application/json');
+      msg.replaceChildren(h('p', { class: 'status', text: 'Saved to a file in your downloads. It has your writing in it, so keep it somewhere private.' }));
+    });
+
+    var input = h('input', { type: 'file', accept: '.json,application/json', id: 'restore-file', class: 'visually-hidden' });
+    var pickBtn = h('label', { class: 'btn secondary', for: 'restore-file', text: 'Restore from a file' });
+    input.addEventListener('change', function () {
+      var f = input.files && input.files[0];
+      if (!f) return;
+      if (f.size > 5 * 1024 * 1024) { msg.replaceChildren(h('p', { class: 'notice', text: 'That file is much bigger than a saved-work file should be.' })); input.value = ''; return; }
+      var done = function (text) {
+        input.value = '';
+        var parsed = B.parse(text);
+        if (!parsed.ok) { msg.replaceChildren(h('p', { class: 'notice', text: parsed.error + ' Nothing was changed.' })); return; }
+        var m = B.merge(collectWork(), parsed.data), bits = mergeSentence(m.report), keys = Object.keys(m.changes);
+        if (!keys.length) { msg.replaceChildren(h('p', { class: 'notice', text: 'Everything in that file is already on this device, so there is nothing to add.' })); return; }
+        var go2 = h('button', { type: 'button', class: 'btn', text: 'Merge it in' });
+        var cancel = h('button', { type: 'button', class: 'btn quiet', text: 'Cancel', onclick: function () { msg.replaceChildren(); } });
+        go2.addEventListener('click', function () {
+          var failed = 0;
+          keys.forEach(function (k) { if (!store.setStrict(k, m.changes[k])) failed++; });
+          applyMyPacks();
+          Array.prototype.forEach.call(document.querySelectorAll('input[name="level"]'), function (r) { r.checked = r.value === level(); });
+          backupNote = failed
+            ? h('p', { class: 'notice', text: 'Some of it could not be kept: this browser says its storage is full or blocked. Try a different browser, or save less.' })
+            : h('div', { class: 'notice' }, h('p', { text: 'Merged. Added ' + (bits.join(', ') || 'what was missing') + '.' }), h('p', { class: 'muted small', text: 'Anything you had here that was newer stayed as it was.' }));
+          render({ keepFocus: true });
+        });
+        msg.replaceChildren(h('section', { class: 'feedback' },
+          h('h3', { text: 'Ready to merge' }),
+          h('p', { text: (parsed.saved ? 'This file was saved on ' + prettyDate(parsed.saved) + '. ' : '') + 'Merging will add ' + (bits.join(', ') || 'what is missing') + '.' }),
+          h('p', { class: 'muted small', text: 'Nothing here is deleted or replaced by something older. Where you both have the same thing, the more recently changed copy is kept.' }),
+          parsed.skipped ? h('p', { class: 'muted small', text: parsed.skipped + ' item' + (parsed.skipped === 1 ? '' : 's') + ' in the file did not look right and will be skipped.' }) : null),
+          h('div', { class: 'actions' }, go2, cancel));
+      };
+      if (f.text) f.text().then(done, function () { msg.replaceChildren(h('p', { class: 'notice', text: 'That file could not be read.' })); });
+      else { var rd = new FileReader(); rd.onload = function () { done(String(rd.result)); }; rd.readAsText(f); }
+    });
+
+    return h('section', { class: 'no-print backup', 'aria-labelledby': 'backup-h' },
+      h('h2', { id: 'backup-h', text: 'Save and restore my work' }),
+      h('p', { class: 'muted', text: 'Keep a copy of everything you have done (answers, writing, plans, practice and any packs you made), or move it to another device. Restoring merges the file into what is already here: nothing is lost.' }),
+      h('p', { class: 'muted small', text: 'The file has your writing in it, so keep it private. It does not have a name. This is different from the record above, which is for showing your teacher.' }),
+      h('div', { class: 'actions' }, saveBtn, input, pickBtn),
+      msg);
+  }
+
   // ---------- Progress and export ----------
 
   function csvCell(v) {
@@ -1447,7 +1524,8 @@
     if (!all.length) {
       append(wrap,
         h('p', { class: 'lede', text: 'Nothing here yet. Each mission you finish is added, with the date.' }),
-        h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Choose something to do' })));
+        h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Choose something to do' })),
+        backupSection());
       return wrap;
     }
 
@@ -1523,6 +1601,7 @@
         }, text: 'Download spreadsheet (CSV)' }),
         copyBtn),
       area, msg,
+      backupSection(),
       h('p', { class: 'muted small no-print', text: 'This record lives only in this browser. If you clear your browser data, or use another device, it will not come with you, so export it from time to time.' }),
       h('div', { class: 'actions no-print' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back to the map' }), h('span', { class: 'spacer' }), clearBtn)
     );

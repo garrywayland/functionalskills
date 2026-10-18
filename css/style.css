@@ -576,3 +576,7 @@ main.wide-ish { max-width: 52rem; }
 .work-item { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); margin: 0 0 0.8rem; padding: 0.2rem 1rem 0.8rem; }
 .work-item > summary { display: flex; justify-content: space-between; gap: 1rem; cursor: pointer; padding: 0.7rem 0; font-weight: 600; }
 .review-list { padding-left: 1.2rem; }
+
+.backup { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.backup h2 { font-size: 1.2rem; }
+input.visually-hidden:focus + label, .backup label.btn:focus-within { outline: 3px solid var(--focus, #2a5d8f); }
