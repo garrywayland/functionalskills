@@ -155,6 +155,36 @@ export function checkToolkit(file, errs, notes) {
   notes.push(`toolkit.json: ${data.formats.length} formats, ${data.spag.length} SPaG points, ${total} practice questions`);
 }
 
+export function checkLearn(file, errs, notes) {
+  const data = read(file);
+  const words = (t) => t.trim().split(/\s+/).length;
+  const bands = { 9: [[1, 3], [4, 6], [7, 9]], 6: [[1, 2], [3, 4], [5, 6]] };
+  let samples = 0; const ids = new Set();
+  for (const t of data.mark) {
+    for (const s of t.samples) {
+      samples++;
+      const w = `learn.json ${t.id}/${s.id}`;
+      if (ids.has(s.id)) errs.push(`${w}: duplicate sample id`);
+      ids.add(s.id);
+      if (!Number.isInteger(s.composition) || s.composition < 0 || s.composition > 9) errs.push(`${w}: composition mark out of range`);
+      if (!Number.isInteger(s.spag) || s.spag < 0 || s.spag > 6) errs.push(`${w}: SPaG mark out of range`);
+      const quotes = [...s.worked.map((x) => x.quote), ...s.spag_notes.map((x) => x.quote)];
+      for (const q of quotes) if (!s.answer.includes(q)) errs.push(`${w}: quote not found in the answer: "${q}"`);
+      for (const n of s.spag_notes) if (n.quote === n.fix) errs.push(`${w}: a SPaG note whose fix is the same as the quote`);
+      if (!s.worked.length || !s.target?.what || !s.why_composition || !s.why_spag) errs.push(`${w}: missing feedback text`);
+      const len = words(s.answer);
+      if (len < 25 || len > 260) errs.push(`${w}: odd length (${len} words)`);
+    }
+    const marks = t.samples.map((s) => s.composition);
+    if (new Set(marks).size < marks.length) errs.push(`learn.json ${t.id}: samples should be at clearly different levels`);
+  }
+  let items = 0;
+  for (const f of data.fix) {
+    for (const i of f.items) { items++; if (i.wrong === i.fixed) errs.push(`learn.json ${f.id}: an item with nothing to fix: "${i.wrong}"`); if (!i.why) errs.push(`learn.json ${f.id}: item without a reason`); }
+  }
+  notes.push(`learn.json: ${data.mark.length} marking tasks, ${samples} samples, ${data.fix.length} fix-it sets, ${items} sentences`);
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const errs = []; const notes = [];
   const arg = process.argv[2];
@@ -167,6 +197,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     checkReadingFile(c('reading-long.json'), errs, notes);
     checkWritingFile(c('writing.json'), errs, notes);
     checkToolkit(c('toolkit.json'), errs, notes);
+    checkLearn(c('learn.json'), errs, notes);
   }
   notes.forEach((n) => console.log('ok  ', n));
   if (errs.length) { console.error('\nProblems:'); errs.forEach((e) => console.error('  -', e)); process.exit(1); }

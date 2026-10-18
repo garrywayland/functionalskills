@@ -9,6 +9,7 @@
   --reading: #2f6b5a;
   --writing: #6b4a8a;
   --toolkit: #9a5f0c;
+  --learn: #2a5d8f;
   --calm: #e8f0ec;
   --calm-edge: #9fbfb2;
   --note: #f3ead6;
@@ -36,6 +37,7 @@
     --reading: #74c2a8;
     --writing: #bfa0dc;
     --toolkit: #e2a84f;
+    --learn: #8fbbe8;
     --calm: #1d2d29;
     --calm-edge: #3f6b5d;
     --note: #2a2618;
@@ -119,7 +121,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 }
 .brand-name { font-family: var(--serif); font-size: 1.3rem; }
 
-.site-nav { display: flex; gap: 1.25rem; margin-right: auto; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; margin-right: auto; }
 .site-nav a { text-decoration: none; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
 .site-nav a[aria-current="page"] { border-bottom-color: currentColor; font-weight: 600; }
 
@@ -228,6 +230,21 @@ h1:focus { outline: none; }
   .lines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
   main.home { max-width: 64rem; }
 }
+
+/* ---------- Landing page stations ---------- */
+
+.stations { list-style: none; margin: 2rem 0 1.5rem; padding: 0 0 0 1.5rem; position: relative; }
+.station { --c: var(--reading); position: relative; }
+.station.writing { --c: var(--writing); }
+.station.learn { --c: var(--learn); }
+.station.toolkit { --c: var(--toolkit); }
+.station::before { content: ""; position: absolute; left: -1.35rem; top: 1.5rem; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: var(--paper); border: 0.3rem solid var(--c); z-index: 1; }
+.station:not(:last-child)::after { content: ""; position: absolute; left: -0.95rem; top: 2.6rem; bottom: -1.4rem; width: 0.4rem; background: var(--c); border-radius: 99px; }
+.station a { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1rem; padding: 1.1rem 1.2rem; margin: 0 0 1.1rem; text-decoration: none; background: var(--surface); border: 1px solid var(--rule); border-left: 0.4rem solid var(--c); border-radius: var(--radius); }
+.station a:hover { border-color: var(--c); }
+.st-name { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; }
+.st-desc { grid-column: 1; color: var(--muted); }
+.st-count { grid-column: 2; grid-row: 1; align-self: center; font-size: 0.9rem; color: var(--c); font-weight: 700; white-space: nowrap; }
 
 /* ---------- Folded topic menus ---------- */
 
@@ -479,3 +496,15 @@ label.field { display: block; font-weight: 600; margin: 1.25rem 0 0.4rem; }
   .table-wrap { overflow: visible; }
   a { text-decoration: none; }
 }
+
+/* ---------- Learn by marking ---------- */
+.sample-text { background: var(--surface); border: 1px solid var(--rule); border-left: 0.4rem solid var(--learn); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0; max-height: 28rem; overflow: auto; }
+.sample-text p { margin: 0 0 0.9rem; }
+.mark-pick { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 1rem 0; }
+.mark-pick label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+.mark-pick select { font: inherit; padding: 0.5rem 0.7rem; border-radius: 0.5rem; border: 1px solid var(--rule); background: var(--surface); color: inherit; min-height: 2.75rem; }
+.fix-list { list-style: none; padding: 0; margin: 1.2rem 0; }
+.fix-item { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 0 0 1rem; }
+.fix-item textarea { display: block; width: 100%; font: inherit; padding: 0.6rem; margin: 0.3rem 0 0.7rem; border: 1px solid var(--rule); border-radius: 0.5rem; background: var(--paper); color: inherit; }
+.fix-wrong { font-size: 1.05rem; margin: 0 0 0.6rem; }
+.fix-result { margin-top: 0.6rem; }

@@ -174,7 +174,13 @@
     else if (parts[0] === 'writing' && parts[1]) view = writingView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit') view = toolkitView();
+    else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[3]) view = learnSampleView(parts[2], parts[3]);
+    else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[2]) view = learnTaskView(parts[2]);
+    else if (parts[0] === 'learn' && parts[1] === 'fix' && parts[2]) view = learnFixView(parts[2]);
+    else if (parts[0] === 'learn') view = learnIndexView();
     else if (parts[0] === 'progress') view = progressView();
+    else if (parts[0] === 'reading') view = readingIndexView();
+    else if (parts[0] === 'writing') view = writingIndexView();
     else view = homeView();
 
     main.replaceChildren(view);
@@ -191,7 +197,7 @@
   function updateNav(section) {
     Array.prototype.forEach.call(document.querySelectorAll('.site-nav a'), function (a) {
       var target = a.getAttribute('href').replace('#/', '');
-      var current = target === '' ? section !== 'toolkit' : section === target;
+      var current = section === target;
       if (current) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   }
@@ -200,39 +206,84 @@
 
   var TOPIC_ORDER = ['Pandas', 'Israel', 'Public transport', 'UK geography'];
 
+  function counts(list) {
+    return { done: list.filter(function (m) { return isDone(m.id); }).length, total: list.length };
+  }
+
+  function levelReading() { return content.reading.missions.filter(inLevel); }
+  function levelWriting() { return content.writing.missions.filter(inLevel); }
+
+  // The landing page: four choices and one button. Everything else lives one click away.
   function homeView() {
     main.className = 'home';
-    var reading = content.reading.missions.filter(inLevel);
-    var writing = content.writing.missions.filter(inLevel);
-    var all = reading.concat(writing);
-    var doneCount = all.filter(function (m) { return isDone(m.id); }).length;
+    var r = counts(levelReading());
+    var w = counts(levelWriting());
+    var tk = content.toolkit.formats.concat(forLevel(content.toolkit.spag));
+    var t = { done: tk.filter(function (x) { return isDone('tool-' + x.id); }).length, total: tk.length };
+    var l = learnCounts();
+
+    function station(kind, href, name, desc, c) {
+      return h('li', { class: 'station ' + kind },
+        h('a', { href: href },
+          h('span', { class: 'st-name', text: name }),
+          h('span', { class: 'st-desc', text: desc }),
+          h('span', { class: 'st-count', text: c.done + ' of ' + c.total + ' done' })));
+    }
+
+    function pickForMe() {
+      var short = levelReading().filter(function (m) { return m.length !== 'long' && !isDone(m.id); })
+        .map(function (m) { return '#/reading/' + m.id; })
+        .concat(levelWriting().filter(function (m) { return m.task === 2 && !isDone(m.id); }).map(function (m) { return '#/writing/' + m.id; }));
+      if (!short.length) short = levelReading().concat(levelWriting()).filter(function (m) { return !isDone(m.id); })
+        .map(function (m) { return (m.texts ? '#/reading/' : '#/writing/') + m.id; });
+      if (!short.length) { location.hash = '#/learn'; return; }
+      location.hash = short[Math.floor(Math.random() * short.length)];
+    }
 
     return h('div', null,
       h('section', { class: 'map-intro' },
-        h('h1', { text: 'Pick a mission' }),
-        h('p', { class: 'lede', text: 'Open a topic, then pick a mission. Short ones take about 10 minutes, writing tasks 15 to 25, and the longer reading missions 35 to 45. Do one, then stop or carry on. It is up to you.' }),
-        h('p', { class: 'progress-line' }, doneCount + ' of ' + all.length + ' missions done at ' + LEVELS[level()] + '. ', h('a', { href: '#/progress', text: 'See my progress' })),
-        h('p', { class: 'muted small', text: 'Not sure which level? Nearly every mission works at both. Use the switch at the top.' })
-      ),
-      h('div', { class: 'lines-grid' },
-        h('div', null,
-          menuSection('reading', 'Reading line', 'Read the text or texts, then answer questions one at a time.', reading, function (m) {
-            return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes,
-              meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
-          }, function (m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; })
-        ),
-        menuSection('writing', 'Writing line', 'Plan and write a piece, then get feedback if you want to.', writing, function (m) {
-          var mm = missionFor(m);
-          return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15,
-            meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
-        }, function (m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; })
-      ),
-      h('section', { class: 'line toolkit' },
-        h('h2', { class: 'line-title', text: 'Toolkit' }),
-        h('p', { text: 'Short guides to each kind of writing, plus punctuation and spelling, each with a quick practice.' }),
-        h('a', { class: 'btn secondary', href: '#/toolkit', text: 'Open the toolkit' })
-      )
+        h('h1', { text: 'What would you like to do?' }),
+        h('p', { class: 'lede', text: 'Choose one. Each takes about ten minutes, or longer if you want a bigger one. You can stop whenever you like.' })),
+      h('ol', { class: 'stations' },
+        station('reading', '#/reading', 'Read', 'Read a text and answer questions, one at a time.', r),
+        station('writing', '#/writing', 'Write', 'Plan and write a piece, then get feedback if you want it.', w),
+        station('learn', '#/learn', 'Learn by marking', 'Mark sample work, mark answers and fix mistakes, like an examiner.', l),
+        station('toolkit', '#/toolkit', 'Practise a skill', 'Short drills on writing formats, punctuation, spelling and grammar.', t)),
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn', onclick: pickForMe, text: 'Pick one for me' }),
+        h('a', { class: 'btn quiet', href: '#/progress', text: 'My progress' })),
+      h('p', { class: 'muted small', text: 'You are on ' + LEVELS[level()] + '. Not sure which level? Nearly everything works at both. Use the switch at the top.' })
     );
+  }
+
+  function sectionIntro(title, text) {
+    return h('section', { class: 'map-intro' },
+      h('p', { class: 'eyebrow', text: LEVELS[level()] }),
+      h('h1', { text: title }),
+      h('p', { class: 'lede', text: text }));
+  }
+
+  function readingIndexView() {
+    main.className = 'home';
+    return h('div', null,
+      sectionIntro('Reading', 'Open a topic, then pick a mission. Short ones take about 10 minutes. The longer ones have three texts and 15 questions, like the real paper.'),
+      menuSection('reading', 'Reading missions', 'Read the text or texts, then answer questions one at a time.', levelReading(), function (m) {
+        return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes,
+          meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
+      }, function (m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
+  }
+
+  function writingIndexView() {
+    main.className = 'home';
+    return h('div', null,
+      sectionIntro('Writing', 'Open a topic, then pick a task. Shorter tasks take about 15 minutes and longer ones about 25.'),
+      menuSection('writing', 'Writing tasks', 'Plan and write a piece, then get feedback if you want to.', levelWriting(), function (m) {
+        var mm = missionFor(m);
+        return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15,
+          meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
+      }, function (m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; }),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
   }
 
   // How many numbered questions a mission has (1(a) and 1(b) count as one).
@@ -362,7 +413,7 @@
       append(wrap, sourceText(t, multi));
       var last = step.index === built.texts.length - 1;
       append(wrap, h('div', { class: 'actions' },
-        pos > 0 ? h('a', { class: 'btn quiet', href: hrefFor(pos - 1), text: 'Back' }) : h('a', { class: 'btn quiet', href: '#/', text: 'Back to the map' }),
+        pos > 0 ? h('a', { class: 'btn quiet', href: hrefFor(pos - 1), text: 'Back' }) : h('a', { class: 'btn quiet', href: '#/reading', text: 'Back to reading' }),
         h('a', { class: 'btn', href: hrefFor(pos + 1), text: last ? "I've read it. Start the questions" : 'Next: Text ' + built.texts[step.index + 1].id })
       ));
       return wrap;
@@ -434,7 +485,7 @@
             openCount ? h('p', { class: 'muted', text: 'You checked ' + openCount + (openCount === 1 ? ' written answer' : ' written answers') + ' yourself against a model answer.' }) : null
           ));
         }, text: 'Show how many matched' }),
-        h('a', { class: 'btn', href: '#/', text: 'Back to the map' }),
+        h('a', { class: 'btn', href: '#/reading', text: 'Back to reading' }),
         h('button', { type: 'button', class: 'btn quiet', onclick: function () {
           store.remove(key);
           go(hrefFor(0));
@@ -761,7 +812,7 @@
     ));
 
     var nextBtn = idx < stepIds.length - 1 ? h('a', { class: 'btn', href: hrefFor(stepIds[idx + 1]), text: 'Next: ' + WRITING_STEPS[idx + 1][1] }) : null;
-    var backBtn = idx > 0 ? h('a', { class: 'btn quiet', href: hrefFor(stepIds[idx - 1]), text: 'Back' }) : h('a', { class: 'btn quiet', href: '#/', text: 'Back to the map' });
+    var backBtn = idx > 0 ? h('a', { class: 'btn quiet', href: hrefFor(stepIds[idx - 1]), text: 'Back' }) : h('a', { class: 'btn quiet', href: '#/writing', text: 'Back to writing' });
 
     if (step === 'task') {
       append(wrap,
@@ -887,7 +938,7 @@
           h('span', { class: 'spacer' }),
           backBtn),
         msg,
-        h('p', { class: 'muted small' }, h('a', { href: '#/', text: 'Back to the map' }))
+        h('p', { class: 'muted small' }, h('a', { href: '#/writing', text: 'Back to writing' }))
       );
     }
 
@@ -1147,7 +1198,7 @@
 
   function exportRows(entries, withResults) {
     return entries.map(function (e) {
-      var detail = e.kind === 'Writing' ? (e.words ? e.words + ' words written' : '') : e.kind === 'Toolkit' ? (e.total + ' practice questions' + (withResults && typeof e.matched === 'number' ? ', ' + e.matched + ' matched' : '')) : '';
+      var detail = e.kind === 'Writing' ? (e.words ? e.words + ' words written' : '') : e.kind === 'Learn' ? '' : e.kind === 'Toolkit' ? (e.total + ' practice questions' + (withResults && typeof e.matched === 'number' ? ', ' + e.matched + ' matched' : '')) : '';
       if (e.kind === 'Reading' && withResults && typeof e.total === 'number') detail = e.matched + ' of ' + e.total + ' choice answers matched';
       return { date: e.date, kind: e.kind, title: e.title, topic: e.topic, level: LEVELS[e.level] || e.level, detail: detail, words: e.kind === 'Writing' ? (e.words || 0) : '', matched: withResults && e.kind === 'Reading' ? e.matched : '', total: withResults && e.kind === 'Reading' ? e.total : '' };
     });
@@ -1159,7 +1210,7 @@
     entries.forEach(function (e) {
       days[e.date] = true;
       if (e.kind === 'Writing') { writing++; words += e.words || 0; }
-      else if (e.kind === 'Toolkit') practice++;
+      else if (e.kind === 'Toolkit' || e.kind === 'Learn') practice++;
       else reading++;
     });
     var dates = Object.keys(days).sort();
@@ -1218,7 +1269,7 @@
     if (!all.length) {
       append(wrap,
         h('p', { class: 'lede', text: 'Nothing here yet. Each mission you finish is added, with the date.' }),
-        h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Pick a mission' })));
+        h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Choose something to do' })));
       return wrap;
     }
 
@@ -1298,6 +1349,174 @@
       h('div', { class: 'actions no-print' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back to the map' }), h('span', { class: 'spacer' }), clearBtn)
     );
     return wrap;
+  }
+
+  // ---------- Learn by marking ----------
+
+  function learnTasks() { return content.learn.mark.filter(function (t) { return t.level === level(); }); }
+
+  function learnCounts() {
+    var done = 0, total = 0;
+    learnTasks().forEach(function (t) { t.samples.forEach(function (s) { total++; if (isDone('learn-' + s.id)) done++; }); });
+    content.learn.fix.forEach(function (f) { total++; if (isDone('learn-' + f.id)) done++; });
+    return { done: done, total: total };
+  }
+
+  function learnIndexView() {
+    main.className = 'home';
+    return h('div', null,
+      sectionIntro('Learn by marking', 'Look at real-looking answers the way an examiner does. Mark sample work, then see what we thought and why. Or fix the mistakes in short sentences.'),
+      h('h2', { text: 'Mark sample work' }),
+      h('p', { class: 'muted small', text: 'Each task has three answers at different standards. Give each one a mark, then compare.' }),
+      h('ul', { class: 'tool-list' }, learnTasks().map(function (t) {
+        var n = t.samples.filter(function (s) { return isDone('learn-' + s.id); }).length;
+        return h('li', null, h('a', { href: '#/learn/mark/' + t.id },
+          h('span', { class: 't-name', text: t.title }),
+          n === t.samples.length ? h('span', { class: 't-done', text: 'All marked' }) : null,
+          h('span', { class: 't-sum', text: n + ' of ' + t.samples.length + ' answers marked' })));
+      })),
+      h('h2', { text: 'Fix it' }),
+      h('p', { class: 'muted small', text: 'Eight short sentences each. Rewrite them correctly, then check.' }),
+      h('ul', { class: 'tool-list' }, content.learn.fix.map(function (f) {
+        return h('li', null, h('a', { href: '#/learn/fix/' + f.id },
+          h('span', { class: 't-name', text: f.title }),
+          isDone('learn-' + f.id) ? h('span', { class: 't-done', text: 'Done' }) : null,
+          h('span', { class: 't-sum', text: f.items.length + ' sentences' })));
+      })),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
+  }
+
+  function learnTaskView(id) {
+    var t = find(content.learn.mark, id);
+    if (!t) return notFound();
+    if (t.level !== level()) return h('div', null, h('h1', { text: t.title }),
+      h('p', { class: 'notice', text: 'This task is for ' + LEVELS[t.level] + '. Use the switch at the top of the page to change level.' }),
+      h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/learn', text: 'Back to Learn' })));
+    var raw = find(content.writing.missions, t.missionId);
+    var m = missionFor(raw);
+    var bandKeys = ['Lowest band', 'Middle band', 'Top band'];
+    return h('div', { class: 'mission' },
+      h('p', { class: 'eyebrow', text: 'Learn · ' + LEVELS[level()] }),
+      h('h1', { text: t.title }),
+      h('p', { class: 'lede', text: 'Here is a task. Three people answered it. Read the task, then mark each answer.' }),
+      taskCard(m, find(content.toolkit.formats, m.format), content.writing.lengthGuide[String(raw.task)][level()]),
+      h('details', { class: 'plan-peek' },
+        h('summary', { text: 'How the marks work' }),
+        h('p', { text: 'Composition (out of ' + content.writing.marks[String(raw.task)].composition + ') is about the ideas, the reader, the layout and the language. SPaG (out of ' + content.writing.marks[String(raw.task)].spag + ') is about spelling, punctuation and grammar.' }),
+        h('p', { class: 'muted small', text: content.writing.markGuide.note }),
+        h('ul', null, content.writing.markGuide.composition[level()].map(function (x) { return h('li', { text: x }); })),
+        h('ul', null, content.writing.markGuide.spag[level()].map(function (x) { return h('li', { text: x }); }))),
+      h('h2', { text: 'The answers' }),
+      h('ul', { class: 'tool-list' }, t.samples.map(function (s, i) {
+        return h('li', null, h('a', { href: '#/learn/mark/' + t.id + '/' + s.id },
+          h('span', { class: 't-name', text: 'Answer ' + (i + 1) }),
+          isDone('learn-' + s.id) ? h('span', { class: 't-done', text: 'Marked' }) : null,
+          h('span', { class: 't-sum', text: wordCount(s.answer) + ' words' })));
+      })),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/learn', text: 'Back to Learn' })));
+  }
+
+  function numberSelect(idp, max, value) {
+    var sel = h('select', { id: idp });
+    sel.appendChild(h('option', { value: '', text: 'Choose a mark' }));
+    for (var i = 0; i <= max; i++) {
+      var o = h('option', { value: String(i), text: String(i) });
+      if (value === i) o.selected = true;
+      sel.appendChild(o);
+    }
+    return sel;
+  }
+
+  function learnSampleView(taskId, sampleId) {
+    var t = find(content.learn.mark, taskId);
+    var s = t && find(t.samples, sampleId);
+    if (!s) return notFound();
+    if (t.level !== level()) return learnTaskView(taskId);
+    var raw = find(content.writing.missions, t.missionId);
+    var marks = content.writing.marks[String(raw.task)];
+    var idx = t.samples.indexOf(s);
+    var key = 'learn:' + s.id;
+    var saved = store.get(key, null);
+    var out = h('div', { 'aria-live': 'polite' });
+    var compSel = numberSelect('pick-comp', marks.composition, saved && saved.comp);
+    var spagSel = numberSelect('pick-spag', marks.spag, saved && saved.spag);
+
+    function closeness(mine, ours) {
+      var d = Math.abs(mine - ours);
+      return d === 0 ? 'the same as ours' : d === 1 ? 'one away from ours' : 'different from ours';
+    }
+
+    function reveal() {
+      var comp = compSel.value === '' ? null : parseInt(compSel.value, 10);
+      var sp = spagSel.value === '' ? null : parseInt(spagSel.value, 10);
+      store.set(key, { comp: comp, spag: sp });
+      markDone('learn-' + s.id);
+      logDone({ id: 'learn-' + s.id, kind: 'Learn', title: t.title + ' (answer ' + (idx + 1) + ')', topic: 'Marking' });
+      out.replaceChildren(
+        h('section', { class: 'feedback', tabindex: '-1' },
+          h('h2', { text: 'What we thought' }),
+          h('p', null, h('strong', { text: 'Composition: ' + s.composition + ' out of ' + marks.composition + '. ' }),
+            comp === null ? '' : 'You gave ' + comp + ', which is ' + closeness(comp, s.composition) + '. ', s.why_composition),
+          h('p', null, h('strong', { text: 'SPaG: ' + s.spag + ' out of ' + marks.spag + '. ' }),
+            sp === null ? '' : 'You gave ' + sp + ', which is ' + closeness(sp, s.spag) + '. ', s.why_spag),
+          h('p', { class: 'muted small', text: 'Marking is a judgement. Being a mark away is normal. What matters is spotting the same things.' }),
+          h('h3', { text: 'What worked' }),
+          h('ul', null, s.worked.map(function (w) { return h('li', null, w.what, ' ', h('q', { text: w.quote })); })),
+          h('h3', { text: 'One thing to try' }),
+          h('p', { text: s.target.what }), h('p', { class: 'muted', text: s.target.example }),
+          s.spag_notes.length ? h('div', null,
+            h('h3', { text: 'Spelling, punctuation and grammar to notice' }),
+            h('ul', null, s.spag_notes.map(function (n) {
+              return h('li', null, h('q', { text: n.quote }), ' → ', h('strong', { text: n.fix }), '. ', n.why);
+            }))) : h('p', { class: 'muted', text: 'There was nothing worth correcting in the spelling, punctuation or grammar.' })));
+      var fb = out.querySelector('.feedback'); if (fb) fb.focus({ preventScroll: false });
+    }
+
+    var next = t.samples[idx + 1];
+    return h('div', { class: 'mission' },
+      h('p', { class: 'eyebrow', text: 'Learn · ' + t.title }),
+      h('h1', { text: 'Answer ' + (idx + 1) + ' of ' + t.samples.length }),
+      h('p', { class: 'muted small', text: 'Read it, then give it a mark. ' + wordCount(s.answer) + ' words.' }),
+      h('div', { class: 'sample-text', tabindex: '0', role: 'region', 'aria-label': 'The answer to mark' },
+        s.answer.split(/\n\s*\n/).map(function (p) { return h('p', null, p.split('\n').map(function (line, i) { return [i ? h('br') : null, line]; })); })),
+      h('div', { class: 'mark-pick' },
+        h('div', null, h('label', { for: 'pick-comp', text: 'Composition (out of ' + marks.composition + ')' }), compSel),
+        h('div', null, h('label', { for: 'pick-spag', text: 'SPaG (out of ' + marks.spag + ')' }), spagSel)),
+      h('div', { class: 'actions' },
+        h('button', { type: 'button', class: 'btn', onclick: reveal, text: 'Show what we thought' }),
+        h('a', { class: 'btn quiet', href: '#/learn/mark/' + t.id, text: 'Back to the task' }),
+        next ? h('a', { class: 'btn secondary', href: '#/learn/mark/' + t.id + '/' + next.id, text: 'Next answer' }) : null),
+      out);
+  }
+
+  function learnFixView(id) {
+    var f = find(content.learn.fix, id);
+    if (!f) return notFound();
+    var shown = 0;
+    var doneBox = h('div', { 'aria-live': 'polite' });
+    function oneItem(it, i) {
+      var box = h('div', { class: 'fix-result', 'aria-live': 'polite' });
+      var ta = h('textarea', { id: 'fix-' + i, rows: 2, 'aria-label': 'Your corrected version of sentence ' + (i + 1) });
+      var btn = h('button', { type: 'button', class: 'btn secondary', text: 'Check', onclick: function () {
+        if (!box.firstChild) shown++;
+        box.replaceChildren(h('p', null, h('strong', { text: 'One way to write it: ' }), it.fixed), h('p', { class: 'muted small', text: it.why }));
+        if (shown === f.items.length) {
+          markDone('learn-' + f.id);
+          logDone({ id: 'learn-' + f.id, kind: 'Learn', title: f.title, topic: 'Fix it' });
+          doneBox.replaceChildren(h('p', { class: 'notice', text: 'That is the set done. Well done for sticking with it.' }));
+        }
+      } });
+      return h('li', { class: 'fix-item' },
+        h('p', { class: 'fix-wrong' }, h('span', { class: 'muted small', text: 'Sentence ' + (i + 1) + ': ' }), h('q', { text: it.wrong })),
+        h('label', { for: 'fix-' + i, class: 'muted small', text: 'Rewrite it correctly' }), ta, btn, box);
+    }
+    return h('div', { class: 'mission' },
+      h('p', { class: 'eyebrow', text: 'Learn · Fix it' }),
+      h('h1', { text: f.title }),
+      h('p', { class: 'lede', text: f.intro }),
+      h('ol', { class: 'fix-list' }, f.items.map(oneItem)),
+      doneBox,
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/learn', text: 'Back to Learn' })));
   }
 
   // ---------- Toolkit ----------
@@ -1460,9 +1679,10 @@
       loadJSON('content/reading.json'),
       loadJSON('content/writing.json'),
       loadJSON('content/toolkit.json'),
-      loadJSON('content/reading-long.json')
+      loadJSON('content/reading-long.json'),
+      loadJSON('content/learn.json')
     ]).then(function (res) {
-      content = { reading: { missions: res[0].missions.concat(res[3].missions) }, writing: res[1], toolkit: res[2] };
+      content = { reading: { missions: res[0].missions.concat(res[3].missions) }, writing: res[1], toolkit: res[2], learn: res[4] };
       window.addEventListener('hashchange', function () { render(); });
       render({ keepFocus: true });
     }).catch(function (err) {
