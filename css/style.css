@@ -15,7 +15,7 @@
   --note: #f3ead6;
   --focus: #1f5fbf;
   --on-accent: #ffffff;
-  --panda-opacity: 0.035;
+  --panda-opacity: 0.09;
   --panda-filter: none;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
@@ -43,7 +43,7 @@
     --note: #2a2618;
     --focus: #8ab4ff;
     --on-accent: #141a1c;
-    --panda-opacity: 0.04;
+    --panda-opacity: 0.1;
     --panda-filter: invert(1);
     color-scheme: dark;
   }
@@ -57,7 +57,7 @@ html { -webkit-text-size-adjust: 100%; }
 body::before {
   content: "";
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background: url("../img/panda-pattern.svg") 0 0 / 420px 420px repeat;
+  background: url("../img/panda-pattern.svg") 0 0 / 520px 520px repeat;
   opacity: var(--panda-opacity);
   filter: var(--panda-filter);
 }

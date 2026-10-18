@@ -1,24 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520" fill="none">
   <defs>
-    <g id="panda">
-      <circle cx="-30" cy="-30" r="13" fill="#000"/>
-      <circle cx="30" cy="-30" r="13" fill="#000"/>
-      <ellipse cx="0" cy="0" rx="40" ry="35" fill="#fff" stroke="#000" stroke-width="3"/>
-      <ellipse cx="-16" cy="-3" rx="9" ry="13" transform="rotate(25 -16 -3)" fill="#000"/>
-      <ellipse cx="16" cy="-3" rx="9" ry="13" transform="rotate(-25 16 -3)" fill="#000"/>
-      <circle cx="-14" cy="-5" r="2.6" fill="#fff"/>
-      <circle cx="14" cy="-5" r="2.6" fill="#fff"/>
-      <ellipse cx="0" cy="11" rx="6.5" ry="4.5" fill="#000"/>
-      <path d="M0 15 Q-5 23 -12 19 M0 15 Q5 23 12 19" stroke="#000" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- A giant panda sitting up, holding a stalk of bamboo. Origin is the middle of the body. -->
+    <g id="panda" stroke-linejoin="round" stroke-linecap="round">
+      <ellipse cx="-34" cy="52" rx="22" ry="15" transform="rotate(-12 -34 52)" fill="#000"/>
+      <ellipse cx="34" cy="52" rx="22" ry="15" transform="rotate(12 34 52)" fill="#000"/>
+      <ellipse cx="0" cy="18" rx="47" ry="48" fill="#fff" stroke="#000" stroke-width="3"/>
+      <path d="M-46 -2 Q0 -22 46 -2 L40 12 Q0 -6 -40 12Z" fill="#000"/>
+      <ellipse cx="-40" cy="20" rx="12" ry="30" transform="rotate(18 -40 20)" fill="#000"/>
+      <ellipse cx="40" cy="20" rx="12" ry="30" transform="rotate(-18 40 20)" fill="#000"/>
+      <rect x="-9" y="24" width="18" height="6" rx="3" transform="rotate(-8 0 27)" fill="#fff" stroke="#000" stroke-width="2.5"/>
+      <path d="M8 24 q22 -4 30 -22 q-24 2 -30 22z" fill="#fff" stroke="#000" stroke-width="2.5"/>
+      <circle cx="-31" cy="-84" r="13" fill="#000"/>
+      <circle cx="31" cy="-84" r="13" fill="#000"/>
+      <ellipse cx="0" cy="-58" rx="39" ry="33" fill="#fff" stroke="#000" stroke-width="3"/>
+      <ellipse cx="-16" cy="-61" rx="9" ry="13" transform="rotate(25 -16 -61)" fill="#000"/>
+      <ellipse cx="16" cy="-61" rx="9" ry="13" transform="rotate(-25 16 -61)" fill="#000"/>
+      <circle cx="-14" cy="-63" r="2.6" fill="#fff"/>
+      <circle cx="14" cy="-63" r="2.6" fill="#fff"/>
+      <ellipse cx="0" cy="-48" rx="6.5" ry="4.5" fill="#000"/>
+      <path d="M0 -44 Q-5 -36 -12 -40 M0 -44 Q5 -36 12 -40" stroke="#000" stroke-width="2.2" fill="none"/>
     </g>
-    <g id="bamboo">
-      <rect x="-5" y="0" width="10" height="420" rx="5" fill="#fff" stroke="#000" stroke-width="2.5"/>
-      <path d="M-5 70H5M-5 150H5M-5 235H5M-5 320H5M-5 395H5" stroke="#000" stroke-width="2.5"/>
-      <path d="M5 150 q38 -6 52 -34 q-36 0 -52 34z M-5 320 q-38 -6 -52 -34 q36 0 52 34z" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+    <g id="bamboo" stroke-linejoin="round">
+      <rect x="-6" y="0" width="12" height="520" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+      <path d="M-6 80H6M-6 190H6M-6 300H6M-6 410H6" stroke="#000" stroke-width="3"/>
+      <path d="M6 190 q42 -6 58 -38 q-40 0 -58 38z M-6 410 q-42 -6 -58 -38 q40 0 58 38z M6 80 q34 -4 46 -30 q-32 0 -46 30z" fill="#fff" stroke="#000" stroke-width="3"/>
     </g>
   </defs>
-  <use href="#bamboo" x="372" y="0"/>
-  <use href="#panda" transform="translate(78 84) rotate(-6)"/>
-  <use href="#panda" transform="translate(250 214) rotate(7) scale(.8)"/>
-  <use href="#panda" transform="translate(110 328) rotate(-9) scale(.62)"/>
+  <use href="#bamboo" x="486" y="0"/>
+  <use href="#panda" transform="translate(96 118) rotate(-5)"/>
+  <use href="#panda" transform="translate(300 250) rotate(6) scale(.82)"/>
+  <use href="#panda" transform="translate(110 392) rotate(-7) scale(.68)"/>
+  <use href="#panda" transform="translate(372 72) rotate(8) scale(.5)"/>
+  <use href="#panda" transform="translate(350 440) rotate(-4) scale(.55)"/>
 </svg>
