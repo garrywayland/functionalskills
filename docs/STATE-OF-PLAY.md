@@ -22,6 +22,7 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 | --- | --- |
 | Front page | "What are you into?": theme cards (a theme shows only when it has visible missions at the chosen level), "Pick one for me", My progress, and two any-theme cards (Learn by marking, Practise a skill). `#/theme/<id>` lists that theme's reading, writing and marking tasks. Nav pages Reading and Writing still list everything in folded menus by theme. |
 | Themes and import | `content/index.json` lists the content files; `content/themes.json` lists 16 themes (4 have content: Pandas, Israel, Public transport, UK geography). Packs of missions written by another AI are imported with `node tools/import.mjs` as hidden "draft" missions; the footer link "Teacher view" shows them labelled "Unchecked"; `--approve` makes them live, `--remove` takes them out. Steps and a prompt for the other AI are in `docs/IMPORTING.md`; a working example is `docs/import/example-pack.json`. |
+| Make a pack (`#/make`) | No server. She or you type a theme (any theme, e.g. a football club); the page writes a ready-made prompt to paste into an AI chat; she pastes the reply back; the page checks it with the same rules as `validate.mjs` (shared file `js/rules.js`, used by both the page and the Node tool) and saves it in that browser only (`localStorage` key `nextstop:mypacks`). Saved themes appear on the front page, missions are labelled "Your own", ids are namespaced `my-<theme>-<stamp>-<id>`. Packs can be downloaded (valid for `tools/import.mjs`) or deleted. The prompt tells the AI to invent all people, clubs and places and to state no facts about real ones. A damaged saved pack shows a calm error instead of breaking the site. Test: `tests/browser/make-test.js`. |
 | Reading | 16 missions: 4 short, 12 long (3 texts, 15 questions, official-style layout, Level 1 and Level 2). Question types: choice, tfns, factopinion, multi, match, open (self-check model answer). |
 | Writing | 24 tasks (Task 1 longer, Task 2 shorter). Steps: Task, Plan, Write, Send. On Plan and Write the task stays in view: split screen on wide screens (sticky task panel beside the work), and on phones a "Show the task" button slides the task up as a sheet (Close, button or Escape hides it). Marking is by copy and paste into an AI chat with the task, indicative content and our plain-English band summary. |
 | Toolkit | 11 writing formats and 9 SPaG points, 10 practice questions each (200 in all), one question at a time in shuffled order. |
@@ -35,6 +36,7 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 - Browser tests in `tests/browser/` need Playwright at `/opt/node-tools/node_modules/playwright` and the repo served with `python3 -m http.server 8766` (restart it at the start of each command; it stops between sessions).
   - `learn-test.js <folder>`: home, Learn, fix-it soft marking, phone width, keyboard.
   - `themes-test.js`: theme pages, plus a temporary copy of the site to test import, draft hiding, Teacher view and approve.
+  - `make-test.js`: prompt, bad and good pastes, saving, using, downloading and deleting a made pack, parity with the shared rules.
   - `persist-test.js`: every answer type survives a reload (reading, writing, toolkit, Learn).
   - `progress-test.js`, `drill-test.js`, `l2-test.js`; `e2e.js` clicks through every mission and takes more than 5 minutes (run it in the background). `menus-test.js` still expects the Writing menu on the Reading page (from line 19) and needs updating.
 
@@ -43,13 +45,13 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 - Writing marking by AI has never run live. Some AI marks should be reviewed by a teacher.
 - Open-answer model answers in reading are less checked than the closed answers.
 - Level 2 has fewer reading missions and only 2 marking tasks. No reading "you are the assessor" items yet.
-- Not done: stimulus-based (picture) writing tasks; photograph questions in Level 1 reading; aligning Level 1 long reading order with the official papers; importing extra toolkit questions or Learn samples (import covers reading and writing missions only).
+- Not done: stimulus-based (picture) writing tasks; photograph questions in Level 1 reading; aligning Level 1 long reading order with the official papers; importing extra toolkit questions or Learn samples (import and Make a pack cover reading and writing missions only); a way to make a saved pack permanent for everyone from the page (today: download, then `tools/import.mjs`).
 - Fix-it feedback only compares her text with ours; it does not understand grammar, so unusual correct answers show as "different" and she judges them herself.
 - All progress is stored in the browser only; clearing data or switching device loses it (Progress export is the backup).
 - A phone gets the task as a slide-up sheet, not a fixed panel. Not yet tried on a real phone.
 
 ## Next steps, suggested order
-1. Generate theme packs with another AI (`docs/IMPORTING.md`), import, read in Teacher view, approve.
+1. Generate theme packs with another AI, either on the Make a pack page or via `docs/IMPORTING.md`; for the shared site import, read in Teacher view, approve.
 2. Have a teacher or an AI chat review `docs/question-review/` and fix what they find in `/content`.
 3. More Level 2 reading missions and Level 2 marking samples; reading "assess it" items for Learn.
 4. Later: live AI marking (deploy `server/`, set `js/config.js`) and in-site question generation, using the same pack format and draft/approve step.

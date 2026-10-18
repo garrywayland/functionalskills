@@ -2,6 +2,10 @@
 
 How new themes and missions get onto the site. No coding needed: you give another AI the prompt below, then either paste its answer to Claude Code ("import this") or run one command.
 
+## Two ways in
+- **On the site (no server, for her or you):** open **Make your own theme** on the front page (`#/make`). Type a theme, copy the prompt it writes, paste it into any AI chat, paste the reply back, and the page checks it with the same rules as `node tools/validate.mjs` (both use `js/rules.js`). If it passes, **Save in this browser** and the theme appears on the front page, labelled "Your own". Nothing leaves the browser, the page never calls an AI, and packs can be downloaded or deleted. To make one permanent for everyone, download it and use the command-line route below.
+- **On the command line (for you, for the shared site):** the steps below.
+
 ## The idea
 - A **theme** is a topic on the front page (Pandas, Football, Music...). The list is in `content/themes.json`. A theme only appears once it has at least one mission at the chosen level.
 - A **pack** is one JSON file holding reading and writing missions. Packs live in `content/packs/` and are listed in `content/index.json`.

@@ -554,3 +554,13 @@ label.field { display: block; font-weight: 600; margin: 1.25rem 0 0.4rem; }
 .fix-yours { margin: 0.4rem 0; }
 .diff-mark { background: var(--calm, #e8efe9); color: inherit; border-bottom: 2px dotted var(--muted); padding: 0 0.1em; border-radius: 0.2em; }
 .diff-gap { display: inline-block; min-width: 1.2em; margin: 0 0.1em; text-align: center; background: var(--calm, #e8efe9); border: 1px dotted var(--muted); border-radius: 0.3em; color: var(--muted); }
+
+/* ---------- Make a pack ---------- */
+main.wide-ish { max-width: 52rem; }
+.make-field { margin: 0 0 1rem; }
+.make-field input[type=text], .make-field textarea { display: block; width: 100%; font: inherit; padding: 0.6rem; border: 1px solid var(--rule); border-radius: 0.5rem; background: var(--surface); color: inherit; }
+.make-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0 1rem; }
+.make-row select { font: inherit; padding: 0.5rem 0.7rem; border-radius: 0.5rem; border: 1px solid var(--rule); background: var(--surface); color: inherit; min-height: 2.75rem; width: 100%; }
+.make section { margin-top: 2rem; }
+.station.make { --c: var(--writing); }
+.my-pack .actions { margin-top: 0.4rem; }

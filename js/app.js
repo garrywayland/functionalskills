@@ -26,6 +26,11 @@
       memory[key] = value;
       try { window.localStorage.setItem(PREFIX + key, JSON.stringify(value)); } catch (e) { /* keep in memory only */ }
     },
+    // Like set, but tells you whether the browser really kept it (false if storage is full or blocked).
+    setStrict: function (key, value) {
+      memory[key] = value;
+      try { window.localStorage.setItem(PREFIX + key, JSON.stringify(value)); return true; } catch (e) { return false; }
+    },
     remove: function (key) {
       delete memory[key];
       try { window.localStorage.removeItem(PREFIX + key); } catch (e) { /* ignore */ }
@@ -174,20 +179,25 @@
     var parts = parseRoute();
     var view;
     main.className = '';
-    if (parts[0] === 'reading' && parts[1]) view = readingView(parts[1], parts[2]);
-    else if (parts[0] === 'writing' && parts[1]) view = writingView(parts[1], parts[2]);
-    else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
-    else if (parts[0] === 'toolkit') view = toolkitView();
-    else if (parts[0] === 'theme' && parts[1]) view = themeView(parts[1]);
-    else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[3]) view = learnSampleView(parts[2], parts[3]);
-    else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[2]) view = learnTaskView(parts[2]);
-    else if (parts[0] === 'learn' && parts[1] === 'fix' && parts[2]) view = learnFixView(parts[2]);
-    else if (parts[0] === 'learn') view = learnIndexView();
-    else if (parts[0] === 'progress') view = progressView();
-    else if (parts[0] === 'reading') view = readingIndexView();
-    else if (parts[0] === 'writing') view = writingIndexView();
-    else view = homeView();
-
+    try {
+      if (parts[0] === 'reading' && parts[1]) view = readingView(parts[1], parts[2]);
+      else if (parts[0] === 'writing' && parts[1]) view = writingView(parts[1], parts[2]);
+      else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
+      else if (parts[0] === 'toolkit') view = toolkitView();
+      else if (parts[0] === 'make') view = makeView();
+      else if (parts[0] === 'theme' && parts[1]) view = themeView(parts[1]);
+      else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[3]) view = learnSampleView(parts[2], parts[3]);
+      else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[2]) view = learnTaskView(parts[2]);
+      else if (parts[0] === 'learn' && parts[1] === 'fix' && parts[2]) view = learnFixView(parts[2]);
+      else if (parts[0] === 'learn') view = learnIndexView();
+      else if (parts[0] === 'progress') view = progressView();
+      else if (parts[0] === 'reading') view = readingIndexView();
+      else if (parts[0] === 'writing') view = writingIndexView();
+      else view = homeView();
+    } catch (err) {
+      if (window.console) console.error(err);
+      view = h('div', { class: 'notice' }, h('h1', { text: 'That page could not be shown' }), h('p', { text: 'Something in it looks wrong. If it is one of your own packs, you can delete it from the Make a pack page.' }), h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Back to the front page' })));
+    }
     main.replaceChildren(view);
     updateNav(parts[0] || '');
     document.title = (main.querySelector('h1') ? main.querySelector('h1').textContent + ' · ' : '') + 'Next Stop';
@@ -217,7 +227,8 @@
   function themeOrder() { return themeList().map(function (t) { return t.name; }); }
   function findTheme(id) { return find(themeList(), id); }
   function themeSlug(name) { var t = themeList().filter(function (x) { return x.name === name; })[0]; return t ? t.id : null; }
-  function draftTag(m) { return m.status === 'draft' ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null; }
+  function tagFor(m) { return m.status === 'draft' ? 'Unchecked' : m.own ? 'Your own' : null; }
+  function draftTag(m) { var t = tagFor(m); return t ? h('span', { class: 'draft-tag', text: t }) : null; }
 
   function themeCounts(t) {
     var r = counts(levelReading().filter(function (m) { return m.topic === t.name; }));
@@ -255,13 +266,13 @@
   }
 
   function readingStop(m) {
-    return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, draft: m.status === 'draft',
+    return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, tag: tagFor(m),
       meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
   }
   function readingSub(m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }
   function writingStop(m) {
     var mm = missionFor(m);
-    return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15, draft: m.status === 'draft',
+    return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15, tag: tagFor(m),
       meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
   }
   function writingSub(m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; }
@@ -278,7 +289,7 @@
           return h('li', { class: 'stop' + (done ? ' done' : '') },
             h('a', { href: s.href },
               h('span', { class: 'stop-title', text: s.title }),
-              s.draft ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null,
+              s.tag ? h('span', { class: 'draft-tag', text: s.tag }) : null,
               h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
               h('span', { class: 'stop-meta', text: s.meta })));
         })));
@@ -307,7 +318,7 @@
         h('a', { href: href },
           h('span', { class: 'st-name', text: name }),
           h('span', { class: 'st-desc', text: desc }),
-          h('span', { class: 'st-count', text: c.done + ' of ' + c.total + ' done' })));
+          c ? h('span', { class: 'st-count', text: c.done + ' of ' + c.total + ' done' }) : null));
     }
 
     return h('div', null,
@@ -322,7 +333,8 @@
         h('h2', { id: 'skills-h', text: 'Skills, any theme' }),
         h('ul', { class: 'skill-grid' },
           skillCard('learn', '#/learn', 'Learn by marking', 'Mark sample work and fix mistakes, like an examiner.', l),
-          skillCard('toolkit', '#/toolkit', 'Practise a skill', 'Short drills on writing formats, punctuation, spelling and grammar.', t))),
+          skillCard('toolkit', '#/toolkit', 'Practise a skill', 'Short drills on writing formats, punctuation, spelling and grammar.', t),
+          skillCard('make', '#/make', 'Make your own theme', 'Pick something you are into and get a pack made with an AI chat.', null))),
       h('p', { class: 'muted small', text: 'You are on ' + LEVELS[level()] + '. Not sure which level? Nearly everything works at both. Use the switch at the top.' })
     );
   }
@@ -393,7 +405,7 @@
       return h('li', { class: 'stop' + (done ? ' done' : '') },
         h('a', { href: s.href },
           h('span', { class: 'stop-title', text: s.title }),
-          s.draft ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null,
+          s.tag ? h('span', { class: 'draft-tag', text: s.tag }) : null,
           h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
           h('span', { class: 'stop-meta', text: s.meta })
         ));
@@ -1786,6 +1798,278 @@
     return wrap;
   }
 
+  // ---------- Make a pack (no server: you copy a prompt to an AI chat, paste the answer back) ----------
+
+  function slugOf(t) { return String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+  function myPacks() { var p = store.get('mypacks', []); return Array.isArray(p) ? p.filter(function (x) { return x && x.pack && x.theme; }) : []; }
+
+  // Built-in content plus the packs saved in this browser.
+  function applyMyPacks() {
+    var b = content.base, reading = b.reading.slice(), writing = b.writing.slice(), themes = b.themes.slice();
+    myPacks().forEach(function (p) {
+      (p.pack.reading || []).forEach(function (m) { reading.push(m); });
+      (p.pack.writing || []).forEach(function (m) { writing.push(m); });
+      if (!themes.some(function (t) { return t.name === p.theme.name; })) themes.push({ id: p.theme.id, name: p.theme.name, blurb: p.theme.blurb, custom: true });
+    });
+    content.reading.missions = reading;
+    content.writing.missions = writing;
+    content.themes = themes;
+  }
+
+  function levelsFor(choice) { return choice === 'L1' ? ['L1'] : choice === 'L2' ? ['L2'] : ['L1', 'L2']; }
+
+  function buildPackPrompt(f) {
+    var theme = f.theme.trim();
+    var lv = levelsFor(f.level);
+    var formats = content.toolkit.formats.map(function (x) { return x.id; }).join(', ');
+    var slug = slugOf(theme) || 'my-theme';
+    var counts = [];
+    if (+f.reading) counts.push(f.reading + ' short reading mission' + (+f.reading === 1 ? '' : 's'));
+    if (+f.writingShort) counts.push(f.writingShort + ' shorter writing task' + (+f.writingShort === 1 ? '' : 's') + ' (Task 2, two bullet points)');
+    if (+f.writingLong) counts.push(f.writingLong + ' longer writing task' + (+f.writingLong === 1 ? '' : 's') + ' (Task 1, three bullet points)');
+    var example = {
+      pack: slug + '-1',
+      reading: [{
+        id: 'r-' + slug + '-1', topic: theme, title: 'A short, friendly title', minutes: 10,
+        texts: [{ id: 'A', levels: lv, kind: 'Web page', source: 'An invented website name', title: 'Title of the text', body: [{ p: 'A paragraph of the text.' }, { h: 'A heading' }, { ul: ['A bullet', 'Another bullet'] }, { p: 'Another paragraph.' }] }],
+        questions: [
+          { id: 'q1', levels: lv, type: 'choice', text: 'A', prompt: 'What is the main purpose of the text?', options: ['One option', 'The right option', 'Another option', 'A fourth option'], answer: 1, why: 'Why this is right, pointing to the text.' },
+          { id: 'q2', levels: lv, type: 'tfns', text: 'A', prompt: 'A statement from the text.', answer: 'true', why: 'Quote or point to the text.' },
+          { id: 'q3', levels: lv, type: 'factopinion', text: 'A', prompt: '"A sentence quoted from the text."', answer: 'opinion', why: 'Why it is a fact or an opinion.' },
+          { id: 'q4', levels: lv, type: 'multi', text: 'A', label: '4', marks: 2, prompt: 'Which TWO of these are facts?', options: ['One', 'Two', 'Three', 'Four'], answer: [0, 2], why: 'Why those two.' },
+          { id: 'q5', levels: lv, type: 'open', text: 'A', prompt: 'A question needing a short written answer.', model: 'A model answer.', check: ['I did this.', 'I did that.'] }
+        ]
+      }],
+      writing: [{
+        id: 'w-' + slug + '-1', topic: theme, task: 2, title: 'A task title', format: 'forum',
+        context: 'A short, made-up situation.', audience: 'Who will read it.', purpose: 'Why it is being written.', instruction: 'Write a post for the forum.',
+        bullets: ['first thing to cover', 'second thing to cover'],
+        indicative: ['Ideas for the first bullet.', 'Ideas for the second bullet.']
+      }]
+    };
+    var lines = [
+      'I\'m building a free practice site for Pearson Edexcel Functional Skills English (Level 1 and Level 2, Reading and Writing) for one 17-year-old learner. Please write a pack of practice missions on the theme "' + theme + '"' + (f.about.trim() ? ' (' + f.about.trim() + ')' : '') + '.',
+      'Reply with ONLY one JSON object: no text before or after it.',
+      '',
+      'WHAT TO WRITE: ' + (counts.length ? counts.join(', ') : 'a few missions') + '.',
+      'Level: ' + (f.level === 'L1' ? 'Level 1 (a little easier)' : f.level === 'L2' ? 'Level 2 (a little harder: inference, tone, comparing texts)' : 'questions marked for both levels, with a few Level 2 only') + '.',
+      '',
+      'THE SHAPE',
+      '{ "pack": "' + slug + '-1", "reading": [ ...reading missions... ], "writing": [ ...writing tasks... ] }',
+      'Every mission has "topic": "' + theme + '" exactly as written, and a unique "id" ending in a number (for example "r-' + slug + '-1", "w-' + slug + '-1").',
+      '',
+      'ABOUT REAL THINGS',
+      '- The theme may be a real club, band, game or brand. Do NOT state facts, scores, statistics, quotes or news about real people, clubs, companies or places, and do not use real players\' or celebrities\' names.',
+      '- Invent every person, team, shop, website, town and event. A made-up club or band with a similar feel is fine. Common knowledge that is true and harmless is fine.',
+      '- Original writing only. Do not copy any existing text or exam paper.',
+      '',
+      'READING MISSION (short, about 10 minutes)',
+      '- id, topic, title, minutes: 10, texts, questions.',
+      '- One or two texts of 150 to 350 words, written as something real people read: web page, newsletter, blog post, advert, leaflet, email, article. Each text has id ("A", "B"), levels, kind, source (invented), title and body.',
+      '- body is a list of blocks, each ONE of: {"p": "paragraph"}, {"h": "heading"}, {"ul": ["item"]}, {"ol": ["item"]}, {"box": "text in a box"}, {"table": {"head": ["Col"], "rows": [["cell"]]}}. Use **bold** for bold words.',
+      '- 8 to 12 questions. Each has id ("q1", "q2"...), levels (' + JSON.stringify(lv) + ' or one of them), text (which text it is about: "A" or "B"), prompt and type:',
+      '  choice: options (exactly 4), answer (index 0 to 3), why.',
+      '  tfns: the prompt is a statement; answer is "true", "false" or "notstated"; why.',
+      '  factopinion: the prompt is a quotation from the text; answer is "fact" or "opinion"; why.',
+      '  multi: label, marks: 2, options (4 or 5), answer (a list of two indexes), why.',
+      '  open: model (a model answer) and check (2 or 3 short "I ..." self-check statements).',
+      '- Mix the types. Spread correct answers across A, B, C and D. Only one option may be defensible. Wrong options must be plausible but clearly wrong from the text. Every question must be answerable from the text alone. Every "why" must be accurate and, where it helps, quote the text exactly.',
+      '',
+      'WRITING TASK',
+      '- id, topic, task (1 or 2), title, format, context, audience, purpose, instruction, bullets, indicative.',
+      '- task 2 = shorter, exactly 2 bullets. task 1 = longer, exactly 3 bullets.',
+      '- format must be one of: ' + formats + '.',
+      '- context is a short made-up situation. audience and purpose are one line each. indicative has exactly one entry per bullet: ideas a good answer might include.',
+      '',
+      'STYLE',
+      '- UK English. Calm, friendly, never babyish. Something a teenager might actually read or write.',
+      '- No exam, test or fail wording. No violence, alcohol, gambling, dating or real-world politics.',
+      '',
+      'EXAMPLE (shortened: your reading missions need 8 to 12 questions)',
+      JSON.stringify(example, null, 2)
+    ];
+    return lines.join('\n');
+  }
+
+  // Finds the JSON in a pasted reply, even if the AI wrapped it in a code fence or added a sentence.
+  function parseLoose(text) {
+    try { return JSON.parse(text); } catch (e) { /* try the other ways */ }
+    var fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+    var body = fenced ? fenced[1] : text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
+    return JSON.parse(body);
+  }
+
+  function checkPastedPack(text, themeName) {
+    var errs = [], notes = [], data = null;
+    var R = window.NextStopRules;
+    if (!R) return { errs: ['The checking rules did not load. Try refreshing the page.'], notes: notes };
+    if (text.length > 400000) return { errs: ['That is far too long for one pack. Ask the AI for fewer missions.'], notes: notes };
+    try { data = parseLoose(text); } catch (e) { return { errs: ['That does not look like a JSON reply (' + e.message + '). Ask the AI to send only the JSON, starting with { and ending with }.'], notes: notes }; }
+    var taken = {};
+    content.reading.missions.concat(content.writing.missions).forEach(function (m) { taken[m.id] = true; });
+    var formats = {};
+    content.toolkit.formats.forEach(function (x) { formats[x.id] = true; });
+    var takenSet = new Set(Object.keys(taken));
+    R.checkPackData(data, 'Your pack', errs, notes, { themeNames: [themeName], taken: takenSet, formats: new Set(Object.keys(formats)) });
+    var total = (Array.isArray(data.reading) ? data.reading.length : 0) + (Array.isArray(data.writing) ? data.writing.length : 0);
+    if (total > 20) errs.push('Your pack: more than 20 missions in one pack. Ask for smaller packs.');
+    return { errs: errs, notes: notes, data: data };
+  }
+
+  function uniqueThemeId(name) {
+    var base = slugOf(name) || 'theme', id = base, n = 2;
+    while (content.themes.some(function (t) { return t.id === id && t.name !== name; })) id = base + '-' + (n++);
+    return id;
+  }
+
+  function saveMyPack(data, themeName, blurb) {
+    var packId = 'my-' + (slugOf(themeName) || 'pack') + '-' + Date.now().toString(36);
+    function tidy(list) {
+      return (list || []).map(function (m) { var c = JSON.parse(JSON.stringify(m)); delete c.status; c.id = packId + '-' + m.id; c.own = packId; return c; });
+    }
+    var existing = content.themes.filter(function (t) { return t.name === themeName; })[0];
+    var record = { id: packId, made: today(), theme: { id: existing ? existing.id : uniqueThemeId(themeName), name: themeName, blurb: existing ? existing.blurb : (blurb || 'Your own theme.') },
+      pack: { reading: tidy(data.reading), writing: tidy(data.writing) } };
+    var all = myPacks(); all.push(record);
+    var ok = store.setStrict('mypacks', all);
+    if (ok) applyMyPacks();
+    else { all.pop(); store.set('mypacks', all); }
+    return ok ? record : null;
+  }
+
+  function makeView() {
+    main.className = 'wide-ish';
+    var form = Object.assign({ theme: '', about: '', level: 'both', reading: '2', writingShort: '2', writingLong: '1' }, store.get('make:form', {}) || {});
+    function saveForm() { store.set('make:form', form); }
+
+    var promptBox = h('textarea', { id: 'make-prompt', class: 'marking-block', readonly: true, rows: '14', 'aria-label': 'The prompt to copy' });
+    var copyMsg = h('p', { class: 'status', role: 'status' });
+    var copyBtn = h('button', { type: 'button', class: 'btn', text: 'Copy the prompt' });
+    function redraw() {
+      var ok = form.theme.trim().length > 0;
+      promptBox.value = ok ? buildPackPrompt(form) : 'Type a theme above and your prompt will appear here.';
+      copyBtn.disabled = !ok;
+    }
+    copyBtn.addEventListener('click', function () {
+      copyText(promptBox).then(function (ok) { copyMsg.textContent = ok ? 'Copied. Now paste it into a chat with an AI.' : 'Could not copy automatically. Select the text and copy it yourself.'; });
+    });
+
+    function field(id, label, control, hint) {
+      return h('div', { class: 'make-field' }, h('label', { class: 'field', for: id }, label, hint ? h('span', { class: 'hint', text: hint }) : null), control);
+    }
+    function select(id, key, options) {
+      var sel = h('select', { id: id });
+      options.forEach(function (o) { var op = h('option', { value: o[0], text: o[1] }); if (String(form[key]) === String(o[0])) op.selected = true; sel.appendChild(op); });
+      sel.addEventListener('change', function () { form[key] = sel.value; saveForm(); redraw(); });
+      return sel;
+    }
+    var theme = h('input', plain({ type: 'text', id: 'make-theme', maxlength: '40' }));
+    theme.value = form.theme;
+    theme.addEventListener('input', function () { form.theme = theme.value; saveForm(); redraw(); checkOut.replaceChildren(); });
+    var about = h('textarea', plain({ id: 'make-about', rows: '2', maxlength: '200' }));
+    about.value = form.about;
+    about.addEventListener('input', function () { form.about = about.value; saveForm(); redraw(); });
+    function nums(max) { var o = []; for (var i = 0; i <= max; i++) o.push([String(i), String(i)]); return o; }
+
+    // Step 2: paste back
+    var paste = h('textarea', plain({ id: 'make-paste', rows: '10', 'aria-label': 'Paste the AI reply here' }));
+    paste.value = store.get('make:paste', '') || '';
+    paste.addEventListener('input', function () { store.set('make:paste', paste.value); });
+    var checkOut = h('div', { 'aria-live': 'polite' });
+    var checkBtn = h('button', { type: 'button', class: 'btn', text: 'Check it' });
+    checkBtn.addEventListener('click', function () {
+      if (!form.theme.trim()) { checkOut.replaceChildren(h('p', { class: 'notice', text: 'Fill in the theme in step 1 first, so the page knows what to expect.' })); return; }
+      if (!paste.value.trim()) { checkOut.replaceChildren(h('p', { class: 'notice', text: 'Paste the AI reply into the box first.' })); return; }
+      var r = checkPastedPack(paste.value, form.theme.trim());
+      if (r.errs.length) {
+        var fix = 'Thanks. Please fix these problems and send the whole JSON again, with nothing before or after it:\n' + r.errs.map(function (e) { return '- ' + e; }).join('\n');
+        var fixBox = h('textarea', { class: 'marking-block', readonly: true, rows: '6', 'aria-label': 'A message to send back to the AI' });
+        fixBox.value = fix;
+        var fixMsg = h('p', { class: 'status', role: 'status' });
+        checkOut.replaceChildren(
+          h('section', { class: 'feedback' },
+            h('h3', { text: 'A few things to fix before it can be saved' }),
+            h('ul', null, r.errs.slice(0, 30).map(function (e) { return h('li', { text: e }); })),
+            r.errs.length > 30 ? h('p', { class: 'muted small', text: 'And ' + (r.errs.length - 30) + ' more. They are all in the message below.' }) : null),
+          h('p', { class: 'muted small', text: 'Copy this message, send it to the AI, then paste the new reply above and check again.' }),
+          fixBox,
+          h('div', { class: 'actions' }, h('button', { type: 'button', class: 'btn secondary', text: 'Copy the message', onclick: function () { copyText(fixBox).then(function (ok) { fixMsg.textContent = ok ? 'Copied.' : 'Select the text and copy it yourself.'; }); } })),
+          fixMsg);
+        return;
+      }
+      var nR = (r.data.reading || []).length, nW = (r.data.writing || []).length;
+      var saveMsg = h('p', { class: 'status', role: 'status' });
+      var saveBtn = h('button', { type: 'button', class: 'btn', text: 'Save in this browser' });
+      saveBtn.addEventListener('click', function () {
+        var rec = saveMyPack(r.data, form.theme.trim(), form.about.trim());
+        if (!rec) { saveMsg.textContent = 'This browser would not save it (it may be full or in private mode). Download the file instead, below.'; return; }
+        store.set('make:paste', ''); paste.value = '';
+        saveBtn.remove();
+        checkOut.replaceChildren(h('section', { class: 'feedback' },
+          h('h3', { text: 'Saved' }),
+          h('p', null, 'Find it under ', h('a', { href: '#/theme/' + rec.theme.id, text: rec.theme.name }), ' on the front page. It only lives in this browser.')));
+        drawMine();
+      });
+      checkOut.replaceChildren(h('section', { class: 'feedback' },
+        h('h3', { text: 'That looks good' }),
+        h('p', { text: nR + ' reading mission' + (nR === 1 ? '' : 's') + ' and ' + nW + ' writing task' + (nW === 1 ? '' : 's') + ' passed the same checks the site uses.' }),
+        h('p', { class: 'muted small', text: 'The checks cannot tell whether every answer is right. Have a look at them as you do them. If one seems wrong, trust your own judgement.' })),
+        h('div', { class: 'actions' }, saveBtn), saveMsg);
+    });
+
+    // My packs
+    var mine = h('div');
+    var confirmId = null;
+    function drawMine() {
+      var packs = myPacks();
+      if (!packs.length) { mine.replaceChildren(h('p', { class: 'muted', text: 'Nothing saved yet.' })); return; }
+      mine.replaceChildren(h('ul', { class: 'tool-list' }, packs.map(function (p) {
+        var nr = (p.pack.reading || []).length, nw = (p.pack.writing || []).length;
+        var del = h('button', { type: 'button', class: 'btn quiet', text: confirmId === p.id ? 'Really delete it' : 'Delete' });
+        del.addEventListener('click', function () {
+          if (confirmId !== p.id) { confirmId = p.id; drawMine(); return; }
+          store.set('mypacks', myPacks().filter(function (x) { return x.id !== p.id; }));
+          confirmId = null; applyMyPacks(); drawMine();
+        });
+        return h('li', { class: 'my-pack' },
+          h('span', { class: 't-name', text: p.theme.name }),
+          h('span', { class: 't-sum', text: nr + ' reading, ' + nw + ' writing · made ' + prettyDate(p.made) }),
+          h('div', { class: 'actions' },
+            h('a', { class: 'btn quiet', href: '#/theme/' + p.theme.id, text: 'Open' }),
+            h('button', { type: 'button', class: 'btn quiet', text: 'Download', onclick: function () { download('next-stop-pack-' + (slugOf(p.theme.name) || 'pack') + '.json', JSON.stringify({ pack: p.id, reading: p.pack.reading, writing: p.pack.writing }, null, 2), 'application/json'); } }),
+            del));
+      })));
+    }
+
+    redraw(); drawMine();
+    return h('div', { class: 'mission make' },
+      h('p', { class: 'eyebrow', text: 'Make your own' }),
+      h('h1', { text: 'Make a pack' }),
+      h('p', { class: 'lede', text: 'Pick something you are into. This page writes a prompt for you. You paste it into an AI chat, paste the answer back here, and the page checks it. It is saved in this browser only.' }),
+      h('p', { class: 'muted small', text: 'This page never talks to an AI itself. Nothing you type here leaves your browser unless you copy it yourself. AI can make mistakes and can get facts wrong, so treat what it writes as practice material, not as the truth about real people or clubs.' }),
+      h('section', { 'aria-labelledby': 'mk1' },
+        h('h2', { id: 'mk1', text: '1. Pick a theme' }),
+        field('make-theme', 'Theme', theme, 'For example: a football club, a band, a game, a hobby.'),
+        field('make-about', 'Anything else? (optional)', about, 'For example: match days, the stadium, fans, shirts.'),
+        h('div', { class: 'make-row' },
+          field('make-level', 'Level', select('make-level', 'level', [['both', 'Both levels'], ['L1', 'Level 1'], ['L2', 'Level 2']])),
+          field('make-reading', 'Short reading missions', select('make-reading', 'reading', nums(3))),
+          field('make-ws', 'Shorter writing tasks', select('make-ws', 'writingShort', nums(4))),
+          field('make-wl', 'Longer writing tasks', select('make-wl', 'writingLong', nums(2)))),
+        h('h3', { text: 'Your prompt' }),
+        promptBox,
+        h('div', { class: 'actions' }, copyBtn), copyMsg),
+      h('section', { 'aria-labelledby': 'mk2' },
+        h('h2', { id: 'mk2', text: '2. Paste the answer back' }),
+        h('p', { class: 'muted small', text: 'Paste everything the AI replied. If it added a sentence or a code box around the JSON, that is fine.' }),
+        paste,
+        h('div', { class: 'actions' }, checkBtn), checkOut),
+      h('section', { 'aria-labelledby': 'mk3' },
+        h('h2', { id: 'mk3', text: 'Your packs' }),
+        mine),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
+  }
+
   // ---------- Toolkit ----------
 
   function toolkitView() {
@@ -1959,6 +2243,8 @@
       res[1].slice(1).forEach(function (f) { writing.missions = writing.missions.concat(f.missions); });
       res[5].forEach(function (p) { reading = reading.concat(p.reading || []); writing.missions = writing.missions.concat(p.writing || []); });
       content = { reading: { missions: reading }, writing: writing, toolkit: res[2], learn: res[3], themes: res[4].themes };
+      content.base = { reading: reading.slice(), writing: writing.missions.slice(), themes: res[4].themes.slice() };
+      applyMyPacks();
       window.addEventListener('hashchange', function () { render(); });
       render({ keepFocus: true });
     }).catch(function (err) {
