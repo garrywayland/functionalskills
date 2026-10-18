@@ -61,7 +61,7 @@ const check = (c, m) => { if (!c) problems.push(m); console.log(c ? 'ok  ' : 'FA
     await page.locator('.actions a.btn:not(.quiet)').last().click(); await page.waitForTimeout(40);
   }
   // Reading position survives leaving and coming back
-  await go('#/reading/r-pandas/3'); await go('#/'); await go('#/reading/r-pandas');
+  await go('#/reading/r-pandas/3'); await go('#/'); await go('#/reading/r-pandas'); await page.waitForTimeout(300);
   check(/Question 3 of/.test(await page.textContent('main')), 'reading remembers where she was (position)');
 
   // Writing
