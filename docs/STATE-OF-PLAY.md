@@ -1,6 +1,6 @@
 # Next Stop: state of play (handover)
 
-Written 2026-10-18. Paste the "starter prompt" at the bottom into a new chat to continue.
+Updated 2026-10-18. Paste the "starter prompt" at the bottom into a new chat to continue.
 
 ## What this is
 A static practice site for Pearson Edexcel Functional Skills English (Level 1 and Level 2, Reading and Writing) for one learner, a capable 17-year-old who finds revision stressful. Live on GitHub Pages from `main` root (repo `garrywayland/functionalskills`). Plain HTML, CSS, vanilla JS, no build step. Content is in `/content/*.json`.
@@ -8,42 +8,51 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 ## Hard rules (never break)
 - No personal data anywhere in the public repo.
 - The learner's writing never leaves the browser except by explicit "Send for marking" (copy and paste into an AI chat of their choice).
-- No free-tier or third-party AI services. No analytics, trackers or external fonts. localStorage only, always in try/catch.
-- Do not copy Pearson texts or mark schemes. Write original material calibrated against official materials (notes in `docs/exam-notes.md`).
-- Design: missions, calm, no red crosses, no "exam/test/fail" wording, the learner chooses when to see marks, progress shown as missions done.
-- Giant pandas only, never red pandas. Pandas appear only as a faint background.
-- The owner is a beginner: give step-by-step instructions. Use Sonnet 5.5 for the session and for marking.
+- No free-tier or third-party AI services. No analytics, trackers or external fonts. localStorage only, always in try/catch. The Content-Security-Policy forbids inline styles, so no `style=` attributes in JS.
+- Do not copy Pearson texts or mark schemes. Write original material calibrated against official materials (notes in `docs/exam-notes.md`). All people, organisations and towns in texts are made up.
+- Design: missions, calm, no red crosses, no "exam/test/fail" wording, the learner chooses when to see marks, progress shown as missions done. Soft, tentative feedback ("one way to write it", "I would write it differently in two places").
+- Giant pandas only, never red pandas. Pandas are a visible but quiet background (`img/panda-pattern.svg`, `--panda-opacity` in `css/style.css`).
+- The owner is a beginner: give step-by-step instructions, keep answers short. Use Sonnet 5.5 for the session and for marking.
+- Answer boxes have spell-check, autocorrect, auto-capitals and Grammarly turned off (`plain()` helper in `js/app.js`). Keep that for any new answer box.
+- Everything she types or picks must survive a reload (see "Tests").
 - Before finishing any task: click through every mission at both levels, check phone width and keyboard use, confirm no personal data and no new external requests.
 
 ## What exists now
 | Area | State |
 | --- | --- |
-| Home | Pick a theme first (cards, shown only when a theme has missions at the chosen level), then a theme page lists its reading, writing and marking tasks. "Pick one for me" and My progress sit underneath, with two any-theme cards (Learn by marking, Practise a skill). Reading and Writing nav pages still show everything in folded menus by theme. |
-| Themes and import | `content/index.json` lists the content files; `content/themes.json` lists themes (16 defined, 4 with content). Packs of AI-written missions are imported with `node tools/import.mjs` as hidden "draft" missions; Teacher view (footer link) shows them as "Unchecked"; `--approve` makes them live. Full steps and a prompt for the other AI in `docs/IMPORTING.md`; a working example is `docs/import/example-pack.json`. |
-| Reading | 16 missions: 4 short, 12 long (3 texts, 15 or so questions, official-style layout). Level 1 and Level 2. Question types: choice, tfns, factopinion, multi, match, open (self-check model answer). |
-| Writing | 24 tasks (Task 1 longer, Task 2 shorter), each with plan, write and send steps. Marking is by copy-and-paste into an AI chat, with the task, indicative content and our plain-English band summary included. |
-| Toolkit | 11 writing formats and 9 SPaG points (7 at Level 1), 10 practice questions each (200 in all). |
-| Learn (new) | Mark sample work: 6 tasks, 18 sample answers at three standards (Level 1: 4 tasks, Level 2: 2 tasks). The learner gives composition and SPaG marks, then sees ours with reasons, quotes and one target. Fix it: 5 sets of 8 sentences. |
+| Front page | "What are you into?": theme cards (a theme shows only when it has visible missions at the chosen level), "Pick one for me", My progress, and two any-theme cards (Learn by marking, Practise a skill). `#/theme/<id>` lists that theme's reading, writing and marking tasks. Nav pages Reading and Writing still list everything in folded menus by theme. |
+| Themes and import | `content/index.json` lists the content files; `content/themes.json` lists 16 themes (4 have content: Pandas, Israel, Public transport, UK geography). Packs of missions written by another AI are imported with `node tools/import.mjs` as hidden "draft" missions; the footer link "Teacher view" shows them labelled "Unchecked"; `--approve` makes them live, `--remove` takes them out. Steps and a prompt for the other AI are in `docs/IMPORTING.md`; a working example is `docs/import/example-pack.json`. |
+| Reading | 16 missions: 4 short, 12 long (3 texts, 15 questions, official-style layout, Level 1 and Level 2). Question types: choice, tfns, factopinion, multi, match, open (self-check model answer). |
+| Writing | 24 tasks (Task 1 longer, Task 2 shorter). Steps: Task, Plan, Write, Send. On Plan and Write the task stays in view: split screen on wide screens (sticky task panel beside the work), and on phones a "Show the task" button slides the task up as a sheet (Close, button or Escape hides it). Marking is by copy and paste into an AI chat with the task, indicative content and our plain-English band summary. |
+| Toolkit | 11 writing formats and 9 SPaG points, 10 practice questions each (200 in all), one question at a time in shuffled order. |
+| Learn | Mark sample work: 6 tasks (Level 1: 4, Level 2: 2), 18 sample answers at three standards. She picks composition and SPaG marks, then sees ours with reasons, quotes and one target. Fix it: 5 sets of 8 sentences, one sentence at a time with Check (soft feedback: "I would write it differently in N places", her own words lightly shaded, retry as often as she likes) and Next question (skip). No answer shows until the end page ("The answers": her version, one way to write it, why). Some sentences accept alternative answers (`also`), and an extra comma is accepted outside the commas set. Source for `learn.json` is `tools/learn-src/` (edit, then `python3 tools/learn-src/build.py`). |
 | Progress | Done missions with dates, exportable as printed page, CSV or copied text. Optional name typed at export time, never stored. Learn items count as practice sets. |
-| Marking service | `server/` (Node, Cloud Run, key in Secret Manager). Tested only against a fake Anthropic server. NOT deployed. Switched off while `js/config.js` has `markingEndpoint: ''`. Deployment steps in `server/README.md`. |
-| Tools | `tools/validate.mjs` (content checks; run `node tools/validate.mjs`), `draft.mjs`, `review.mjs`, `merge.mjs` (AI-assisted drafting of new missions, needs an API key), `export-questions.py` (builds the review pack), `learn-src/` (source for learn.json; edit then run `python3 tools/learn-src/build.py`), `content-src/` (original content-building scripts, reference only). |
-| Tests | `node tools/validate.mjs`; `cd tools && npm test` (5); `cd server && npm test` (12; the oversized-body test was flaky once); browser click-throughs in `tests/browser/` (serve the repo with `python3 -m http.server 8766`, then `node tests/browser/learn-test.js <folder>`; others: e2e, progress-test, menus-test, l2-test, drill-test; they need Playwright at `/opt/node-tools/node_modules/playwright`). |
+| Marking service | `server/` (Node, Cloud Run, key in Secret Manager). Tested only against a fake Anthropic server. NOT deployed. Off while `js/config.js` has `markingEndpoint: ''`. Steps in `server/README.md`. Needs the owner's go-ahead and an API key. |
+| Tools | `tools/validate.mjs` (all content checks), `import.mjs` + `manifest.mjs` (packs), `draft.mjs` / `review.mjs` / `merge.mjs` (AI-assisted drafting, needs API key), `export-questions.py` (builds the review pack in `docs/question-review/`: PDF, CSV with reviewer columns, Markdown for an AI chat), `learn-src/`, `content-src/` (original content-building scripts, reference only). |
+
+## Tests
+- `node tools/validate.mjs` (content), `cd tools && npm test` (7), `cd server && npm test` (12; one oversized-body test was flaky once).
+- Browser tests in `tests/browser/` need Playwright at `/opt/node-tools/node_modules/playwright` and the repo served with `python3 -m http.server 8766` (restart it at the start of each command; it stops between sessions).
+  - `learn-test.js <folder>`: home, Learn, fix-it soft marking, phone width, keyboard.
+  - `themes-test.js`: theme pages, plus a temporary copy of the site to test import, draft hiding, Teacher view and approve.
+  - `persist-test.js`: every answer type survives a reload (reading, writing, toolkit, Learn).
+  - `progress-test.js`, `drill-test.js`, `l2-test.js`; `e2e.js` clicks through every mission and takes more than 5 minutes (run it in the background). `menus-test.js` still expects the Writing menu on the Reading page (from line 19) and needs updating.
 
 ## Known gaps and honest caveats
-- Marks on Learn samples and the Level 1/2 band summaries are our judgement, not Pearson's. They need review by a teacher.
-- Writing marking by AI has never been run live. Some AI marks should be reviewed by a teacher.
-- Reading closed answers were hand-checked; open-answer model answers less so. Use the question review pack.
-- Level 2 reading has fewer missions than Level 1.
-- Learn has no reading "you are the assessor" items yet, and Level 2 has only two marking tasks.
-- Not done: stimulus-based (picture) writing tasks; photograph questions in Level 1 reading; aligning Level 1 long reading order with the official papers.
-- `tests/browser/menus-test.js` still expects the Writing menu on the Reading page (from line 19) and needs updating; the other browser tests pass. `e2e.js` takes several minutes.
+- Marks on Learn samples and the band summaries are our judgement, not Pearson's. A teacher should review them (use the question review pack).
+- Writing marking by AI has never run live. Some AI marks should be reviewed by a teacher.
+- Open-answer model answers in reading are less checked than the closed answers.
+- Level 2 has fewer reading missions and only 2 marking tasks. No reading "you are the assessor" items yet.
+- Not done: stimulus-based (picture) writing tasks; photograph questions in Level 1 reading; aligning Level 1 long reading order with the official papers; importing extra toolkit questions or Learn samples (import covers reading and writing missions only).
+- Fix-it feedback only compares her text with ours; it does not understand grammar, so unusual correct answers show as "different" and she judges them herself.
+- All progress is stored in the browser only; clearing data or switching device loses it (Progress export is the backup).
+- A phone gets the task as a slide-up sheet, not a fixed panel. Not yet tried on a real phone.
 
-## Next steps, in suggested order
-0. Generate theme packs with another AI (`docs/IMPORTING.md`), import, review in Teacher view, approve.
-1. Review the question pack (`docs/question-review/`) with a teacher or an AI chat; fix what they find in `/content`.
-2. More Level 2 reading missions and Level 2 marking samples.
-3. Reading "assess it" items for the Learn section.
-4. Decide on live AI marking (deploy `server/`, then set `js/config.js`). Needs the owner's go-ahead and an API key.
+## Next steps, suggested order
+1. Generate theme packs with another AI (`docs/IMPORTING.md`), import, read in Teacher view, approve.
+2. Have a teacher or an AI chat review `docs/question-review/` and fix what they find in `/content`.
+3. More Level 2 reading missions and Level 2 marking samples; reading "assess it" items for Learn.
+4. Later: live AI marking (deploy `server/`, set `js/config.js`) and in-site question generation, using the same pack format and draft/approve step.
 
 ## Starter prompt for a new chat
 > I'm continuing a project called Next Stop, a static practice site for Edexcel Functional Skills English for one learner. The repo is garrywayland/functionalskills. Please read `docs/STATE-OF-PLAY.md`, `docs/content-guide.md` and `docs/exam-notes.md` first, and obey the hard rules in the state of play. I'm a beginner, so give step-by-step instructions and keep answers short. Use Sonnet 5.5. My first job for this chat is: [say what you want].
