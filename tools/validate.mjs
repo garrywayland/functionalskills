@@ -180,7 +180,7 @@ export function checkLearn(file, errs, notes) {
   }
   let items = 0;
   for (const f of data.fix) {
-    for (const i of f.items) { items++; if (i.wrong === i.fixed) errs.push(`learn.json ${f.id}: an item with nothing to fix: "${i.wrong}"`); if (!i.why) errs.push(`learn.json ${f.id}: item without a reason`); }
+    for (const i of f.items) { items++; if (i.wrong === i.fixed) errs.push(`learn.json ${f.id}: an item with nothing to fix: "${i.wrong}"`); if (!i.why) errs.push(`learn.json ${f.id}: item without a reason`); for (const a of i.also || []) if (a === i.fixed || a === i.wrong) errs.push(`learn.json ${f.id}: an alternative that repeats the answer or the mistake: "${a}"`); }
   }
   notes.push(`learn.json: ${data.mark.length} marking tasks, ${samples} samples, ${data.fix.length} fix-it sets, ${items} sentences`);
 }

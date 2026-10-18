@@ -1,6 +1,6 @@
 F = []
 def fx(id,title,skill,intro,items,level=None):
-    F.append(dict(id=id,title=title,skill=skill,intro=intro,level=level or "both",items=[dict(wrong=w,fixed=f,why=y) for w,f,y in items]))
+    F.append(dict(id=id,title=title,skill=skill,intro=intro,level=level or "both",items=[dict(wrong=t[0],fixed=t[1],why=t[2],**({'also':t[3]} if len(t)>3 else {})) for t in items]))
 
 fx("fix-apostrophes","Fix the apostrophes","Apostrophes","Each sentence has an apostrophe missing or in the wrong place. Rewrite it correctly, then check.",[
  ("Im going to the library after college.","I'm going to the library after college.","I'm is short for I am. The apostrophe shows the missing letter."),
@@ -14,7 +14,7 @@ fx("fix-apostrophes","Fix the apostrophes","Apostrophes","Each sentence has an a
 ])
 fx("fix-capitals","Fix the capital letters and full stops","Capitals and full stops","Each text has capital letters or full stops missing. Rewrite it correctly, then check.",[
  ("on monday i went to london with my sister.","On Monday I went to London with my sister.","Days, places and the word I all start with a capital letter, and so does the first word."),
- ("We waited for the train it was late.","We waited for the train. It was late.","Two separate ideas need a full stop between them."),
+ ("We waited for the train it was late.","We waited for the train. It was late.","Two separate ideas need a full stop between them.", ["We waited for the train; it was late.", "We waited for the train, and it was late."]),
  ("my favourite subject is english, and my teacher is mrs patel.","My favourite subject is English, and my teacher is Mrs Patel.","Names of subjects such as English, titles and names need capital letters."),
  ("The cafe was busy. so we sat outside.","The cafe was busy, so we sat outside.","A sentence should not start with so after a full stop. A comma joins the two parts."),
  ("Are you coming to the match on saturday","Are you coming to the match on Saturday?","A question ends with a question mark, and days start with a capital letter."),
@@ -27,8 +27,8 @@ fx("fix-commas","Fix the commas","Commas","Each sentence needs commas or has one
  ("However the train was late.","However, the train was late.","A comma follows an opening word such as however."),
  ("When we arrived at the station we bought our tickets.","When we arrived at the station, we bought our tickets.","A comma follows an opening clause."),
  ("My brother who lives in Leeds is a nurse.","My brother, who lives in Leeds, is a nurse.","Commas go round extra information."),
- ("I wanted to go but it was raining so I stayed in.","I wanted to go, but it was raining, so I stayed in.","A comma goes before but and so when they join two full ideas."),
- ("The tour was long, the guide was excellent.","The tour was long. The guide was excellent.","A comma cannot join two complete sentences. Use a full stop (or a joining word)."),
+ ("I wanted to go but it was raining so I stayed in.","I wanted to go, but it was raining, so I stayed in.","A comma goes before but and so when they join two full ideas.", ["I wanted to go, but it was raining so I stayed in."]),
+ ("The tour was long, the guide was excellent.","The tour was long. The guide was excellent.","A comma cannot join two complete sentences. Use a full stop (or a joining word).", ["The tour was long, and the guide was excellent.", "The tour was long; the guide was excellent."]),
  ("I am writing to ask about the trip, thank you.","I am writing to ask about the trip. Thank you.","A comma cannot join two separate sentences. Use a full stop."),
  ("If you are unsure ask a member of staff.","If you are unsure, ask a member of staff.","A comma follows an opening if clause."),
 ])
@@ -50,5 +50,5 @@ fx("fix-grammar","Fix the grammar","Grammar","Each sentence has a grammar mistak
  ("I seen the film last week.","I saw the film last week.","Saw is the past tense. Seen needs have."),
  ("We was waiting for an hour.","We were waiting for an hour.","We goes with were."),
  ("Me and my friend went to the match.","My friend and I went to the match.","Use I when you are doing the action, and put yourself last."),
- ("It was more better than I expected.","It was better than I expected.","Better already means more good, so do not add more."),
+ ("It was more better than I expected.","It was better than I expected.","Better already means more good, so do not add more.", ["It was much better than I expected."]),
 ])

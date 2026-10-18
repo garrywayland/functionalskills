@@ -753,7 +753,11 @@
     {
      "wrong": "We waited for the train it was late.",
      "fixed": "We waited for the train. It was late.",
-     "why": "Two separate ideas need a full stop between them."
+     "why": "Two separate ideas need a full stop between them.",
+     "also": [
+      "We waited for the train; it was late.",
+      "We waited for the train, and it was late."
+     ]
     },
     {
      "wrong": "my favourite subject is english, and my teacher is mrs patel.",
@@ -817,12 +821,19 @@
     {
      "wrong": "I wanted to go but it was raining so I stayed in.",
      "fixed": "I wanted to go, but it was raining, so I stayed in.",
-     "why": "A comma goes before but and so when they join two full ideas."
+     "why": "A comma goes before but and so when they join two full ideas.",
+     "also": [
+      "I wanted to go, but it was raining so I stayed in."
+     ]
     },
     {
      "wrong": "The tour was long, the guide was excellent.",
      "fixed": "The tour was long. The guide was excellent.",
-     "why": "A comma cannot join two complete sentences. Use a full stop (or a joining word)."
+     "why": "A comma cannot join two complete sentences. Use a full stop (or a joining word).",
+     "also": [
+      "The tour was long, and the guide was excellent.",
+      "The tour was long; the guide was excellent."
+     ]
     },
     {
      "wrong": "I am writing to ask about the trip, thank you.",
@@ -930,7 +941,10 @@
     {
      "wrong": "It was more better than I expected.",
      "fixed": "It was better than I expected.",
-     "why": "Better already means more good, so do not add more."
+     "why": "Better already means more good, so do not add more.",
+     "also": [
+      "It was much better than I expected."
+     ]
     }
    ]
   }
