@@ -10,8 +10,8 @@ const learn = require('../../content/learn.json');
   page.on('pageerror', e => problems.push('pageerror ' + e.message));
   page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') problems.push('console ' + m.text()); });
   page.on('request', r => { if (!r.url().startsWith(BASE) && !r.url().startsWith('data:')) external.add(r.url()); });
-  await page.goto(BASE); await page.waitForSelector('.stations');
-  console.log('stations:', await page.$$eval('.station .st-name', e => e.map(x => x.textContent)));
+  await page.goto(BASE); await page.waitForSelector('.theme-grid');
+  console.log('themes:', await page.$$eval('.theme-card .st-name', e => e.map(x => x.textContent)));
   console.log('home counts:', await page.$$eval('.st-count', e => e.map(x => x.textContent)));
   await page.screenshot({ path: OUT + '/home.png', fullPage: true });
   for (const L of ['L1', 'L2']) {

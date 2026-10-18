@@ -68,7 +68,7 @@ async function doWriting(page, id) {
   const page = await ctx.newPage();
   watch(page, 'desktop');
   await page.goto(BASE);
-  await page.waitForSelector('.stations');
+  await page.waitForSelector('.theme-grid');
   const reading = require('/home/user/functionalskills/content/reading.json').missions.concat(require('/home/user/functionalskills/content/reading-long.json').missions);
   const writing = require('/home/user/functionalskills/content/writing.json').missions;
   let sampleBlock = {};
@@ -89,7 +89,6 @@ async function doWriting(page, id) {
       if (m.id === 'w-pandas-1') sampleBlock[L] = r.block;
     }
     await page.goto(BASE);
-    console.log(L, 'home:', (await page.textContent('.progress-line')).trim());
     // toolkit
     await page.goto(BASE + '#/toolkit');
     const links = await page.$$eval('.tool-list a', as => as.map(a => a.getAttribute('href')));
@@ -127,7 +126,7 @@ async function doWriting(page, id) {
   const k = await (await browser.newContext()).newPage();
   watch(k, 'keyboard');
   await k.goto(BASE);
-  await k.waitForSelector('.stations');
+  await k.waitForSelector('.theme-grid');
   const order = [];
   for (let i = 0; i < 8; i++) { await k.keyboard.press('Tab'); order.push(await k.evaluate(() => (document.activeElement.textContent || document.activeElement.id || document.activeElement.tagName).trim().slice(0, 30))); }
   console.log('tab order:', order.join(' | '));
@@ -151,7 +150,7 @@ async function doWriting(page, id) {
   const s = await ns.newPage();
   watch(s, 'nostorage');
   await s.goto(BASE);
-  await s.waitForSelector('.stations');
+  await s.waitForSelector('.theme-grid');
   await s.click('label[for="level-L2"]');
   await s.goto(BASE + '#/writing/w-geography-2/write');
   await s.fill('#draft', 'Words typed without storage.');

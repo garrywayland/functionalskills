@@ -1,0 +1,178 @@
+{
+  "pack": "football-example",
+  "reading": [
+    {
+      "id": "r-football-example",
+      "topic": "Football",
+      "title": "Saturday at Ashby Rovers",
+      "minutes": 10,
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "kind": "Club newsletter",
+          "source": "Ashby Rovers Supporters' Newsletter",
+          "title": "Under-16s: a season to remember",
+          "body": [
+            {
+              "p": "Ashby Rovers Under-16s finished the season in second place, their best result in twelve years. The team won 14 of their 20 matches and scored 52 goals. Captain Amira Hussain says the secret was simple: \"We trained hard, and we looked after each other.\""
+            },
+            {
+              "h": "How to join"
+            },
+            {
+              "p": "Trials for next season take place on the first Saturday in June at Ashby Park. Players aged 13 to 15 are welcome, and no experience is needed. Please bring shin pads and a water bottle."
+            },
+            {
+              "ul": [
+                "Trials start at 10:00 and finish at 12:00.",
+                "Boots are essential. Trainers are not allowed on the pitch.",
+                "Parents can watch from the café, which is open all morning."
+              ]
+            },
+            {
+              "p": "Many fans think Ashby Rovers play the most exciting football in the county. Coach Mr Delaney is more careful: \"We have a young squad, so there is still a lot of work to do.\""
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What is the main purpose of this newsletter article?",
+          "options": [
+            "To sell tickets for a match",
+            "To report on the team's season and invite new players to trials",
+            "To explain the rules of football",
+            "To complain about the pitch"
+          ],
+          "answer": 1,
+          "why": "The article reports the team's second-place finish and then gives details of the trials, so it informs and invites."
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "How many goals did the team score this season?",
+          "options": [
+            "14",
+            "20",
+            "52",
+            "12"
+          ],
+          "answer": 2,
+          "why": "The text says the team \"scored 52 goals\". Fourteen is the number of matches won, and 20 is the number played."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Trials are open to players with no experience.",
+          "answer": "true",
+          "why": "The text says \"no experience is needed\"."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Parents must pay to watch the trials.",
+          "answer": "notstated",
+          "why": "The text says parents can watch from the café but says nothing about paying."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"Many fans think Ashby Rovers play the most exciting football in the county.\"",
+          "answer": "opinion",
+          "why": "\"Think\" and \"most exciting\" show a belief that others could disagree with."
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "multi",
+          "text": "A",
+          "label": "6",
+          "marks": 2,
+          "prompt": "Which TWO of these things must players bring to the trials?",
+          "options": [
+            "Shin pads",
+            "A parent",
+            "A water bottle",
+            "Their own football"
+          ],
+          "answer": [
+            0,
+            2
+          ],
+          "why": "The text says \"Please bring shin pads and a water bottle\"."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "prompt": "The article uses a heading and a bulleted list. Choose one and explain how it helps the reader.",
+          "model": "The bulleted list gives the three trial rules in short separate points, so a parent can quickly check the times and what to wear without reading a whole paragraph.",
+          "check": [
+            "I named one feature.",
+            "I said what it does for the reader.",
+            "I linked it to something in this article."
+          ]
+        }
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "id": "w-football-example",
+      "topic": "Football",
+      "task": 2,
+      "title": "Is football too expensive?",
+      "format": "forum",
+      "context": "A local sports website has a forum thread called \"Is football too expensive?\". Readers are sharing their views.",
+      "audience": "Other readers of the forum.",
+      "purpose": "To give and explain your view.",
+      "instruction": "Write a post for the forum.",
+      "bullets": [
+        "your view on whether football is too expensive",
+        "reasons and examples to support your view"
+      ],
+      "indicative": [
+        "View: yes, no, or it depends. Say it in the first sentence.",
+        "Reasons with examples: ticket prices, boots and kits, subs for a team, free alternatives such as park games. End by inviting replies."
+      ]
+    }
+  ]
+}

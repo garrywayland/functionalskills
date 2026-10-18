@@ -69,7 +69,7 @@ const external = new Set();
 
   // phone
   const ph = await (await browser.newContext({ viewport: { width: 360, height: 760 }, deviceScaleFactor: 2 })).newPage();
-  await ph.goto(BASE); await ph.waitForSelector('.stations');
+  await ph.goto(BASE); await ph.waitForSelector('.theme-grid');
   await ph.evaluate(([log]) => localStorage.setItem('nextstop:log', log), [await page.evaluate(() => localStorage.getItem('nextstop:log'))]);
   await ph.goto(BASE + '#/progress'); await ph.reload(); await ph.waitForSelector('.log-table');
   console.log('phone overflow px:', await ph.evaluate(() => document.documentElement.scrollWidth - innerWidth));

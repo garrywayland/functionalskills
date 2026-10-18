@@ -35,10 +35,10 @@ data.missions.splice(at, 0, mission);
 fs.writeFileSync(target, JSON.stringify(data, null, 2) + '\n');
 
 const all = []; const n2 = [];
-checkReadingFile(path.join(root, 'content', 'reading.json'), all, n2);
-checkReadingFile(path.join(root, 'content', 'reading-long.json'), all, n2);
-checkWritingFile(path.join(root, 'content', 'writing.json'), all, n2);
-checkToolkit(path.join(root, 'content', 'toolkit.json'), all, n2);
+const man = JSON.parse(fs.readFileSync(path.join(root, 'content', 'index.json'), 'utf8'));
+for (const f of man.reading) checkReadingFile(path.join(root, 'content', f), all, n2);
+for (const f of man.writing) checkWritingFile(path.join(root, 'content', f), all, n2);
+checkToolkit(path.join(root, 'content', man.toolkit), all, n2);
 if (all.length) { console.error('Problems after merging:'); all.forEach((e) => console.error('  -', e)); process.exit(1); }
 console.log(`Added ${mission.id} to ${path.relative(root, target)}. All content checks pass.`);
 console.log('Next: look at it on the site, then commit and push.');

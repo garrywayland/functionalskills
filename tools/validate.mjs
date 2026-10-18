@@ -185,6 +185,33 @@ export function checkLearn(file, errs, notes) {
   notes.push(`learn.json: ${data.mark.length} marking tasks, ${samples} samples, ${data.fix.length} fix-it sets, ${items} sentences`);
 }
 
+// An imported pack: { "pack": "football-1", "reading": [missions], "writing": [missions] }.
+// `taken` is the set of ids already used elsewhere. Themes are checked by name.
+export function checkPack(file, errs, notes, { themeNames, taken = new Set() } = {}) {
+  const data = read(file);
+  const name = path.basename(file);
+  if (!data.reading && !data.writing) errs.push(`${name}: needs a "reading" list, a "writing" list, or both`);
+  const formats = readFormats();
+  const ids = new Set(taken);
+  const each = (list, kind, check) => {
+    for (const m of list || []) {
+      if (!m.id) { errs.push(`${name}: a ${kind} mission has no id`); continue; }
+      if (ids.has(m.id)) errs.push(`${name} ${m.id}: this id is already used`);
+      ids.add(m.id);
+      if (themeNames && !themeNames.includes(m.topic)) errs.push(`${name} ${m.id}: topic "${m.topic}" is not a known theme (${themeNames.join(', ')})`);
+      if (m.status !== undefined && m.status !== 'draft') errs.push(`${name} ${m.id}: status can only be "draft" or left out`);
+      if (!m.title) errs.push(`${name} ${m.id}: missing title`);
+      check(m);
+    }
+  };
+  each(data.reading, 'reading', (m) => {
+    if (!Array.isArray(m.texts) || !m.texts.length || !Array.isArray(m.questions) || !m.questions.length) { errs.push(`${name} ${m.id}: needs texts and questions`); return; }
+    checkReadingMission(m, name, errs, notes);
+  });
+  each(data.writing, 'writing', (m) => checkWritingMission(m, formats, errs));
+  notes.push(`${name}: ${(data.reading || []).length} reading and ${(data.writing || []).length} writing missions`);
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const errs = []; const notes = [];
   const arg = process.argv[2];
@@ -193,11 +220,24 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (data.missions?.[0]?.bullets) checkWritingFile(arg, errs, notes); else checkReadingFile(arg, errs, notes);
   } else {
     const c = (f) => path.join(root, 'content', f);
-    checkReadingFile(c('reading.json'), errs, notes);
-    checkReadingFile(c('reading-long.json'), errs, notes);
-    checkWritingFile(c('writing.json'), errs, notes);
-    checkToolkit(c('toolkit.json'), errs, notes);
-    checkLearn(c('learn.json'), errs, notes);
+    const man = read(c('index.json'));
+    const names = read(c(man.themes)).themes.map((t) => t.name);
+    const taken = new Set();
+    for (const f of man.reading) {
+      checkReadingFile(c(f), errs, notes);
+      for (const m of read(c(f)).missions) { if (taken.has(m.id)) errs.push(`${f} ${m.id}: id used twice across files`); taken.add(m.id); if (!names.includes(m.topic)) errs.push(`${f} ${m.id}: topic "${m.topic}" is not in themes.json`); }
+    }
+    for (const f of man.writing) {
+      checkWritingFile(c(f), errs, notes);
+      for (const m of read(c(f)).missions) { if (taken.has(m.id)) errs.push(`${f} ${m.id}: id used twice across files`); taken.add(m.id); if (!names.includes(m.topic)) errs.push(`${f} ${m.id}: topic "${m.topic}" is not in themes.json`); }
+    }
+    for (const f of man.packs) {
+      checkPack(c(f), errs, notes, { themeNames: names, taken });
+      const p = read(c(f)); for (const m of [...(p.reading || []), ...(p.writing || [])]) taken.add(m.id);
+    }
+    checkToolkit(c(man.toolkit), errs, notes);
+    checkLearn(c(man.learn), errs, notes);
+    const ids = new Set(); for (const t of read(c(man.themes)).themes) { if (ids.has(t.id)) errs.push(`themes.json: duplicate id ${t.id}`); ids.add(t.id); if (!/^[a-z0-9-]+$/.test(t.id) || !t.name || !t.blurb) errs.push(`themes.json ${t.id}: needs a lowercase-and-hyphens id, a name and a blurb`); }
   }
   notes.forEach((n) => console.log('ok  ', n));
   if (errs.length) { console.error('\nProblems:'); errs.forEach((e) => console.error('  -', e)); process.exit(1); }

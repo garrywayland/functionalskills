@@ -69,3 +69,7 @@ npm test
 ```
 
 The tests use a fake stand-in for Anthropic, so they cost nothing and need no key.
+
+
+## Importing packs from another AI
+`import.mjs` checks and imports a pack of missions as hidden drafts, `manifest.mjs` reads `content/index.json`. Full steps: `docs/IMPORTING.md`.

@@ -25,7 +25,7 @@ const { chromium } = require('/opt/node-tools/node_modules/playwright');
   // 7(a)/7(b) labels
   await p.goto('http://127.0.0.1:8766/#/reading/rl2-pandas/12'); await p.waitForSelector('.step-count');
   console.log('step 12:', (await p.textContent('.step-count')).trim());
-  await p.goto('http://127.0.0.1:8766/#/'); await p.waitForSelector('.stations');
+  await p.goto('http://127.0.0.1:8766/#/'); await p.waitForSelector('.theme-grid');
   await p.$$eval('section.reading details.menu', ds=>ds.forEach(d=>d.open=true));
   console.log('L2 reading menus:', (await p.$$eval('section.reading .menu-sub', s=>s.map(x=>x.textContent))).join(' | '));
   console.log('errors:', errs.length?errs:'none'); await b.close();

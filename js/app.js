@@ -174,6 +174,7 @@
     else if (parts[0] === 'writing' && parts[1]) view = writingView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
     else if (parts[0] === 'toolkit') view = toolkitView();
+    else if (parts[0] === 'theme' && parts[1]) view = themeView(parts[1]);
     else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[3]) view = learnSampleView(parts[2], parts[3]);
     else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[2]) view = learnTaskView(parts[2]);
     else if (parts[0] === 'learn' && parts[1] === 'fix' && parts[2]) view = learnFixView(parts[2]);
@@ -204,25 +205,100 @@
 
   // ---------- Home ----------
 
-  var TOPIC_ORDER = ['Pandas', 'Israel', 'Public transport', 'UK geography'];
+  // A mission marked status: "draft" is unchecked (for example, imported from another AI). It stays hidden
+  // from the learner unless teacher view is switched on in the footer.
+  function showDrafts() { return !!store.get('drafts', false); }
+  function visible(m) { return m.status !== 'draft' || showDrafts(); }
+  function themeList() { return content.themes; }
+  function themeOrder() { return themeList().map(function (t) { return t.name; }); }
+  function findTheme(id) { return find(themeList(), id); }
+  function themeSlug(name) { var t = themeList().filter(function (x) { return x.name === name; })[0]; return t ? t.id : null; }
+  function draftTag(m) { return m.status === 'draft' ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null; }
+
+  function themeCounts(t) {
+    var r = counts(levelReading().filter(function (m) { return m.topic === t.name; }));
+    var w = counts(levelWriting().filter(function (m) { return m.topic === t.name; }));
+    return { done: r.done + w.done, total: r.total + w.total };
+  }
+
+  function setupFooter() {
+    var foot = document.querySelector('.site-footer');
+    if (!foot) return;
+    var btn = h('button', { type: 'button', class: 'linkish', 'aria-pressed': String(showDrafts()) });
+    function label() { btn.textContent = 'Teacher view: unchecked missions ' + (showDrafts() ? 'shown' : 'hidden'); btn.setAttribute('aria-pressed', String(showDrafts())); }
+    btn.addEventListener('click', function () { store.set('drafts', !showDrafts()); label(); render({ keepFocus: true }); });
+    label();
+    foot.appendChild(h('p', { class: 'small' }, btn));
+  }
 
   function counts(list) {
     return { done: list.filter(function (m) { return isDone(m.id); }).length, total: list.length };
   }
 
-  function levelReading() { return content.reading.missions.filter(inLevel); }
-  function levelWriting() { return content.writing.missions.filter(inLevel); }
+  function levelReading() { return content.reading.missions.filter(inLevel).filter(visible); }
+  function levelWriting() { return content.writing.missions.filter(inLevel).filter(visible); }
 
-  // The landing page: four choices and one button. Everything else lives one click away.
+  // Pick one of these missions at random and go to it.
+  function pickFrom(readingList, writingList) {
+    var shortReading = readingList.filter(function (m) { return m.length !== 'long' && !isDone(m.id); }).map(function (m) { return '#/reading/' + m.id; });
+    var shortWriting = writingList.filter(function (m) { return m.task === 2 && !isDone(m.id); }).map(function (m) { return '#/writing/' + m.id; });
+    var pool = shortReading.concat(shortWriting);
+    if (!pool.length) pool = readingList.filter(function (m) { return !isDone(m.id); }).map(function (m) { return '#/reading/' + m.id; })
+      .concat(writingList.filter(function (m) { return !isDone(m.id); }).map(function (m) { return '#/writing/' + m.id; }));
+    if (!pool.length) pool = readingList.map(function (m) { return '#/reading/' + m.id; }).concat(writingList.map(function (m) { return '#/writing/' + m.id; }));
+    if (!pool.length) { location.hash = '#/learn'; return; }
+    location.hash = pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function readingStop(m) {
+    return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, draft: m.status === 'draft',
+      meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
+  }
+  function readingSub(m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }
+  function writingStop(m) {
+    var mm = missionFor(m);
+    return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15, draft: m.status === 'draft',
+      meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
+  }
+  function writingSub(m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; }
+
+  // A plain (not folded) list of stops, grouped by size. Used on a theme page.
+  function stopGroups(missions, toStop, subLabel) {
+    var labels = [];
+    missions.forEach(function (m) { var l = subLabel(m); if (labels.indexOf(l) === -1) labels.push(l); });
+    return labels.map(function (l) {
+      return h('div', { class: 'menu-group' },
+        labels.length > 1 ? h('h3', { class: 'menu-sub', text: l }) : null,
+        h('ol', { class: 'stops' }, missions.filter(function (m) { return subLabel(m) === l; }).map(function (m) {
+          var s = toStop(m); var done = isDone(s.id);
+          return h('li', { class: 'stop' + (done ? ' done' : '') },
+            h('a', { href: s.href },
+              h('span', { class: 'stop-title', text: s.title }),
+              s.draft ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null,
+              h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
+              h('span', { class: 'stop-meta', text: s.meta })));
+        })));
+    });
+  }
+
+  // The landing page: pick a theme. Skills that work with any theme sit underneath.
   function homeView() {
     main.className = 'home';
-    var r = counts(levelReading());
-    var w = counts(levelWriting());
+    var rAll = levelReading(), wAll = levelWriting();
+    var shown = themeList().filter(function (t) { return themeCounts(t).total > 0; });
     var tk = content.toolkit.formats.concat(forLevel(content.toolkit.spag));
     var t = { done: tk.filter(function (x) { return isDone('tool-' + x.id); }).length, total: tk.length };
     var l = learnCounts();
 
-    function station(kind, href, name, desc, c) {
+    function themeCard(th, i) {
+      var c = themeCounts(th);
+      return h('li', { class: 'theme-card accent-' + (i % 4) },
+        h('a', { href: '#/theme/' + th.id },
+          h('span', { class: 'st-name', text: th.name }),
+          h('span', { class: 'st-desc', text: th.blurb }),
+          h('span', { class: 'st-count', text: c.done + ' of ' + c.total + ' done' })));
+    }
+    function skillCard(kind, href, name, desc, c) {
       return h('li', { class: 'station ' + kind },
         h('a', { href: href },
           h('span', { class: 'st-name', text: name }),
@@ -230,30 +306,45 @@
           h('span', { class: 'st-count', text: c.done + ' of ' + c.total + ' done' })));
     }
 
-    function pickForMe() {
-      var short = levelReading().filter(function (m) { return m.length !== 'long' && !isDone(m.id); })
-        .map(function (m) { return '#/reading/' + m.id; })
-        .concat(levelWriting().filter(function (m) { return m.task === 2 && !isDone(m.id); }).map(function (m) { return '#/writing/' + m.id; }));
-      if (!short.length) short = levelReading().concat(levelWriting()).filter(function (m) { return !isDone(m.id); })
-        .map(function (m) { return (m.texts ? '#/reading/' : '#/writing/') + m.id; });
-      if (!short.length) { location.hash = '#/learn'; return; }
-      location.hash = short[Math.floor(Math.random() * short.length)];
-    }
-
     return h('div', null,
       h('section', { class: 'map-intro' },
-        h('h1', { text: 'What would you like to do?' }),
-        h('p', { class: 'lede', text: 'Choose one. Each takes about ten minutes, or longer if you want a bigger one. You can stop whenever you like.' })),
-      h('ol', { class: 'stations' },
-        station('reading', '#/reading', 'Read', 'Read a text and answer questions, one at a time.', r),
-        station('writing', '#/writing', 'Write', 'Plan and write a piece, then get feedback if you want it.', w),
-        station('learn', '#/learn', 'Learn by marking', 'Mark sample work, mark answers and fix mistakes, like an examiner.', l),
-        station('toolkit', '#/toolkit', 'Practise a skill', 'Short drills on writing formats, punctuation, spelling and grammar.', t)),
+        h('h1', { text: 'What are you into?' }),
+        h('p', { class: 'lede', text: 'Pick a theme. You will get reading and writing tasks about it. Each takes about ten minutes, or longer if you want a bigger one. You can stop whenever you like.' })),
+      shown.length ? h('ul', { class: 'theme-grid' }, shown.map(themeCard)) : h('p', { class: 'notice', text: 'There are no missions at this level yet.' }),
       h('div', { class: 'actions' },
-        h('button', { type: 'button', class: 'btn', onclick: pickForMe, text: 'Pick one for me' }),
+        h('button', { type: 'button', class: 'btn', onclick: function () { pickFrom(rAll, wAll); }, text: 'Pick one for me' }),
         h('a', { class: 'btn quiet', href: '#/progress', text: 'My progress' })),
+      h('section', { class: 'skills', 'aria-labelledby': 'skills-h' },
+        h('h2', { id: 'skills-h', text: 'Skills, any theme' }),
+        h('ul', { class: 'skill-grid' },
+          skillCard('learn', '#/learn', 'Learn by marking', 'Mark sample work and fix mistakes, like an examiner.', l),
+          skillCard('toolkit', '#/toolkit', 'Practise a skill', 'Short drills on writing formats, punctuation, spelling and grammar.', t))),
       h('p', { class: 'muted small', text: 'You are on ' + LEVELS[level()] + '. Not sure which level? Nearly everything works at both. Use the switch at the top.' })
     );
+  }
+
+  function themeView(id) {
+    var th = findTheme(id);
+    if (!th) return notFound();
+    main.className = 'home';
+    var r = levelReading().filter(function (m) { return m.topic === th.name; });
+    var w = levelWriting().filter(function (m) { return m.topic === th.name; });
+    var learn = learnTasks().filter(function (t) { var raw = find(content.writing.missions, t.missionId); return raw && raw.topic === th.name; });
+    function section(cls, title, blurb, body) {
+      return h('section', { class: 'line ' + cls }, h('h2', { class: 'line-title', text: title }), h('p', { text: blurb }), body);
+    }
+    return h('div', null,
+      sectionIntro(th.name, th.blurb),
+      !r.length && !w.length ? h('p', { class: 'notice', text: 'Nothing here at ' + LEVELS[level()] + ' yet. Try the other level, or pick another theme.' }) : null,
+      r.length ? section('reading', 'Reading', 'Read the text or texts, then answer questions one at a time.', stopGroups(r, readingStop, readingSub)) : null,
+      w.length ? section('writing', 'Writing', 'Plan and write a piece, then get feedback if you want to.', stopGroups(w, writingStop, writingSub)) : null,
+      learn.length ? section('learn', 'Learn by marking', 'Mark sample answers to tasks on this theme.', h('ul', { class: 'tool-list' }, learn.map(function (t) {
+        var n = t.samples.filter(function (s) { return isDone('learn-' + s.id); }).length;
+        return h('li', null, h('a', { href: '#/learn/mark/' + t.id }, h('span', { class: 't-name', text: t.title }), h('span', { class: 't-sum', text: n + ' of ' + t.samples.length + ' answers marked' })));
+      }))) : null,
+      h('div', { class: 'actions' },
+        (r.length || w.length) ? h('button', { type: 'button', class: 'btn', onclick: function () { pickFrom(r, w); }, text: 'Pick one for me' }) : null,
+        h('a', { class: 'btn quiet', href: '#/', text: 'All themes' })));
   }
 
   function sectionIntro(title, text) {
@@ -266,23 +357,16 @@
   function readingIndexView() {
     main.className = 'home';
     return h('div', null,
-      sectionIntro('Reading', 'Open a topic, then pick a mission. Short ones take about 10 minutes. The longer ones have three texts and 15 questions, like the real paper.'),
-      menuSection('reading', 'Reading missions', 'Read the text or texts, then answer questions one at a time.', levelReading(), function (m) {
-        return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes,
-          meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
-      }, function (m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }),
+      sectionIntro('Reading', 'Open a theme, then pick a mission. Short ones take about 10 minutes. The longer ones have three texts and 15 questions, like the real paper.'),
+      menuSection('reading', 'Reading missions', 'Read the text or texts, then answer questions one at a time.', levelReading(), readingStop, readingSub),
       h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
   }
 
   function writingIndexView() {
     main.className = 'home';
     return h('div', null,
-      sectionIntro('Writing', 'Open a topic, then pick a task. Shorter tasks take about 15 minutes and longer ones about 25.'),
-      menuSection('writing', 'Writing tasks', 'Plan and write a piece, then get feedback if you want to.', levelWriting(), function (m) {
-        var mm = missionFor(m);
-        return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15,
-          meta: formatName(mm.format) + ' · ' + content.writing.lengthGuide[String(m.task)][level()] };
-      }, function (m) { return m.task === 1 ? 'Longer tasks' : 'Shorter tasks'; }),
+      sectionIntro('Writing', 'Open a theme, then pick a task. Shorter tasks take about 15 minutes and longer ones about 25.'),
+      menuSection('writing', 'Writing tasks', 'Plan and write a piece, then get feedback if you want to.', levelWriting(), writingStop, writingSub),
       h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' })));
   }
 
@@ -296,7 +380,7 @@
   // One folded menu per topic. Open or closed is remembered on this device.
   function menuSection(kind, title, blurb, missions, toStop, subLabel) {
     var hid = 'line-' + kind;
-    var topics = TOPIC_ORDER.filter(function (t) { return missions.some(function (m) { return m.topic === t; }); });
+    var topics = themeOrder().filter(function (t) { return missions.some(function (m) { return m.topic === t; }); });
     missions.forEach(function (m) { if (topics.indexOf(m.topic) === -1) topics.push(m.topic); });
 
     function stopItem(m) {
@@ -305,6 +389,7 @@
       return h('li', { class: 'stop' + (done ? ' done' : '') },
         h('a', { href: s.href },
           h('span', { class: 'stop-title', text: s.title }),
+          s.draft ? h('span', { class: 'draft-tag', text: 'Unchecked' }) : null,
           h('span', { class: 'stop-state', text: done ? 'Done' : (s.minutes || 10) + ' min' }),
           h('span', { class: 'stop-meta', text: s.meta })
         ));
@@ -393,7 +478,7 @@
     function save() { store.set(key, saved); }
 
     var wrap = h('article', { class: 'mission reading' });
-    append(wrap, h('p', { class: 'eyebrow', text: 'Reading · ' + m.topic + ' · ' + LEVELS[level()] }));
+    append(wrap, h('p', { class: 'eyebrow', text: 'Reading · ' + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
 
     if (step.kind === 'text') {
       var t = step.text;
@@ -800,7 +885,7 @@
     function hrefFor(s) { return '#/writing/' + id + '/' + s; }
 
     var wrap = h('article', { class: 'mission writing' });
-    append(wrap, h('p', { class: 'eyebrow', text: 'Writing · ' + m.topic + ' · ' + LEVELS[level()] }));
+    append(wrap, h('p', { class: 'eyebrow', text: 'Writing · ' + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
     append(wrap, h('nav', { 'aria-label': 'Mission steps' },
       h('ol', { class: 'route' }, WRITING_STEPS.map(function (s, i) {
         var cls = i < idx ? 'past' : i === idx ? 'current' : '';
@@ -1675,14 +1760,23 @@
 
   function start() {
     setupLevelSwitch();
-    Promise.all([
-      loadJSON('content/reading.json'),
-      loadJSON('content/writing.json'),
-      loadJSON('content/toolkit.json'),
-      loadJSON('content/reading-long.json'),
-      loadJSON('content/learn.json')
-    ]).then(function (res) {
-      content = { reading: { missions: res[0].missions.concat(res[3].missions) }, writing: res[1], toolkit: res[2], learn: res[4] };
+    setupFooter();
+    loadJSON('content/index.json').then(function (man) {
+      var base = function (f) { return 'content/' + f; };
+      return Promise.all([
+        Promise.all(man.reading.map(function (f) { return loadJSON(base(f)); })),
+        Promise.all(man.writing.map(function (f) { return loadJSON(base(f)); })),
+        loadJSON(base(man.toolkit)),
+        loadJSON(base(man.learn)),
+        loadJSON(base(man.themes)),
+        Promise.all((man.packs || []).map(function (f) { return loadJSON(base(f)); }))
+      ]);
+    }).then(function (res) {
+      var reading = [], writing = res[1][0];
+      res[0].forEach(function (f) { reading = reading.concat(f.missions); });
+      res[1].slice(1).forEach(function (f) { writing.missions = writing.missions.concat(f.missions); });
+      res[5].forEach(function (p) { reading = reading.concat(p.reading || []); writing.missions = writing.missions.concat(p.writing || []); });
+      content = { reading: { missions: reading }, writing: writing, toolkit: res[2], learn: res[3], themes: res[4].themes };
       window.addEventListener('hashchange', function () { render(); });
       render({ keepFocus: true });
     }).catch(function (err) {

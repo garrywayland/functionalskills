@@ -158,8 +158,53 @@ test('merge: needs --i-have-read-it and a passing review, then adds the mission'
   fs.writeFileSync(file.replace('.json', '.review.json'), JSON.stringify({ verdict: 'pass', issues: [] }));
   r = await run('merge.mjs', [file, '--i-have-read-it'], { root });
   assert.equal(r.code, 0, r.err + r.out);
-  const ids = readJson(path.join(root, 'content', 'reading-long.json')).missions.map((x) => x.id);
-  assert.deepEqual(ids.slice(0, 3), ['rl-pandas', 'rl-pandas-2', 'rl-pandas-3'], 'kept with its topic');
+  const ms = readJson(path.join(root, 'content', 'reading-long.json')).missions;
+  const at = ms.findIndex((x) => x.id === 'rl-pandas-3');
+  assert.ok(at > 0 && ms[at - 1].topic === 'Pandas' && (!ms[at + 1] || ms[at + 1].topic !== 'Pandas'), 'kept with its topic, after the last Pandas mission');
   r = await run('merge.mjs', [file, '--i-have-read-it'], { root });
   assert.equal(r.code, 1); assert.match(r.err, /already in the content/);
+});
+
+test('import: checks a pack, adds it as a hidden draft, then approves it', async () => {
+  const root = tempRoot();
+  const pack = path.join(repo, 'docs', 'import', 'example-pack.json');
+  let r = await run('import.mjs', [pack, '--check-only'], { root });
+  assert.equal(r.code, 0, r.err + r.out);
+  assert.deepEqual(readJson(path.join(root, 'content', 'index.json')).packs, [], 'check-only changes nothing');
+  r = await run('import.mjs', [pack], { root });
+  assert.equal(r.code, 0, r.err + r.out);
+  assert.deepEqual(readJson(path.join(root, 'content', 'index.json')).packs, ['packs/football-example.json']);
+  const saved = readJson(path.join(root, 'content', 'packs', 'football-example.json'));
+  assert.ok([...saved.reading, ...saved.writing].every((m) => m.status === 'draft'));
+  r = await run('import.mjs', [pack], { root });
+  assert.equal(r.code, 1); assert.match(r.err, /already imported/);
+  r = await run('import.mjs', ['--approve', 'football-example'], { root });
+  assert.equal(r.code, 0);
+  const approved = readJson(path.join(root, 'content', 'packs', 'football-example.json'));
+  assert.ok([...approved.reading, ...approved.writing].every((m) => m.status === undefined));
+  r = await run('import.mjs', ['--remove', 'football-example'], { root });
+  assert.equal(r.code, 0);
+  assert.equal(fs.existsSync(path.join(root, 'content', 'packs', 'football-example.json')), false);
+});
+
+test('import: refuses a bad pack with plain reasons and changes nothing', async () => {
+  const root = tempRoot();
+  const bad = readJson(path.join(repo, 'docs', 'import', 'example-pack.json'));
+  bad.reading[0].topic = 'Knitting';              // unknown theme
+  bad.reading[0].questions[1].answer = 9;         // answer out of range
+  bad.writing[0].id = 'w-pandas-1';               // id already used
+  const file = path.join(root, 'bad.json');
+  fs.writeFileSync(file, 'Here you go!\n```json\n' + JSON.stringify(bad) + '\n```');   // wrapped in chat text, like an AI reply
+  const r = await run('import.mjs', [file], { root });
+  assert.equal(r.code, 1);
+  assert.match(r.err, /not a known theme/); assert.match(r.err, /answer index out of range/); assert.match(r.err, /already used/);
+  assert.deepEqual(readJson(path.join(root, 'content', 'index.json')).packs, []);
+  // a new theme can be added in the same step
+  bad.reading[0].topic = 'Knitting'; bad.reading[0].questions[1].answer = 2; bad.writing[0].id = 'w-knit-1'; bad.writing[0].topic = 'Knitting';
+  fs.writeFileSync(file, JSON.stringify(bad));
+  let r2 = await run('import.mjs', [file, '--add-theme', 'Knitting'], { root });
+  assert.equal(r2.code, 1); assert.match(r2.err, /one-line description/);
+  r2 = await run('import.mjs', [file, '--add-theme', 'Knitting', '--blurb', 'Wool and patterns.'], { root });
+  assert.equal(r2.code, 0, r2.err + r2.out);
+  assert.ok(readJson(path.join(root, 'content', 'themes.json')).themes.some((t) => t.name === 'Knitting'));
 });

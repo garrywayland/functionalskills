@@ -18,7 +18,8 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 ## What exists now
 | Area | State |
 | --- | --- |
-| Home | Four stations (Read, Write, Learn by marking, Practise a skill) plus "Pick one for me" and My progress. Reading and Writing have their own menu pages with folded topic menus. |
+| Home | Pick a theme first (cards, shown only when a theme has missions at the chosen level), then a theme page lists its reading, writing and marking tasks. "Pick one for me" and My progress sit underneath, with two any-theme cards (Learn by marking, Practise a skill). Reading and Writing nav pages still show everything in folded menus by theme. |
+| Themes and import | `content/index.json` lists the content files; `content/themes.json` lists themes (16 defined, 4 with content). Packs of AI-written missions are imported with `node tools/import.mjs` as hidden "draft" missions; Teacher view (footer link) shows them as "Unchecked"; `--approve` makes them live. Full steps and a prompt for the other AI in `docs/IMPORTING.md`; a working example is `docs/import/example-pack.json`. |
 | Reading | 16 missions: 4 short, 12 long (3 texts, 15 or so questions, official-style layout). Level 1 and Level 2. Question types: choice, tfns, factopinion, multi, match, open (self-check model answer). |
 | Writing | 24 tasks (Task 1 longer, Task 2 shorter), each with plan, write and send steps. Marking is by copy-and-paste into an AI chat, with the task, indicative content and our plain-English band summary included. |
 | Toolkit | 11 writing formats and 9 SPaG points (7 at Level 1), 10 practice questions each (200 in all). |
@@ -38,6 +39,7 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 - `tests/browser/menus-test.js` still expects the Writing menu on the Reading page (from line 19) and needs updating; the other browser tests pass. `e2e.js` takes several minutes.
 
 ## Next steps, in suggested order
+0. Generate theme packs with another AI (`docs/IMPORTING.md`), import, review in Teacher view, approve.
 1. Review the question pack (`docs/question-review/`) with a teacher or an AI chat; fix what they find in `/content`.
 2. More Level 2 reading missions and Level 2 marking samples.
 3. Reading "assess it" items for the Learn section.
