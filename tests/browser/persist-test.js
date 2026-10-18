@@ -101,6 +101,34 @@ const check = (c, m) => { if (!c) problems.push(m); console.log(c ? 'ok  ' : 'FA
   await reload();
   check(/The answers/.test(await page.textContent('main')), 'fix-it answers page survives reload');
 
+  // Letters on multiple choice, saved notes, pick up where you left off, My work, look back
+  await page.click('label[for="level-L1"]');
+  await go('#/reading/r-pandas/1');
+  check(JSON.stringify(await page.$$eval('fieldset.options label.option .letter', e => e.map(x => x.textContent))) === '["A","B","C","D"]', 'choice options are lettered A to D');
+  await page.click('fieldset.options label.option >> nth=2'); await page.click('button:has-text("Check my answer")');
+  check(/The answer is [A-D]:/.test(await page.textContent('.feedback')), 'feedback names the answer by letter');
+  await go('#/toolkit/spag/commas'); await page.waitForSelector('fieldset.options');
+  check((await page.$$('fieldset.options .letter')).length === 4, 'toolkit practice options are lettered too');
+  await go('#/writing/w-pandas-4/write'); await page.fill('#draft', 'Words I wrote for the pick-up test.'); await page.waitForTimeout(800);
+  check(/Saved on this device\./.test(await page.textContent('.saved-note')), 'a saved note appears after typing');
+  await go('#/'); await page.waitForSelector('.theme-grid');
+  const resume = await page.$$eval('.resume-list a', a => a.map(x => x.textContent));
+  check(resume.some(x => /Is a day at the zoo worth it/.test(x)), 'the front page offers to pick up unfinished work: ' + resume.length + ' item(s)');
+  await page.click('.resume-list a:has-text("zoo")'); await page.waitForSelector('#draft');
+  check(/pick-up test/.test(await page.inputValue('#draft')), 'picking it up lands back in the draft');
+  await go('#/work'); await page.waitForSelector('.work-item');
+  await page.click('.work-item:has-text("zoo worth it") summary');
+  check(/pick-up test/.test(await page.inputValue('.work-item[open] textarea')), 'My work shows the writing, ready to copy');
+  await page.click('label[for="level-L2"]'); await go('#/reading/rl2-pandas/3');
+  await page.waitForSelector('textarea[id^="open-"]');
+  await page.fill('textarea[id^="open-"]', 'A reading answer to look back on.');
+  await go('#/work'); await page.waitForSelector('.work-item');
+  const vals = [];
+  for (const s of await page.$$('.work-item summary')) { await s.click(); }
+  for (const ta of await page.$$('.work-item[open] textarea')) vals.push(await ta.inputValue());
+  check(vals.some(v => /reading answer to look back on/.test(v)), 'My work lists written reading answers');
+  await page.click('label[for="level-L1"]');
+
   await browser.close();
   console.log('PROBLEMS:', problems.length ? problems : 'none');
   process.exit(problems.length ? 1 : 0);

@@ -26,6 +26,22 @@
       memory[key] = value;
       try { window.localStorage.setItem(PREFIX + key, JSON.stringify(value)); } catch (e) { /* keep in memory only */ }
     },
+    // Names of saved items that start with a prefix (for the "pick up where you left off" list).
+    keys: function (prefix) {
+      var out = {};
+      Object.keys(memory).forEach(function (k) { if (k.indexOf(prefix) === 0) out[k] = true; });
+      try {
+        for (var i = 0; i < window.localStorage.length; i++) {
+          var k = window.localStorage.key(i);
+          if (k && k.indexOf(PREFIX + prefix) === 0) out[k.slice(PREFIX.length)] = true;
+        }
+      } catch (e) { /* storage unavailable */ }
+      return Object.keys(out);
+    },
+    // Is the browser really keeping things? (false in some private windows, or if storage is blocked)
+    persistent: function () {
+      try { window.localStorage.setItem(PREFIX + 'probe', '1'); window.localStorage.removeItem(PREFIX + 'probe'); return true; } catch (e) { return false; }
+    },
     // Like set, but tells you whether the browser really kept it (false if storage is full or blocked).
     setStrict: function (key, value) {
       memory[key] = value;
@@ -40,6 +56,19 @@
   // Practice answers should be the learner's own: no spell-check, autocorrect, capitals or grammar helpers.
   var NO_HELP = { spellcheck: 'false', autocorrect: 'off', autocapitalize: 'off', autocomplete: 'off', 'data-gramm': 'false', 'data-gramm_editor': 'false', 'data-enable-grammarly': 'false' };
   function plain(attrs) { var o = {}; Object.keys(NO_HELP).forEach(function (k) { o[k] = NO_HELP[k]; }); Object.keys(attrs).forEach(function (k) { o[k] = attrs[k]; }); return o; }
+
+  // "Saved on this device as you type", with a little tick after each pause in typing.
+  function autosaveNote() {
+    var ok = store.persistent();
+    var el = h('p', { class: 'saved-note muted small', text: ok ? 'Saved on this device as you type.' : 'This browser is not keeping saved work (private window?), so it will be lost if you leave this page.' });
+    var t;
+    el.ping = function () {
+      if (!ok) return;
+      clearTimeout(t);
+      t = setTimeout(function () { el.textContent = 'Saved on this device.'; }, 500);
+    };
+    return el;
+  }
 
   // ---------- Small DOM helper (text only, never innerHTML) ----------
 
@@ -185,6 +214,7 @@
       else if (parts[0] === 'toolkit' && parts[1] && parts[2]) view = toolView(parts[1], parts[2]);
       else if (parts[0] === 'toolkit') view = toolkitView();
       else if (parts[0] === 'make') view = makeView();
+      else if (parts[0] === 'work') view = myWorkView();
       else if (parts[0] === 'theme' && parts[1]) view = themeView(parts[1]);
       else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[3]) view = learnSampleView(parts[2], parts[3]);
       else if (parts[0] === 'learn' && parts[1] === 'mark' && parts[2]) view = learnTaskView(parts[2]);
@@ -304,6 +334,7 @@
     var tk = content.toolkit.formats.concat(forLevel(content.toolkit.spag));
     var t = { done: tk.filter(function (x) { return isDone('tool-' + x.id); }).length, total: tk.length };
     var l = learnCounts();
+    var resume = inProgress();
 
     function themeCard(th, i) {
       var c = themeCounts(th);
@@ -325,9 +356,15 @@
       h('section', { class: 'map-intro' },
         h('h1', { text: 'What are you into?' }),
         h('p', { class: 'lede', text: 'Pick a theme. You will get reading and writing tasks about it. Each takes about ten minutes, or longer if you want a bigger one. You can stop whenever you like.' })),
+      resume.length ? h('section', { class: 'resume', 'aria-labelledby': 'resume-h' },
+        h('h2', { id: 'resume-h', text: 'Pick up where you left off' }),
+        h('ul', { class: 'resume-list' }, resume.slice(0, 3).map(function (x) {
+          return h('li', null, h('a', { href: x.href }, h('span', { class: 't-name', text: x.title }), h('span', { class: 't-sum', text: x.kind + ' · ' + x.theme })));
+        }))) : null,
       shown.length ? h('ul', { class: 'theme-grid' }, shown.map(themeCard)) : h('p', { class: 'notice', text: 'There are no missions at this level yet.' }),
       h('div', { class: 'actions' },
         h('button', { type: 'button', class: 'btn', onclick: function () { pickFrom(rAll, wAll); }, text: 'Pick one for me' }),
+        h('a', { class: 'btn quiet', href: '#/work', text: 'My work' }),
         h('a', { class: 'btn quiet', href: '#/progress', text: 'My progress' })),
       h('section', { class: 'skills', 'aria-labelledby': 'skills-h' },
         h('h2', { id: 'skills-h', text: 'Skills, any theme' }),
@@ -442,6 +479,7 @@
 
   // ---------- Reading ----------
 
+  var LETTERS = 'ABCDEFGH';
   var TFNS = [['true', 'True'], ['false', 'False'], ['notstated', 'Not stated']];
   var FO = [['fact', 'Fact'], ['opinion', 'Opinion']];
 
@@ -491,7 +529,7 @@
     var questionCount = steps.filter(function (s) { return s.kind === 'question'; }).length;
     var multi = built.texts.length > 1;
     function hrefFor(p) { return '#/reading/' + id + '/' + p; }
-    function save() { store.set(key, saved); }
+    function save() { saved.t = Date.now(); store.set(key, saved); }
 
     var wrap = h('article', { class: 'mission reading' });
     append(wrap, h('p', { class: 'eyebrow', text: 'Reading · ' + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
@@ -551,7 +589,7 @@
       append(qCol, h('div', { class: 'actions' },
         h('a', { class: 'btn quiet', href: hrefFor(pos - 1), text: 'Back' }),
         next
-      ));
+      ), h('p', { class: 'muted small' }, 'Your answers are saved as you go. ', h('a', { href: '#/', text: 'Finish later' }), ' and pick it up from the front page.'));
 
       var look = h('details', { class: 'look-back' },
         h('summary', { text: refTexts.length > 1 ? 'Show the texts' : 'Show the text' }),
@@ -590,9 +628,11 @@
         h('button', { type: 'button', class: 'btn quiet', onclick: function () {
           store.remove(key);
           go(hrefFor(0));
-        }, text: 'Do it again' })
+        }, text: 'Do it again (starts a clean copy)' })
       ),
-      scoreSlot
+      scoreSlot,
+      answersReview(m, saved),
+      h('p', { class: 'muted small' }, 'Your written answers are kept under ', h('a', { href: '#/work', text: 'My work' }), '.')
     );
     return wrap;
   }
@@ -684,7 +724,7 @@
         save();
         checkBtn.disabled = ans.choices.length !== need;
       });
-      var lab = h('label', { class: 'option' + (ans.checked ? ' locked' : '') }, input, h('span', { text: text }));
+      var lab = h('label', { class: 'option' + (ans.checked ? ' locked' : '') }, input, h('span', { class: 'letter', text: LETTERS[i] }), h('span', { text: text }));
       fs.appendChild(lab);
       return lab;
     });
@@ -726,6 +766,7 @@
     var opts = optionsFor(q);
     var right = answerIndex(q);
     var name = 'q-' + q.id;
+    var lettered = q.type === 'choice';
     var box = h('div');
     var fbSlot = h('div', { 'aria-live': 'polite' });
     var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check my answer' });
@@ -740,7 +781,7 @@
       input.addEventListener('change', function () {
         ans.choice = i; save(); checkBtn.disabled = false;
       });
-      var lab = h('label', { class: 'option' + (ans.checked ? ' locked' : '') }, input, h('span', { text: text }));
+      var lab = h('label', { class: 'option' + (ans.checked ? ' locked' : '') }, input, lettered ? h('span', { class: 'letter', text: LETTERS[i] }) : null, h('span', { text: text }));
       fs.appendChild(lab);
       return lab;
     });
@@ -757,7 +798,7 @@
       });
       var same = ans.choice === right;
       fbSlot.replaceChildren(h('div', { class: 'feedback' },
-        h('p', { class: 'fb-head', text: same ? 'Yes, that matches the answer.' : 'The answer is: ' + opts[right] + (/[.?!"\u201d]$/.test(opts[right]) ? '' : '.') }),
+        h('p', { class: 'fb-head', text: same ? 'Yes, that matches the answer.' : 'The answer is' + (lettered ? ' ' + LETTERS[right] : '') + ': ' + opts[right] + (/[.?!"\u201d]$/.test(opts[right]) ? '' : '.') }),
         h('p', { text: q.why })
       ));
       checkBtn.remove();
@@ -782,9 +823,11 @@
     var id = 'open-' + q.id;
     var ta = h('textarea', plain({ id: id, rows: '5' }));
     ta.value = ans.text || '';
-    ta.addEventListener('input', function () { ans.text = ta.value; save(); });
+    var note = autosaveNote();
+    ta.addEventListener('input', function () { ans.text = ta.value; save(); note.ping(); });
     box.appendChild(h('label', { class: 'field', for: id }, 'Your answer', h('span', { class: 'hint', text: 'A few sentences is enough. No one else sees this.' })));
     box.appendChild(ta);
+    box.appendChild(note);
 
     var slot = h('div');
     var showBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Show the model answer' });
@@ -927,12 +970,13 @@
     var step = stepIds.indexOf(stepParam) !== -1 ? stepParam : (saved.step || 'task');
     saved.step = step;
     store.set(key, saved);
-    function save() { store.set(key, saved); }
+    function save() { saved.t = Date.now(); store.set(key, saved); }
     var format = find(content.toolkit.formats, m.format);
     var length = content.writing.lengthGuide[String(m.task)][level()];
     var idx = stepIds.indexOf(step);
     function hrefFor(s) { return '#/writing/' + id + '/' + s; }
 
+    var later = h('p', { class: 'muted small' }, 'Everything is saved as you go. ', h('a', { href: '#/', text: 'Finish later' }), ' and pick it up from the front page.');
     var wrap = h('article', { class: 'mission writing' });
     append(wrap, h('p', { class: 'eyebrow', text: 'Writing · ' + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
     append(wrap, h('nav', { 'aria-label': 'Mission steps' },
@@ -953,12 +997,13 @@
         h('h1', { text: m.title }),
         h('p', { class: 'lede', text: (m.task === 1 ? 'Longer task' : 'Shorter task') + '. Read the task, then plan it on the next screen.' }),
         taskCard(m, format, length),
-        h('div', { class: 'actions' }, backBtn, nextBtn)
+        h('div', { class: 'actions' }, backBtn, nextBtn), later
       );
     }
 
     if (step === 'plan') {
       var fields = planFields(m);
+      var planNote = autosaveNote();
       main.className = 'wide';
       append(wrap, splitLayout(m, format, length, saved.plan, false, [
         h('h1', { text: 'Plan it' }),
@@ -967,12 +1012,13 @@
           var fid = 'plan-' + f.key;
           var ta = h('textarea', plain({ id: fid, rows: '3' }));
           ta.value = saved.plan[f.key] || '';
-          ta.addEventListener('input', function () { saved.plan[f.key] = ta.value; save(); });
+          ta.addEventListener('input', function () { saved.plan[f.key] = ta.value; save(); planNote.ping(); });
           return h('div', null,
             h('label', { class: 'field', for: fid }, f.label, h('span', { class: 'hint', text: f.hint })),
             ta);
         }),
-        h('div', { class: 'actions' }, backBtn, nextBtn)
+        planNote,
+        h('div', { class: 'actions' }, backBtn, nextBtn), later
       ]));
     }
 
@@ -987,7 +1033,8 @@
         countEl.textContent = n + (n === 1 ? ' word' : ' words');
       }
       updateCount();
-      box.addEventListener('input', function () { saved.draft = box.value; save(); updateCount(); announce(); });
+      var draftNote = autosaveNote();
+      box.addEventListener('input', function () { saved.draft = box.value; save(); updateCount(); announce(); draftNote.ping(); });
 
       var spell = h('input', { type: 'checkbox' });
       spell.checked = !!saved.spellcheck;
@@ -1005,6 +1052,7 @@
         box,
         h('div', { class: 'write-meta' }, countEl, status,
           h('label', { class: 'toggle' }, spell, 'Show spelling underlines')),
+        draftNote,
         h('section', { 'aria-labelledby': 'fc-h' },
           h('h2', { id: 'fc-h', text: 'Check before you send' }),
           h('p', { class: 'muted small' }, 'Tick each one when it is true. ', format ? h('a', { href: '#/toolkit/format/' + format.id, text: 'How to write ' + (format.id === 'email' || format.id === 'article' ? 'an ' : 'a ') + format.name.toLowerCase() }) : null),
@@ -1015,7 +1063,7 @@
             return h('li', null, h('label', null, cb, h('span', { text: c.text })));
           }))
         ),
-        h('div', { class: 'actions' }, backBtn, nextBtn)
+        h('div', { class: 'actions' }, backBtn, nextBtn), later
       ]));
     }
 
@@ -1729,7 +1777,8 @@
       var ta = h('textarea', plain({ id: 'fix-box', rows: 3, 'aria-label': 'Your corrected version of sentence ' + (i + 1) }));
       ta.value = rec.mine;
       if (rec.status === 'matched') { ta.readOnly = true; }
-      ta.addEventListener('input', function () { rec.mine = ta.value; save(); });
+      var fixNote = autosaveNote();
+      ta.addEventListener('input', function () { rec.mine = ta.value; save(); fixNote.ping(); });
       var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check' });
       var nextBtn = h('button', { type: 'button', class: 'btn quiet', text: last ? 'Finish and see the answers' : 'Next question' });
 
@@ -1763,7 +1812,7 @@
         h('p', { class: 'muted small', text: 'Sentence ' + (i + 1) + ' of ' + f.items.length }),
         h('div', { class: 'fix-item' },
           h('p', { class: 'fix-wrong' }, h('q', { text: it.wrong })),
-          h('label', { for: 'fix-box', class: 'muted small', text: 'Rewrite it correctly' }), ta,
+          h('label', { for: 'fix-box', class: 'muted small', text: 'Rewrite it correctly' }), ta, fixNote,
           h('div', { class: 'fix-actions' }, checkBtn, nextBtn), box),
         h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/learn', text: 'Back to Learn' })));
       var h1 = wrap.querySelector('h1'); if (h1 && i > 0) { ta.focus(); }
@@ -1796,6 +1845,115 @@
     if (!restore()) reset();
     if (state.ended) drawEnd(); else drawQuestion();
     return wrap;
+  }
+
+
+  // ---------- Pick up where you left off, and My work ----------
+
+  function readingProgress(m, rec) {
+    var answers = (rec && rec.answers) || {}, any = false, typed = false;
+    Object.keys(answers).forEach(function (k) {
+      var a = answers[k] || {};
+      if (typeof a.choice === 'number' || (a.choices && a.choices.length) || a.checked || a.shown || a.text || (a.map && Object.keys(a.map).length)) any = true;
+      if (a.text) typed = true;
+    });
+    return { started: any || (rec && rec.pos > 0), any: any, typed: typed };
+  }
+  function writingProgress(rec) {
+    var plan = (rec && rec.plan) || {};
+    var planned = Object.keys(plan).some(function (k) { return plan[k] && String(plan[k]).trim(); });
+    var drafted = !!(rec && rec.draft && rec.draft.trim());
+    return { started: planned || drafted, planned: planned, drafted: drafted };
+  }
+
+  // Missions she has begun at this level but not finished, newest first.
+  function inProgress() {
+    var lv = ':' + level(), out = [];
+    store.keys('reading:').forEach(function (k) {
+      if (k.slice(-lv.length) !== lv) return;
+      var id = k.slice('reading:'.length, -lv.length), m = find(content.reading.missions, id);
+      if (!m || !visible(m) || !inLevel(m) || isDone(id)) return;
+      var rec = store.get(k, null);
+      if (readingProgress(m, rec).started) out.push({ t: (rec && rec.t) || 0, kind: 'Reading', title: m.title, theme: m.topic, href: '#/reading/' + id });
+    });
+    store.keys('writing:').forEach(function (k) {
+      if (k.slice(-lv.length) !== lv) return;
+      var id = k.slice('writing:'.length, -lv.length), m = find(content.writing.missions, id);
+      if (!m || !visible(m) || isDone(id)) return;
+      var rec = store.get(k, null);
+      if (writingProgress(rec).started) out.push({ t: (rec && rec.t) || 0, kind: 'Writing', title: m.title, theme: m.topic, href: '#/writing/' + id + '/' + ((rec && rec.step) || 'task') });
+    });
+    out.sort(function (a, b) { return b.t - a.t; });
+    return out;
+  }
+
+  // A read-only box that shows her words and doubles as the thing to copy from.
+  function myWordsBox(text, label) {
+    var ta = h('textarea', { class: 'marking-block', readonly: true, rows: String(Math.min(12, Math.max(3, Math.ceil(text.length / 80) + 1))), 'aria-label': label });
+    ta.value = text;
+    var msg = h('span', { class: 'status', role: 'status' });
+    return h('div', null, ta, h('div', { class: 'actions' },
+      h('button', { type: 'button', class: 'btn quiet', text: 'Copy', onclick: function () { copyText(ta).then(function (ok) { msg.textContent = ok ? 'Copied.' : 'Select the text and copy it yourself.'; }); } }), msg));
+  }
+
+  function myWorkView() {
+    var lv = ':' + level(), writing = [], reading = [];
+    store.keys('writing:').forEach(function (k) {
+      if (k.slice(-lv.length) !== lv) return;
+      var id = k.slice('writing:'.length, -lv.length), m = find(content.writing.missions, id), rec = store.get(k, null);
+      if (m && writingProgress(rec).started) writing.push({ m: m, rec: rec, t: rec.t || 0 });
+    });
+    store.keys('reading:').forEach(function (k) {
+      if (k.slice(-lv.length) !== lv) return;
+      var id = k.slice('reading:'.length, -lv.length), m = find(content.reading.missions, id), rec = store.get(k, null);
+      if (m && readingProgress(m, rec).typed) reading.push({ m: m, rec: rec, t: rec.t || 0 });
+    });
+    writing.sort(function (a, b) { return b.t - a.t; }); reading.sort(function (a, b) { return b.t - a.t; });
+
+    function writingItem(w) {
+      var mm = missionFor(w.m), plan = w.rec.plan || {}, draft = (w.rec.draft || '').trim();
+      var fields = planFields(mm).filter(function (f) { return plan[f.key] && String(plan[f.key]).trim(); });
+      return h('details', { class: 'work-item' },
+        h('summary', null, h('span', { class: 'menu-name', text: w.m.title }), h('span', { class: 'menu-count', text: draft ? wordCount(draft) + ' words' : 'plan only' })),
+        fields.length ? h('div', null, h('h3', { text: 'My plan' }), h('dl', { class: 'pane-plan' }, fields.map(function (f) { return [h('dt', { text: f.label }), h('dd', { text: plan[f.key] })]; }))) : null,
+        draft ? h('div', null, h('h3', { text: 'My writing' }), myWordsBox(draft, 'My writing for ' + w.m.title)) : null,
+        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/writing/' + w.m.id + '/' + (draft ? 'write' : 'plan'), text: draft ? 'Carry on writing' : 'Carry on planning' })));
+    }
+    function readingItem(r) {
+      var qs = forLevel(r.m.questions).filter(function (q) { return q.type === 'open' && r.rec.answers[q.id] && r.rec.answers[q.id].text; });
+      return h('details', { class: 'work-item' },
+        h('summary', null, h('span', { class: 'menu-name', text: r.m.title }), h('span', { class: 'menu-count', text: qs.length + (qs.length === 1 ? ' written answer' : ' written answers') })),
+        qs.map(function (q) {
+          return h('div', null, h('h3', { text: (q.label ? 'Question ' + q.label + ': ' : '') + q.prompt }), myWordsBox(r.rec.answers[q.id].text, 'My answer to ' + q.prompt),
+            h('p', { class: 'muted small' }, h('strong', { text: 'One possible answer: ' }), q.model));
+        }),
+        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/reading/' + r.m.id + '/0', text: 'Open the mission' })));
+    }
+
+    return h('div', { class: 'mission' },
+      h('p', { class: 'eyebrow', text: 'My work · ' + LEVELS[level()] }),
+      h('h1', { text: 'My work' }),
+      h('p', { class: 'lede', text: 'Everything you have written, kept on this device. Open one to read it again or copy it.' }),
+      !writing.length && !reading.length ? h('p', { class: 'muted', text: 'Nothing written yet at this level. Your plans, writing and written answers will appear here as you go.' }) : null,
+      writing.length ? h('section', null, h('h2', { text: 'Writing and plans' }), writing.map(writingItem)) : null,
+      reading.length ? h('section', null, h('h2', { text: 'Written answers in reading' }), reading.map(readingItem)) : null,
+      h('p', { class: 'muted small', text: 'This stays in this browser. If you clear your browser data or use another device it will not come with you, so copy anything you want to keep.' }),
+      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/', text: 'Back' }), h('a', { class: 'btn quiet', href: '#/progress', text: 'My progress' })));
+  }
+
+  // On the Done page: all her answers in one place.
+  function answersReview(m, saved) {
+    var qs = forLevel(m.questions);
+    return h('details', { class: 'work-item' },
+      h('summary', null, h('span', { class: 'menu-name', text: 'Look back at my answers' })),
+      h('ol', { class: 'review-list' }, qs.map(function (q) {
+        var a = saved.answers[q.id] || {}, opts = optionsFor(q), mine;
+        if (q.type === 'open') mine = a.text ? a.text : '(left blank)';
+        else if (q.type === 'multi') mine = (a.choices || []).slice().sort().map(function (i) { return LETTERS[i] + '. ' + opts[i]; }).join('; ') || '(no answer)';
+        else if (q.type === 'match') mine = q.items.map(function (it, i) { return it.label + ': ' + (it.given ? it.answer : (a.map && a.map[i]) || '?'); }).join('; ');
+        else mine = typeof a.choice === 'number' ? (q.type === 'choice' ? LETTERS[a.choice] + '. ' : '') + opts[a.choice] : '(no answer)';
+        return h('li', null, h('p', { class: 'fix-wrong', text: (q.label ? q.label + ' ' : '') + q.prompt }), h('p', null, h('span', { class: 'muted small', text: 'Your answer: ' }), mine));
+      })));
   }
 
   // ---------- Make a pack (no server: you copy a prompt to an AI chat, paste the answer back) ----------

@@ -564,3 +564,15 @@ main.wide-ish { max-width: 52rem; }
 .make section { margin-top: 2rem; }
 .station.make { --c: var(--writing); }
 .my-pack .actions { margin-top: 0.4rem; }
+
+/* ---------- Letters on options, saved notes, resume, My work ---------- */
+.option .letter { display: inline-flex; align-items: center; justify-content: center; min-width: 1.7rem; height: 1.7rem; margin: 0 0.6rem 0 0.2rem; border: 1.5px solid var(--rule); border-radius: 50%; font-weight: 700; font-size: 0.9rem; flex: none; background: var(--surface); }
+.option.is-answer .letter { border-color: var(--accent); }
+.saved-note { margin: 0.3rem 0 0.8rem; }
+.resume { margin: 1.5rem 0 0; }
+.resume h2 { font-size: 1.2rem; margin: 0 0 0.6rem; }
+.resume-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.resume-list a { display: grid; gap: 0.1rem; padding: 0.8rem 1rem; text-decoration: none; background: var(--calm); border: 1px solid var(--calm-edge); border-radius: var(--radius); }
+.work-item { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); margin: 0 0 0.8rem; padding: 0.2rem 1rem 0.8rem; }
+.work-item > summary { display: flex; justify-content: space-between; gap: 1rem; cursor: pointer; padding: 0.7rem 0; font-weight: 600; }
+.review-list { padding-left: 1.2rem; }

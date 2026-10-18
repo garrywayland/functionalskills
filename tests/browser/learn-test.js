@@ -32,7 +32,8 @@ const check0 = (c, m) => { if (!c) problems.push('FAIL ' + m); console.log(c ? '
       console.log(L, t.id, 'ok');
     }
     for (const f of learn.fix) {
-      await page.goto(BASE + '#/learn/fix/' + f.id); await page.waitForSelector('.fix-item');
+      await page.evaluate((k) => localStorage.removeItem(k), 'nextstop:learn-fix:' + f.id);
+      await page.goto(BASE + '#/learn/fix/' + f.id); await page.reload(); await page.waitForSelector('.fix-item');
       for (let i = 0; i < f.items.length; i++) {
         await page.fill('#fix-box', f.items[i].fixed);
         await page.click('button:has-text("Check")');
@@ -45,7 +46,8 @@ const check0 = (c, m) => { if (!c) problems.push('FAIL ' + m); console.log(c ? '
     console.log(L, 'learn index done tags:', (await page.$$('.t-done')).length);
   }
   // soft, active marking of fix-it sentences, one at a time, answers at the end
-  await page.goto(BASE + '#/learn/fix/fix-apostrophes'); await page.waitForSelector('.fix-item');
+  await page.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('nextstop:learn-fix:')).forEach(k => localStorage.removeItem(k)));
+  await page.goto(BASE + '#/learn/fix/fix-apostrophes'); await page.reload(); await page.waitForSelector('.fix-item');
   const res = () => page.textContent('.fix-result');
   check0((await page.$$('button:has-text("one way")')).length === 0, 'there is no show-the-answer button');
   await page.click('button:has-text("Check")');
@@ -66,7 +68,7 @@ const check0 = (c, m) => { if (!c) problems.push('FAIL ' + m); console.log(c ? '
   await page.waitForSelector('.fix-list');
   const end = await page.textContent('main');
   check0(/The answers/.test(end) && /One way to write it/.test(end) && /Yours: I'm going to the library after college/.test(end), 'answers appear at the end, with her own attempt');
-  await page.goto(BASE + '#/learn/fix/fix-capitals'); await page.waitForSelector('.fix-item');
+  await page.goto(BASE + '#/learn/fix/fix-capitals'); await page.reload(); await page.waitForSelector('.fix-item');
   await page.fill('#fix-box', 'On Monday, I went to London with my sister.');
   await page.click('button:has-text("Check")');
   check0(/That works/.test(await res()), 'an extra comma is accepted outside the commas set');
