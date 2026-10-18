@@ -1554,7 +1554,7 @@
     var marks = content.writing.marks[String(raw.task)];
     var idx = t.samples.indexOf(s);
     var key = 'learn:' + s.id;
-    var saved = store.get(key, null);
+    var saved = store.get(key, null) || {};
     var out = h('div', { 'aria-live': 'polite' });
     var compSel = numberSelect('pick-comp', marks.composition, saved && saved.comp);
     var spagSel = numberSelect('pick-spag', marks.spag, saved && saved.spag);
@@ -1564,12 +1564,20 @@
       return d === 0 ? 'the same as ours' : d === 1 ? 'one away from ours' : 'different from ours';
     }
 
-    function reveal() {
-      var comp = compSel.value === '' ? null : parseInt(compSel.value, 10);
-      var sp = spagSel.value === '' ? null : parseInt(spagSel.value, 10);
-      store.set(key, { comp: comp, spag: sp });
-      markDone('learn-' + s.id);
-      logDone({ id: 'learn-' + s.id, kind: 'Learn', title: t.title + ' (answer ' + (idx + 1) + ')', topic: 'Marking' });
+    function picks() {
+      return { comp: compSel.value === '' ? null : parseInt(compSel.value, 10), spag: spagSel.value === '' ? null : parseInt(spagSel.value, 10) };
+    }
+    function remember(revealed) { var p = picks(); store.set(key, { comp: p.comp, spag: p.spag, revealed: !!revealed }); }
+    compSel.addEventListener('change', function () { remember(saved.revealed); });
+    spagSel.addEventListener('change', function () { remember(saved.revealed); });
+
+    function reveal(fromSaved) {
+      var p = picks(), comp = p.comp, sp = p.spag;
+      if (!fromSaved) {
+        saved.revealed = true; remember(true);
+        markDone('learn-' + s.id);
+        logDone({ id: 'learn-' + s.id, kind: 'Learn', title: t.title + ' (answer ' + (idx + 1) + ')', topic: 'Marking' });
+      }
       out.replaceChildren(
         h('section', { class: 'feedback', tabindex: '-1' },
           h('h2', { text: 'What we thought' }),
@@ -1587,10 +1595,11 @@
             h('ul', null, s.spag_notes.map(function (n) {
               return h('li', null, h('q', { text: n.quote }), ' → ', h('strong', { text: n.fix }), '. ', n.why);
             }))) : h('p', { class: 'muted', text: 'There was nothing worth correcting in the spelling, punctuation or grammar.' })));
-      var fb = out.querySelector('.feedback'); if (fb) fb.focus({ preventScroll: false });
+      var fb = out.querySelector('.feedback'); if (fb && !fromSaved) fb.focus({ preventScroll: false });
     }
 
     var next = t.samples[idx + 1];
+    if (saved.revealed) reveal(true);
     return h('div', { class: 'mission' },
       h('p', { class: 'eyebrow', text: 'Learn · ' + t.title }),
       h('h1', { text: 'Answer ' + (idx + 1) + ' of ' + t.samples.length }),
@@ -1601,7 +1610,7 @@
         h('div', null, h('label', { for: 'pick-comp', text: 'Composition (out of ' + marks.composition + ')' }), compSel),
         h('div', null, h('label', { for: 'pick-spag', text: 'SPaG (out of ' + marks.spag + ')' }), spagSel)),
       h('div', { class: 'actions' },
-        h('button', { type: 'button', class: 'btn', onclick: reveal, text: 'Show what we thought' }),
+        h('button', { type: 'button', class: 'btn', onclick: function () { reveal(false); }, text: 'Show what we thought' }),
         h('a', { class: 'btn quiet', href: '#/learn/mark/' + t.id, text: 'Back to the task' }),
         next ? h('a', { class: 'btn secondary', href: '#/learn/mark/' + t.id + '/' + next.id, text: 'Next answer' }) : null),
       out);
@@ -1681,9 +1690,15 @@
     if (!f) return notFound();
     var commasMatter = f.skill === 'Commas';
     var wrap = h('div', { class: 'mission' });
-    var state;
+    var state, fixKey = 'learn-fix:' + f.id;
 
-    function reset() { state = { pos: 0, items: f.items.map(function () { return { mine: '', status: 'none', tries: 0 }; }) }; }
+    function save() { store.set(fixKey, state); }
+    function reset() { state = { pos: 0, ended: false, items: f.items.map(function () { return { mine: '', status: 'none', tries: 0 }; }) }; save(); }
+    function restore() {
+      var st = store.get(fixKey, null);
+      if (st && Array.isArray(st.items) && st.items.length === f.items.length && typeof st.pos === 'number') { state = st; return true; }
+      return false;
+    }
 
     function judge(it, mine) {
       var versions = [it.fixed].concat(it.also || []).map(normaliseSentence);
@@ -1701,18 +1716,20 @@
       var box = h('div', { class: 'fix-result', 'aria-live': 'polite' });
       var ta = h('textarea', plain({ id: 'fix-box', rows: 3, 'aria-label': 'Your corrected version of sentence ' + (i + 1) }));
       ta.value = rec.mine;
+      if (rec.status === 'matched') { ta.readOnly = true; }
+      ta.addEventListener('input', function () { rec.mine = ta.value; save(); });
       var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check' });
       var nextBtn = h('button', { type: 'button', class: 'btn quiet', text: last ? 'Finish and see the answers' : 'Next question' });
 
-      function lock() { ta.readOnly = true; checkBtn.hidden = true; nextBtn.className = 'btn'; nextBtn.textContent = last ? 'See the answers' : 'Next question'; nextBtn.focus(); }
+      function lock(quiet) { ta.readOnly = true; checkBtn.hidden = true; nextBtn.className = 'btn'; nextBtn.textContent = last ? 'See the answers' : 'Next question'; if (!quiet) nextBtn.focus(); }
       checkBtn.addEventListener('click', function () {
         rec.mine = ta.value;
-        var r = judge(it, ta.value);
+        var r = judge(it, ta.value); save();
         if (r.kind === 'empty') { box.replaceChildren(h('p', { class: 'muted', text: 'Type your version first, or move on with Next question.' })); return; }
         if (r.kind === 'same') { box.replaceChildren(h('p', { class: 'muted', text: 'That is the same as the sentence above. What would you change?' })); return; }
-        if (r.kind === 'match') { rec.status = 'matched'; box.replaceChildren(h('p', null, h('strong', { text: 'That matches ours. ' }), 'Nicely fixed.')); lock(); return; }
-        if (r.kind === 'comma') { rec.status = 'matched'; box.replaceChildren(h('p', null, h('strong', { text: 'That works. ' }), 'Ours differs only by a comma, and either way is fine here.')); lock(); return; }
-        rec.tries++; rec.status = 'close';
+        if (r.kind === 'match') { rec.status = 'matched'; save(); box.replaceChildren(h('p', null, h('strong', { text: 'That matches ours. ' }), 'Nicely fixed.')); lock(); return; }
+        if (r.kind === 'comma') { rec.status = 'matched'; save(); box.replaceChildren(h('p', null, h('strong', { text: 'That works. ' }), 'Ours differs only by a comma, and either way is fine here.')); lock(); return; }
+        rec.tries++; rec.status = 'close'; save();
         box.replaceChildren(
           h('p', null, (rec.tries === 1 ? 'Close. ' : 'Still ') + 'I would write it differently in ' + places(r.regions.length) + '.'),
           h('p', { class: 'fix-yours' }, h('span', { class: 'muted small', text: 'Yours, with the parts to look at shaded: ' }), shadedSentence(r.text, r.regions)),
@@ -1723,9 +1740,10 @@
         rec.mine = ta.value;
         if (rec.status === 'none' && normaliseSentence(ta.value)) rec.status = 'close';
         if (rec.status === 'none') rec.status = 'skipped';
-        if (last) { drawEnd(); } else { state.pos++; drawQuestion(); }
+        if (last) { state.ended = true; save(); drawEnd(); } else { state.pos++; save(); drawQuestion(); }
       });
 
+      if (rec.status === 'matched') { box.replaceChildren(h('p', null, h('strong', { text: 'That matches ours. ' }), 'Nicely fixed.')); lock(true); }
       wrap.replaceChildren(
         h('p', { class: 'eyebrow', text: 'Learn · Fix it' }),
         h('h1', { text: f.title }),
@@ -1763,7 +1781,8 @@
       var h1 = wrap.querySelector('h1'); if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus(); }
     }
 
-    reset(); drawQuestion();
+    if (!restore()) reset();
+    if (state.ended) drawEnd(); else drawQuestion();
     return wrap;
   }
 
