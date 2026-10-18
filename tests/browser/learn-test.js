@@ -34,35 +34,42 @@ const check0 = (c, m) => { if (!c) problems.push('FAIL ' + m); console.log(c ? '
     for (const f of learn.fix) {
       await page.goto(BASE + '#/learn/fix/' + f.id); await page.waitForSelector('.fix-item');
       for (let i = 0; i < f.items.length; i++) {
-        await page.fill('#fix-' + i, f.items[i].fixed);
-        await page.click(`.fix-item:nth-child(${i + 1}) button:has-text("Check")`);
-        await page.waitForSelector(`.fix-item:nth-child(${i + 1}) .fix-result strong`);
+        await page.fill('#fix-box', f.items[i].fixed);
+        await page.click('button:has-text("Check")');
+        await page.waitForSelector('.fix-result strong');
+        await page.click('.fix-actions button:not([hidden])');
       }
-      await page.waitForSelector('.notice');
+      await page.waitForSelector('.fix-list');
     }
     await page.goto(BASE + '#/learn');
     console.log(L, 'learn index done tags:', (await page.$$('.t-done')).length);
   }
-  // soft, active marking of a fix-it sentence
+  // soft, active marking of fix-it sentences, one at a time, answers at the end
   await page.goto(BASE + '#/learn/fix/fix-apostrophes'); await page.waitForSelector('.fix-item');
-  const res = () => page.textContent('.fix-item:nth-child(2) .fix-result');
-  await page.click('.fix-item:nth-child(2) button:has-text("Check")');
+  const res = () => page.textContent('.fix-result');
+  check0((await page.$$('button:has-text("one way")')).length === 0, 'there is no show-the-answer button');
+  await page.click('button:has-text("Check")');
   check0(/Type your version first/.test(await res()), 'empty answer gets a gentle prompt');
-  await page.fill('#fix-1', 'We couldnt find the platform.');
-  await page.click('.fix-item:nth-child(2) button:has-text("Check")');
+  await page.fill('#fix-box', 'Im going to the library after college.');
+  await page.click('button:has-text("Check")');
   check0(/same as the sentence above/.test(await res()), 'unchanged sentence gets a gentle nudge');
-  await page.fill('#fix-1', "We could'nt find the platform.");
-  await page.click('.fix-item:nth-child(2) button:has-text("Check")');
-  check0(/Close\. I would write it differently in one place/.test(await res()) && (await page.$$('.fix-item:nth-child(2) mark.diff-mark')).length === 1, 'first miss: one place, shaded, no answer yet');
-  check0(!(await res()).includes("couldn't find"), 'the answer is not shown on the first miss');
-  await page.fill('#fix-1', "We couldnt' find the platform.");
-  await page.click('.fix-item:nth-child(2) button:has-text("Check")');
-  check0(/One way to write it/.test(await res()) && /still write it differently/.test(await res()), 'second miss: soft reveal');
-  check0(await page.$eval('#fix-1', e => e.readOnly), 'item is locked after reveal');
+  await page.fill('#fix-box', "I'm going to the libary after college.");
+  await page.click('button:has-text("Check")');
+  check0(/Close\. I would write it differently in one place/.test(await res()) && (await page.$$('mark.diff-mark')).length === 1, 'first miss: one place, shaded');
+  await page.fill('#fix-box', "I'm going to the library after college");
+  await page.click('button:has-text("Check")');
+  check0(/Still I would write it differently/.test(await res()) && !/One way to write it/.test(await page.textContent('main')), 'second miss: still no answer shown');
+  await page.click('button:has-text("Next question")');
+  check0(/Sentence 2 of 8/.test(await page.textContent('main')), 'Next question moves on (skipping is fine)');
+  await page.click('button:has-text("Next question")');
+  for (let i = 3; i <= 8; i++) { await page.click(i === 8 ? 'button:has-text("Finish")' : 'button:has-text("Next question")'); }
+  await page.waitForSelector('.fix-list');
+  const end = await page.textContent('main');
+  check0(/The answers/.test(end) && /One way to write it/.test(end) && /Yours: I'm going to the library after college/.test(end), 'answers appear at the end, with her own attempt');
   await page.goto(BASE + '#/learn/fix/fix-capitals'); await page.waitForSelector('.fix-item');
-  await page.fill('#fix-0', 'On Monday, I went to London with my sister.');
-  await page.click('.fix-item:nth-child(1) button:has-text("Check")');
-  check0(/That works/.test(await page.textContent('.fix-item:nth-child(1) .fix-result')), 'an extra comma is accepted outside the commas set');
+  await page.fill('#fix-box', 'On Monday, I went to London with my sister.');
+  await page.click('button:has-text("Check")');
+  check0(/That works/.test(await res()), 'an extra comma is accepted outside the commas set');
   await page.goto(BASE + '#/progress'); await page.waitForSelector('.log-table');
   console.log('progress rows:', (await page.$$('.log-table tbody tr')).length, '| stats:', (await page.$$eval('.stats div', ds => ds.map(d => d.innerText.replace(/\s+/g, ' ')))).join(' | '));
   const phone = await (await browser.newContext({ viewport: { width: 360, height: 760 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true })).newPage();

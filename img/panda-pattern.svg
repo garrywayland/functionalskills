@@ -2,11 +2,11 @@
   <defs>
     <!-- A giant panda sitting up. Origin is the middle of the body. -->
     <g id="panda" stroke-linejoin="round" stroke-linecap="round">
-      <ellipse cx="-34" cy="52" rx="22" ry="15" transform="rotate(-12 -34 52)" fill="#000"/>
-      <ellipse cx="34" cy="52" rx="22" ry="15" transform="rotate(12 34 52)" fill="#000"/>
-      <ellipse cx="0" cy="18" rx="47" ry="48" fill="#fff" stroke="#000" stroke-width="3"/>
-      <ellipse cx="-40" cy="8" rx="11" ry="24" transform="rotate(-24 -40 8)" fill="#000"/>
-      <ellipse cx="40" cy="8" rx="11" ry="24" transform="rotate(24 40 8)" fill="#000"/>
+      <ellipse cx="-52" cy="16" rx="13" ry="32" transform="rotate(14 -52 16)" fill="#000"/>
+      <ellipse cx="52" cy="16" rx="13" ry="32" transform="rotate(-14 52 16)" fill="#000"/>
+      <ellipse cx="-34" cy="60" rx="24" ry="16" transform="rotate(-10 -34 60)" fill="#000"/>
+      <ellipse cx="34" cy="60" rx="24" ry="16" transform="rotate(10 34 60)" fill="#000"/>
+      <ellipse cx="0" cy="22" rx="44" ry="46" fill="#fff" stroke="#000" stroke-width="3"/>
       <circle cx="-31" cy="-84" r="13" fill="#000"/>
       <circle cx="31" cy="-84" r="13" fill="#000"/>
       <ellipse cx="0" cy="-58" rx="39" ry="33" fill="#fff" stroke="#000" stroke-width="3"/>

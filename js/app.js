@@ -1674,77 +1674,97 @@
 
   function places(n) { return (n === 1 ? 'one place' : n === 2 ? 'two places' : n === 3 ? 'three places' : n + ' places'); }
 
+  // One sentence at a time. Check gives gentle feedback and she can try again; Next question moves on.
+  // The answers all come at the end.
   function learnFixView(id) {
     var f = find(content.learn.fix, id);
     if (!f) return notFound();
-    var resolved = 0, matched = 0;
-    var doneBox = h('div', { 'aria-live': 'polite' });
     var commasMatter = f.skill === 'Commas';
+    var wrap = h('div', { class: 'mission' });
+    var state;
 
-    function oneItem(it, i) {
-      var versions = [it.fixed].concat(it.also || []);
-      var box = h('div', { class: 'fix-result', 'aria-live': 'polite' });
-      var ta = h('textarea', plain({ id: 'fix-' + i, rows: 2, 'aria-label': 'Your corrected version of sentence ' + (i + 1) }));
-      var attempts = 0, finished = false;
-      var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check' });
-      var showBtn = h('button', { type: 'button', class: 'btn quiet', text: 'Show one way to write it' });
-      showBtn.hidden = true;
-      var row = h('div', { class: 'fix-actions' }, checkBtn, showBtn);
+    function reset() { state = { pos: 0, items: f.items.map(function () { return { mine: '', status: 'none', tries: 0 }; }) }; }
 
-      function finish(wasMatch) {
-        if (finished) return;
-        finished = true; resolved++; if (wasMatch) matched++;
-        ta.readOnly = true; row.hidden = true;
-        if (resolved === f.items.length) {
-          markDone('learn-' + f.id);
-          logDone({ id: 'learn-' + f.id, kind: 'Learn', title: f.title, topic: 'Fix it', matched: matched, total: f.items.length });
-          doneBox.replaceChildren(h('p', { class: 'notice', text: 'That is the set done. Well done for sticking with it.' }));
-        }
-      }
-      function why() { return h('p', { class: 'muted small', text: it.why }); }
-      function reveal(note, shaded) {
-        box.replaceChildren(
-          note ? h('p', { text: note }) : null,
-          shaded || null,
-          h('p', null, h('strong', { text: 'One way to write it: ' }), it.fixed), why());
-        finish(false);
-      }
-
-      checkBtn.addEventListener('click', function () {
-        var mine = normaliseSentence(ta.value);
-        if (!mine) { box.replaceChildren(h('p', { class: 'muted', text: 'Type your version first. If you are stuck, you can ask to see one way to write it.' })); showBtn.hidden = false; return; }
-        if (mine === normaliseSentence(it.wrong)) { box.replaceChildren(h('p', { class: 'muted', text: 'That is the same as the sentence above. What would you change?' })); showBtn.hidden = false; return; }
-        if (versions.some(function (v) { return normaliseSentence(v) === mine; })) {
-          box.replaceChildren(h('p', null, h('strong', { text: 'That matches ours. ' }), 'Nicely fixed.'), why()); finish(true); return;
-        }
-        if (!commasMatter && versions.some(function (v) { return compareTokens(withoutCommas(tokenise(mine)), withoutCommas(tokenise(normaliseSentence(v)))).length === 0; })) {
-          box.replaceChildren(h('p', null, h('strong', { text: 'That works. ' }), 'Ours differs only by a comma, and either way is fine here. Our version: ', h('em', { text: it.fixed })), why()); finish(true); return;
-        }
-        attempts++;
-        var best = closest(mine, versions.map(normaliseSentence));
-        var n = best.regions.length;
-        var shaded = h('p', { class: 'fix-yours' }, h('span', { class: 'muted small', text: 'Yours, with the parts to look at shaded: ' }), shadedSentence(mine, best.regions));
-        if (attempts === 1) {
-          box.replaceChildren(h('p', null, 'Close. I would write it differently in ' + places(n) + '.'), shaded,
-            h('p', { class: 'muted small', text: 'Have another go if you like, then press Check again. Or ask to see one way to write it.' }));
-          showBtn.hidden = false; ta.focus();
-        } else {
-          reveal('I would still write it differently in ' + places(n) + '. That may be fine: there is often more than one way. Have a look and decide.', shaded);
-        }
-      });
-      showBtn.addEventListener('click', function () { reveal(null, null); });
-
-      return h('li', { class: 'fix-item' },
-        h('p', { class: 'fix-wrong' }, h('span', { class: 'muted small', text: 'Sentence ' + (i + 1) + ': ' }), h('q', { text: it.wrong })),
-        h('label', { for: 'fix-' + i, class: 'muted small', text: 'Rewrite it correctly' }), ta, row, box);
+    function judge(it, mine) {
+      var versions = [it.fixed].concat(it.also || []).map(normaliseSentence);
+      var text = normaliseSentence(mine);
+      if (!text) return { kind: 'empty' };
+      if (text === normaliseSentence(it.wrong)) return { kind: 'same' };
+      if (versions.indexOf(text) !== -1) return { kind: 'match' };
+      if (!commasMatter && versions.some(function (v) { return compareTokens(withoutCommas(tokenise(text)), withoutCommas(tokenise(v))).length === 0; })) return { kind: 'comma' };
+      var best = closest(text, versions);
+      return { kind: 'close', regions: best.regions, text: text };
     }
-    return h('div', { class: 'mission' },
-      h('p', { class: 'eyebrow', text: 'Learn · Fix it' }),
-      h('h1', { text: f.title }),
-      h('p', { class: 'lede', text: f.intro }),
-      h('ol', { class: 'fix-list' }, f.items.map(oneItem)),
-      doneBox,
-      h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/learn', text: 'Back to Learn' })));
+
+    function drawQuestion() {
+      var i = state.pos, it = f.items[i], rec = state.items[i], last = i === f.items.length - 1;
+      var box = h('div', { class: 'fix-result', 'aria-live': 'polite' });
+      var ta = h('textarea', plain({ id: 'fix-box', rows: 3, 'aria-label': 'Your corrected version of sentence ' + (i + 1) }));
+      ta.value = rec.mine;
+      var checkBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Check' });
+      var nextBtn = h('button', { type: 'button', class: 'btn quiet', text: last ? 'Finish and see the answers' : 'Next question' });
+
+      function lock() { ta.readOnly = true; checkBtn.hidden = true; nextBtn.className = 'btn'; nextBtn.textContent = last ? 'See the answers' : 'Next question'; nextBtn.focus(); }
+      checkBtn.addEventListener('click', function () {
+        rec.mine = ta.value;
+        var r = judge(it, ta.value);
+        if (r.kind === 'empty') { box.replaceChildren(h('p', { class: 'muted', text: 'Type your version first, or move on with Next question.' })); return; }
+        if (r.kind === 'same') { box.replaceChildren(h('p', { class: 'muted', text: 'That is the same as the sentence above. What would you change?' })); return; }
+        if (r.kind === 'match') { rec.status = 'matched'; box.replaceChildren(h('p', null, h('strong', { text: 'That matches ours. ' }), 'Nicely fixed.')); lock(); return; }
+        if (r.kind === 'comma') { rec.status = 'matched'; box.replaceChildren(h('p', null, h('strong', { text: 'That works. ' }), 'Ours differs only by a comma, and either way is fine here.')); lock(); return; }
+        rec.tries++; rec.status = 'close';
+        box.replaceChildren(
+          h('p', null, (rec.tries === 1 ? 'Close. ' : 'Still ') + 'I would write it differently in ' + places(r.regions.length) + '.'),
+          h('p', { class: 'fix-yours' }, h('span', { class: 'muted small', text: 'Yours, with the parts to look at shaded: ' }), shadedSentence(r.text, r.regions)),
+          h('p', { class: 'muted small', text: 'Have another go and press Check again, or move on. The answers come at the end.' }));
+        ta.focus();
+      });
+      nextBtn.addEventListener('click', function () {
+        rec.mine = ta.value;
+        if (rec.status === 'none' && normaliseSentence(ta.value)) rec.status = 'close';
+        if (rec.status === 'none') rec.status = 'skipped';
+        if (last) { drawEnd(); } else { state.pos++; drawQuestion(); }
+      });
+
+      wrap.replaceChildren(
+        h('p', { class: 'eyebrow', text: 'Learn · Fix it' }),
+        h('h1', { text: f.title }),
+        h('p', { class: 'lede', text: f.intro }),
+        h('p', { class: 'muted small', text: 'Sentence ' + (i + 1) + ' of ' + f.items.length }),
+        h('div', { class: 'fix-item' },
+          h('p', { class: 'fix-wrong' }, h('q', { text: it.wrong })),
+          h('label', { for: 'fix-box', class: 'muted small', text: 'Rewrite it correctly' }), ta,
+          h('div', { class: 'fix-actions' }, checkBtn, nextBtn), box),
+        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/learn', text: 'Back to Learn' })));
+      var h1 = wrap.querySelector('h1'); if (h1 && i > 0) { ta.focus(); }
+    }
+
+    function drawEnd() {
+      var matched = state.items.filter(function (x) { return x.status === 'matched'; }).length;
+      markDone('learn-' + f.id);
+      logDone({ id: 'learn-' + f.id, kind: 'Learn', title: f.title, topic: 'Fix it', matched: matched, total: f.items.length });
+      var words = { matched: 'Matched ours', close: 'Different from ours (it may still be fine)', skipped: 'Skipped', none: 'Skipped' };
+      wrap.replaceChildren(
+        h('p', { class: 'eyebrow', text: 'Learn · Fix it' }),
+        h('h1', { text: 'The answers' }),
+        h('p', { class: 'lede', text: 'You matched ' + matched + ' of ' + f.items.length + ' straight away. Here is one way to write each sentence, and why. If yours is different, check whether it still follows the rule.' }),
+        h('ol', { class: 'fix-list' }, f.items.map(function (it, i) {
+          var rec = state.items[i];
+          return h('li', { class: 'fix-item' },
+            h('p', { class: 'fix-wrong' }, h('span', { class: 'muted small', text: 'Sentence ' + (i + 1) + ': ' }), h('q', { text: it.wrong })),
+            rec.mine && rec.status !== 'matched' ? h('p', null, h('span', { class: 'muted small', text: 'Yours: ' }), rec.mine) : null,
+            h('p', null, h('strong', { text: 'One way to write it: ' }), it.fixed),
+            h('p', { class: 'muted small', text: it.why }),
+            h('p', { class: 'muted small', text: words[rec.status] }));
+        })),
+        h('div', { class: 'actions' },
+          h('button', { type: 'button', class: 'btn secondary', text: 'Try this set again', onclick: function () { reset(); drawQuestion(); window.scrollTo(0, 0); } }),
+          h('a', { class: 'btn', href: '#/learn', text: 'Back to Learn' })));
+      var h1 = wrap.querySelector('h1'); if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus(); }
+    }
+
+    reset(); drawQuestion();
+    return wrap;
   }
 
   // ---------- Toolkit ----------
