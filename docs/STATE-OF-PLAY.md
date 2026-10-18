@@ -35,7 +35,7 @@ A static practice site for Pearson Edexcel Functional Skills English (Level 1 an
 - Level 2 reading has fewer missions than Level 1.
 - Learn has no reading "you are the assessor" items yet, and Level 2 has only two marking tasks.
 - Not done: stimulus-based (picture) writing tasks; photograph questions in Level 1 reading; aligning Level 1 long reading order with the official papers.
-- The old test scripts in `tests/browser/` were adapted for the new home page; `e2e.js` takes several minutes.
+- `tests/browser/menus-test.js` still expects the Writing menu on the Reading page (from line 19) and needs updating; the other browser tests pass. `e2e.js` takes several minutes.
 
 ## Next steps, in suggested order
 1. Review the question pack (`docs/question-review/`) with a teacher or an AI chat; fix what they find in `/content`.
