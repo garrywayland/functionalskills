@@ -866,6 +866,31 @@
     return t ? t.split(/\s+/).length : 0;
   }
 
+  // Plan and Write keep the task in view: beside the work on wide screens, above it (foldable) on narrow ones.
+  function splitLayout(m, format, length, plan, withPlan, work) {
+    var pane = h('details', { class: 'task-pane', open: true },
+      h('summary', { text: 'The task' }),
+      taskCard(m, format, length),
+      withPlan ? h('div', { class: 'pane-plan' }, h('h3', { text: 'My plan' }), planPeekOpen(m, plan)) : null,
+      withPlan && m.indicative ? h('details', { class: 'plan-peek' },
+        h('summary', { text: 'Ideas you could use (try writing first)' }),
+        h('p', { class: 'muted small', text: 'These are examples of ideas. You do not need to use them, and other good ideas count too.' }),
+        h('dl', null, m.bullets.map(function (b, i) { return [h('dt', { text: b }), h('dd', { text: m.indicative[i] || '' })]; }))) : null);
+    var wide = window.matchMedia ? window.matchMedia('(min-width: 60rem)') : null;
+    function sync() { if (wide && wide.matches) { pane.open = true; pane.classList.add('fixed-open'); } else pane.classList.remove('fixed-open'); }
+    pane.addEventListener('toggle', function () { if (wide && wide.matches && !pane.open) pane.open = true; });
+    sync();
+    if (wide && wide.addEventListener) wide.addEventListener('change', sync);
+    else if (wide && wide.addListener) wide.addListener(sync);
+    return h('div', { class: 'split' }, pane, h('div', { class: 'work-pane' }, work));
+  }
+
+  function planPeekOpen(m, plan) {
+    var fields = planFields(m).filter(function (f) { return plan[f.key]; });
+    if (!fields.length) return h('p', { class: 'muted small' }, 'No plan yet. ', h('a', { href: '#/writing/' + m.id + '/plan', text: 'Make a quick plan' }), ' or just start writing.');
+    return h('dl', null, fields.map(function (f) { return [h('dt', { text: f.label }), h('dd', { text: plan[f.key] })]; }));
+  }
+
   function writingView(id, stepParam) {
     var raw = find(content.writing.missions, id);
     if (!raw) return notFound();
@@ -910,7 +935,8 @@
 
     if (step === 'plan') {
       var fields = planFields(m);
-      append(wrap,
+      main.className = 'wide';
+      append(wrap, splitLayout(m, format, length, saved.plan, false, [
         h('h1', { text: 'Plan it' }),
         h('p', { class: 'lede', text: 'Jot down a few words for each box. Notes are fine; you do not need full sentences here.' }),
         fields.map(function (f) {
@@ -923,7 +949,7 @@
             ta);
         }),
         h('div', { class: 'actions' }, backBtn, nextBtn)
-      );
+      ]));
     }
 
     if (step === 'write') {
@@ -947,15 +973,10 @@
       var checklist = (format ? format.checklist : []).map(function (c, i) { return { key: 'f' + i, text: c }; });
       m.bullets.forEach(function (b, i) { checklist.push({ key: 'b' + i, text: 'I covered: ' + b + '.' }); });
 
-      append(wrap,
+      main.className = 'wide';
+      append(wrap, splitLayout(m, format, length, saved.plan, true, [
         h('h1', { text: 'Write it' }),
         h('p', { class: 'lede', text: 'Aim for ' + length + ' (a rough guide).' }),
-        h('details', { class: 'plan-peek' }, h('summary', { text: 'Show the task' }), taskCard(m, format, length)),
-        planPeek(m, saved.plan),
-        m.indicative ? h('details', { class: 'plan-peek' },
-          h('summary', { text: 'Ideas you could use (try writing first)' }),
-          h('p', { class: 'muted small', text: 'These are examples of ideas. You do not need to use them, and other good ideas count too.' }),
-          h('dl', null, m.bullets.map(function (b, i) { return [h('dt', { text: b }), h('dd', { text: m.indicative[i] || '' })]; }))) : null,
         h('label', { class: 'field', for: 'draft' }, 'Your ' + formatName(m.format)),
         box,
         h('div', { class: 'write-meta' }, countEl, status,
@@ -971,7 +992,7 @@
           }))
         ),
         h('div', { class: 'actions' }, backBtn, nextBtn)
-      );
+      ]));
     }
 
     if (step === 'send') {
