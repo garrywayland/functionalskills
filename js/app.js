@@ -32,6 +32,10 @@
     }
   };
 
+  // Practice answers should be the learner's own: no spell-check, autocorrect, capitals or grammar helpers.
+  var NO_HELP = { spellcheck: 'false', autocorrect: 'off', autocapitalize: 'off', autocomplete: 'off', 'data-gramm': 'false', 'data-gramm_editor': 'false', 'data-enable-grammarly': 'false' };
+  function plain(attrs) { var o = {}; Object.keys(NO_HELP).forEach(function (k) { o[k] = NO_HELP[k]; }); Object.keys(attrs).forEach(function (k) { o[k] = attrs[k]; }); return o; }
+
   // ---------- Small DOM helper (text only, never innerHTML) ----------
 
   function h(tag, attrs) {
@@ -764,7 +768,7 @@
   function openQuestion(q, ans, save) {
     var box = h('div');
     var id = 'open-' + q.id;
-    var ta = h('textarea', { id: id, rows: '5' });
+    var ta = h('textarea', plain({ id: id, rows: '5' }));
     ta.value = ans.text || '';
     ta.addEventListener('input', function () { ans.text = ta.value; save(); });
     box.appendChild(h('label', { class: 'field', for: id }, 'Your answer', h('span', { class: 'hint', text: 'A few sentences is enough. No one else sees this.' })));
@@ -866,23 +870,31 @@
     return t ? t.split(/\s+/).length : 0;
   }
 
-  // Plan and Write keep the task in view: beside the work on wide screens, above it (foldable) on narrow ones.
+  // Plan and Write keep the task in view: beside the work on wide screens. On narrow ones a button
+  // slides the task up over the page, and a second tap (or Escape) puts it away.
   function splitLayout(m, format, length, plan, withPlan, work) {
-    var pane = h('details', { class: 'task-pane', open: true },
-      h('summary', { text: 'The task' }),
+    var pane = h('aside', { class: 'task-pane', id: 'task-pane', 'aria-label': 'The task' });
+    var closeBtn = h('button', { type: 'button', class: 'btn quiet sheet-close', text: 'Close' });
+    var openBtn = h('button', { type: 'button', class: 'btn sheet-open-btn', 'aria-controls': 'task-pane', 'aria-expanded': 'false', text: 'Show the task' });
+    append(pane,
+      h('div', { class: 'pane-head' }, h('h2', { text: 'The task' }), closeBtn),
       taskCard(m, format, length),
       withPlan ? h('div', { class: 'pane-plan' }, h('h3', { text: 'My plan' }), planPeekOpen(m, plan)) : null,
       withPlan && m.indicative ? h('details', { class: 'plan-peek' },
         h('summary', { text: 'Ideas you could use (try writing first)' }),
         h('p', { class: 'muted small', text: 'These are examples of ideas. You do not need to use them, and other good ideas count too.' }),
         h('dl', null, m.bullets.map(function (b, i) { return [h('dt', { text: b }), h('dd', { text: m.indicative[i] || '' })]; }))) : null);
-    var wide = window.matchMedia ? window.matchMedia('(min-width: 60rem)') : null;
-    function sync() { if (wide && wide.matches) { pane.open = true; pane.classList.add('fixed-open'); } else pane.classList.remove('fixed-open'); }
-    pane.addEventListener('toggle', function () { if (wide && wide.matches && !pane.open) pane.open = true; });
-    sync();
-    if (wide && wide.addEventListener) wide.addEventListener('change', sync);
-    else if (wide && wide.addListener) wide.addListener(sync);
-    return h('div', { class: 'split' }, pane, h('div', { class: 'work-pane' }, work));
+
+    function setOpen(on) {
+      pane.classList.toggle('sheet-on', on);
+      openBtn.setAttribute('aria-expanded', String(on));
+      openBtn.textContent = on ? 'Hide the task' : 'Show the task';
+      if (on) closeBtn.focus({ preventScroll: true }); 
+    }
+    openBtn.addEventListener('click', function () { setOpen(!pane.classList.contains('sheet-on')); if (!pane.classList.contains('sheet-on')) openBtn.focus(); });
+    closeBtn.addEventListener('click', function () { setOpen(false); openBtn.focus(); });
+    pane.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pane.classList.contains('sheet-on')) { setOpen(false); openBtn.focus(); } });
+    return h('div', { class: 'split' }, pane, h('div', { class: 'work-pane' }, work), openBtn);
   }
 
   function planPeekOpen(m, plan) {
@@ -941,7 +953,7 @@
         h('p', { class: 'lede', text: 'Jot down a few words for each box. Notes are fine; you do not need full sentences here.' }),
         fields.map(function (f) {
           var fid = 'plan-' + f.key;
-          var ta = h('textarea', { id: fid, rows: '3' });
+          var ta = h('textarea', plain({ id: fid, rows: '3' }));
           ta.value = saved.plan[f.key] || '';
           ta.addEventListener('input', function () { saved.plan[f.key] = ta.value; save(); });
           return h('div', null,
@@ -955,7 +967,7 @@
     if (step === 'write') {
       var countEl = h('span', { class: 'word-count' });
       var status = h('span', { class: 'visually-hidden', role: 'status' });
-      var box = h('textarea', { id: 'draft', class: 'big', spellcheck: 'false', autocapitalize: 'off', autocomplete: 'off' });
+      var box = h('textarea', plain({ id: 'draft', class: 'big' }));
       box.value = saved.draft || '';
       var announce = debounce(function () { status.textContent = countEl.textContent; }, 1500);
       function updateCount() {
@@ -1602,7 +1614,7 @@
     var doneBox = h('div', { 'aria-live': 'polite' });
     function oneItem(it, i) {
       var box = h('div', { class: 'fix-result', 'aria-live': 'polite' });
-      var ta = h('textarea', { id: 'fix-' + i, rows: 2, 'aria-label': 'Your corrected version of sentence ' + (i + 1) });
+      var ta = h('textarea', plain({ id: 'fix-' + i, rows: 2, 'aria-label': 'Your corrected version of sentence ' + (i + 1) }));
       var btn = h('button', { type: 'button', class: 'btn secondary', text: 'Check', onclick: function () {
         if (!box.firstChild) shown++;
         box.replaceChildren(h('p', null, h('strong', { text: 'One way to write it: ' }), it.fixed), h('p', { class: 'muted small', text: it.why }));
