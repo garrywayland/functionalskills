@@ -27,6 +27,7 @@ const pack = (over) => { const p = JSON.parse(JSON.stringify(example)); p.readin
   const prompt = await page.inputValue('#make-prompt');
   check(prompt.includes('"' + THEME + '"') && prompt.includes('match days') && prompt.includes('Do NOT state facts'), 'prompt names the theme and the real-things rule');
   check(toolkit.formats.every(f => prompt.includes(f.id)), 'prompt lists every format the site knows');
+  check(/downloadable FILE called "rovers-fc-pack.json"/.test(prompt) && /ONE code block/.test(prompt), 'prompt asks the AI for a downloadable file (or one code block)');
   check(/2 short reading missions/.test(prompt) && /1 longer writing task/.test(prompt), 'prompt carries the default counts');
   await page.selectOption('#make-reading', '3'); await page.selectOption('#make-level', 'L2');
   check(/3 short reading missions/.test(await page.inputValue('#make-prompt')) && /Level 2/.test(await page.inputValue('#make-prompt')), 'changing the options changes the prompt');
@@ -65,6 +66,17 @@ const pack = (over) => { const p = JSON.parse(JSON.stringify(example)); p.readin
   check(/already used/.test(await page.textContent('.feedback')), 'an id that clashes with the site is refused');
   await page.reload(); await page.waitForSelector('#make-paste');
   check((await page.inputValue('#make-paste')).includes('w-pandas-1'), 'the pasted text survives a reload');
+
+  // 2b. choosing a file instead of pasting
+  const fs2 = require('fs'), os2 = require('os');
+  const fpath = path.join(os2.tmpdir(), 'rovers-fc-1-pack.json');
+  fs2.writeFileSync(fpath, JSON.stringify(pack(p => { p.writing[0].bullets = ['just one']; return p; })));
+  await page.setInputFiles('#make-file', fpath); await page.waitForSelector('.feedback');
+  check(/needs 2 bullet points/.test(await page.textContent('.feedback')) && (await page.inputValue('#make-paste')).includes('just one'), 'a chosen file is read and checked, and its text lands in the box');
+  fs2.writeFileSync(fpath, JSON.stringify(pack()));
+  await page.setInputFiles('#make-file', fpath); await page.waitForSelector('button:has-text("Save in this browser")');
+  check(/passed the same checks/.test(await page.textContent('.feedback')), 'a good chosen file passes and can be saved');
+  fs2.rmSync(fpath, { force: true });
 
   // 3. a good pack, wrapped in chat the way an AI would reply
   const good = pack(p => { p.reading[0].title = 'Saturday <img src=x onerror=alert(1)> at Rovers'; return p; });

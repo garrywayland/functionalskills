@@ -625,6 +625,7 @@
           ));
         }, text: 'Show how many matched' }),
         h('a', { class: 'btn', href: '#/reading', text: 'Back to reading' }),
+        downloadButton(m.title, function () { return readingFileText(m, saved); }, 'Download my answers', 'btn secondary'),
         h('button', { type: 'button', class: 'btn quiet', onclick: function () {
           store.remove(key);
           go(hrefFor(0));
@@ -920,6 +921,44 @@
     return f ? f.name.toLowerCase() : id;
   }
 
+  // ---------- Download her work as a plain text file ----------
+
+  function writingFileText(m, rec) {
+    var plan = (rec && rec.plan) || {}, draft = ((rec && rec.draft) || '').trim();
+    var fields = planFields(m).filter(function (f) { return plan[f.key] && String(plan[f.key]).trim(); });
+    var out = [m.title, LEVELS[level()] + ' · ' + m.topic + ' · ' + (m.task === 1 ? 'longer task' : 'shorter task'), 'Saved ' + prettyDate(today()), '',
+      'THE TASK', m.context, 'Who it is for: ' + m.audience, 'Why you are writing: ' + m.purpose, m.instruction, 'Include:'];
+    m.bullets.forEach(function (b) { out.push('- ' + b); });
+    if (fields.length) { out.push('', 'MY PLAN'); fields.forEach(function (f) { out.push(f.label, plan[f.key], ''); }); }
+    out.push('', 'MY WRITING' + (draft ? ' (' + wordCount(draft) + ' words)' : ''), draft || '(nothing written yet)', '');
+    return out.join('\n');
+  }
+
+  function readingFileText(m, rec) {
+    var answers = (rec && rec.answers) || {}, opts, out = [m.title, LEVELS[level()] + ' · ' + m.topic, 'Saved ' + prettyDate(today()), '', 'MY ANSWERS', ''];
+    forLevel(m.questions).forEach(function (q) {
+      var a = answers[q.id] || {}, mine;
+      opts = optionsFor(q);
+      if (q.type === 'open') mine = a.text || '(left blank)';
+      else if (q.type === 'multi') mine = (a.choices || []).slice().sort().map(function (i) { return LETTERS[i] + '. ' + opts[i]; }).join('; ') || '(no answer)';
+      else if (q.type === 'match') mine = q.items.map(function (it, i) { return it.label + ': paragraph ' + (it.given ? it.answer : (a.map && a.map[i]) || '?'); }).join('; ');
+      else mine = typeof a.choice === 'number' ? (q.type === 'choice' ? LETTERS[a.choice] + '. ' : '') + opts[a.choice] : '(no answer)';
+      out.push((q.label ? 'Question ' + q.label + ': ' : '') + q.prompt, 'My answer: ' + mine);
+      if (q.type === 'open' && q.model) out.push('One possible answer: ' + q.model);
+      out.push('');
+    });
+    return out.join('\n');
+  }
+
+  function saveTextFile(title, text) {
+    download('next-stop-' + (slugOf(title) || 'my-work') + '-' + today() + '.txt', text, 'text/plain;charset=utf-8');
+  }
+
+  // A "Download" button. getText runs when it is pressed, so the file always has her latest words.
+  function downloadButton(title, getText, label, cls) {
+    return h('button', { type: 'button', class: cls || 'btn quiet', text: label || 'Download as a file', onclick: function () { saveTextFile(title, getText()); } });
+  }
+
   function wordCount(text) {
     var t = (text || '').trim();
     return t ? t.split(/\s+/).length : 0;
@@ -1053,6 +1092,7 @@
         h('div', { class: 'write-meta' }, countEl, status,
           h('label', { class: 'toggle' }, spell, 'Show spelling underlines')),
         draftNote,
+        h('div', { class: 'actions' }, downloadButton(m.title, function () { return writingFileText(m, saved); }, 'Download my writing')),
         h('section', { 'aria-labelledby': 'fc-h' },
           h('h2', { id: 'fc-h', text: 'Check before you send' }),
           h('p', { class: 'muted small' }, 'Tick each one when it is true. ', format ? h('a', { href: '#/toolkit/format/' + format.id, text: 'How to write ' + (format.id === 'email' || format.id === 'article' ? 'an ' : 'a ') + format.name.toLowerCase() }) : null),
@@ -1108,6 +1148,7 @@
         h('label', { class: 'field', for: 'marking' }, 'Text to copy'),
         out,
         h('div', { class: 'actions' }, copyBtn,
+          downloadButton(m.title, function () { return writingFileText(m, saved); }, 'Download as a file', 'btn secondary'),
           h('button', { type: 'button', class: 'btn secondary', onclick: function () {
             markDone(id);
             logDone({ id: id, kind: 'Writing', title: m.title, topic: m.topic, words: words, task: m.task });
@@ -1916,6 +1957,12 @@
             h('p', { class: 'muted small', text: words[rec.status] }));
         })),
         h('div', { class: 'actions' },
+          downloadButton(f.title, function () {
+            return [f.title, LEVELS[level()] + ' · Fix it', 'Saved ' + prettyDate(today()), ''].concat(f.items.map(function (it, i) {
+              var rec = state.items[i];
+              return ['Sentence ' + (i + 1) + ': ' + it.wrong, 'My version: ' + (rec.mine || '(skipped)'), 'One way to write it: ' + it.fixed, it.why, ''].join('\n');
+            })).join('\n');
+          }, 'Download these answers', 'btn secondary'),
           h('button', { type: 'button', class: 'btn secondary', text: 'Try this set again', onclick: function () { reset(); drawQuestion(); window.scrollTo(0, 0); } }),
           h('a', { class: 'btn', href: '#/learn', text: 'Back to Learn' })));
       var h1 = wrap.querySelector('h1'); if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus(); }
@@ -1996,7 +2043,7 @@
         h('summary', null, h('span', { class: 'menu-name', text: w.m.title }), h('span', { class: 'menu-count', text: draft ? wordCount(draft) + ' words' : 'plan only' })),
         fields.length ? h('div', null, h('h3', { text: 'My plan' }), h('dl', { class: 'pane-plan' }, fields.map(function (f) { return [h('dt', { text: f.label }), h('dd', { text: plan[f.key] })]; }))) : null,
         draft ? h('div', null, h('h3', { text: 'My writing' }), myWordsBox(draft, 'My writing for ' + w.m.title)) : null,
-        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/writing/' + w.m.id + '/' + (draft ? 'write' : 'plan'), text: draft ? 'Carry on writing' : 'Carry on planning' })));
+        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/writing/' + w.m.id + '/' + (draft ? 'write' : 'plan'), text: draft ? 'Carry on writing' : 'Carry on planning' }), downloadButton(w.m.title, function () { return writingFileText(mm, w.rec); }, 'Download')));
     }
     function readingItem(r) {
       var qs = forLevel(r.m.questions).filter(function (q) { return q.type === 'open' && r.rec.answers[q.id] && r.rec.answers[q.id].text; });
@@ -2006,7 +2053,7 @@
           return h('div', null, h('h3', { text: (q.label ? 'Question ' + q.label + ': ' : '') + q.prompt }), myWordsBox(r.rec.answers[q.id].text, 'My answer to ' + q.prompt),
             h('p', { class: 'muted small' }, h('strong', { text: 'One possible answer: ' }), q.model));
         }),
-        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/reading/' + r.m.id + '/0', text: 'Open the mission' })));
+        h('div', { class: 'actions' }, h('a', { class: 'btn quiet', href: '#/reading/' + r.m.id + '/0', text: 'Open the mission' }), downloadButton(r.m.title, function () { return readingFileText(r.m, r.rec); }, 'Download all my answers')));
     }
 
     return h('div', { class: 'mission' },
@@ -2086,7 +2133,11 @@
     };
     var lines = [
       'I\'m building a free practice site for Pearson Edexcel Functional Skills English (Level 1 and Level 2, Reading and Writing) for one 17-year-old learner. Please write a pack of practice missions on the theme "' + theme + '"' + (f.about.trim() ? ' (' + f.about.trim() + ')' : '') + '.',
-      'Reply with ONLY one JSON object: no text before or after it.',
+      '',
+      'HOW TO REPLY (please make this easy for me)',
+      '- Give me the result as a downloadable FILE called "' + slug + '-pack.json" that I can click to download. Please do not make me copy and paste a long block of text.',
+      '- If you cannot make files, put everything in ONE code block (with a copy button) and nothing else, apart from one friendly sentence.',
+      '- The file must hold only the JSON object, starting with { and ending with }.',
       '',
       'WHAT TO WRITE: ' + (counts.length ? counts.join(', ') : 'a few missions') + '.',
       'Level: ' + (f.level === 'L1' ? 'Level 1 (a little easier)' : f.level === 'L2' ? 'Level 2 (a little harder: inference, tone, comparing texts)' : 'questions marked for both levels, with a few Level 2 only') + '.',
@@ -2214,7 +2265,7 @@
     paste.addEventListener('input', function () { store.set('make:paste', paste.value); });
     var checkOut = h('div', { 'aria-live': 'polite' });
     var checkBtn = h('button', { type: 'button', class: 'btn', text: 'Check it' });
-    checkBtn.addEventListener('click', function () {
+    function runCheck() {
       if (!form.theme.trim()) { checkOut.replaceChildren(h('p', { class: 'notice', text: 'Fill in the theme in step 1 first, so the page knows what to expect.' })); return; }
       if (!paste.value.trim()) { checkOut.replaceChildren(h('p', { class: 'notice', text: 'Paste the AI reply into the box first.' })); return; }
       var r = checkPastedPack(paste.value, form.theme.trim());
@@ -2252,6 +2303,17 @@
         h('p', { text: nR + ' reading mission' + (nR === 1 ? '' : 's') + ' and ' + nW + ' writing task' + (nW === 1 ? '' : 's') + ' passed the same checks the site uses.' }),
         h('p', { class: 'muted small', text: 'The checks cannot tell whether every answer is right. Have a look at them as you do them. If one seems wrong, trust your own judgement.' })),
         h('div', { class: 'actions' }, saveBtn), saveMsg);
+    }
+    checkBtn.addEventListener('click', runCheck);
+    var fileIn = h('input', { type: 'file', accept: '.json,.txt,application/json,text/plain', id: 'make-file', class: 'visually-hidden' });
+    var fileLabel = h('label', { class: 'btn', for: 'make-file', text: 'Choose the file the AI gave you' });
+    fileIn.addEventListener('change', function () {
+      var f = fileIn.files && fileIn.files[0];
+      if (!f) return;
+      if (f.size > 400000) { checkOut.replaceChildren(h('p', { class: 'notice', text: 'That file is far too long for one pack. Ask the AI for fewer missions.' })); fileIn.value = ''; return; }
+      var use = function (text) { fileIn.value = ''; paste.value = text; store.set('make:paste', text); runCheck(); };
+      if (f.text) f.text().then(use, function () { checkOut.replaceChildren(h('p', { class: 'notice', text: 'That file could not be read.' })); });
+      else { var rd = new FileReader(); rd.onload = function () { use(String(rd.result)); }; rd.readAsText(f); }
     });
 
     // My packs
@@ -2297,8 +2359,10 @@
         promptBox,
         h('div', { class: 'actions' }, copyBtn), copyMsg),
       h('section', { 'aria-labelledby': 'mk2' },
-        h('h2', { id: 'mk2', text: '2. Paste the answer back' }),
-        h('p', { class: 'muted small', text: 'Paste everything the AI replied. If it added a sentence or a code box around the JSON, that is fine.' }),
+        h('h2', { id: 'mk2', text: '2. Bring the answer back' }),
+        h('p', { class: 'muted small', text: 'If the AI gave you a file, choose it here. If it gave you text instead, paste it into the box. Extra words or a code box around the JSON are fine.' }),
+        h('div', { class: 'actions' }, fileIn, fileLabel),
+        h('label', { class: 'field', for: 'make-paste' }, 'Or paste it here'),
         paste,
         h('div', { class: 'actions' }, checkBtn), checkOut),
       h('section', { 'aria-labelledby': 'mk3' },

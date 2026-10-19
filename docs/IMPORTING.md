@@ -27,7 +27,9 @@ The checker catches structure mistakes (answer positions, mark totals, text leng
 Copy everything between the lines.
 
 ---
-I'm building a free practice site for Pearson Edexcel Functional Skills English (Level 1 and Level 2, Reading and Writing) for one 17-year-old learner. Please write a **pack** of practice missions on the theme **[THEME, e.g. Football]**. Reply with **only one JSON object**, no commentary.
+I'm building a free practice site for Pearson Edexcel Functional Skills English (Level 1 and Level 2, Reading and Writing) for one 17-year-old learner. Please write a **pack** of practice missions on the theme **[THEME, e.g. Football]**.
+
+**How to reply (please make this easy for me):** give me the result as a **downloadable file** called `[theme]-pack.json` that I can click to download, not a long block of text to copy and paste. If you cannot make files, put everything in one code block with nothing else except one friendly sentence. The file must hold only the JSON object.
 
 **Shape**
 ```

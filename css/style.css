@@ -580,3 +580,5 @@ main.wide-ish { max-width: 52rem; }
 .backup { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .backup h2 { font-size: 1.2rem; }
 input.visually-hidden:focus + label, .backup label.btn:focus-within { outline: 3px solid var(--focus, #2a5d8f); }
+
+input.visually-hidden:focus + label.btn { outline: 3px solid var(--focus, #2a5d8f); outline-offset: 2px; }
