@@ -1,0 +1,9 @@
+{
+  "note": "Lists every content file the site loads. Add themes in themes.json. Imported packs are added to \"packs\" by tools/import.mjs.",
+  "themes": "themes.json",
+  "reading": ["reading.json", "reading-long.json"],
+  "writing": ["writing.json"],
+  "toolkit": "toolkit.json",
+  "learn": "learn.json",
+  "packs": []
+}

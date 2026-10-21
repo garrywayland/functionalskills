@@ -1,0 +1,1115 @@
+{
+  "missions": [
+    {
+      "id": "r-pandas",
+      "topic": "Pandas",
+      "title": "Panda Week",
+      "minutes": 10,
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Hollins Park Wildlife Centre website",
+          "title": "Panda Week is coming",
+          "body": [
+            {
+              "p": "This summer, Hollins Park Wildlife Centre is holding its first ever Panda Week. For nine days, our two giant pandas, Juniper and Tao, will be the stars of the park. We think they are the most charming animals you will ever meet."
+            },
+            {
+              "h": "About giant pandas"
+            },
+            {
+              "p": "Giant pandas live in mountain forests in south-west China. They are covered in thick black and white fur, and they spend much of the day eating bamboo, which makes up almost all of their diet. Bamboo gives very little energy, so a panda has to eat a great deal of it."
+            },
+            {
+              "h": "What's on every day"
+            },
+            {
+              "table": {
+                "head": [
+                  "Time",
+                  "Activity",
+                  "Where"
+                ],
+                "rows": [
+                  [
+                    "10:30",
+                    "Feeding talk with a keeper",
+                    "Bamboo Walk"
+                  ],
+                  [
+                    "12:00",
+                    "Panda craft table (ages 4 to 10)",
+                    "Visitor Hub"
+                  ],
+                  [
+                    "14:00",
+                    "\"Ask the keeper\" question time",
+                    "Bamboo Walk"
+                  ],
+                  [
+                    "15:30",
+                    "Feeding talk with a keeper",
+                    "Bamboo Walk"
+                  ]
+                ]
+              }
+            },
+            {
+              "p": "All Panda Week activities are included in the normal entry price."
+            },
+            {
+              "h": "Tickets"
+            },
+            {
+              "ul": [
+                "Adult: £14.50",
+                "Child (3 to 15): £9.00",
+                "Under 3: free",
+                "Family (2 adults and 2 children): £42.00"
+              ]
+            },
+            {
+              "p": "Save 10% when you book online at least one day before your visit."
+            },
+            {
+              "h": "Please remember"
+            },
+            {
+              "ul": [
+                "Pandas like a quiet space. Please keep your voice low on the Bamboo Walk.",
+                "Flash photography is not allowed near the panda enclosure.",
+                "The Bamboo Walk has steps. A step-free route is signposted from the Visitor Hub."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Blog post",
+          "source": "The Weekend Wanderer blog",
+          "title": "We went to Panda Week. Was it worth it?",
+          "body": [
+            {
+              "p": "Last Saturday, my partner, our two children and I spent the day at Hollins Park for Panda Week. I'll be honest: I wasn't sure a whole week about two animals would be worth the drive. I was wrong."
+            },
+            {
+              "p": "We arrived just before the 10:30 feeding talk, and it was the best part of the day. The keeper explained that bamboo gives pandas very little energy, so they have to eat a lot of it. My eight-year-old hasn't stopped talking about it since."
+            },
+            {
+              "p": "By the afternoon, things were less exciting. Tao was nowhere to be seen, and Juniper slept in the corner of the enclosure for the whole of the 14:00 question time. The Bamboo Walk was also very crowded, and we struggled to hear the keeper over the noise."
+            },
+            {
+              "p": "Booking online the day before saved us a few pounds on our family ticket, which helped, because the café prices were shocking: nearly £4 for a small juice."
+            },
+            {
+              "p": "My advice? Go early and take a packed lunch. The morning was magical. The afternoon was mostly a sleeping ball of fur."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What is the main purpose of the web page?",
+          "options": [
+            "To persuade people to adopt a giant panda",
+            "To tell people about Panda Week and encourage them to visit",
+            "To explain how to look after a giant panda at home",
+            "To complain about ticket prices"
+          ],
+          "answer": 1,
+          "why": "The page gives the times, activities and ticket prices for Panda Week, and calls the pandas \"the stars of the park\". It is informing people and encouraging them to come."
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What time is the second feeding talk?",
+          "options": [
+            "10:30",
+            "12:00",
+            "14:00",
+            "15:30"
+          ],
+          "answer": 3,
+          "why": "The table lists two feeding talks: one at 10:30 and one at 15:30. The second one is at 15:30."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Bamboo gives giant pandas a lot of energy.",
+          "answer": "false",
+          "why": "The page says: \"Bamboo gives very little energy, so a panda has to eat a great deal of it.\""
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "You have to pay extra to use the craft table.",
+          "answer": "false",
+          "why": "The page says: \"All Panda Week activities are included in the normal entry price.\""
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The wildlife centre has a café.",
+          "answer": "notstated",
+          "why": "The web page does not mention a café at all, so we cannot tell from this text."
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"We think they are the most charming animals you will ever meet.\"",
+          "answer": "opinion",
+          "why": "\"We think\" and \"most charming\" show this is what the writers believe. Someone else could disagree."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L2"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"Giant pandas live in mountain forests in south-west China.\"",
+          "answer": "fact",
+          "why": "This can be checked in books or by studying where pandas live in the wild. It is information, not someone's view."
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What does the page ask visitors to do on the Bamboo Walk?",
+          "options": [
+            "Bring bamboo to feed the pandas",
+            "Use a flash so the pandas can be seen",
+            "Keep their voices low",
+            "Use the steps instead of the step-free route"
+          ],
+          "answer": 2,
+          "why": "Under \"Please remember\", the page says pandas like a quiet space and asks visitors to \"keep your voice low on the Bamboo Walk\"."
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "prompt": "How does the writer of the blog feel about Panda Week overall?",
+          "options": [
+            "Completely disappointed",
+            "Angry about the crowds",
+            "Not interested in the pandas",
+            "Mostly positive, with some criticisms"
+          ],
+          "answer": 3,
+          "why": "The writer says \"I was wrong\" to doubt it and calls the morning \"magical\", but also criticises the crowds, the sleepy afternoon and the café prices."
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The writer's family paid the full price for their tickets.",
+          "answer": "false",
+          "why": "The writer says booking online the day before \"saved us a few pounds on our family ticket\", so they did not pay full price."
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "open",
+          "text": "A",
+          "prompt": "The web page uses headings and a table. Choose one of these features and explain how it helps the reader.",
+          "model": "The table puts the times, activities and places in rows, so a reader can quickly find out when and where the feeding talks are without reading every sentence.",
+          "check": [
+            "I named one feature (a heading or the table).",
+            "I said what it does for the reader (for example, makes information quick to find).",
+            "I linked it to something on this page."
+          ]
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "both",
+          "prompt": "The web page presents Panda Week as a great day out. How far does the blog post agree? Use evidence from both texts.",
+          "model": "The blog partly agrees. Like the web page, which calls the pandas \"the stars of the park\", the blogger enjoyed the 10:30 feeding talk and calls the morning \"magical\". However, the blog adds things the web page leaves out: the Bamboo Walk was crowded, Juniper slept through the 14:00 question time and the café was expensive. So the blog agrees it is worth going, but suggests going early and taking a packed lunch.",
+          "check": [
+            "I gave a clear overall view (for example, \"partly agrees\").",
+            "I used evidence from the web page.",
+            "I used evidence from the blog post.",
+            "I showed at least one way they agree and one way they differ."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r-israel",
+      "topic": "Israel",
+      "title": "Desert and coast",
+      "minutes": 10,
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "kind": "Web page",
+          "source": "Sunpath Small-Group Tours website",
+          "title": "Five days in Israel: desert and coast",
+          "body": [
+            {
+              "p": "Join a small group of no more than 12 travellers for five relaxed days exploring the coast and the desert of Israel. You'll stay in friendly guesthouses, eat fresh local food and travel in a comfortable air-conditioned minibus."
+            },
+            {
+              "h": "Your trip, day by day"
+            },
+            {
+              "table": {
+                "head": [
+                  "Day",
+                  "Where",
+                  "Highlights"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "Tel Aviv",
+                    "Meet your guide. Evening walk along the seafront."
+                  ],
+                  [
+                    "2",
+                    "Tel Aviv",
+                    "Food tour of Carmel Market. Free afternoon at the beach."
+                  ],
+                  [
+                    "3",
+                    "Mitzpe Ramon",
+                    "Drive south into the Negev desert. Sunset walk at the edge of the Ramon Crater."
+                  ],
+                  [
+                    "4",
+                    "Mitzpe Ramon",
+                    "Jeep trip into the crater. Evening stargazing with a local expert (optional, £25)."
+                  ],
+                  [
+                    "5",
+                    "Dead Sea",
+                    "Morning float in the Dead Sea. Transfer to the airport."
+                  ]
+                ]
+              }
+            },
+            {
+              "h": "Why travel with us?"
+            },
+            {
+              "ul": [
+                "Every guide has lived in Israel for at least ten years.",
+                "Our groups are small, so you never feel like one of a crowd.",
+                "We think the desert at night is the most beautiful sight in the world."
+              ]
+            },
+            {
+              "h": "Good to know"
+            },
+            {
+              "ul": [
+                "Price: £1,150 per person, sharing a room. Flights are not included.",
+                "Single room: add £180.",
+                "The desert can be very hot in the day and cold at night. Bring layers.",
+                "You will need comfortable shoes for walking on rough ground."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Blog post",
+          "source": "Slow Road travel blog",
+          "title": "A month of eating (and waiting for buses) in Israel",
+          "body": [
+            {
+              "p": "Everyone told me the food would be good. Nobody told me it would ruin every other breakfast for me. Shakshuka, eggs cooked in a rich tomato and pepper sauce, is now my idea of the perfect start to the day."
+            },
+            {
+              "p": "Lunch was usually falafel stuffed into a warm pitta with salad and tahini, bought from a small stall. The best one I had was in a side street near the market in Tel Aviv, where the owner refused to let me leave without trying his hummus too."
+            },
+            {
+              "p": "Getting around was easier than I expected. The train along the coast is quick and clean, and buses reach most towns. One warning, though: from Friday afternoon until Saturday evening, many buses and trains stop running for Shabbat, the weekly day of rest. I learned this the hard way, and spent a very long Friday evening at a bus stop that no bus was ever going to visit."
+            },
+            {
+              "p": "If I went back, I'd skip the organised tours and travel on my own. You see more, you spend less, and you eat better."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "Who is the web page mainly written for?",
+          "options": [
+            "People who live in the Negev desert",
+            "Guides looking for a job",
+            "Airlines selling flights",
+            "People thinking of booking a holiday"
+          ],
+          "answer": 3,
+          "why": "The page describes a trip, gives the price and says \"Join a small group\". It is aimed at people who might book."
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "On which day can the group go stargazing?",
+          "options": [
+            "Day 2",
+            "Day 3",
+            "Day 4",
+            "Day 5"
+          ],
+          "answer": 2,
+          "why": "The table shows \"Evening stargazing with a local expert\" on Day 4, in Mitzpe Ramon."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The price includes flights.",
+          "answer": "false",
+          "why": "Under \"Good to know\", the page says: \"Flights are not included.\""
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "There are never more than 12 travellers in a group.",
+          "answer": "true",
+          "why": "The first paragraph says the group has \"no more than 12 travellers\"."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The minibus has free Wi-Fi.",
+          "answer": "notstated",
+          "why": "The page says the minibus is comfortable and air-conditioned, but it says nothing about Wi-Fi."
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"We think the desert at night is the most beautiful sight in the world.\"",
+          "answer": "opinion",
+          "why": "\"We think\" and \"most beautiful\" show this is a personal view. It cannot be proved."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "Why does the page tell travellers to bring layers?",
+          "options": [
+            "The desert can be very hot in the day and cold at night.",
+            "The minibus air-conditioning is too strong.",
+            "The guesthouses have no heating.",
+            "It rains every day on the coast."
+          ],
+          "answer": 0,
+          "why": "The page says: \"The desert can be very hot in the day and cold at night. Bring layers.\""
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "prompt": "Give two things a traveller should pack for this trip. Use information from the page.",
+          "model": "1. Warm layers, because the desert can be cold at night. 2. Comfortable shoes, for walking on rough ground.",
+          "check": [
+            "I gave two different things.",
+            "Both come from the page, not from my own ideas.",
+            "I kept it short and clear."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "prompt": "Why did the blogger spend a long time at a bus stop?",
+          "options": [
+            "The bus was late because of traffic.",
+            "Many buses do not run from Friday afternoon until Saturday evening.",
+            "They were waiting for a train instead.",
+            "The bus stop had been moved."
+          ],
+          "answer": 1,
+          "why": "The blogger explains that many buses and trains stop running for Shabbat, from Friday afternoon until Saturday evening, and they were waiting on a Friday evening."
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The blogger found the coast train slow.",
+          "answer": "false",
+          "why": "The blogger says: \"The train along the coast is quick and clean.\""
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "both",
+          "prompt": "The two texts give different views about organised tours. Explain the difference, using evidence from both texts.",
+          "model": "The web page presents an organised tour as the best way to travel: groups are small, so \"you never feel like one of a crowd\", and every guide has lived in Israel for at least ten years. The blogger disagrees, saying they would \"skip the organised tours\" next time, because travelling alone means \"you see more, you spend less, and you eat better\". The web page is trying to sell a tour, while the blogger is sharing a personal experience.",
+          "check": [
+            "I explained the web page's view.",
+            "I explained the blogger's view.",
+            "I used a short quote or detail from each text.",
+            "I pointed out why their views might differ (for example, one is selling a tour)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r-transport",
+      "topic": "Public transport",
+      "title": "Your bus is changing",
+      "minutes": 10,
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "kind": "Council leaflet",
+          "source": "Vale of Fenn Council",
+          "title": "Your bus is changing",
+          "body": [
+            {
+              "p": "From 6 April, the number 14 bus between Kettlewick and Fennbridge will follow a new route. We have made these changes after a public consultation last autumn, when more than 600 people told us what they need from their local buses."
+            },
+            {
+              "h": "What is changing?"
+            },
+            {
+              "ul": [
+                "The 14 will no longer go along Mill Lane. Instead, it will stop at the new Kettlewick Health Centre.",
+                "A new 14A service will run on Sundays only, every two hours.",
+                "The first bus on weekdays will leave Kettlewick 20 minutes earlier, at 06:10.",
+                "The bus stops on Mill Lane will be removed. The nearest stop will be on Station Road, about 300 metres away."
+              ]
+            },
+            {
+              "h": "New weekday timetable: Kettlewick to Fennbridge"
+            },
+            {
+              "table": {
+                "head": [
+                  "Kettlewick, Market Square",
+                  "Health Centre",
+                  "Station Road",
+                  "Fennbridge Bus Station"
+                ],
+                "rows": [
+                  [
+                    "06:10",
+                    "06:16",
+                    "06:22",
+                    "06:40"
+                  ],
+                  [
+                    "07:10",
+                    "07:16",
+                    "07:22",
+                    "07:40"
+                  ],
+                  [
+                    "08:10",
+                    "08:18",
+                    "08:26",
+                    "08:50"
+                  ],
+                  [
+                    "09:10",
+                    "09:16",
+                    "09:22",
+                    "09:40"
+                  ]
+                ]
+              }
+            },
+            {
+              "p": "Buses then run every hour, at 10 minutes past the hour, until 18:10. Journeys between 08:00 and 09:00 take longer because of school traffic."
+            },
+            {
+              "h": "Tickets"
+            },
+            {
+              "p": "Single and return prices are not changing. The Vale Day Ticket (£5.20) can be used on all our routes, including the new 14A."
+            },
+            {
+              "h": "Have your say"
+            },
+            {
+              "p": "We will review the new route after six months. Tell us what you think by emailing buses@valeoffenn.example or by picking up a feedback card on any bus."
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Letter to a local newspaper",
+          "source": "The Vale Gazette, letters page",
+          "title": "Don't leave Mill Lane behind",
+          "body": [
+            {
+              "p": "Dear Editor,"
+            },
+            {
+              "p": "I am writing about the council's decision to take the 14 bus away from Mill Lane. The council says the nearest stop will be \"about 300 metres away\". That may sound like nothing, but Station Road is at the top of a steep hill, and many people on Mill Lane are in their eighties."
+            },
+            {
+              "p": "The council also says that more than 600 people took part in its consultation. I have spoken to my neighbours, and not one of them knew it was happening. It was only advertised online, which is no use to people who do not use the internet."
+            },
+            {
+              "p": "I will admit that a stop at the new health centre is a good idea. My own doctor has moved there, and at the moment I need two buses to reach it. But surely the bus could do both?"
+            },
+            {
+              "p": "I would ask the council to keep at least one stop on Mill Lane, even if the bus only goes that way a few times a day."
+            },
+            {
+              "p": "Yours faithfully,"
+            },
+            {
+              "p": "A Mill Lane resident"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What is the main purpose of the leaflet?",
+          "options": [
+            "To tell passengers about changes to the 14 bus",
+            "To persuade people to buy a car",
+            "To advertise the new health centre",
+            "To ask people to take part in a consultation"
+          ],
+          "answer": 0,
+          "why": "The heading is \"Your bus is changing\", and most of the leaflet explains the new route, timetable and stops for the 14."
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "You start at Kettlewick Market Square on a weekday. You need to be at Fennbridge Bus Station by 07:45. What is the latest bus you can catch?",
+          "options": [
+            "06:10",
+            "07:10",
+            "08:10",
+            "09:10"
+          ],
+          "answer": 1,
+          "why": "The 07:10 from Market Square reaches Fennbridge Bus Station at 07:40, which is before 07:45. The next bus, at 08:10, arrives at 08:50, which is too late."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The 14 will still stop on Mill Lane.",
+          "answer": "false",
+          "why": "The leaflet says: \"The 14 will no longer go along Mill Lane\" and \"The bus stops on Mill Lane will be removed.\""
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The 14A runs on Sundays only.",
+          "answer": "true",
+          "why": "The leaflet says: \"A new 14A service will run on Sundays only, every two hours.\""
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Single ticket prices are going up.",
+          "answer": "false",
+          "why": "Under \"Tickets\", the leaflet says: \"Single and return prices are not changing.\""
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "Why does the 08:10 journey take longer than the others?",
+          "options": [
+            "It goes a different way.",
+            "It stops at more bus stops.",
+            "There is school traffic between 08:00 and 09:00.",
+            "The driver changes at the Health Centre."
+          ],
+          "answer": 2,
+          "why": "The leaflet says: \"Journeys between 08:00 and 09:00 take longer because of school traffic.\""
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The new route costs the council less money to run.",
+          "answer": "notstated",
+          "why": "The leaflet does not say anything about how much the route costs the council."
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "prompt": "Someone used to catch the 14 on Mill Lane. Explain what they will need to do from 6 April.",
+          "model": "They will need to walk to the bus stop on Station Road, which is about 300 metres away, because the Mill Lane stops are being removed.",
+          "check": [
+            "I said where they should go now (Station Road).",
+            "I included a detail from the leaflet, such as the distance.",
+            "I said why (the Mill Lane stops are being removed)."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "prompt": "What is the main point of the letter?",
+          "options": [
+            "The new health centre should not have been built.",
+            "Bus tickets in the Vale are too expensive.",
+            "Removing the Mill Lane stops will be hard for some residents.",
+            "The council should stop running the 14 bus."
+          ],
+          "answer": 2,
+          "why": "The writer explains that Station Road is up a steep hill and many Mill Lane residents are elderly, then asks the council to keep at least one Mill Lane stop."
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The writer thinks a stop at the health centre is a bad idea.",
+          "answer": "false",
+          "why": "The writer says: \"I will admit that a stop at the new health centre is a good idea.\""
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The writer took part in the council's consultation.",
+          "answer": "notstated",
+          "why": "The writer says their neighbours did not know about the consultation, but never says whether they took part themselves."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "both",
+          "prompt": "Compare how the two texts present the change to the 14 bus. Use evidence from both texts.",
+          "model": "The leaflet presents the change in a positive, factual way. It uses bullet points and a timetable, and describes the new stop as only \"about 300 metres away\". It also stresses that more than 600 people took part in the consultation. The letter takes the same facts and shows a different side: the walk is up \"a steep hill\" for people \"in their eighties\", and the consultation was \"only advertised online\". Both texts agree the health centre stop is useful, but the letter asks for a stop on Mill Lane as well.",
+          "check": [
+            "I explained how the leaflet presents the change.",
+            "I explained how the letter presents it.",
+            "I used evidence from both texts.",
+            "I mentioned at least one similarity or difference in how they say it (tone, layout or word choice)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r-geography",
+      "topic": "UK geography",
+      "title": "Village or town?",
+      "minutes": 10,
+      "texts": [
+        {
+          "id": "A",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "kind": "Information guide",
+          "source": "Brayminster District Council Housing Team",
+          "title": "Hawsden or Brayminster? A guide for people moving to the area",
+          "body": [
+            {
+              "p": "Every year, hundreds of families move into Brayminster District. Many of them face the same question: should we live in the market town of Brayminster, or in one of the villages around it, such as Hawsden? This guide sets out the facts to help you decide."
+            },
+            {
+              "table": {
+                "head": [
+                  "",
+                  "Hawsden (village)",
+                  "Brayminster (town)"
+                ],
+                "rows": [
+                  [
+                    "Population",
+                    "About 900",
+                    "About 24,000"
+                  ],
+                  [
+                    "Shops",
+                    "One village shop and post office",
+                    "Two supermarkets and a high street"
+                  ],
+                  [
+                    "Schools",
+                    "One primary school",
+                    "Three primary schools and one secondary school"
+                  ],
+                  [
+                    "Doctor",
+                    "A surgery open two mornings a week",
+                    "A health centre open six days a week"
+                  ],
+                  [
+                    "Bus",
+                    "Every two hours, Monday to Saturday",
+                    "Every 15 minutes"
+                  ],
+                  [
+                    "Train station",
+                    "None. The nearest is in Brayminster, 6 miles away.",
+                    "Yes, with trains to the city"
+                  ]
+                ]
+              }
+            },
+            {
+              "h": "Housing"
+            },
+            {
+              "p": "Hawsden has mostly older detached and semi-detached houses, many with large gardens. Very few homes come up for sale or rent, so you may have to wait. Brayminster has a wider mix, including flats, terraced houses and a new estate of 300 homes on the edge of town."
+            },
+            {
+              "h": "Things to think about"
+            },
+            {
+              "ul": [
+                "If you do not drive, village life can be harder, because buses are less frequent.",
+                "Village life can be quieter, and many people say they feel part of a close community.",
+                "In our view, Brayminster offers the best of both worlds: town services, with the countryside on your doorstep."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "levels": [
+            "L2"
+          ],
+          "kind": "Blog post",
+          "source": "Country Notes blog",
+          "title": "Six months in a village: what nobody tells you",
+          "body": [
+            {
+              "p": "When we moved from a flat in the city to a cottage in Hawsden, I pictured long walks, fresh air and friendly neighbours. I got all three. I also got a two-hour wait for the bus, a phone signal that disappears if you stand in the wrong room, and a village shop that closes at five."
+            },
+            {
+              "p": "Don't get me wrong. I love it here. In our first week, three neighbours knocked on the door with cake, and the woman next door now feeds our cat when we're away. In the city, I never even learned my neighbours' names."
+            },
+            {
+              "p": "But if you're thinking of moving, be realistic. We had to buy a second car, because my partner works shifts and the last bus back from Brayminster leaves at 18:30. That cost alone has wiped out most of the money we saved on our mortgage."
+            },
+            {
+              "p": "Would I move back? Not a chance. But I'd tell anyone thinking about it to visit on a wet Tuesday in November, not a sunny Saturday in June."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "What is the main purpose of the guide?",
+          "options": [
+            "To sell houses on the new estate",
+            "To persuade people to move away from Brayminster District",
+            "To complain about the bus service",
+            "To help people decide whether to live in a village or the town"
+          ],
+          "answer": 3,
+          "why": "The guide says it \"sets out the facts to help you decide\" between Brayminster and a village such as Hawsden."
+        },
+        {
+          "id": "q2",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "choice",
+          "text": "A",
+          "prompt": "How often does the bus run in Hawsden?",
+          "options": [
+            "Every 15 minutes",
+            "Every hour",
+            "Every two hours, Monday to Saturday",
+            "On Sundays only"
+          ],
+          "answer": 2,
+          "why": "The table shows the Hawsden bus runs \"Every two hours, Monday to Saturday\". Every 15 minutes is the Brayminster bus."
+        },
+        {
+          "id": "q3",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Hawsden has a secondary school.",
+          "answer": "false",
+          "why": "The table shows Hawsden has \"One primary school\". The only secondary school listed is in Brayminster."
+        },
+        {
+          "id": "q4",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "Brayminster has a train station.",
+          "answer": "true",
+          "why": "The table says Brayminster has a train station, \"with trains to the city\"."
+        },
+        {
+          "id": "q5",
+          "levels": [
+            "L1"
+          ],
+          "type": "tfns",
+          "text": "A",
+          "prompt": "The village shop in Hawsden sells newspapers.",
+          "answer": "notstated",
+          "why": "The guide says there is a village shop and post office, but it does not say what the shop sells."
+        },
+        {
+          "id": "q6",
+          "levels": [
+            "L1",
+            "L2"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"In our view, Brayminster offers the best of both worlds.\"",
+          "answer": "opinion",
+          "why": "\"In our view\" tells you this is what the writers think. Someone else might prefer the village."
+        },
+        {
+          "id": "q7",
+          "levels": [
+            "L1"
+          ],
+          "type": "factopinion",
+          "text": "A",
+          "prompt": "\"Hawsden has one primary school.\"",
+          "answer": "fact",
+          "why": "This can be checked. It is information, not a view."
+        },
+        {
+          "id": "q8",
+          "levels": [
+            "L1"
+          ],
+          "type": "open",
+          "text": "A",
+          "prompt": "Give two reasons why someone who does not drive might choose to live in Brayminster.",
+          "model": "1. The bus runs every 15 minutes, so it is easy to get around. 2. There is a train station with trains to the city.",
+          "check": [
+            "I gave two different reasons.",
+            "Both reasons come from the guide.",
+            "Both reasons are linked to not having a car (transport or having things nearby)."
+          ]
+        },
+        {
+          "id": "q9",
+          "levels": [
+            "L2"
+          ],
+          "type": "choice",
+          "text": "B",
+          "prompt": "What does the blogger mean by \"visit on a wet Tuesday in November, not a sunny Saturday in June\"?",
+          "options": [
+            "Look at the village on an ordinary, less pleasant day before you decide.",
+            "The village is closed at weekends.",
+            "It rains more in villages than in towns.",
+            "Houses are cheaper to buy in November."
+          ],
+          "answer": 0,
+          "why": "A sunny Saturday shows a village at its best. The blogger is advising people to see what everyday life is really like before moving."
+        },
+        {
+          "id": "q10",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The blogger regrets moving to Hawsden.",
+          "answer": "false",
+          "why": "The blogger says \"I love it here\" and, asked if they would move back, says \"Not a chance.\""
+        },
+        {
+          "id": "q11",
+          "levels": [
+            "L2"
+          ],
+          "type": "tfns",
+          "text": "B",
+          "prompt": "The blogger's family saved money on their mortgage by moving.",
+          "answer": "true",
+          "why": "The blogger mentions \"the money we saved on our mortgage\", although the cost of a second car has used up most of it."
+        },
+        {
+          "id": "q12",
+          "levels": [
+            "L2"
+          ],
+          "type": "open",
+          "text": "both",
+          "prompt": "Both texts talk about transport in Hawsden. Compare what they say and how they say it.",
+          "model": "Both texts agree that transport is a problem in Hawsden. The guide states it in a calm, factual way: the bus runs \"every two hours\" and \"village life can be harder\" if you do not drive. The blog shows what that means in real life: a \"two-hour wait for the bus\", a last bus at 18:30, and having to buy a second car. The guide uses a table and general advice, while the blog uses personal experience and a slightly humorous tone.",
+          "check": [
+            "I said what both texts agree on.",
+            "I used evidence from the guide.",
+            "I used evidence from the blog.",
+            "I commented on how they say it (for example, factual table versus personal story)."
+          ]
+        }
+      ]
+    }
+  ]
+}

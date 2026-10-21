@@ -1,0 +1,22 @@
+{
+  "name": "next-stop-plus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The paid version of Next Stop: accounts, plans, sync, AI marking, parent view. One Node service that also serves the website.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "DEV_MODE=1 DATA_STORE=file DATA_DIR=./.data MARKING_PROVIDER=fake node server/index.js",
+    "test": "node --test --test-force-exit tests/*.test.mjs",
+    "test:e2e": "node tests/e2e/run.mjs",
+    "admin": "node server/admin.mjs",
+    "compare": "node tools/compare-markers.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "@google-cloud/firestore": "^9.3.1",
+    "@google/genai": "^2.30.0",
+    "zod": "^4.0.0"
+  }
+}

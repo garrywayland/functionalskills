@@ -1,0 +1,583 @@
+{
+  "lengthGuide": {
+    "1": {
+      "L1": "200 to 250 words",
+      "L2": "250 to 300 words"
+    },
+    "2": {
+      "L1": "150 to 200 words",
+      "L2": "200 to 250 words"
+    }
+  },
+  "lengthNote": "These are suggestions, not rules. Covering every bullet point well matters more than the exact number.",
+  "marks": {
+    "1": {
+      "composition": 12,
+      "spag": 9
+    },
+    "2": {
+      "composition": 9,
+      "spag": 6
+    }
+  },
+  "markGuide": {
+    "note": "This is our own plain-English summary to guide feedback. It is not the official mark scheme.",
+    "composition": {
+      "L1": [
+        "Lowest band: communicates some ideas with some clarity and some awareness of the purpose and reader. The format and structure suit the task to some extent. Sentences show some range and some accuracy. Vocabulary is simple but suits the task.",
+        "Middle band: communicates ideas reasonably clearly, with a suitable amount of detail and a suitable length. The format suits the task and paragraphs are used. A range of sentences, including some complex ones, is used with reasonable accuracy. A range of vocabulary suits the task.",
+        "Top band: communicates ideas clearly and uses detail effectively for the purpose and reader. The format suits the task and paragraphs are used effectively. A range of sentences, including complex ones, is used with consistent accuracy. A wide range of vocabulary suits the task throughout."
+      ],
+      "L2": [
+        "Lowest band: communicates some ideas with some clarity for the purpose and the reader. Format and paragraphs are used to some extent, with some linking words. A range of sentences is attempted, including some complex ones, with some accuracy. Vocabulary and tone are mostly suitable.",
+        "Middle band: communicates ideas reasonably clearly, with a suitable amount of detail and a suitable length. The format is right and paragraphs are mostly accurate, with ideas linked most of the time. A range of sentences, including complex ones, is used with general accuracy. Vocabulary is wide and the tone suits the reader.",
+        "Top band: communicates ideas with consistent clarity and uses detail effectively. The format is right, paragraphs are effective and ideas are linked clearly all the way through. A range of sentences, including complex ones, is used accurately and effectively. Vocabulary is extensive and the tone is right for the reader throughout."
+      ]
+    },
+    "spag": {
+      "L1": [
+        "Lowest band: some correct punctuation (full stops, question marks, exclamation marks, commas, possessive apostrophes) and some accuracy in spelling the words used most often, including some specialist words. Grammar is sometimes accurate.",
+        "Middle band: reasonably correct punctuation across those marks, reasonably accurate spelling of common and specialist words, and reasonably accurate grammar.",
+        "Top band: correct punctuation across those marks with occasional lapses, accurate spelling of common and specialist words with occasional lapses, and accurate grammar with occasional lapses."
+      ],
+      "L2": [
+        "Lowest band: some correct grammar (agreement, a range of tenses, articles) and some correct punctuation from a range (commas, colons, apostrophes, inverted commas). Spelling of everyday and specialist words is sometimes accurate.",
+        "Middle band: generally correct grammar and punctuation across a range (commas, colons, apostrophes, inverted commas), and generally accurate spelling, including some specialist words.",
+        "Top band: consistently correct grammar with only occasional lapses, a wide range of punctuation used correctly, and accurate spelling including specialist words."
+      ]
+    }
+  },
+  "missions": [
+    {
+      "id": "w-pandas-1",
+      "topic": "Pandas",
+      "task": 1,
+      "title": "Volunteer for Panda Week",
+      "format": "email",
+      "context": "Hollins Park Wildlife Centre is looking for young volunteers to help visitors during its Panda Week. Volunteers will hand out maps, help at the craft table and answer simple questions on the Bamboo Walk.",
+      "audience": "Sam Patel, the volunteer coordinator. You have never met Sam.",
+      "purpose": "To apply for a place as a Panda Week volunteer.",
+      "instruction": "Write an email to Sam Patel applying to be a volunteer.",
+      "bullets": [
+        "why you would like to volunteer at Panda Week",
+        "the skills or experience you would bring",
+        "when you are available, and any questions you have"
+      ],
+      "levels": {
+        "L2": {
+          "bullets": [
+            "why you would like to volunteer at Panda Week",
+            "the skills or experience that make you a good choice, with examples",
+            "when you are available, and anything you would need to know before you start"
+          ]
+        }
+      },
+      "indicative": [
+        "Reasons: love of animals, interest in pandas and bamboo, wanting experience for a future job or course, wanting to help visitors enjoy the week.",
+        "Skills: friendly with people, reliable, helped at school events, good at explaining things, customer-service or first-aid experience, works well in a team.",
+        "Availability: days and times (weekends, school holidays); questions about training, uniform or lunch breaks; a polite ending."
+      ]
+    },
+    {
+      "id": "w-pandas-2",
+      "topic": "Pandas",
+      "task": 2,
+      "title": "Review a day with the animals",
+      "format": "review",
+      "context": "A wildlife website is collecting reviews from visitors. You recently visited a zoo, wildlife park or farm park. It can be a real place or one you make up.",
+      "audience": "People reading the website who are deciding whether to visit.",
+      "purpose": "To review your day out and help others decide.",
+      "instruction": "Write a review for the website.",
+      "bullets": [
+        "where you went, what you saw and what was good about the visit",
+        "what could be better, and whether you would recommend it"
+      ],
+      "indicative": [
+        "Where and what: a zoo, wildlife park or farm park (real or invented), the animals seen, what the day was like. Good points: close views, keeper talks, friendly staff, clean paths, the café, value for money.",
+        "Improvements: queues, crowds, prices, long walks, not enough seats. Recommendation: who it would suit and how to get the most from a visit."
+      ]
+    },
+    {
+      "id": "w-israel-1",
+      "topic": "Israel",
+      "task": 1,
+      "title": "Ask about a desert trip",
+      "format": "email",
+      "context": "Sunpath Small-Group Tours runs a five-day trip in Israel. It visits Tel Aviv on the coast, the Negev desert and the Dead Sea. You are planning to go with family or friends next year, but you need more information first.",
+      "audience": "The bookings team at Sunpath Small-Group Tours.",
+      "purpose": "To ask for information before booking.",
+      "instruction": "Write an email to the bookings team.",
+      "bullets": [
+        "who would be travelling and when you would like to go",
+        "what you would like to know about the trip, such as food, travel or activities",
+        "any special needs your group has, and how you would like them to reply"
+      ],
+      "indicative": [
+        "Who and when: family or friends, how many, a month or season, how long.",
+        "Questions: what the price includes, whether flights are extra, food choices, how much walking, what the guesthouses are like, the weather.",
+        "Special needs: dietary needs, mobility, children. Ask for a reply by email, and end politely."
+      ]
+    },
+    {
+      "id": "w-israel-2",
+      "topic": "Israel",
+      "task": 2,
+      "title": "Food from another country",
+      "format": "article",
+      "context": "A travel website for young people is running a series called \"Taste the World\". Each article introduces food from one country. You have been asked to write about food in Israel.",
+      "info": [
+        "Falafel: fried balls made from chickpeas, often eaten in pitta bread with salad.",
+        "Hummus: a smooth dip made from chickpeas, tahini (sesame paste), lemon and garlic.",
+        "Shakshuka: eggs cooked in a spicy tomato and pepper sauce, often eaten for breakfast."
+      ],
+      "audience": "Young people who read the travel website.",
+      "purpose": "To inform readers and make them want to try the food.",
+      "instruction": "Write an article for the website. You can use the information above.",
+      "bullets": [
+        "one or two dishes and what they are like",
+        "why trying local food is a good way to get to know a place, with a tip for young travellers trying new food"
+      ],
+      "indicative": [
+        "Dishes: falafel (chickpea balls, often in pitta), hummus (chickpeas, tahini, lemon, garlic), shakshuka (eggs in a spicy tomato sauce). What they look and taste like, and when they are eaten.",
+        "Why local food helps: it shows how people live, markets and stallholders start conversations. Tips: start small, ask what is in a dish, taste before you buy, tell people about allergies, try one new thing a day."
+      ]
+    },
+    {
+      "id": "w-transport-1",
+      "topic": "Public transport",
+      "task": 1,
+      "title": "Have your say on the 14 bus",
+      "format": "email",
+      "context": "Vale of Fenn Council has changed the route of the number 14 bus. It no longer goes along Mill Lane, and it now stops at the new health centre. The council is asking passengers for feedback.",
+      "audience": "The transport team at Vale of Fenn Council.",
+      "purpose": "To give your views on the new route and suggest improvements.",
+      "instruction": "Write an email to the council's transport team.",
+      "bullets": [
+        "how you use the bus and how the change affects you",
+        "what is good and what is not so good about the new route",
+        "what you think the council should do next"
+      ],
+      "indicative": [
+        "How you use the bus: which stops, how often, school, college or work. How the change affects you: a longer walk, a shorter journey, easier trips to the health centre.",
+        "Good: the health centre stop, the earlier first bus. Not so good: the Mill Lane stops have gone, Sunday buses only every two hours. Use details from the leaflet-style facts.",
+        "Suggestions: keep a Mill Lane stop, more Sunday buses, tell residents who are not online. Ask for a reply and end politely."
+      ]
+    },
+    {
+      "id": "w-transport-2",
+      "topic": "Public transport",
+      "task": 2,
+      "title": "Get on board",
+      "format": "article",
+      "context": "Your college newsletter is running a \"Green Travel Week\". The editor wants an article that encourages students to use buses and trains more.",
+      "audience": "Students at your college.",
+      "purpose": "To persuade students to try public transport.",
+      "instruction": "Write an article for the college newsletter.",
+      "bullets": [
+        "the benefits of using buses and trains",
+        "worries students might have, and practical tips (such as tickets, timetables or apps) that could help"
+      ],
+      "indicative": [
+        "Benefits: cheaper than a car, no parking worries, time to read or relax, better for the environment, a chance to travel with friends.",
+        "Worries: delays, crowded buses, safety, not knowing the route. Tips: use a timetable app, buy a day ticket or railcard, travel at quieter times, have a back-up plan."
+      ]
+    },
+    {
+      "id": "w-geography-1",
+      "topic": "UK geography",
+      "task": 1,
+      "title": "Young people in villages and towns",
+      "format": "report",
+      "context": "Your local youth council wants to know whether young people living in villages have the same chances as young people living in towns. They have asked you to write a short report.",
+      "audience": "Members of the youth council.",
+      "purpose": "To give information and make recommendations.",
+      "instruction": "Write a report for the youth council.",
+      "bullets": [
+        "what there is for young people in a village and in a town near you (real or imagined)",
+        "the problems young people in villages face, such as transport, jobs or things to do",
+        "your recommendations for making things fairer"
+      ],
+      "indicative": [
+        "What there is: youth clubs, sport, shops, libraries, buses, jobs, in a village and in a town (real or invented).",
+        "Problems in villages: few buses, few places to meet, few jobs, slow internet, long journeys to college. How these affect young people.",
+        "Recommendations: later buses, a youth hub in the village hall, a lift-share scheme, better broadband. Make them realistic and say why they would help."
+      ]
+    },
+    {
+      "id": "w-geography-2",
+      "topic": "UK geography",
+      "task": 2,
+      "title": "Town or village?",
+      "format": "blog",
+      "context": "A website for young people is asking readers to write blog posts on the question: \"Town or village: where would you rather live?\"",
+      "audience": "Young people who read the website.",
+      "purpose": "To share and explain your opinion.",
+      "instruction": "Write a blog post giving your view.",
+      "bullets": [
+        "where you would rather live, what it would be like, and your reasons",
+        "what you would miss about the other kind of place"
+      ],
+      "indicative": [
+        "Your view: village or town, and what a normal day would be like. Reasons: transport, friends, quiet, space, shops, nature.",
+        "What you would miss: what the other place offers, such as shops and buses, or peace and fields. A balanced ending is good."
+      ]
+    },
+    {
+      "id": "w-pandas-3",
+      "topic": "Pandas",
+      "task": 1,
+      "title": "Ask the zoo about a school visit",
+      "format": "letter",
+      "context": "Your class is planning a day trip to Ferndale Zoo, where two giant pandas live. Your teacher has asked you to write to the zoo to find out more.",
+      "audience": "The education officer at Ferndale Zoo.",
+      "purpose": "To ask for information about a school visit.",
+      "instruction": "Write a formal letter to the education officer.",
+      "bullets": [
+        "why your class would like to visit the pandas",
+        "what you would like to know about the visit, such as tickets, talks and lunch",
+        "what help your group needs, and when you would like a reply"
+      ],
+      "indicative": [
+        "Reasons: a project on giant pandas and bamboo, seeing how the pandas live, a science or geography link, a reward for hard work.",
+        "Questions: group ticket prices, a keeper talk, where the class can eat lunch, how long the visit takes, how many adults are needed.",
+        "Needs: step-free access, a place to keep bags, a reply within two weeks. Use a formal start and end, such as Dear Sir or Madam and Yours faithfully."
+      ],
+      "levels": {
+        "L2": {
+          "bullets": [
+            "why your class would like to visit the pandas, with examples",
+            "what you would like to know about the visit, such as tickets, talks and lunch",
+            "any special requirements your group has, and how you would like the zoo to reply"
+          ]
+        }
+      }
+    },
+    {
+      "id": "w-pandas-4",
+      "topic": "Pandas",
+      "task": 2,
+      "title": "Is a day at the zoo worth it?",
+      "format": "forum",
+      "context": "A wildlife website has a forum thread called \"Is a day at the zoo worth it?\". Readers are sharing their views.",
+      "audience": "Other readers of the forum.",
+      "purpose": "To give and explain your view.",
+      "instruction": "Write a post for the forum.",
+      "bullets": [
+        "your view on whether a day at the zoo is worth it",
+        "reasons and examples to support your view"
+      ],
+      "indicative": [
+        "View: worth it, not worth it, or it depends. Say it in the first sentence.",
+        "Reasons with examples: ticket prices, seeing animals you cannot see elsewhere, learning from keepers, crowds at feeding time, a short story from a real or imagined visit. End by inviting replies."
+      ]
+    },
+    {
+      "id": "w-pandas-5",
+      "topic": "Pandas",
+      "task": 1,
+      "title": "Panda Day: a report for the school council",
+      "format": "report",
+      "context": "Your school council held a Panda Day last month to raise money for a panda adoption. The head teacher has asked for a short report on how it went.",
+      "audience": "The head teacher and the school council.",
+      "purpose": "To report on the event and recommend improvements.",
+      "instruction": "Write a report.",
+      "info": [
+        "Money raised: £312",
+        "Activities: cake sale, panda quiz, bamboo obstacle course",
+        "About 150 pupils took part",
+        "Rain meant the obstacle course finished early"
+      ],
+      "bullets": [
+        "what happened on Panda Day and how much was raised",
+        "what went well and what did not go so well",
+        "your recommendations for next year"
+      ],
+      "indicative": [
+        "What happened: a cake sale, a panda quiz and a bamboo obstacle course, about 150 pupils, £312 raised. Say who did what.",
+        "Went well: busy cake sale, lots of pupils joined in. Not so well: rain ended the obstacle course early, the quiz started late.",
+        "Recommendations: a wet-weather plan, a clear timetable, more helpers, advertise it earlier. Use headings and a formal tone."
+      ]
+    },
+    {
+      "id": "w-pandas-6",
+      "topic": "Pandas",
+      "task": 2,
+      "title": "A day with the panda keepers",
+      "format": "diary",
+      "context": "You spent a day on work experience helping the keepers at a wildlife park that has two giant pandas. Your tutor has asked you to keep a diary of the day.",
+      "audience": "You, and your tutor, who may read it.",
+      "purpose": "To describe the day and how you felt.",
+      "instruction": "Write a diary entry for the day.",
+      "bullets": [
+        "what you did during the day",
+        "how you felt and what you learned"
+      ],
+      "indicative": [
+        "What you did: arrived early, helped prepare the bamboo, cleaned the garden, hid treats for enrichment, watched a feeding talk. Keep it in time order.",
+        "Feelings and learning: nerves at the start, surprise at how much pandas eat, what you learned about keepers' jobs. End with a look ahead."
+      ]
+    },
+    {
+      "id": "w-israel-3",
+      "topic": "Israel",
+      "task": 1,
+      "title": "A desert walking trip: a report for the club",
+      "format": "report",
+      "context": "Your travel club has just come back from a week-long walking holiday in the Negev desert in Israel. The club leader wants a report to help plan next year's trip.",
+      "audience": "The club leader and the committee.",
+      "purpose": "To report on the trip and make recommendations.",
+      "instruction": "Write a report.",
+      "info": [
+        "Group of 14 travellers",
+        "Temperatures reached 35°C by midday",
+        "Bus transfers between Tel Aviv, Mitzpe Ramon and the Dead Sea",
+        "Evening meals: hummus, salads and grilled vegetables"
+      ],
+      "bullets": [
+        "what the group did and saw",
+        "what worked well and what could be better",
+        "your recommendations for next year"
+      ],
+      "indicative": [
+        "What happened: walks in the desert, stargazing, the crater viewpoint, a visit to the Dead Sea, bus transfers between places.",
+        "Worked well: small group, friendly guide, good food. Could be better: the heat at midday, not enough shade on one walk, long bus journey on day four.",
+        "Recommendations: start walks earlier, carry more water, add a rest day, check the weather. Use headings and a formal tone."
+      ]
+    },
+    {
+      "id": "w-israel-4",
+      "topic": "Israel",
+      "task": 2,
+      "title": "Feedback on a food tour",
+      "format": "form",
+      "context": "You joined a half-day food tour at a market in Tel Aviv run by Taste Tours. The company's website has an online feedback form with a box headed \"Tell us about your tour\".",
+      "audience": "The Taste Tours customer team.",
+      "purpose": "To give feedback on the tour.",
+      "instruction": "Write your answer for the feedback box.",
+      "bullets": [
+        "what you enjoyed most about the tour",
+        "what could be improved, and whether you would recommend it"
+      ],
+      "indicative": [
+        "Enjoyed: the guide, the tasting stops (falafel, hummus, pastries), learning about spices, the friendly stallholders. Give a reason for each.",
+        "Improve: group size, heat, water breaks, more vegetarian choices. Recommend or not, and to whom. Thank them at the end."
+      ]
+    },
+    {
+      "id": "w-israel-5",
+      "topic": "Israel",
+      "task": 1,
+      "title": "A coach trip that never arrived",
+      "format": "letter",
+      "context": "You booked a coach trip from Jerusalem to the Dead Sea with Sunpath Small-Group Tours, but on the day the coach never came. You want to complain and ask for a solution.",
+      "audience": "The customer service manager at Sunpath Small-Group Tours.",
+      "purpose": "To complain and ask for a fair solution.",
+      "instruction": "Write a formal letter of complaint.",
+      "bullets": [
+        "what went wrong on the day",
+        "how it affected you",
+        "what you would like the company to do"
+      ],
+      "indicative": [
+        "What happened: the booking, the meeting time and place, how long you waited, whether anyone phoned or explained.",
+        "Effect: wasted the day, missed other plans, cost of taxis or food, felt disappointed. Stay polite.",
+        "What you want: a refund, or a new date, and a reply within a set time. Formal ending (Yours sincerely or Yours faithfully)."
+      ]
+    },
+    {
+      "id": "w-israel-6",
+      "topic": "Israel",
+      "task": 2,
+      "title": "Staying safe on a desert walk",
+      "format": "advice",
+      "context": "Sunpath Small-Group Tours is writing an advice sheet for travellers joining its desert walks in Israel.",
+      "audience": "Travellers joining a desert walk.",
+      "purpose": "To give clear, helpful advice.",
+      "instruction": "Write the advice sheet.",
+      "bullets": [
+        "how to prepare before the walk, such as clothes, shoes and water",
+        "how to stay safe and comfortable during the walk"
+      ],
+      "indicative": [
+        "Before: wear a hat and sun cream, comfortable walking shoes, light layers, bring more water than you think you need, check the weather.",
+        "During: drink regularly, rest in the shade, keep with the group, follow the guide, tell someone if you feel unwell. Use short tips with reasons."
+      ]
+    },
+    {
+      "id": "w-transport-3",
+      "topic": "Public transport",
+      "task": 1,
+      "title": "A bus stop with no shelter",
+      "format": "letter",
+      "context": "The bus stop outside your college has no shelter, and many students wait in the rain. Vale of Fenn Council has asked for suggestions to improve local bus stops.",
+      "audience": "The transport team at Vale of Fenn Council.",
+      "purpose": "To describe a problem and ask for an improvement.",
+      "instruction": "Write a formal letter to the council.",
+      "bullets": [
+        "the problem at the bus stop and who it affects",
+        "how a shelter or other improvements would help",
+        "what you would like the council to do, and by when"
+      ],
+      "indicative": [
+        "Problem: no shelter or seat, students waiting in rain and wind, dark evenings, older passengers too. Give numbers or times.",
+        "How it would help: dry and safer waiting, a seat, lighting, a timetable board, more people choosing the bus.",
+        "Request: build a shelter this term, add a seat and a light, reply by a date. Formal tone and ending."
+      ]
+    },
+    {
+      "id": "w-transport-4",
+      "topic": "Public transport",
+      "task": 2,
+      "title": "Should buses be free for under-18s?",
+      "format": "forum",
+      "context": "A local news website has a forum thread called \"Should buses be free for under-18s?\". Readers are giving their views.",
+      "audience": "Other readers of the forum.",
+      "purpose": "To give and explain your view.",
+      "instruction": "Write a post for the forum.",
+      "bullets": [
+        "your view on whether buses should be free for under-18s",
+        "reasons and examples to support your view"
+      ],
+      "indicative": [
+        "View: yes, no, or only for some journeys (for example, to school and college).",
+        "Reasons with examples: cost for families, getting to college or work, fewer cars, who would pay, what services might be cut. End with a question to readers."
+      ]
+    },
+    {
+      "id": "w-transport-5",
+      "topic": "Public transport",
+      "task": 1,
+      "title": "How do students travel to college?",
+      "format": "report",
+      "context": "You asked 40 students how they travel to college. Your tutor has asked you to write a short report on the results.",
+      "audience": "Your tutor and the student council.",
+      "purpose": "To report on the survey and make recommendations.",
+      "instruction": "Write a report.",
+      "info": [
+        "Bus: 18 students",
+        "Walk: 9 students",
+        "Lift in a car: 7 students",
+        "Bike: 3 students",
+        "Train: 3 students",
+        "Common complaint: buses are late or full",
+        "Cyclists said there was nowhere safe to lock their bikes"
+      ],
+      "bullets": [
+        "how students travel to college, using the survey results",
+        "problems students mentioned",
+        "your recommendations to make travel easier"
+      ],
+      "indicative": [
+        "Results: bus is the most common (18 of 40, nearly half), then walking (9), lift in a car (7), bike (3), train (3). Turn the numbers into sentences.",
+        "Problems: buses late or full, nowhere safe to lock bikes, long walks in the dark.",
+        "Recommendations: a safe bike store, a bus pass discount, a message system for late buses. Use headings and a formal tone."
+      ]
+    },
+    {
+      "id": "w-transport-6",
+      "topic": "Public transport",
+      "task": 2,
+      "title": "Your first train journey",
+      "format": "advice",
+      "context": "Fennline Trains is making an advice sheet for people who are travelling alone by train for the first time.",
+      "audience": "People travelling alone by train for the first time.",
+      "purpose": "To give clear, helpful advice.",
+      "instruction": "Write the advice sheet.",
+      "bullets": [
+        "what to do before the journey, such as tickets and timetables",
+        "what to do on the day, at the station and on the train"
+      ],
+      "indicative": [
+        "Before: check the timetable and platform on an app, buy a ticket in advance, leave plenty of time, charge your phone.",
+        "On the day: find the right platform, check the screen, keep your ticket handy, stand behind the yellow line, ask staff if you are unsure. Short tips with reasons."
+      ]
+    },
+    {
+      "id": "w-geography-3",
+      "topic": "UK geography",
+      "task": 1,
+      "title": "Is the high street changing?",
+      "format": "report",
+      "context": "Your geography class has studied the high street in a market town. You have been asked to write a report for the town council.",
+      "audience": "The town council.",
+      "purpose": "To describe a change and make recommendations.",
+      "instruction": "Write a report.",
+      "info": [
+        "6 of 30 shops are empty",
+        "5 charity shops",
+        "2 new coffee shops",
+        "A busy market every Saturday",
+        "Online shopping has grown"
+      ],
+      "bullets": [
+        "what the high street is like now",
+        "why some shops have closed or changed",
+        "your recommendations to keep the high street busy"
+      ],
+      "indicative": [
+        "Now: six empty shops out of thirty, five charity shops, two new coffee shops, a busy Saturday market. Describe in sentences.",
+        "Why: more online shopping, higher rents, supermarkets, fewer people visiting on weekdays.",
+        "Recommendations: a weekday market, lower rents for new businesses, events, better parking or buses. Headings and a formal tone."
+      ]
+    },
+    {
+      "id": "w-geography-4",
+      "topic": "UK geography",
+      "task": 2,
+      "title": "Welcome to our village",
+      "format": "newsletter",
+      "context": "Your village newsletter is asking residents to write about what makes the village a good place to live, for new neighbours.",
+      "audience": "Villagers and new residents.",
+      "purpose": "To inform and encourage readers.",
+      "instruction": "Write an item for the newsletter.",
+      "bullets": [
+        "what there is to do in the village and who it is good for",
+        "what could make the village even better"
+      ],
+      "indicative": [
+        "What there is: the village shop, the hall, the green, walking routes, a summer fair, clubs. Say who each is good for.",
+        "Improvements: a regular bus, a youth club, better broadband, more events. Be positive and friendly, and say how readers can get involved."
+      ]
+    },
+    {
+      "id": "w-geography-5",
+      "topic": "UK geography",
+      "task": 1,
+      "title": "No youth club, and the last bus is at six",
+      "format": "letter",
+      "context": "Young people in your village have no youth club, and the last bus home leaves at 6 pm. Your local paper, the Fenland Courier, invites readers to send in letters.",
+      "audience": "The editor of the Fenland Courier.",
+      "purpose": "To describe a problem and suggest what should be done.",
+      "instruction": "Write a formal letter to the editor.",
+      "bullets": [
+        "the problems for young people living in your village",
+        "how these problems affect them",
+        "what you think should be done"
+      ],
+      "indicative": [
+        "Problems: no youth club, no evening bus, long walks, nowhere to meet. Use examples.",
+        "Effects: young people feel isolated, cannot take part in clubs or work late shifts, depend on lifts. Stay polite and serious.",
+        "What should be done: a youth night in the village hall, a later bus, council funding, volunteers. Formal start and end."
+      ]
+    },
+    {
+      "id": "w-geography-6",
+      "topic": "UK geography",
+      "task": 2,
+      "title": "My first week somewhere new",
+      "format": "blog",
+      "context": "You have moved from a village to a town, or from a town to a village. A website for young people wants blog posts about moving to a new area.",
+      "audience": "Young people who read the website.",
+      "purpose": "To describe your experience and share your views.",
+      "instruction": "Write a blog post.",
+      "bullets": [
+        "what is different about your new area",
+        "what you like and what you miss"
+      ],
+      "indicative": [
+        "Differences: transport, shops, noise, space, how well people know each other, how far things are.",
+        "Likes and misses: friends and places left behind, new things to try. A friendly, honest tone and a closing line that invites readers to comment."
+      ]
+    }
+  ]
+}

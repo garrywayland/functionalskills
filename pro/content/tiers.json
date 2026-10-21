@@ -1,0 +1,5 @@
+{
+  "note": "What is free. Everything else needs Plus. A single mission can override with \"tier\": \"free\" in its own file. The toolkit and the fix-it sets are always free.",
+  "freePerTheme": { "reading": 1, "writing": 1 },
+  "freeLearnMarkTasksPerLevel": 1
+}

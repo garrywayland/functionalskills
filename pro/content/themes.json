@@ -1,0 +1,21 @@
+{
+  "note": "A theme appears on the front page only once it has at least one visible reading or writing mission at the chosen level. A mission belongs to a theme when its \"topic\" matches the theme's \"name\" exactly.",
+  "themes": [
+    { "id": "pandas", "name": "Pandas", "blurb": "Giant pandas, zoos and wildlife parks." },
+    { "id": "israel", "name": "Israel", "blurb": "Travel, food and culture." },
+    { "id": "public-transport", "name": "Public transport", "blurb": "Buses, trains and getting around." },
+    { "id": "uk-geography", "name": "UK geography", "blurb": "Places, villages, towns and weather." },
+    { "id": "football", "name": "Football", "blurb": "Matches, fans, clubs and playing." },
+    { "id": "music", "name": "Music", "blurb": "Gigs, playlists, instruments and bands." },
+    { "id": "gaming", "name": "Gaming", "blurb": "Video games, esports and online play." },
+    { "id": "social-media", "name": "Social media", "blurb": "Messaging, sharing and staying safe online." },
+    { "id": "fashion", "name": "Fashion", "blurb": "Clothes, trends and shopping." },
+    { "id": "food", "name": "Food", "blurb": "Cooking, eating out and street food." },
+    { "id": "money-and-jobs", "name": "Money and jobs", "blurb": "Part-time work, saving and first pay." },
+    { "id": "travel", "name": "Travel", "blurb": "Holidays, trips and festivals." },
+    { "id": "film-and-tv", "name": "Film and TV", "blurb": "Films, series and streaming." },
+    { "id": "sport-and-fitness", "name": "Sport and fitness", "blurb": "Training, teams and staying active." },
+    { "id": "technology", "name": "Technology", "blurb": "Phones, gadgets and the internet." },
+    { "id": "college-and-careers", "name": "College and careers", "blurb": "Courses, apprenticeships and what next." }
+  ]
+}

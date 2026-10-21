@@ -1,0 +1,952 @@
+{
+ "note": "Original practice material written for this site. Marks are our own judgement against the published criteria, not Pearson marks.",
+ "mark": [
+  {
+   "id": "mark-forum-zoo",
+   "title": "A forum post about the zoo",
+   "level": "L1",
+   "missionId": "w-pandas-4",
+   "samples": [
+    {
+     "id": "a2",
+     "answer": "Hi everyone,\n\nI think a day at the zoo is worth the money, although it depends on what you like. Last summer my family went to a wildlife park and I had a brilliant time.\n\nThe main reason I would go again is the animals. You cant see giant pandas very often, and watching one eat bamboo for ten minutes was amazing. The keeper talk was good as well because she answered all our questions and told us things we didnt know.\n\nOn the other hand it was expensive. Tickets cost £14 each and we paid another £20 for lunch, which was too much. There was also a long queue for the cafe so we spent half an hour waiting.\n\nOverall I think its worth it if you go early and take your own lunch. Has anyone else been?",
+     "composition": 5,
+     "spag": 4,
+     "why_composition": "A clear view in the first sentence and two developed reasons with examples, in paragraphs, with a friendly forum tone and a closing question. The language is mostly simple, with limited variety, so it sits in the middle of the band.",
+     "why_spag": "Full stops and capital letters are secure and most spelling is accurate. Apostrophes are missing from short forms and there are a few missing commas, so it is reasonably accurate.",
+     "worked": [
+      {
+       "what": "You gave your view straight away and explained it with an example.",
+       "quote": "watching one eat bamboo for ten minutes was amazing"
+      },
+      {
+       "what": "You finished with a question that invites replies, which suits a forum.",
+       "quote": "Has anyone else been?"
+      }
+     ],
+     "target": {
+      "what": "Add more variety to your sentences by joining ideas with words such as \"although\", \"which\" or \"so that\", and add one more detail to each reason.",
+      "example": "For example: \"Although tickets cost £14, the keeper talk alone made the visit worthwhile.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "You cant see",
+       "fix": "You can't see",
+       "why": "A short form needs an apostrophe where letters are missing."
+      },
+      {
+       "quote": "we didnt know",
+       "fix": "we didn't know",
+       "why": "Another short form that needs an apostrophe."
+      },
+      {
+       "quote": "I think its worth it",
+       "fix": "I think it's worth it",
+       "why": "\"It's\" means \"it is\", so it needs an apostrophe."
+      },
+      {
+       "quote": "On the other hand it was expensive.",
+       "fix": "On the other hand, it was expensive.",
+       "why": "A comma follows an opening phrase."
+      }
+     ]
+    },
+    {
+     "id": "a1",
+     "answer": "i think a day at the zoo is worth it. it is good because you can see animals. my favrite is the pandas they are cute and they eat bamboo all day.\n\nthe tickets was alot of money but i still liked it. we went on saturday and there was loads of people so we had to wait. The cafe was expensive to.\n\nso i think you should go to the zoo it is fun",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "There is a clear view and one or two relevant ideas, but little detail or explanation, no greeting or closing question, and the ending is abrupt. The sentences are short and simple.",
+     "why_spag": "There are many errors with capital letters and full stops, several spelling mistakes and some grammar slips. The meaning can still be followed, which keeps it in the lowest band rather than below it.",
+     "worked": [
+      {
+       "what": "You said what you thought in your first sentence.",
+       "quote": "i think a day at the zoo is worth it"
+      },
+      {
+       "what": "You gave an example of something you liked, using a real detail.",
+       "quote": "they eat bamboo all day"
+      }
+     ],
+     "target": {
+      "what": "Add a reason and an example for each point, and finish with a sentence that invites replies.",
+      "example": "For example: \"The pandas were the best part because I had never seen one up close. Has anyone else been?\""
+     },
+     "spag_notes": [
+      {
+       "quote": "i think",
+       "fix": "I think",
+       "why": "\"I\" is always a capital letter, and so is the first word of a sentence."
+      },
+      {
+       "quote": "my favrite is the pandas they are cute",
+       "fix": "My favourite is the pandas. They are cute",
+       "why": "Spell \"favourite\" correctly, and two ideas need a full stop between them."
+      },
+      {
+       "quote": "the tickets was alot",
+       "fix": "The tickets were a lot",
+       "why": "\"Tickets\" is plural so it takes \"were\", and \"a lot\" is two words."
+      },
+      {
+       "quote": "was expensive to.",
+       "fix": "was expensive too.",
+       "why": "\"Too\" means \"also\"."
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "answer": "Hi everyone,\n\nMy view is that a day at the zoo is well worth the money, as long as you plan it properly. I visited a wildlife park last summer with my family, and it turned out to be one of the best days we have had together.\n\nThe biggest reason is the chance to see animals you would never otherwise meet. Watching a giant panda chew bamboo for ten minutes, just a few metres away, was far more memorable then any documentary. The keeper talk added to this, because she answered every question patiently and told us facts that I had never heard before.\n\nOf course the day is not perfect. Tickets cost £14 each, and we spent another £20 on lunch, which felt too much. The café also had a queue of nearly half an hour at midday.\n\nHowever, these problems are easy to avoid: arrive early, bring a packed lunch and check the feeding times online. Done like that, a day at the zoo is great value.\n\nHas anyone found other ways to save money?",
+     "composition": 8,
+     "spag": 5,
+     "why_composition": "The view is clear and developed with convincing reasons, examples and a fair counter-point. Paragraphs are well organised, the tone suits a forum, and sentences are varied, including some complex ones. Vocabulary is well chosen.",
+     "why_spag": "Punctuation is varied and mostly accurate, including a colon and commas for extra information. Spelling and grammar are very secure. There are only one or two small lapses.",
+     "worked": [
+      {
+       "what": "You balanced your view by admitting a drawback, then showed how to solve it.",
+       "quote": "However, these problems are easy to avoid"
+      },
+      {
+       "what": "You made your point vivid by comparing the experience with something familiar.",
+       "quote": "far more memorable then any documentary"
+      }
+     ],
+     "target": {
+      "what": "To move from very good to excellent, add one precise detail, such as a name, a number or a short quotation, to your strongest reason.",
+      "example": "For example: \"The keeper told us that a panda can eat bamboo for up to twelve hours a day.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "far more memorable then any documentary",
+       "fix": "far more memorable than any documentary",
+       "why": "Use \"than\" when comparing."
+      },
+      {
+       "quote": "Of course the day is not perfect.",
+       "fix": "Of course, the day is not perfect.",
+       "why": "A comma usually follows an opening phrase such as \"Of course\"."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mark-advice-train",
+   "title": "An advice sheet for first-time train travellers",
+   "level": "L1",
+   "missionId": "w-transport-6",
+   "samples": [
+    {
+     "id": "b3",
+     "answer": "Your First Train Journey: Tips for Travelling Alone\n\nTravelling by train on your own for the first time can feel daunting, but a little preparation will make the day far more relaxing. These tips will help you to feel confident from the moment you leave home.\n\nBefore the journey\n\nStart by checking the timetable on a journey-planner app, so that you know which train to catch and which platform it leaves from. Buy your ticket in advance if you can, because it is usually cheaper and you will not have to queue. Allow plenty of time to reach the station, and charge your phone the night before in case you need to show your ticket on screen.\n\nOn the day\n\nWhen you arrive, look at the departure board to find your platform. Keep your ticket where you can reach it easily, since staff may ask to see it. Stand behind the yellow line, and let passengers get off before you step on. If you are unsure about anything, ask a member of staff: they are there to help.\n\nFinally, remember that everyone was a beginner once. Follow these steps and you will be fine.",
+     "composition": 8,
+     "spag": 6,
+     "why_composition": "A clear title, introduction and conclusion, with subheadings that match the two bullet points. Each tip says what to do and why, the tone is calm and helpful, and the sentences are varied, including complex ones.",
+     "why_spag": "Punctuation is accurate and varied (commas, a colon, a hyphen), spelling is secure and grammar is consistently correct. There are no errors worth noting.",
+     "worked": [
+      {
+       "what": "Each tip gives a reason, which makes the advice more convincing.",
+       "quote": "because it is usually cheaper and you will not have to queue"
+      },
+      {
+       "what": "The ending is reassuring and fits the purpose of the sheet.",
+       "quote": "everyone was a beginner once"
+      }
+     ],
+     "target": {
+      "what": "To add even more value, include one practical tip that a first-time traveller might not think of.",
+      "example": "For example: \"Sit near the door if you are nervous about missing your stop.\""
+     },
+     "spag_notes": []
+    },
+    {
+     "id": "b1",
+     "answer": "Your first train journey\n\nBefore you go you should buy a ticket. You can get it on the app or at the station. Check the time of the train.\n\nOn the day get to the station early. Look at the screen to see what platform. Dont forget your ticket. Stand behind the yellow line. if you are not sure ask someone who works there\nHave a good trip",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "There are relevant tips for both parts of the task, but they are very brief with little explanation of why, and there is no introduction. The sentences are short and the layout is very basic.",
+     "why_spag": "Some full stops and capital letters are correct, but several are missing, and there is a missing apostrophe and a sentence with no end punctuation. The meaning is still clear.",
+     "worked": [
+      {
+       "what": "Your tips are practical and in a sensible order.",
+       "quote": "Stand behind the yellow line"
+      },
+      {
+       "what": "You split the advice into before and on the day, which matches the task.",
+       "quote": "On the day get to the station early"
+      }
+     ],
+     "target": {
+      "what": "Say why each tip helps and add a short opening sentence, so that the reader knows who the advice is for.",
+      "example": "For example: \"Buy your ticket before you travel, so that you do not have to queue.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "Dont forget your ticket.",
+       "fix": "Don't forget your ticket.",
+       "why": "A short form needs an apostrophe."
+      },
+      {
+       "quote": "if you are not sure ask someone who works there",
+       "fix": "If you are not sure, ask someone who works there.",
+       "why": "Start with a capital, add a comma after the opening clause and finish with a full stop."
+      },
+      {
+       "quote": "On the day get to the station early.",
+       "fix": "On the day, get to the station early.",
+       "why": "A comma follows an opening phrase."
+      },
+      {
+       "quote": "Have a good trip",
+       "fix": "Have a good trip.",
+       "why": "Every sentence needs end punctuation."
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "answer": "Your First Train Journey: Tips for Travelling Alone\n\nTravelling by train on your own for the first time can feel scary, but a little planning makes it much easier.\n\nBefore the journey\n\nFirst, check the timetable on an app so you know which train to catch and what platform it leaves from. Buy your ticket in advance if you can, because it is usually cheaper and you wont have to queue. Leave plenty of time to get to the station, and charge your phone so you can show your ticket on the screen.\n\nOn the day\n\nWhen you arrive look at the departure board to find your platform. Keep your ticket handy as staff may ask to see it. Stand behind the yellow line, and let people get off before you get on. If your not sure about anything, ask a member of staff, they are there to help.\n\nRemember, everyone was a beginner once, so try not to worry.",
+     "composition": 6,
+     "spag": 3,
+     "why_composition": "A clear title, introduction and subheadings. Tips are organised well and most include a reason. The tone is helpful. Language is clear but fairly plain, with some repeated sentence patterns.",
+     "why_spag": "Spelling and full stops are mostly accurate, but there are several slips with apostrophes, commas and one comma used where a full stop is needed. This is reasonably accurate with some lapses.",
+     "worked": [
+      {
+       "what": "Your sheet is well organised, with a title and clear subheadings.",
+       "quote": "Before the journey"
+      },
+      {
+       "what": "You explained why buying in advance helps.",
+       "quote": "because it is usually cheaper and you wont have to queue"
+      }
+     ],
+     "target": {
+      "what": "Add a sentence at the end of each section that sums up the main tip, and vary your sentence openings.",
+      "example": "For example: \"With these steps done, you can enjoy the journey.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "you wont have to queue",
+       "fix": "you won't have to queue",
+       "why": "A short form needs an apostrophe."
+      },
+      {
+       "quote": "If your not sure",
+       "fix": "If you're not sure",
+       "why": "\"You're\" means \"you are\"."
+      },
+      {
+       "quote": "When you arrive look at",
+       "fix": "When you arrive, look at",
+       "why": "A comma follows an opening clause."
+      },
+      {
+       "quote": "ask a member of staff, they are there to help.",
+       "fix": "ask a member of staff. They are there to help.",
+       "why": "A comma cannot join two complete sentences."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mark-blog-move",
+   "title": "A blog post about moving to a new area",
+   "level": "L1",
+   "missionId": "w-geography-6",
+   "samples": [
+    {
+     "id": "c1",
+     "answer": "my first week in the town\n\nI moved from a village to a town last week. It is very diferent here. There is lots of shops and the bus come every ten minutes. In the village we only had one bus a day.\n\nI like the shops but it is noisey and I miss my freinds. i miss the feilds and its quiet.\n\nI will tell you more next week",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "There are relevant points about differences, likes and misses, but very little detail or explanation. There is no real opening or closing, and the sentences are short and simple.",
+     "why_spag": "Several spelling mistakes, missing capital letters, a missing apostrophe and some grammar slips, but the writing can still be understood.",
+     "worked": [
+      {
+       "what": "You compared the village and the town with a clear fact.",
+       "quote": "In the village we only had one bus a day"
+      },
+      {
+       "what": "You said how you feel about the move.",
+       "quote": "I miss my freinds"
+      }
+     ],
+     "target": {
+      "what": "Give an example for each difference and say how it makes you feel.",
+      "example": "For example: \"The buses are so frequent that I never worry about missing one.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "diferent",
+       "fix": "different",
+       "why": "A spelling slip."
+      },
+      {
+       "quote": "There is lots of shops and the bus come every ten minutes.",
+       "fix": "There are lots of shops and the bus comes every ten minutes.",
+       "why": "\"Shops\" is plural so it takes \"are\", and \"the bus\" takes \"comes\"."
+      },
+      {
+       "quote": "noisey",
+       "fix": "noisy",
+       "why": "A spelling slip."
+      },
+      {
+       "quote": "i miss the feilds and its quiet.",
+       "fix": "I miss the fields and the quiet.",
+       "why": "\"I\" needs a capital, \"fields\" is spelt with ie, and \"its quiet\" should be \"the quiet\"."
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "answer": "My first week somewhere new\n\nLast Saturday I moved from a small village to a big town, and everything feels different.\n\nThe first thing I noticed was the noise. In the village I could hear birds in the morning, but here its cars and buses all day and night. There are also lots more people, and nobody says hello to each other like they did at home. On the plus side there are shops and cafes everywhere and a bus every ten minutes, which means I can see my new friends easily.\n\nWhat I like most is that I dont need a lift from my parents any more. I can just catch the bus into town after college. What I miss, though, is the fields behind our house and walking the dog in the quiet evenings.\n\nI'll write again next week and tell you how I'm getting on. Has anyone else moved recently?",
+     "composition": 5,
+     "spag": 3,
+     "why_composition": "Relevant and organised, with a title, opening, paragraphs and closing question. Differences and feelings are both covered with some detail. Sentences are mostly simple, with some variety.",
+     "why_spag": "Full stops and most spelling are accurate, but there are repeated slips with apostrophes and several missing commas. A grammar slip makes one sentence awkward.",
+     "worked": [
+      {
+       "what": "You noticed a detail that makes the move feel real.",
+       "quote": "In the village I could hear birds in the morning"
+      },
+      {
+       "what": "You used a closing question to involve your readers.",
+       "quote": "Has anyone else moved recently?"
+      }
+     ],
+     "target": {
+      "what": "Develop one point further with an example or a feeling, and join some short sentences with words like \"because\" or \"although\".",
+      "example": "For example: \"Although the noise bothers me, the bus is so convenient that I can see my friends every day.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "here its cars and buses",
+       "fix": "here it's cars and buses",
+       "why": "\"It's\" means \"it is\"."
+      },
+      {
+       "quote": "I dont need a lift",
+       "fix": "I don't need a lift",
+       "why": "A short form needs an apostrophe."
+      },
+      {
+       "quote": "On the plus side there are shops",
+       "fix": "On the plus side, there are shops",
+       "why": "A comma follows an opening phrase."
+      }
+     ]
+    },
+    {
+     "id": "c3",
+     "answer": "My first week somewhere new\n\nLast Saturday I moved from a small village to a big town, and almost everything feels different.\n\nThe first thing I noticed was the noise. In the village I woke to birdsong, but here it is traffic from morning until midnight. There are also far more people, and while the streets are busier, they feel less friendly than the lanes at home. On the plus side, there are shops, cafés and a bus every ten minutes, which means I can see my new friends whenever I like.\n\nWhat I enjoy most is my independence. I no longer need a lift from my parents, because I can catch the bus into town after college. What I miss, though, are the fields behind our house and the quiet evenings walking the dog. There is also less people to say hello to, which I find strange.\n\nI will write again next week to tell you how I am getting on. Has anyone else made a move like this?",
+     "composition": 8,
+     "spag": 5,
+     "why_composition": "Well organised and well written, with a clear opening, developed paragraphs and a friendly ending. Differences, likes and misses are all covered with convincing detail, and the vocabulary and sentence structures are varied.",
+     "why_spag": "Punctuation is accurate and varied, and spelling is secure. There is one grammar slip and one awkward agreement, so it sits in the top band with occasional lapses.",
+     "worked": [
+      {
+       "what": "You used a comparison that makes the contrast between village and town clear.",
+       "quote": "I woke to birdsong, but here it is traffic from morning until midnight"
+      },
+      {
+       "what": "Your tone is friendly and honest, which suits a blog.",
+       "quote": "which I find strange"
+      }
+     ],
+     "target": {
+      "what": "To lift the writing further, replace one general word with a precise one and add a short example from your day.",
+      "example": "For example: \"On Tuesday I counted four buses in ten minutes.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "There is also less people",
+       "fix": "There are also fewer people",
+       "why": "Use \"fewer\" for things you can count, and match the verb to the plural."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mark-form-tour",
+   "title": "Feedback on a food tour",
+   "level": "L1",
+   "missionId": "w-israel-4",
+   "samples": [
+    {
+     "id": "d2",
+     "answer": "The part I enjoyed most was the tasting stops. We tried falafel, hummus and sweet pastries, and the guide explained what was in each dish, which made it more interesting. I also liked that the stallholders were friendly and let us taste before we bought anything.\n\nIt could be improved by making the groups smaller. There were twenty five people in our group so it was hard to hear the guide, and we only stopped for water once even though it was very hot. A water break every hour would help.\n\nI would recommend the tour to anyone who loves food, but I would suggest booking the morning one to avoid the crowds. Thank you for asking for my views.",
+     "composition": 6,
+     "spag": 4,
+     "why_composition": "Both parts of the task are covered with clear reasons and examples. It is organised in paragraphs, polite and suits an online form. Language is clear with some range, though sentences are quite similar in length.",
+     "why_spag": "Mostly accurate punctuation and spelling, with a few missing commas and a missing hyphen. Grammar is secure.",
+     "worked": [
+      {
+       "what": "You gave a reason for what you enjoyed, not just an opinion.",
+       "quote": "the guide explained what was in each dish, which made it more interesting"
+      },
+      {
+       "what": "You suggested a practical improvement.",
+       "quote": "A water break every hour would help"
+      }
+     ],
+     "target": {
+      "what": "Add one specific detail to your recommendation, such as who it would suit best.",
+      "example": "For example: \"It would suit families, because the guide was patient with children.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "There were twenty five people in our group so it was hard",
+       "fix": "There were twenty-five people in our group, so it was hard",
+       "why": "Hyphenate numbers like twenty-five and put a comma before \"so\" when it joins two ideas."
+      }
+     ]
+    },
+    {
+     "id": "d1",
+     "answer": "The tour was good. i liked the food. We tryed falafel and hummus it was nice. the guide was friendly.\n\nIt was to hot and there was too many people. I would recomend it",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "Both parts of the task are touched on, but each point is very short with no real reasons or examples. There is no closing thank-you and the sentences are simple.",
+     "why_spag": "Several capital letters and full stops are missing, and there are spelling slips and a grammar slip, but the meaning is clear.",
+     "worked": [
+      {
+       "what": "You mentioned something you liked and something you did not like.",
+       "quote": "the guide was friendly"
+      },
+      {
+       "what": "You finished with a clear recommendation.",
+       "quote": "I would recomend it"
+      }
+     ],
+     "target": {
+      "what": "Give a reason for each opinion, using the word \"because\".",
+      "example": "For example: \"The guide was friendly because he explained every dish and answered our questions.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "i liked the food",
+       "fix": "I liked the food",
+       "why": "Start each sentence with a capital letter."
+      },
+      {
+       "quote": "We tryed falafel and hummus it was nice.",
+       "fix": "We tried falafel and hummus. It was nice.",
+       "why": "Check the spelling of \"tried\", and two ideas need a full stop between them."
+      },
+      {
+       "quote": "It was to hot and there was too many people.",
+       "fix": "It was too hot and there were too many people.",
+       "why": "\"Too\" means \"more than is wanted\", and \"people\" takes \"were\"."
+      },
+      {
+       "quote": "I would recomend it",
+       "fix": "I would recommend it.",
+       "why": "A spelling slip, and the sentence needs a full stop."
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "answer": "What I enjoyed most was the tasting stops. We sampled warm falafel, creamy hummus and sticky pastries, and our guide explained the story behind every dish, which turned a simple snack into a lesson in local culture. The stallholders were also generous, letting us taste before we bought.\n\nThe tour could be improved by limiting the group size. With twenty-five people, it was difficult to hear the guide over the noise of the market, and since temperatures were high we would have welcomed more than one water break.\n\nOverall, I would happily recommend the tour, particularly to families and anyone who enjoys trying new food. I would suggest booking the morning session, when the crowds are smaller. Thank you for the opportunity to share my views.",
+     "composition": 8,
+     "spag": 6,
+     "why_composition": "Both parts are covered in full, with specific, convincing detail and a polite, formal tone that suits an online form. Paragraphs are well organised, sentences are varied, and the vocabulary is well chosen.",
+     "why_spag": "Punctuation is accurate and varied, spelling is secure and grammar is consistently correct.",
+     "worked": [
+      {
+       "what": "Your detail makes the writing vivid and specific.",
+       "quote": "warm falafel, creamy hummus and sticky pastries"
+      },
+      {
+       "what": "You gave a clear reason for suggesting the morning session.",
+       "quote": "when the crowds are smaller"
+      }
+     ],
+     "target": {
+      "what": "Add one sentence that explains how your suggestion would improve the experience for other people.",
+      "example": "For example: \"Smaller groups would let everyone ask the guide questions.\""
+     },
+     "spag_notes": []
+    }
+   ]
+  },
+  {
+   "id": "mark-forum-buses",
+   "title": "A forum post about free buses for under-18s",
+   "level": "L2",
+   "missionId": "w-transport-4",
+   "samples": [
+    {
+     "id": "e2",
+     "answer": "Hi everyone,\n\nI think buses should be free for under-18s, at least on journeys to school and college. Many families in our area already struggle with the cost of living and a weekly bus pass can cost more than the weekly food shop for a teenager's lunches.\n\nThe main argument for free travel is fairness. Students who live in the countryside often have no choice but to take the bus, whereas those in town can walk. For example, my cousin spends £18 a week to get to college, which is money his family could have spent on other things. Free buses would also mean fewer parents driving children to school, which would reduce traffic and pollution outside the gates.\n\nHowever, someone has to pay for it. If the council cuts other services to fund free travel, then the benefit might be cancelled out. A fair compromise would be free travel at peak times only.\n\nWhat do other people think the council should do?",
+     "composition": 6,
+     "spag": 4,
+     "why_composition": "A clear view, with developed reasons, a real example and a counter-argument. Paragraphs are used and the tone suits a forum. Vocabulary and sentences are generally appropriate, though some phrasing is repetitive.",
+     "why_spag": "Punctuation is generally correct across commas, apostrophes and colons. There are a few small slips with commas and one awkward comparison, so it is generally accurate.",
+     "worked": [
+      {
+       "what": "You supported your view with a specific example.",
+       "quote": "my cousin spends £18 a week to get to college"
+      },
+      {
+       "what": "You recognised the other side and offered a compromise.",
+       "quote": "A fair compromise would be free travel at peak times only"
+      }
+     ],
+     "target": {
+      "what": "Make the link between your reasons clearer with linking words such as \"furthermore\", \"consequently\" or \"in contrast\", and tighten the comparison in your first paragraph.",
+      "example": "For example: \"Consequently, many teenagers cannot afford to travel to college at all.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "a weekly bus pass can cost more than the weekly food shop for a teenager's lunches",
+       "fix": "a weekly bus pass can cost as much as a teenager's lunches for the week",
+       "why": "The comparison was muddled, so it did not say clearly what is being compared."
+      }
+     ]
+    },
+    {
+     "id": "e1",
+     "answer": "I think that buses should be free for under 18s because its not fair that teenagers have to pay.\n\nLots of young people dont have much money. They have to pay for the bus to college and its expensive. My friend pays alot every week and she has to ask her mum for money. Also if the buses was free then more people would use them and there would be less cars.\n\nBut the council would have to pay for it and that might mean they cut other things. So I think it is a good idea but they need to find the money from somewhere.\n\nwhat do you think",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "There is a clear view and a few reasons, but they are not developed and the example is general. The counter-point is brief. The tone is suitable but sentence structures are simple.",
+     "why_spag": "Several apostrophes, capital letters and question marks are missing, and there are some spelling and grammar slips. The meaning is mostly clear.",
+     "worked": [
+      {
+       "what": "You gave a view in your first sentence.",
+       "quote": "buses should be free for under 18s"
+      },
+      {
+       "what": "You thought about who would pay.",
+       "quote": "the council would have to pay for it"
+      }
+     ],
+     "target": {
+      "what": "Pick one reason and develop it with a specific example, then link your points with a connective.",
+      "example": "For example: \"Furthermore, free buses would help students who live far from college.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "because its not fair",
+       "fix": "because it's not fair",
+       "why": "\"It's\" means \"it is\"."
+      },
+      {
+       "quote": "dont have much money",
+       "fix": "don't have much money",
+       "why": "A short form needs an apostrophe."
+      },
+      {
+       "quote": "alot",
+       "fix": "a lot",
+       "why": "\"A lot\" is two words."
+      },
+      {
+       "quote": "if the buses was free then more people would use them",
+       "fix": "if the buses were free, more people would use them",
+       "why": "\"Buses\" takes \"were\", and a comma follows the opening clause."
+      },
+      {
+       "quote": "what do you think",
+       "fix": "What do you think?",
+       "why": "A capital letter at the start and a question mark at the end."
+      }
+     ]
+    },
+    {
+     "id": "e3",
+     "answer": "Hi everyone,\n\nIn my view, buses should be free for everyone under 18, because the benefits to families and to the town outweigh the cost.\n\nThe strongest argument is fairness. A weekly student pass costs £18 in our area, which is a heavy burden for families already managing rising bills. Consequently, some teenagers skip college courses that would require a longer journey, simply because they cannot afford the fares. Free travel would give every young person the same chance to learn, regardless of income.\n\nMoreover, there are wider benefits. If more teenagers used the bus, fewer parents would drive them to school, which would ease congestion and improve the air outside the gates. Where similar schemes have been tried in other cities, more young people have started using public transport.\n\nAdmittedly, someone must pay: the council could be forced to cut other services. Nevertheless, a limited scheme covering journeys to school and college would be affordable, and the long-term gains would be worth it.\n\nHow would you fund it, if you were in charge?",
+     "composition": 8,
+     "spag": 6,
+     "why_composition": "A confident, well structured post. The view is clear, the reasons are developed with specific evidence, and a counter-argument is fairly considered and answered. Paragraphs are linked with connectives, the tone suits a forum and the vocabulary is wide.",
+     "why_spag": "Punctuation is varied and accurate, including colons and commas, spelling is secure and grammar is consistent.",
+     "worked": [
+      {
+       "what": "You answered the opposing argument fairly, then explained why your view still stands.",
+       "quote": "Nevertheless, a limited scheme covering journeys to school and college would be affordable"
+      },
+      {
+       "what": "You linked your points clearly, so the argument builds.",
+       "quote": "Consequently, some teenagers skip college courses"
+      }
+     ],
+     "target": {
+      "what": "To lift it further, back up your evidence by naming one place or source.",
+      "example": "For example: \"According to a council report, the number of young bus users rose by 12% after the scheme began.\""
+     },
+     "spag_notes": []
+    }
+   ]
+  },
+  {
+   "id": "mark-news-village",
+   "title": "A newsletter item about a village",
+   "level": "L2",
+   "missionId": "w-geography-4",
+   "samples": [
+    {
+     "id": "f2",
+     "answer": "Welcome to our village\n\nOur village is a friendly place to live, and there is plenty to do whatever your age.\n\nThe village hall hosts a coffee morning every Thursday, which is a good way for new residents to meet people. For younger people, there is a football pitch on the green and a youth group on Friday evenings. Walkers will enjoy the footpath along the river, which leads to the old mill and takes about an hour. Every July the summer fair raises money for the church roof and the whole village comes along.\n\nHowever, there are things we could improve. The bus only runs twice a day, so people without cars find it hard to get to the town. Broadband is also slow in some streets. We would like to see a regular bus and faster internet, and we should ask the parish council about it.\n\nIf you would like to help, come to the next meeting in the hall. New ideas are always welcome!",
+     "composition": 6,
+     "spag": 4,
+     "why_composition": "Both bullet points are covered, with several relevant details and a clear idea of who each activity suits. The tone is friendly and positive, the format is acceptable and paragraphs are used. Language is clear but not varied.",
+     "why_spag": "Generally correct punctuation and spelling. A few comma slips and one run-on sentence, but errors do not affect the meaning.",
+     "worked": [
+      {
+       "what": "You matched each activity with the people it suits.",
+       "quote": "For younger people, there is a football pitch on the green"
+      },
+      {
+       "what": "You invited readers to take part.",
+       "quote": "If you would like to help, come to the next meeting in the hall"
+      }
+     ],
+     "target": {
+      "what": "Make the second paragraph more persuasive by explaining the benefit of each improvement.",
+      "example": "For example: \"A regular bus would let teenagers reach college and part-time jobs without needing a lift.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "We would like to see a regular bus and faster internet, and we should ask the parish council about it.",
+       "fix": "We would like to see a regular bus and faster internet, so we should ask the parish council about it.",
+       "why": "\"And\" joins ideas of equal weight, whereas \"so\" shows the reason for asking."
+      }
+     ]
+    },
+    {
+     "id": "f1",
+     "answer": "our village is a good place to live. There is a shop and a hall and a park. The hall has events. Its good for old people and the park is good for kids.\n\nThe village could be better if the bus came more. and there was more things to do. Come to the meeting if you want to help",
+     "composition": 3,
+     "spag": 2,
+     "why_composition": "Some relevant ideas are given for both bullets, but they are only listed, with little detail. The format has no heading and the sentences are short and simple.",
+     "why_spag": "There are several errors with capital letters, full stops and apostrophes, and a grammar slip, but the writing can be understood.",
+     "worked": [
+      {
+       "what": "You mentioned several places in the village.",
+       "quote": "There is a shop and a hall and a park"
+      },
+      {
+       "what": "You ended with an invitation.",
+       "quote": "Come to the meeting if you want to help"
+      }
+     ],
+     "target": {
+      "what": "Give a detail about each place, for example when it is open or what happens there, and add a heading.",
+      "example": "For example: \"The hall hosts a lunch club every Wednesday for older residents.\""
+     },
+     "spag_notes": [
+      {
+       "quote": "our village",
+       "fix": "Our village",
+       "why": "Start the first word with a capital letter."
+      },
+      {
+       "quote": "Its good for old people",
+       "fix": "It's good for older people",
+       "why": "\"It's\" means \"it is\"."
+      },
+      {
+       "quote": "if the bus came more. and there was more things",
+       "fix": "if the bus came more often and there were more things",
+       "why": "A sentence should not start with \"and\" after a full stop, and \"things\" takes \"were\"."
+      },
+      {
+       "quote": "if you want to help",
+       "fix": "if you want to help.",
+       "why": "End the sentence with a full stop."
+      }
+     ]
+    },
+    {
+     "id": "f3",
+     "answer": "Welcome to Elmstead: a village for everyone\n\nWhether you have lived here for fifty years or fifty days, Elmstead has something for you.\n\nThe village hall is the heart of our community. Every Thursday, the coffee morning brings neighbours together, and the Friday youth club gives teenagers a place to meet, play table tennis and make music. Walkers will love the riverside path, which winds for three miles to the old mill, while families can enjoy the green, where the summer fair raises hundreds of pounds for the church roof each July.\n\nNevertheless, a good village can always improve. At present, the bus runs only twice a day, which leaves anyone without a car stranded. A regular service would help teenagers to reach college and older residents to attend appointments in town. Faster broadband would also benefit people who work from home.\n\nWe would love you to join us. Come along to the parish meeting on the first Monday of each month, or speak to any member of the committee. Together, we can make Elmstead even better.",
+     "composition": 8,
+     "spag": 6,
+     "why_composition": "Strong and engaging, with an inviting heading and a welcoming tone that fits a newsletter. Both bullets are covered in detail, benefits are explained for particular groups, and the ending makes a clear call to action. Language and sentence structures are varied.",
+     "why_spag": "Punctuation is consistently correct, including colons and commas, with secure spelling and grammar.",
+     "worked": [
+      {
+       "what": "You explained who each improvement would help.",
+       "quote": "A regular service would help teenagers to reach college and older residents to attend appointments in town"
+      },
+      {
+       "what": "Your heading and opening welcome every reader, new or old.",
+       "quote": "Whether you have lived here for fifty years or fifty days"
+      }
+     ],
+     "target": {
+      "what": "To go further, include one short quotation or a real-sounding detail from a villager, which would add a personal voice.",
+      "example": "For example: \"As one resident says, 'It's the only place where everyone says hello.'\""
+     },
+     "spag_notes": []
+    }
+   ]
+  }
+ ],
+ "fix": [
+  {
+   "id": "fix-apostrophes",
+   "title": "Fix the apostrophes",
+   "skill": "Apostrophes",
+   "intro": "Each sentence has an apostrophe missing or in the wrong place. Rewrite it correctly, then check.",
+   "level": "both",
+   "items": [
+    {
+     "wrong": "Im going to the library after college.",
+     "fixed": "I'm going to the library after college.",
+     "why": "I'm is short for I am. The apostrophe shows the missing letter."
+    },
+    {
+     "wrong": "We couldnt find the platform.",
+     "fixed": "We couldn't find the platform.",
+     "why": "Couldn't is short for could not."
+    },
+    {
+     "wrong": "The dogs lead was too short.",
+     "fixed": "The dog's lead was too short.",
+     "why": "One dog owns the lead, so the apostrophe goes before the s."
+    },
+    {
+     "wrong": "The teachers meeting starts at four.",
+     "fixed": "The teachers' meeting starts at four.",
+     "why": "Several teachers own the meeting, so the apostrophe goes after the s."
+    },
+    {
+     "wrong": "Its a lovely day and the sun has got its hat on.",
+     "fixed": "It's a lovely day and the sun has got its hat on.",
+     "why": "It's means it is. Its (no apostrophe) shows belonging. Only the first one needed fixing."
+    },
+    {
+     "wrong": "Three bus's were late this morning.",
+     "fixed": "Three buses were late this morning.",
+     "why": "A plural does not take an apostrophe."
+    },
+    {
+     "wrong": "The childrens playground is closed.",
+     "fixed": "The children's playground is closed.",
+     "why": "Children is already plural, so add 's."
+    },
+    {
+     "wrong": "Theyre not sure whose coming.",
+     "fixed": "They're not sure who's coming.",
+     "why": "They're is they are, and who's is who is. Whose shows belonging."
+    }
+   ]
+  },
+  {
+   "id": "fix-capitals",
+   "title": "Fix the capital letters and full stops",
+   "skill": "Capitals and full stops",
+   "intro": "Each text has capital letters or full stops missing. Rewrite it correctly, then check.",
+   "level": "both",
+   "items": [
+    {
+     "wrong": "on monday i went to london with my sister.",
+     "fixed": "On Monday I went to London with my sister.",
+     "why": "Days, places and the word I all start with a capital letter, and so does the first word."
+    },
+    {
+     "wrong": "We waited for the train it was late.",
+     "fixed": "We waited for the train. It was late.",
+     "why": "Two separate ideas need a full stop between them.",
+     "also": [
+      "We waited for the train; it was late.",
+      "We waited for the train, and it was late."
+     ]
+    },
+    {
+     "wrong": "my favourite subject is english, and my teacher is mrs patel.",
+     "fixed": "My favourite subject is English, and my teacher is Mrs Patel.",
+     "why": "Names of subjects such as English, titles and names need capital letters."
+    },
+    {
+     "wrong": "The cafe was busy. so we sat outside.",
+     "fixed": "The cafe was busy, so we sat outside.",
+     "why": "A sentence should not start with so after a full stop. A comma joins the two parts."
+    },
+    {
+     "wrong": "Are you coming to the match on saturday",
+     "fixed": "Are you coming to the match on Saturday?",
+     "why": "A question ends with a question mark, and days start with a capital letter."
+    },
+    {
+     "wrong": "What a brilliant goal",
+     "fixed": "What a brilliant goal!",
+     "why": "An exclamation takes an exclamation mark."
+    },
+    {
+     "wrong": "In december we visited the Dead Sea in israel.",
+     "fixed": "In December we visited the Dead Sea in Israel.",
+     "why": "Months and countries start with a capital letter."
+    },
+    {
+     "wrong": "The panda eats bamboo. it can eat for twelve hours a day.",
+     "fixed": "The panda eats bamboo. It can eat for twelve hours a day.",
+     "why": "The first word after a full stop needs a capital letter."
+    }
+   ]
+  },
+  {
+   "id": "fix-commas",
+   "title": "Fix the commas",
+   "skill": "Commas",
+   "intro": "Each sentence needs commas or has one in the wrong place. Rewrite it correctly, then check.",
+   "level": "both",
+   "items": [
+    {
+     "wrong": "We bought bread milk eggs and cheese.",
+     "fixed": "We bought bread, milk, eggs and cheese.",
+     "why": "Commas separate items in a list."
+    },
+    {
+     "wrong": "However the train was late.",
+     "fixed": "However, the train was late.",
+     "why": "A comma follows an opening word such as however."
+    },
+    {
+     "wrong": "When we arrived at the station we bought our tickets.",
+     "fixed": "When we arrived at the station, we bought our tickets.",
+     "why": "A comma follows an opening clause."
+    },
+    {
+     "wrong": "My brother who lives in Leeds is a nurse.",
+     "fixed": "My brother, who lives in Leeds, is a nurse.",
+     "why": "Commas go round extra information."
+    },
+    {
+     "wrong": "I wanted to go but it was raining so I stayed in.",
+     "fixed": "I wanted to go, but it was raining, so I stayed in.",
+     "why": "A comma goes before but and so when they join two full ideas.",
+     "also": [
+      "I wanted to go, but it was raining so I stayed in."
+     ]
+    },
+    {
+     "wrong": "The tour was long, the guide was excellent.",
+     "fixed": "The tour was long. The guide was excellent.",
+     "why": "A comma cannot join two complete sentences. Use a full stop (or a joining word).",
+     "also": [
+      "The tour was long, and the guide was excellent.",
+      "The tour was long; the guide was excellent."
+     ]
+    },
+    {
+     "wrong": "I am writing to ask about the trip, thank you.",
+     "fixed": "I am writing to ask about the trip. Thank you.",
+     "why": "A comma cannot join two separate sentences. Use a full stop."
+    },
+    {
+     "wrong": "If you are unsure ask a member of staff.",
+     "fixed": "If you are unsure, ask a member of staff.",
+     "why": "A comma follows an opening if clause."
+    }
+   ]
+  },
+  {
+   "id": "fix-spelling",
+   "title": "Fix the spelling",
+   "skill": "Spelling",
+   "intro": "Each sentence has one spelling mistake, often a word that sounds the same as the right one. Rewrite it correctly, then check.",
+   "level": "both",
+   "items": [
+    {
+     "wrong": "There going to be late.",
+     "fixed": "They're going to be late.",
+     "why": "They're means they are. There points to a place."
+    },
+    {
+     "wrong": "I would like to here your opinion.",
+     "fixed": "I would like to hear your opinion.",
+     "why": "Hear is what you do with your ears. Here is a place."
+    },
+    {
+     "wrong": "It was to cold to go outside.",
+     "fixed": "It was too cold to go outside.",
+     "why": "Too means more than needed or also."
+    },
+    {
+     "wrong": "We went to the park for our brake.",
+     "fixed": "We went to the park for our break.",
+     "why": "A break is a rest. A brake stops a bike."
+    },
+    {
+     "wrong": "The weather was nice, accept for the wind.",
+     "fixed": "The weather was nice, except for the wind.",
+     "why": "Except means apart from. Accept means to take."
+    },
+    {
+     "wrong": "I recieved your letter yesterday.",
+     "fixed": "I received your letter yesterday.",
+     "why": "I before E, except after C."
+    },
+    {
+     "wrong": "The new libary opens on Monday.",
+     "fixed": "The new library opens on Monday.",
+     "why": "Say it slowly: lie-brar-y."
+    },
+    {
+     "wrong": "This is definately the best answer.",
+     "fixed": "This is definitely the best answer.",
+     "why": "Definitely has the word finite in the middle."
+    }
+   ]
+  },
+  {
+   "id": "fix-grammar",
+   "title": "Fix the grammar",
+   "skill": "Grammar",
+   "intro": "Each sentence has a grammar mistake with agreement or tense. Rewrite it correctly, then check.",
+   "level": "both",
+   "items": [
+    {
+     "wrong": "There is three buses to the town.",
+     "fixed": "There are three buses to the town.",
+     "why": "Three buses is plural, so use are."
+    },
+    {
+     "wrong": "Each of the students have a ticket.",
+     "fixed": "Each of the students has a ticket.",
+     "why": "Each is singular, so it goes with has."
+    },
+    {
+     "wrong": "Yesterday we go to the museum.",
+     "fixed": "Yesterday we went to the museum.",
+     "why": "Yesterday means the past, so use the past tense."
+    },
+    {
+     "wrong": "She don't like crowds.",
+     "fixed": "She doesn't like crowds.",
+     "why": "She goes with doesn't."
+    },
+    {
+     "wrong": "I seen the film last week.",
+     "fixed": "I saw the film last week.",
+     "why": "Saw is the past tense. Seen needs have."
+    },
+    {
+     "wrong": "We was waiting for an hour.",
+     "fixed": "We were waiting for an hour.",
+     "why": "We goes with were."
+    },
+    {
+     "wrong": "Me and my friend went to the match.",
+     "fixed": "My friend and I went to the match.",
+     "why": "Use I when you are doing the action, and put yourself last."
+    },
+    {
+     "wrong": "It was more better than I expected.",
+     "fixed": "It was better than I expected.",
+     "why": "Better already means more good, so do not add more.",
+     "also": [
+      "It was much better than I expected."
+     ]
+    }
+   ]
+  }
+ ]
+}

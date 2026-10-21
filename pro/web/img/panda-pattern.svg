@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520" fill="none">
+  <defs>
+    <!-- A giant panda sitting up. Origin is the middle of the body. -->
+    <g id="panda" stroke-linejoin="round" stroke-linecap="round">
+      <ellipse cx="-52" cy="16" rx="13" ry="32" transform="rotate(14 -52 16)" fill="#000"/>
+      <ellipse cx="52" cy="16" rx="13" ry="32" transform="rotate(-14 52 16)" fill="#000"/>
+      <ellipse cx="-34" cy="60" rx="24" ry="16" transform="rotate(-10 -34 60)" fill="#000"/>
+      <ellipse cx="34" cy="60" rx="24" ry="16" transform="rotate(10 34 60)" fill="#000"/>
+      <ellipse cx="0" cy="22" rx="44" ry="46" fill="#fff" stroke="#000" stroke-width="3"/>
+      <circle cx="-31" cy="-84" r="13" fill="#000"/>
+      <circle cx="31" cy="-84" r="13" fill="#000"/>
+      <ellipse cx="0" cy="-58" rx="39" ry="33" fill="#fff" stroke="#000" stroke-width="3"/>
+      <ellipse cx="-16" cy="-61" rx="9" ry="13" transform="rotate(25 -16 -61)" fill="#000"/>
+      <ellipse cx="16" cy="-61" rx="9" ry="13" transform="rotate(-25 16 -61)" fill="#000"/>
+      <circle cx="-14" cy="-63" r="2.6" fill="#fff"/>
+      <circle cx="14" cy="-63" r="2.6" fill="#fff"/>
+      <ellipse cx="0" cy="-48" rx="6.5" ry="4.5" fill="#000"/>
+      <path d="M0 -44 Q-5 -36 -12 -40 M0 -44 Q5 -36 12 -40" stroke="#000" stroke-width="2.2" fill="none"/>
+    </g>
+    <g id="bamboo" stroke-linejoin="round">
+      <rect x="-6" y="0" width="12" height="520" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+      <path d="M-6 80H6M-6 190H6M-6 300H6M-6 410H6" stroke="#000" stroke-width="3"/>
+      <path d="M6 190 q42 -6 58 -38 q-40 0 -58 38z M-6 410 q-42 -6 -58 -38 q40 0 58 38z M6 80 q34 -4 46 -30 q-32 0 -46 30z" fill="#fff" stroke="#000" stroke-width="3"/>
+    </g>
+  </defs>
+  <use href="#bamboo" x="486" y="0"/>
+  <use href="#panda" transform="translate(96 118) rotate(-5)"/>
+  <use href="#panda" transform="translate(300 250) rotate(6) scale(.82)"/>
+  <use href="#panda" transform="translate(110 392) rotate(-7) scale(.68)"/>
+  <use href="#panda" transform="translate(372 72) rotate(8) scale(.5)"/>
+  <use href="#panda" transform="translate(350 440) rotate(-4) scale(.55)"/>
+</svg>

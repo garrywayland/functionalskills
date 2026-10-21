@@ -1,0 +1,7 @@
+// All access to the database goes through our own server, never from a browser, so nothing is open to clients.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} { allow read, write: if false; }
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+.data
+tests
+tools
+deploy
+docs
+*.md
+.env*
+.git
+env.yaml
