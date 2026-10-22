@@ -56,6 +56,7 @@ export class MemoryStore {
     await this.changed();
     return structuredClone(rec);
   }
+  async peekToken(hash) { const rec = this.tokens.get(hash); return rec ? structuredClone(rec) : null; }
   async purgeTokens(now = Date.now()) {
     for (const [h, r] of this.tokens) if (r.exp < now) this.tokens.delete(h);
     await this.changed();

@@ -10,6 +10,7 @@ export function loadConfig(env = process.env) {
     baseUrl: (env.BASE_URL || `http://localhost:${num('PORT', 8080)}`).replace(/\/+$/, ''),
     sessionSecret: env.SESSION_SECRET || '',
     sessionDays: num('SESSION_DAYS', 30),
+    sessionCookie: env.SESSION_COOKIE || (production ? '__Host-ns' : 'ns'),   // behind Firebase Hosting this must be __session
     adminEmails: list('ADMIN_EMAILS'),
     brand: env.BRAND_NAME || 'Next Stop',
     planName: env.PLAN_NAME || 'Plus',
@@ -26,6 +27,7 @@ export function loadConfig(env = process.env) {
     stripeKey: env.STRIPE_SECRET_KEY || '',
     stripeWebhookSecret: env.STRIPE_WEBHOOK_SECRET || '',
     stripeBase: (env.STRIPE_BASE_URL || 'https://api.stripe.com').replace(/\/+$/, ''),
+    stripeApiVersion: env.STRIPE_API_VERSION || '2025-03-31.basil',
     priceMonthly: env.STRIPE_PRICE_MONTHLY || '',
     pricePass: env.STRIPE_PRICE_PASS || '',
     passDays: num('PASS_DAYS', 90),
@@ -52,6 +54,7 @@ export function loadConfig(env = process.env) {
     authPerIpPerHour: num('AUTH_PER_IP_PER_HOUR', 30),
     apiPerIpPerMinute: num('API_PER_IP_PER_MINUTE', 240),
     trustProxy: env.TRUST_PROXY ? env.TRUST_PROXY === '1' : production,
+    trustedProxyHops: Math.max(1, num('TRUSTED_PROXY_HOPS', 1)),             // how many proxy addresses are added on the right of X-Forwarded-For by Google, not by the visitor
     contentDir: env.CONTENT_DIR || '',
     webDir: env.WEB_DIR || '',
   };
@@ -70,6 +73,7 @@ export function checkConfig(cfg) {
   } else if (cfg.sessionSecret.length < 16) {
     cfg.sessionSecret = 'dev-only-secret-not-for-production-use';
   }
+  if (cfg.sessionCookie.startsWith('__Host-') && !/^https:\/\//.test(cfg.baseUrl)) problems.push('A cookie name starting __Host- needs an https BASE_URL (set SESSION_COOKIE for development).');
   if (cfg.mailer === 'resend' && (!cfg.resendKey || !cfg.mailFrom)) problems.push('MAILER=resend needs RESEND_API_KEY and MAIL_FROM.');
   if (cfg.stripeKey && !cfg.stripeWebhookSecret) problems.push('STRIPE_SECRET_KEY is set but STRIPE_WEBHOOK_SECRET is not.');
   if (cfg.markingProvider === 'anthropic' && !process.env.ANTHROPIC_API_KEY) problems.push('MARKING_PROVIDER=anthropic needs ANTHROPIC_API_KEY.');

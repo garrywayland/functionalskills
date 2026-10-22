@@ -96,3 +96,15 @@ test('promo codes: redeem, stack, run out, expire', async () => {
   assert.equal((await client(ctx.base).post('/api/redeem', { code: 'PILOT2026' })).status, 401);
   await ctx.close();
 });
+
+test('promo code guessing is limited by address as well as by account', async () => {
+  const ctx = await startApp({ TRUST_PROXY: '1', AUTH_PER_IP_PER_HOUR: '500', API_PER_IP_PER_MINUTE: '5000' });
+  let blocked = 0;
+  for (let i = 0; i < 40; i++) {
+    const c = await signIn(ctx, `guesser${i}@example.com`);
+    const r = await c.post('/api/redeem', { code: 'GUESS-' + i + 'ABCD' }, { headers: { 'X-Forwarded-For': '198.51.100.7' } });
+    if (r.status === 429) blocked++;
+  }
+  assert.ok(blocked >= 5, 'many accounts from one address are cut off (' + blocked + ' blocked)');
+  await ctx.close();
+});

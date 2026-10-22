@@ -1,5 +1,5 @@
 # One small image: the Node service, the website, and the lessons.
-FROM node:22-slim
+FROM node:22.22-slim
 WORKDIR /app
 ENV NODE_ENV=production PORT=8080
 COPY package.json package-lock.json ./

@@ -132,3 +132,11 @@ Do this before the first real customer. It has not been run for you.
 
 ## 15. Before real customers
 The code is only part of "ready". Work through the "before you charge anyone" section of the pathway document: the privacy notice and terms in `web/privacy.html` and `web/terms.html` are **drafts with blanks**; the AI provider's data terms must be read and stated; a teacher must review content and marking; and you need advice on tax and consumer rights. Switch Stripe to live keys last.
+
+## 12. Notes added after the audit (read before going live)
+
+- Cloud Run custom-domain mapping is a preview feature and is not offered in europe-west2. Put Firebase Hosting in front with a rewrite to the Cloud Run service, and deploy the service in europe-west1 or europe-west4 (check the Firebase rewrite region support first).
+- Firebase Hosting forwards only the `__session` cookie, so set `SESSION_COOKIE=__session` (it needs https; the `__Host-` form is for direct use).
+- After deploying, sign in as admin and open `/api/admin/diagnostics` to confirm the visitor IP is read correctly; adjust `TRUSTED_PROXY_HOPS` if not.
+- Create the Stripe webhook endpoint with the same API version as `STRIPE_API_VERSION`.
+- Shared computers: the app labels saved work with its owner and asks before mixing it into another account; sign-out offers to remove work from the device.

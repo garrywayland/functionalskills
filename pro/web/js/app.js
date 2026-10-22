@@ -264,6 +264,8 @@
       view = h('div', { class: 'notice' }, h('h1', { text: 'That page could not be shown' }), h('p', { text: 'Something in it looks wrong. If it is one of your own packs, you can delete it from the Make a pack page.' }), h('div', { class: 'actions' }, h('a', { class: 'btn', href: '#/', text: 'Back to the front page' })));
     }
     main.replaceChildren(view);
+    var banner = parts[0] === 'signin' ? null : deviceBanner();
+    if (banner) main.insertBefore(banner, main.firstChild);
     updateNav(parts[0] || '');
     document.title = (main.querySelector('h1') ? main.querySelector('h1').textContent + ' · ' : '') + 'Next Stop';
 
@@ -1182,7 +1184,7 @@
           }
         });
       });
-      var live = liveMarking();
+      var live = liveMarking() && !m.own;
       append(wrap,
         h('h1', { text: live ? 'Get feedback' : 'Send for marking' }),
         live ? feedbackSection(m, format, draft, words, id) : null,
@@ -1236,6 +1238,7 @@
 
   // Feedback comes from our own service, and only for a signed-in Plus account. (liveMarking() says if it is on.)
   function markingPromo() {
+    if (me.signedIn && isPlus() && me.features && me.features.marking) return h('p', { class: 'muted small', text: 'Feedback in the app is for our own tasks. For a task you made yourself, use Copy and paste it into an AI chat.' });
     if (!me.signedIn) return h('p', { class: 'notice' }, 'Want feedback from an AI on this? ', h('a', { href: '#/account', text: 'Sign in' }), ' and ', h('a', { href: '#/plans', text: 'see ' + PLAN }), '.');
     if (!isPlus()) return h('p', { class: 'notice' }, 'Feedback from an AI is part of ' + PLAN + '. ', h('a', { href: '#/plans', text: 'See ' + PLAN }));
     return null;
@@ -1286,12 +1289,7 @@
     if (shown && shown.feedback) renderResult(shown);
 
     btn.addEventListener('click', function () {
-      var format_ = format ? format.name : m.format;
-      var payload = {
-        level: level(), task: m.task, format: format_, context: m.context, audience: m.audience, purpose: m.purpose,
-        instruction: m.instruction, bullets: m.bullets, answer: draft
-      };
-      if (m.info && m.info.length) payload.info = m.info;
+      var payload = { mission: id, level: level(), answer: draft };   // the task itself comes from the server's own copy
       btn.disabled = true;
       status.textContent = 'Marking your writing. This can take up to a minute.';
       var controller = window.AbortController ? new AbortController() : null;
@@ -1457,10 +1455,66 @@
     } catch (e) { return false; }
   }
 
+  // ---------- Whose work is on this device ----------
+  // Several people may use one browser (a school computer, a library). Work is labelled with the account it belongs to,
+  // and is never mixed into a different account without being asked.
+
+  function hasLocalWork() {
+    return Object.keys(collectWork()).some(function (k) { return k !== 'level'; });
+  }
+
+  // signedout | clean (nothing here yet) | mine | unlabelled (work from before signing in) | other (another account's work)
+  function deviceState() {
+    if (!me.signedIn || !me.user) return 'signedout';
+    if (!hasLocalWork()) return 'clean';
+    var owner = store.get('owner', null);
+    if (owner === me.user.id) return 'mine';
+    return owner ? 'other' : 'unlabelled';
+  }
+
+  function clearLocalWork() {
+    var B = window.NextStopBackup;
+    applyingRemote = true;
+    try {
+      store.keys('').forEach(function (k) { if ((B && B.isBackupKey(k) && k !== 'level') || k === 'owner' || k.indexOf('make:') === 0) store.remove(k); });
+    } finally { applyingRemote = false; }
+    applyMyPacks();
+  }
+
+  function downloadWorkCopy() {
+    var file = window.NextStopBackup.make(collectWork(), today());
+    download('next-stop-my-work-' + today() + '.json', JSON.stringify(file), 'application/json');
+  }
+
+  function deviceBanner() {
+    var ds = deviceState();
+    if (ds !== 'unlabelled' && ds !== 'other') return null;
+    var msg = h('p', { class: 'status', role: 'status' });
+    function carryOn() { store.set('owner', me.user.id); render({ keepFocus: true }); syncNow({ rerender: true }); }
+    var copyBtn = h('button', { type: 'button', class: 'btn secondary', text: 'Download a copy first', onclick: function () { downloadWorkCopy(); msg.textContent = 'Downloaded. Keep the file somewhere private.'; } });
+    if (ds === 'unlabelled') {
+      return h('section', { class: 'notice device-banner', 'aria-label': 'Work already on this device' },
+        h('h2', { text: 'Add the work on this device to your account?' }),
+        h('p', { text: 'This device has work from before you signed in. If it is yours, add it to ' + me.user.email + ' so it follows you to your other devices. If it belongs to someone else, clear it instead.' }),
+        h('div', { class: 'actions' },
+          h('button', { type: 'button', class: 'btn', text: 'Yes, it is mine: add it', onclick: carryOn }),
+          copyBtn,
+          h('button', { type: 'button', class: 'btn quiet', text: 'It is not mine: clear it', onclick: function () { clearLocalWork(); carryOn(); } })),
+        msg);
+    }
+    return h('section', { class: 'notice device-banner', 'aria-label': 'Work already on this device' },
+      h('h2', { text: 'This device has someone else’s work on it' }),
+      h('p', { text: 'The work saved here belongs to a different account. To keep accounts private we have not mixed it with yours, and nothing here is being saved to your account until you choose.' }),
+      h('div', { class: 'actions' },
+        copyBtn,
+        h('button', { type: 'button', class: 'btn', text: 'Remove it from this device and carry on', onclick: function () { clearLocalWork(); carryOn(); } })),
+      msg);
+  }
+
   // ---------- Sync between devices ----------
 
   var syncState = 'off';        // off | ok | syncing | offline | error | toobig
-  var syncing = false, syncPending = false, applyingRemote = false, syncTimer = null, syncedAt = null;
+  var syncing = false, applyingRemote = false, syncTimer = null, syncedAt = null;
 
   function setSyncState(s) {
     syncState = s;
@@ -1472,18 +1526,24 @@
 
   function syncText() {
     if (!me.signedIn) return '';
-    return { ok: 'Saved to your account' + (syncedAt ? ' at ' + syncedAt : '') + '.', syncing: 'Saving to your account…', offline: 'No connection. Your work is safe on this device and will sync when you are back online.', error: 'Could not sync just now. Your work is safe on this device. We will try again.', toobig: 'You have more saved than we can sync. Download a copy of your work and remove old packs.', off: '' }[syncState] || '';
+    return { ok: 'Saved to your account' + (syncedAt ? ' at ' + syncedAt : '') + '.', syncing: 'Saving to your account…', blocked: 'Waiting for you to choose what to do with the work already on this device.', offline: 'No connection. Your work is safe on this device and will sync when you are back online.', error: 'Could not sync just now. Your work is safe on this device. We will try again.', toobig: 'You have more saved than we can sync. Download a copy of your work and remove old packs.', off: '' }[syncState] || '';
   }
 
   function clockNow() { var d = new Date(); return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
 
   // Sends everything this device has and takes back the merged result, using the same merge as "Restore from a file".
+  var currentSync = Promise.resolve();
+
   function syncNow(opts) {
     opts = opts || {};
-    if (!me.signedIn || !window.NextStopBackup) return Promise.resolve();
-    if (syncing) { syncPending = true; return Promise.resolve(); }
+    if (!me.signedIn || !me.user || !window.NextStopBackup) return Promise.resolve();
+    if (syncing) return currentSync.then(function () { return syncNow(opts); });
+    // Never mix this device's work into an account it does not belong to without asking (see deviceBanner).
+    var ds = deviceState();
+    if (ds === 'clean') store.set('owner', me.user.id);
+    else if (ds !== 'mine') { setSyncState('blocked'); return Promise.resolve(); }
     syncing = true; setSyncState('syncing');
-    return api('POST', '/api/sync', { data: collectWork() }).then(function (res) {
+    currentSync = api('POST', '/api/sync', { data: collectWork() }).then(function (res) {
       if (res.status === 200) {
         var merged = window.NextStopBackup.merge(collectWork(), res.body.data || {});
         var keys = Object.keys(merged.changes);
@@ -1496,10 +1556,8 @@
       else if (res.status === 401) { me = { signedIn: false, features: me.features }; renderAccountLink(); setSyncState('off'); }
       else if (res.status === 413) setSyncState('toobig');
       else setSyncState('error');
-    }).catch(function () { setSyncState('offline'); }).then(function () {
-      syncing = false;
-      if (syncPending) { syncPending = false; syncSoon(); }
-    });
+    }).then(function () { syncing = false; }, function () { syncing = false; setSyncState('error'); });
+    return currentSync;
   }
 
   function syncSoon() {
@@ -2591,21 +2649,36 @@
   }
 
   function signinView(token) {
+    var who = h('p', { class: 'lede', 'aria-live': 'polite', text: 'Checking your link…' });
     var msg = h('p', { class: 'status', role: 'status' });
-    var btn = h('button', { type: 'button', class: 'btn', text: 'Sign in' });
+    var btn = h('button', { type: 'button', class: 'btn', text: 'Sign in', disabled: true });
+    var help = h('p', { class: 'muted small' });
+    // First ask whose account the link is for, so nobody is signed in to a stranger's account by pressing a link they were sent.
+    api('POST', '/api/auth/peek', { token: token }).then(function (r) {
+      if (r.status === 200) {
+        who.replaceChildren('You are about to sign in as ', h('strong', { text: r.body.email }), '.');
+        help.textContent = 'If that is not you, close this page and do not press the button. If this device already has someone\u2019s work on it, we will ask what to do with it before anything is saved to your account.';
+        btn.disabled = false;
+      } else {
+        who.textContent = r.body.error || 'That link did not work.';
+        btn.hidden = true;
+        help.replaceChildren(h('a', { class: 'btn', href: '#/account', text: 'Ask for a new link' }));
+      }
+    });
     btn.addEventListener('click', function () {
       btn.disabled = true; msg.textContent = 'Signing you in…';
       api('POST', '/api/auth/verify', { token: token }).then(function (r) {
         if (r.status === 200) {
           me = r.body.me; applyBrand(); renderAccountLink();
+          if (deviceState() === 'clean') store.set('owner', me.user.id);
           loadAll().then(function () { setupFooter(); return syncNow({ rerender: false }); }).then(function () { location.hash = '#/account'; render(); });
         } else { btn.disabled = false; msg.textContent = r.body.error || 'That did not work.'; msg.appendChild(h('span', null, ' ', h('a', { href: '#/account', text: 'Ask for a new link' }))); }
-      }).catch(function () { btn.disabled = false; msg.textContent = 'Could not reach the service. Please try again.'; });
+      });
     });
     return h('div', { class: 'mission' },
       h('p', { class: 'eyebrow', text: 'Sign in' }),
       h('h1', { text: 'Press to sign in' }),
-      h('p', { class: 'lede', text: 'You asked for a link to ' + BRAND + '. One press and you are in.' }),
+      who, help,
       h('div', { class: 'actions' }, btn), msg);
   }
 
@@ -2666,12 +2739,35 @@
     }
     drawFamily();
 
+    var removeLocal = h('input', { type: 'checkbox', id: 'remove-local' });
+    removeLocal.checked = true;
+    function leave(everywhere) {
+      var remove = removeLocal.checked;
+      function go() {
+        api('POST', everywhere ? '/api/auth/logout-all' : '/api/auth/logout').then(function () {
+          if (remove) clearLocalWork();
+          me = { signedIn: false, features: me.features }; setSyncState('off');
+          refreshAll(false).then(function () { location.hash = '#/'; render(); });
+        });
+      }
+      if (!remove) { go(); return; }
+      note('Saving your latest work to your account first…');
+      syncNow().then(function () {
+        if (syncState === 'ok') { go(); return; }
+        msgs.replaceChildren(h('div', { class: 'notice' },
+          h('p', { text: 'Your latest work could not be saved to your account just now (no connection?). If you remove it from this device it will be lost.' }),
+          h('div', { class: 'actions' },
+            h('button', { type: 'button', class: 'btn secondary', text: 'Download a copy first', onclick: downloadWorkCopy }),
+            h('button', { type: 'button', class: 'btn', text: 'Remove it anyway', onclick: go }),
+            h('button', { type: 'button', class: 'btn quiet', text: 'Cancel', onclick: function () { msgs.replaceChildren(); } }))));
+      });
+    }
     var del = h('input', plain({ type: 'text', id: 'delete-confirm', maxlength: '10' }));
     var delBtn = h('button', { type: 'button', class: 'btn quiet', text: 'Delete my account' });
     delBtn.addEventListener('click', function () {
       if (del.value !== 'DELETE') { note('Type DELETE in the box to confirm.', true); return; }
       api('DELETE', '/api/me', { confirm: 'DELETE' }).then(function (r) {
-        if (r.status === 200) { me = { signedIn: false, features: me.features }; setSyncState('off'); refreshAll(false).then(function () { location.hash = '#/'; render(); }); } else note(r.body.error || 'Could not delete just now.', true);
+        if (r.status === 200) { if (removeLocal.checked) clearLocalWork(); me = { signedIn: false, features: me.features }; setSyncState('off'); refreshAll(false).then(function () { location.hash = '#/'; render(); }); } else note(r.body.error || 'Could not delete just now.', true);
       });
     });
 
@@ -2681,7 +2777,7 @@
       h('p', { class: 'eyebrow', text: 'Account' }),
       h('h1', { text: 'Your account' }),
       h('p', { class: 'lede' }, 'Signed in as ', h('strong', { text: me.user.email }), '.'),
-      location.hash.indexOf('paid=1') !== -1 ? h('p', { class: 'notice', text: 'Thank you. It can take a moment for ' + PLAN + ' to switch on. Refresh in a minute if you do not see it.' }) : null,
+      location.search.indexOf('paid=1') !== -1 ? h('p', { class: 'notice', text: 'Thank you. It can take a moment for ' + PLAN + ' to switch on. Refresh in a minute if you do not see it.' }) : null,
       h('section', { 'aria-labelledby': 'acc-plan' },
         h('h2', { id: 'acc-plan', text: 'Your plan' }),
         isPlus()
@@ -2700,8 +2796,9 @@
         h('p', { class: 'muted', text: 'You can download everything we hold about you, sign out, or delete your account and all your saved work. We keep nothing you write for marking.' }),
         h('div', { class: 'actions' },
           h('button', { type: 'button', class: 'btn secondary', text: 'Download my data', onclick: function () { downloadMyData().then(function (ok) { note(ok ? 'Downloaded.' : 'Could not download just now.', !ok); }); } }),
-          h('button', { type: 'button', class: 'btn quiet', text: 'Sign out', onclick: function () { api('POST', '/api/auth/logout').then(function () { me = { signedIn: false, features: me.features }; setSyncState('off'); refreshAll(false).then(function () { location.hash = '#/'; render(); }); }); } }),
-          h('button', { type: 'button', class: 'btn quiet', text: 'Sign out everywhere', onclick: function () { api('POST', '/api/auth/logout-all').then(function () { me = { signedIn: false, features: me.features }; setSyncState('off'); refreshAll(false).then(function () { location.hash = '#/'; render(); }); }); } })),
+          h('button', { type: 'button', class: 'btn quiet', text: 'Sign out', onclick: function () { leave(false); } }),
+          h('button', { type: 'button', class: 'btn quiet', text: 'Sign out everywhere', onclick: function () { leave(true); } })),
+        h('label', { class: 'toggle remove-local' }, removeLocal, 'Also remove my work from this device (best on a shared computer; it stays in your account)'),
         field('delete-confirm', 'Delete my account', del, 'Type DELETE to confirm. This removes your account and saved work for good.'),
         h('div', { class: 'actions' }, delBtn),
         h('p', { class: 'muted small' }, h('a', { href: '/privacy', text: 'Privacy' }), ' · ', h('a', { href: '/terms', text: 'Terms' }))),

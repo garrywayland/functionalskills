@@ -62,6 +62,7 @@ export class FirestoreStore {
       return s.data();
     });
   }
+  async peekToken(hash) { const s = await this.col('tokens').doc(hash).get(); return s.exists ? s.data() : null; }
   async purgeTokens(now = Date.now()) {
     const q = await this.col('tokens').where('exp', '<', now).limit(400).get();
     await Promise.all(q.docs.map((d) => d.ref.delete()));

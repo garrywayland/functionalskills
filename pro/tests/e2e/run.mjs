@@ -219,6 +219,25 @@ const L = await person(); const lp = L.page;
   await a.c.close();
 }
 
+// ---------------- 7. one shared computer ----------------
+{
+  const { c, page } = await person();
+  await signIn(page, 'sam@example.com');
+  await page.evaluate(() => localStorage.setItem('nextstop:log', JSON.stringify([{ d: '2026-10-01', m: 20 }])));
+  await go(page, '#/account');
+  await page.uncheck('#remove-local'); await page.click('button:has-text("Sign out")'); await page.waitForSelector('.theme-grid');
+  await signIn(page, 'alex@example.com');
+  check(!!(await page.$('.device-banner')), 'the next person is told this device holds someone else\u2019s work');
+  const alexHas = (await ctx.app.store.getUserByEmail('alex@example.com')) && (await page.evaluate(() => fetch('/api/me', { headers: { 'X-NS': '1' } }).then((r) => r.status)));
+  check(alexHas === 200, 'and is signed in');
+  await page.click('button:has-text("Remove it from this device")');
+  await page.waitForSelector('.device-banner', { state: 'detached' });
+  check((await page.evaluate(() => localStorage.getItem('nextstop:log'))) === null, 'removing it clears the previous person\u2019s work');
+  await go(page, '#/account'); await page.click('button:has-text("Sign out")'); await page.waitForSelector('.theme-grid');
+  check(await page.evaluate(() => Object.keys(localStorage).filter((k) => k.startsWith('nextstop:') && k !== 'nextstop:probe').every((k) => k === 'nextstop:level' || k === 'nextstop:owner' ? true : false)), 'signing out with the box ticked leaves nothing behind');
+  await c.close();
+}
+
 await browser.close(); await ctx.close(); await stripe.close();
 console.log('\nScreenshots in', SHOTS);
 console.log('EXTERNAL:', external.size ? [...external] : 'none');

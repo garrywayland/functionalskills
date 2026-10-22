@@ -16,6 +16,8 @@ import { makeBilling } from './billing.js';
 import { makeSync } from './sync.js';
 import { makeFamily } from './family.js';
 import { makeProvider, makeMarker, MarkRequest } from './marking/index.js';
+import { taskRequest } from './marking/task.js';
+import { z } from 'zod';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8', '.webmanifest': 'application/manifest+json' };
@@ -40,8 +42,11 @@ export async function createApp(cfg, deps = {}) {
 
   function clientIp(req) {
     if (cfg.trustProxy) {
+      // Addresses are added on the right by Google's own servers, so count in from the right (the left can be faked).
+      // Straight to Cloud Run that is 1 hop. Through Firebase Hosting or a load balancer it may be more:
+      // check /api/admin/diagnostics once deployed.
       const xff = String(req.headers['x-forwarded-for'] || '').split(',').map((s) => s.trim()).filter(Boolean);
-      if (xff.length) return xff[xff.length - 1];   // on Cloud Run the last address is the one Google saw, which cannot be faked
+      if (xff.length) return xff[Math.max(0, xff.length - cfg.trustedProxyHops)];
     }
     return req.socket.remoteAddress || 'unknown';
   }
@@ -97,7 +102,7 @@ export async function createApp(cfg, deps = {}) {
   async function mePayload(user) {
     if (!user) return { signedIn: false, features: { marking: marker.available, payments: billing.enabled }, brand: cfg.brand, planName: cfg.planName };
     return {
-      signedIn: true, user: { email: user.email, createdAt: user.createdAt }, admin: isAdmin(user),
+      signedIn: true, user: { id: user.id, email: user.email, createdAt: user.createdAt }, admin: isAdmin(user),
       plan: planSummary(user), quota: await quotaFor(user), canManageBilling: Boolean(user.stripeCustomerId),
       features: { marking: marker.available, payments: billing.enabled }, brand: cfg.brand, planName: cfg.planName,
     };
@@ -122,6 +127,10 @@ export async function createApp(cfg, deps = {}) {
       const b = await jsonBody(req);
       const { link } = await auth.requestLink(b.email, ip);
       return sendJson(req, res, 200, { ok: true, ...(cfg.devMode ? { devLink: link } : {}) });
+    }
+    if (route === 'POST /api/auth/peek') {
+      const b = await jsonBody(req);
+      return sendJson(req, res, 200, { ok: true, ...(await auth.peek(b.token, ip)) });
     }
     if (route === 'POST /api/auth/verify') {
       const b = await jsonBody(req);
@@ -150,7 +159,7 @@ export async function createApp(cfg, deps = {}) {
 
     if (route === 'POST /api/redeem') {
       const u = await requireUser(req); const b = await jsonBody(req);
-      if (!limiter.allow('redeem:' + u.id, 10, 3600_000)) throw new HttpError(429, 'Too many tries. Please wait a little.');
+      if (!limiter.allow('redeem:' + u.id, 10, 3600_000) || !limiter.allow('redeem-ip:' + ip, 30, 3600_000)) throw new HttpError(429, 'Too many tries. Please wait a little.');
       const code = String(b.code || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
       const rec = code.length >= 6 ? await store.useCode(sha256(code)) : null;
       if (!rec) throw new HttpError(400, 'That code did not work. Check it and try again.');
@@ -171,7 +180,12 @@ export async function createApp(cfg, deps = {}) {
       const u = await requireUser(req);
       if (!isPlus(u)) throw new HttpError(402, `Feedback on your writing is part of ${cfg.planName}.`, 'plus_required');
       if (!marker.available) throw new HttpError(503, 'Marking is not switched on yet. You can use Copy instead.');
-      const parsed = MarkRequest.safeParse(await jsonBody(req));
+      // She sends which task, which level and her answer. The task itself comes from our own copy of the lesson.
+      const body = z.object({ mission: z.string().min(1).max(100), level: z.enum(['L1', 'L2']), answer: z.string().trim().min(1).max(6000) }).strict().safeParse(await jsonBody(req));
+      if (!body.success) throw new HttpError(400, 'Something was missing or too long. Please check your answer and try again.');
+      const task = taskRequest(content, body.data.mission, body.data.level, body.data.answer);
+      if (!task || (content.mission('writing', body.data.mission).status === 'draft' && !isAdmin(u))) throw new HttpError(404, 'We could not find that task. Feedback is only available on our own tasks; use Copy for your own.');
+      const parsed = MarkRequest.safeParse(task);
       if (!parsed.success) throw new HttpError(400, 'Something was missing or too long. Please check your answer and try again.');
       if (!limiter.allow('mark:' + u.id, cfg.marksPerUserPerHour, 3600_000)) throw new HttpError(429, 'That is a lot of marking in one hour. Please wait a little, or use Copy.');
       const dayKeyName = 'global:marks:' + dayKey(); const monthKeyName = `marks:${u.id}:${monthKey()}`;
@@ -184,6 +198,13 @@ export async function createApp(cfg, deps = {}) {
       if (!result.ok) { await refund(); return sendJson(req, res, 200, { ok: false, reason: result.reason }); }
       log('marked', { provider: marker.kind, in: result.usage?.in, out: result.usage?.out });
       return sendJson(req, res, 200, { ok: true, feedback: result.feedback, quota: { used, limit: cfg.quotaMonthlyMarks } });
+    }
+
+    if (route === 'GET /api/admin/diagnostics') {
+      const u = await requireUser(req);
+      if (!isAdmin(u)) throw new HttpError(404, 'Not found.');
+      // For checking a new deployment: is the visitor's real address being read correctly?
+      return sendJson(req, res, 200, { ok: true, yourAddressAsSeen: ip, xForwardedFor: req.headers['x-forwarded-for'] || null, trustProxy: cfg.trustProxy, trustedProxyHops: cfg.trustedProxyHops, sessionCookie: auth.cookieName, baseUrl: cfg.baseUrl, store: store.kind, marking: marker.kind, payments: billing.enabled, stripeApiVersion: cfg.stripeApiVersion });
     }
 
     if (route === 'POST /api/family/invite') { const u = await requireUser(req); return sendJson(req, res, 200, await family.invite(u)); }

@@ -22,4 +22,6 @@ test('the admin tool grants, revokes and makes codes, against the same data the 
   assert.notEqual(admin(dir, 'grant', 'a@example.com', '-5').status, 0);
   assert.notEqual(admin(dir, 'user', 'ghost@example.com').status, 0);
   assert.notEqual(admin(dir, 'explode').status, 0);
+  assert.notEqual(admin(dir, 'code', 'new', '--days', '30', '--code', 'SHORT').status, 0, 'short codes can be guessed, so they are refused');
+  r = admin(dir, 'code', 'new', '--days', '30'); assert.equal(r.status, 0); assert.match(r.stdout, /Code: [A-Z2-9]{12}\n/, 'random codes are long');
 });

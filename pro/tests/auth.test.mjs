@@ -122,3 +122,49 @@ test('the website is served, and nothing outside it', async () => {
   assert.equal((await c.get('/api/nope')).status, 404);
   await ctx.close();
 });
+
+test('a sign-in link can be looked at without using it up, and says whose account it is for', async () => {
+  const ctx = await startApp(); const c = client(ctx.base);
+  const r = await c.post('/api/auth/request', { email: 'ga.rry@example.com' });
+  const token = r.json.devLink.split('/signin/')[1];
+  const p1 = await c.post('/api/auth/peek', { token }); assert.equal(p1.status, 200); assert.equal(p1.json.email, 'ga***@example.com');
+  assert.ok(!p1.text.includes('ga.rry'), 'the full address is never sent');
+  const p2 = await c.post('/api/auth/peek', { token }); assert.equal(p2.status, 200, 'looking twice does not use it up');
+  assert.equal((await c.get('/api/me')).json.signedIn, false, 'and looking does not sign anyone in');
+  assert.equal((await c.post('/api/auth/verify', { token })).status, 200);
+  assert.equal((await c.post('/api/auth/peek', { token })).status, 400, 'once used, it is gone');
+  assert.equal((await c.post('/api/auth/peek', { token: 'x'.repeat(43) })).status, 400);
+  assert.equal((await c.post('/api/auth/peek', { token: 'short' })).status, 400);
+  assert.equal((await c.post('/api/auth/peek', { token }, { noHeader: true })).status, 403);
+  await ctx.close();
+});
+
+test('the account details include an id the page can use to tell whose work is on a device', async () => {
+  const ctx = await startApp(); const a = await signIn(ctx, 'a@example.com'); const b = await signIn(ctx, 'b@example.com');
+  const ia = (await a.get('/api/me')).json.user.id; const ib = (await b.get('/api/me')).json.user.id;
+  assert.match(ia, /^[0-9a-f]{32}$/); assert.notEqual(ia, ib);
+  assert.equal((await client(ctx.base).get('/api/me')).json.user, undefined);
+  await ctx.close();
+});
+
+test('the cookie name can be set (it has to be __session behind Firebase Hosting)', async () => {
+  const ctx = await startApp({ SESSION_COOKIE: '__session' }); const a = await signIn(ctx, 'a@example.com');
+  assert.deepEqual(Object.keys(a.jar), ['__session']);
+  assert.equal((await a.get('/api/me')).json.signedIn, true);
+  await ctx.close();
+});
+
+test('behind Google\'s proxies the visitor address is counted in from the right, and only an admin can look at it', async () => {
+  const ctx = await startApp({ TRUST_PROXY: '1', TRUSTED_PROXY_HOPS: '2', ADMIN_EMAILS: 'boss@example.com' });
+  const boss = await signIn(ctx, 'boss@example.com'); const other = await signIn(ctx, 'other@example.com');
+  assert.equal((await other.get('/api/admin/diagnostics')).status, 404, 'a learner gets "not found"');
+  assert.equal((await client(ctx.base).get('/api/admin/diagnostics')).status, 401);
+  const d = await boss.get('/api/admin/diagnostics', { headers: { 'X-Forwarded-For': '6.6.6.6, 203.0.113.9, 130.211.0.1' } });
+  assert.equal(d.json.yourAddressAsSeen, '203.0.113.9', 'two hops in from the right, so a forged address on the left is ignored');
+  assert.equal(d.json.trustedProxyHops, 2); assert.equal(d.json.sessionCookie, 'ns');
+  await ctx.close();
+  const ctx2 = await startApp({ TRUST_PROXY: '1', ADMIN_EMAILS: 'boss@example.com' }); const b2 = await signIn(ctx2, 'boss@example.com');
+  const d2 = await b2.get('/api/admin/diagnostics', { headers: { 'X-Forwarded-For': '6.6.6.6, 203.0.113.9' } });
+  assert.equal(d2.json.yourAddressAsSeen, '203.0.113.9', 'straight to Cloud Run it is the last address');
+  await ctx2.close();
+});

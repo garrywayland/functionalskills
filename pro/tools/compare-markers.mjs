@@ -9,27 +9,22 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadConfig } from '../server/config.js';
 import { makeProvider, makeMarker } from '../server/marking/index.js';
+import { taskRequest } from '../server/marking/task.js';
+import { loadContent } from '../server/content.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const args = {}; for (let i = 2; i < process.argv.length; i += 2) args[process.argv[i].replace(/^--/, '')] = process.argv[i + 1];
 const contentDir = process.env.CONTENT_DIR || path.join(here, '..', 'content');
 const learn = JSON.parse(fs.readFileSync(path.join(contentDir, 'learn.json'), 'utf8'));
-const writing = JSON.parse(fs.readFileSync(path.join(contentDir, 'writing.json'), 'utf8'));
-const toolkit = JSON.parse(fs.readFileSync(path.join(contentDir, 'toolkit.json'), 'utf8'));
 const providers = String(args.providers || 'fake').split(',').map((s) => s.trim()).filter(Boolean);
 
 export function buildCases({ level, limit } = {}) {
+  const content = loadContent(contentDir);
   const cases = [];
   for (const t of learn.mark) {
     if (level && t.level !== level) continue;
-    const raw = writing.missions.find((m) => m.id === t.missionId);
-    const m = { ...raw, ...((raw.levels && raw.levels[t.level]) || {}) };
-    const format = toolkit.formats.find((f) => f.id === m.format);
     for (const s of t.samples) {
-      cases.push({
-        id: `${t.id}/${s.id}`, ours: { comp: s.composition, spag: s.spag },
-        req: { level: t.level, task: m.task, format: format ? format.name : m.format, context: m.context, audience: m.audience, purpose: m.purpose, instruction: m.instruction, bullets: m.bullets, ...(m.info ? { info: m.info } : {}), answer: s.answer },
-      });
+      cases.push({ id: `${t.id}/${s.id}`, ours: { comp: s.composition, spag: s.spag }, req: taskRequest(content, t.missionId, t.level, s.answer) });
     }
   }
   return limit ? cases.slice(0, Number(limit)) : cases;

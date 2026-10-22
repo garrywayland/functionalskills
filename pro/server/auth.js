@@ -3,12 +3,12 @@
 //  2. The link opens the site, which asks her to press Sign in (so an email scanner that opens the link
 //     cannot use it up), and that call sets a session cookie.
 import crypto from 'node:crypto';
-import { HttpError, sha256, randomToken, safeEqual, normaliseEmail } from './util.js';
+import { HttpError, sha256, randomToken, safeEqual, normaliseEmail, maskEmail } from './util.js';
 
 const TOKEN_MINUTES = 15;
 
 export function makeAuth({ cfg, store, mailer, limiter }) {
-  const cookieName = cfg.production ? '__Host-ns' : 'ns';
+  const cookieName = cfg.sessionCookie;
   const sign = (payload) => crypto.createHmac('sha256', cfg.sessionSecret).update(payload).digest('base64url');
 
   function makeSession(user) {
@@ -52,6 +52,16 @@ export function makeAuth({ cfg, store, mailer, limiter }) {
       const link = `${cfg.baseUrl}/#/signin/${token}`;
       try { await mailer.sendSignIn(email, link); } catch { throw new HttpError(502, 'We could not send the email just now. Please try again in a minute.'); }
       return { link, email };   // the route only shows `link` in development mode
+    },
+
+    // Says whose account a link is for, without using the link up, so the page can ask "sign in as ga***@...?"
+    // before anything happens. This stops someone tricking a learner into signing in to *their* account.
+    async peek(token, ip) {
+      if (!limiter.allow('peek-ip:' + ip, 60, 3600_000)) throw new HttpError(429, 'Too many tries. Please wait a little.');
+      if (typeof token !== 'string' || token.length < 20 || token.length > 100) throw new HttpError(400, 'That link does not look right. Please ask for a new one.');
+      const rec = await store.peekToken(sha256(token));
+      if (!rec || rec.exp < Date.now()) throw new HttpError(400, 'That link has expired or has already been used. Please ask for a new one.');
+      return { email: maskEmail(rec.email) };
     },
 
     async verify(token, ip) {

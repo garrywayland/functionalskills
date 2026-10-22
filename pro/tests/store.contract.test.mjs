@@ -32,6 +32,7 @@ for (const [name, open] of stores) {
   test(`${name}: a sign-in token can be taken exactly once`, async () => {
     const s = await open();
     await s.putToken('h-' + name, { email: 'a@example.com', exp: Date.now() + 1000 });
+    assert.equal((await s.peekToken('h-' + name)).email, 'a@example.com'); assert.equal((await s.peekToken('h-' + name)).email, 'a@example.com', 'looking does not use it up'); assert.equal(await s.peekToken('nope'), null);
     const [x, y] = await Promise.all([s.takeToken('h-' + name), s.takeToken('h-' + name)]);
     assert.equal([x, y].filter(Boolean).length, 1);
     assert.equal(await s.takeToken('h-' + name), null);

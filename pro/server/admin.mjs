@@ -8,7 +8,7 @@ import crypto from 'node:crypto';
 import { loadConfig } from './config.js';
 import { openStore } from './store/index.js';
 import { normaliseEmail, sha256 } from './util.js';
-import { extend, planSummary } from './entitlements.js';
+import { extend, planSummary, revoke } from './entitlements.js';
 
 const [cmd, ...rest] = process.argv.slice(2);
 const flags = {}; const pos = [];
@@ -28,13 +28,13 @@ try {
       const plan = extend(user, days, 'admin', { renews: false });
       await store.updateUser(user.id, { plan }); user = await store.getUser(user.id);
     }
-    if (cmd === 'revoke') { await store.updateUser(user.id, { plan: { ...(user.plan || {}), until: new Date().toISOString(), status: 'revoked', renews: false } }); user = await store.getUser(user.id); }
+    if (cmd === 'revoke') { await store.updateUser(user.id, { plan: revoke(user.plan) }); user = await store.getUser(user.id); }
     console.log(JSON.stringify({ email: user.email, plan: planSummary(user) }, null, 2));
   } else if (cmd === 'code' && pos[0] === 'new') {
     const days = Number(flags.days); const uses = Number(flags.uses || 1);
     if (!(days > 0 && days <= 3650)) fail('Give --days, for example --days 30.');
-    const code = flags.code ? String(flags.code).toUpperCase().replace(/[^A-Z0-9]/g, '') : [...crypto.randomBytes(8)].map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
-    if (code.length < 6) fail('A code needs at least 6 letters or numbers.');
+    const code = flags.code ? String(flags.code).toUpperCase().replace(/[^A-Z0-9]/g, '') : [...crypto.randomBytes(12)].map((b) => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 32]).join('');
+    if (code.length < 8) fail('A code needs at least 8 letters or numbers, so it cannot be guessed. Leave out --code to get a random one.');
     await store.putCode(sha256(code), { days, maxUses: uses, uses: 0, label: flags.label || '', exp: flags.expires ? new Date(flags.expires).toISOString() : null });
     console.log(`Code: ${code}\nGives ${days} days of Plus, up to ${uses} time${uses === 1 ? '' : 's'}. Only the hash is stored, so write the code down now.`);
   } else fail('Commands: grant <email> <days> | revoke <email> | user <email> | code new --days N [--uses N] [--label text] [--code CODE] [--expires YYYY-MM-DD]');
