@@ -1,0 +1,254 @@
+{
+  "note": "Quick practice: about five minutes, no long text, and the site can mark every question. Each mission practises one skill.",
+  "missions": [
+    {
+      "id": "qp-pandas-formal",
+      "topic": "Pandas",
+      "title": "Formal or friendly?",
+      "length": "quick",
+      "skill": "formal-informal",
+      "minutes": 5,
+      "levels": ["L1", "L2"],
+      "questions": [
+        {
+          "id": "q1", "levels": ["L1", "L2"], "type": "sort", "skill": "formal-informal",
+          "prompt": "A wildlife park is writing to its visitors. Is each sentence formal or informal?",
+          "groups": ["Formal", "Informal"],
+          "items": [
+            { "label": "We regret that the Panda House will be closed on Monday.", "group": 0 },
+            { "label": "Sorry, no pandas on Monday!", "group": 1 },
+            { "label": "Please contact the ticket office if you require a refund.", "group": 0 },
+            { "label": "Give us a shout if you want your money back.", "group": 1 },
+            { "label": "Can't wait to see you all at the weekend.", "group": 1 }
+          ],
+          "why": "Formal writing uses full sentences and words such as \"regret\" and \"require\". Informal writing sounds like talking: short forms such as \"can't\", and phrases such as \"give us a shout\"."
+        },
+        {
+          "id": "q2", "levels": ["L1", "L2"], "type": "choice", "skill": "formal-informal",
+          "prompt": "You are writing a letter to the park manager to ask about a job. Which opening fits best?",
+          "options": ["Hiya, got any jobs going?", "Dear Ms Nair, I am writing to ask about work at the park.", "Hey Priya! Hope you're good.", "To whoever, I want a job with the pandas."],
+          "answer": 1,
+          "why": "A letter about a job is formal. It uses the manager's title and name, and says clearly why you are writing."
+        },
+        {
+          "id": "q3", "levels": ["L1", "L2"], "type": "spot", "skill": "formal-informal",
+          "prompt": "This sentence is from a formal report. One word is too informal.",
+          "words": ["The", "new", "feeding", "area", "is", "awesome", "for", "visitors", "and", "keepers."],
+          "answer": 5,
+          "fix": "suitable",
+          "why": "\"Awesome\" is a word for chatting with friends. A report uses a plain, exact word such as \"suitable\" or \"useful\"."
+        },
+        {
+          "id": "q4", "levels": ["L1", "L2"], "type": "gapfill", "skill": "formal-informal",
+          "prompt": "Finish this formal email to the park. Choose the word that fits each gap.",
+          "passage": "Dear Sir or Madam, I am writing to {{1}} about the opening times. I would be {{2}} if you could send me a timetable. Yours {{3}}, Sam Field",
+          "bank": ["enquire", "grateful", "faithfully", "moan", "chuffed", "cheers"],
+          "answer": [0, 1, 2],
+          "why": "\"Enquire\" and \"grateful\" are polite, formal words. A letter that starts \"Dear Sir or Madam\" ends \"Yours faithfully\"."
+        },
+        {
+          "id": "q5", "levels": ["L2"], "type": "sort", "skill": "formal-informal",
+          "prompt": "Who would you write to in each way?",
+          "groups": ["Formal", "Informal"],
+          "items": [
+            { "label": "A complaint to the park about a cancelled visit", "group": 0 },
+            { "label": "A message to your cousin about the baby panda", "group": 1 },
+            { "label": "An application to be a volunteer", "group": 0 },
+            { "label": "A post in your family group chat", "group": 1 }
+          ],
+          "why": "You write formally to people you do not know, or when something is official, such as a complaint or an application. You write informally to family and friends."
+        }
+      ]
+    },
+    {
+      "id": "qp-transport-order",
+      "topic": "Public transport",
+      "title": "Get the steps in order",
+      "length": "quick",
+      "skill": "sequence",
+      "minutes": 5,
+      "levels": ["L1", "L2"],
+      "questions": [
+        {
+          "id": "q1", "levels": ["L1", "L2"], "type": "order", "skill": "sequence",
+          "prompt": "These instructions for buying a ticket from a machine are mixed up. Put them in order.",
+          "items": [
+            "First, touch the screen to start.",
+            "Next, choose where you are going.",
+            "Then choose a single or a return ticket.",
+            "After that, pay with a card or coins.",
+            "Finally, take your ticket and your change."
+          ],
+          "why": "The words \"first\", \"next\", \"then\", \"after that\" and \"finally\" show the order. You also have to choose a ticket before you can pay for it."
+        },
+        {
+          "id": "q2", "levels": ["L1", "L2"], "type": "gapfill", "skill": "sequence",
+          "prompt": "Choose the word that fits each gap in these directions.",
+          "passage": "{{1}} you leave the station, turn left. {{2}} walk to the traffic lights. {{3}}, cross the road to the bus stop.",
+          "bank": ["When", "Then", "Finally", "Because", "But"],
+          "answer": [0, 1, 2],
+          "why": "\"When\", \"then\" and \"finally\" put the directions in order. \"Because\" gives a reason and \"but\" shows a difference, so they do not fit."
+        },
+        {
+          "id": "q3", "levels": ["L1", "L2"], "type": "order", "skill": "sequence",
+          "prompt": "Put this account of a late journey in the order it happened.",
+          "items": [
+            "I reached the bus stop at eight o'clock.",
+            "A sign said the 14 bus was running twenty minutes late.",
+            "While I waited, I sent a message to my manager.",
+            "The bus arrived at twenty past eight.",
+            "I got to work just as the shop opened."
+          ],
+          "why": "The times help: eight o'clock comes before twenty past eight. You can only wait after you know the bus is late, and you arrive at work last."
+        },
+        {
+          "id": "q4", "levels": ["L1", "L2"], "type": "evidence", "skill": "information",
+          "prompt": "Which sentence tells you what to do if the machine does not give you a ticket?",
+          "sentences": [
+            "The machine takes cards and coins, but not notes.",
+            "Tickets are cheaper after half past nine.",
+            "If no ticket is printed, press the green Help button and wait for a member of staff.",
+            "Keep your ticket until the end of your journey."
+          ],
+          "answer": 2,
+          "why": "Only this sentence says what to do when something goes wrong: press Help and wait for staff."
+        },
+        {
+          "id": "q5", "levels": ["L2"], "type": "order", "skill": "sequence",
+          "prompt": "These paragraphs from a letter of complaint are mixed up. Put them in order.",
+          "items": [
+            "I am writing to complain about the 14 bus service on Monday 3 March.",
+            "The 08:10 bus did not arrive, and there was no notice at the stop.",
+            "As a result, I was forty minutes late for work.",
+            "I would like to know why the bus was cancelled and what you will do to stop this happening again.",
+            "I look forward to your reply."
+          ],
+          "why": "A complaint says why you are writing, then what happened, then how it affected you, then what you want done. The closing line comes last."
+        }
+      ]
+    },
+    {
+      "id": "qp-geography-apostrophes",
+      "topic": "UK geography",
+      "title": "Spot the slip",
+      "length": "quick",
+      "skill": "punctuation",
+      "minutes": 5,
+      "levels": ["L1", "L2"],
+      "questions": [
+        {
+          "id": "q1", "levels": ["L1", "L2"], "type": "spot", "skill": "punctuation",
+          "prompt": "One word in this sentence has a mistake.",
+          "words": ["The", "villages", "only", "shop", "closes", "at", "five", "o'clock."],
+          "answer": 1,
+          "fix": "village's",
+          "why": "The shop belongs to the village, so it needs an apostrophe and s: \"the village's only shop\"."
+        },
+        {
+          "id": "q2", "levels": ["L1", "L2"], "type": "spot", "skill": "spelling",
+          "prompt": "One word in this sentence is the wrong one.",
+          "words": ["Many", "people", "move", "to", "towns", "because", "there", "jobs", "are", "nearby."],
+          "answer": 6,
+          "fix": "their",
+          "why": "\"Their\" means belonging to them: their jobs. \"There\" is for a place."
+        },
+        {
+          "id": "q3", "levels": ["L1", "L2"], "type": "sort", "skill": "punctuation",
+          "prompt": "Which punctuation mark should end each sentence?",
+          "groups": ["Full stop", "Question mark", "Exclamation mark"],
+          "items": [
+            { "label": "How far is the nearest station", "group": 1 },
+            { "label": "The bus runs every two hours", "group": 0 },
+            { "label": "What a view", "group": 2 },
+            { "label": "Is there a doctor in the village", "group": 1 },
+            { "label": "Most houses here were built before 1950", "group": 0 }
+          ],
+          "why": "A question ends with a question mark. A statement ends with a full stop. A short burst of feeling, such as \"What a view\", ends with an exclamation mark."
+        },
+        {
+          "id": "q4", "levels": ["L1", "L2"], "type": "gapfill", "skill": "spelling",
+          "prompt": "Choose the right word for each gap.",
+          "passage": "The town has grown {{1}} big for its roads. {{2}} are plans for a new bypass, and residents can give {{3}} views at the library.",
+          "bank": ["too", "There", "their", "to", "They're", "two"],
+          "answer": [0, 1, 2],
+          "why": "\"Too\" means more than is wanted. \"There are\" starts a statement that something exists. \"Their\" shows the views belong to the residents."
+        },
+        {
+          "id": "q5", "levels": ["L2"], "type": "spot", "skill": "punctuation",
+          "prompt": "One word in this sentence has a mistake.",
+          "words": ["The", "council", "said", "that", "it's", "new", "housing", "plan", "would", "start", "in", "spring."],
+          "answer": 4,
+          "fix": "its",
+          "why": "\"Its\" with no apostrophe means belonging to it: its new plan. \"It's\" is short for \"it is\" or \"it has\"."
+        }
+      ]
+    },
+    {
+      "id": "qp-israel-purpose",
+      "topic": "Israel",
+      "title": "What is it for?",
+      "length": "quick",
+      "skill": "purpose",
+      "minutes": 5,
+      "levels": ["L1", "L2"],
+      "questions": [
+        {
+          "id": "q1", "levels": ["L1", "L2"], "type": "sort", "skill": "purpose",
+          "prompt": "What is each piece of writing mainly for?",
+          "groups": ["To inform", "To persuade", "To instruct"],
+          "items": [
+            { "label": "Book today and save 20 per cent on your desert tour!", "group": 1 },
+            { "label": "Fill your water bottle before you leave the guesthouse.", "group": 2 },
+            { "label": "The Dead Sea is the lowest place on land.", "group": 0 },
+            { "label": "You will not find a better guide anywhere.", "group": 1 },
+            { "label": "The market opens at eight and closes at four.", "group": 0 }
+          ],
+          "why": "Writing that informs gives facts. Writing that persuades tries to make you do or believe something. Writing that instructs tells you what to do, often starting with a verb such as \"fill\"."
+        },
+        {
+          "id": "q2", "levels": ["L1", "L2"], "type": "sort", "skill": "fact-opinion",
+          "prompt": "Is each sentence a fact or an opinion?",
+          "groups": ["Fact", "Opinion"],
+          "items": [
+            { "label": "The walk to the viewpoint takes about two hours.", "group": 0 },
+            { "label": "Sunrise is the best time to visit.", "group": 1 },
+            { "label": "The guesthouse has twelve rooms.", "group": 0 },
+            { "label": "The local bread is delicious.", "group": 1 }
+          ],
+          "why": "A fact can be checked, such as a time or a number. An opinion is what someone thinks, and words such as \"best\" and \"delicious\" are clues."
+        },
+        {
+          "id": "q3", "levels": ["L1", "L2"], "type": "evidence", "skill": "purpose",
+          "prompt": "A tour company wants you to book. Which sentence is trying to persuade you?",
+          "sentences": [
+            "The tour lasts five days.",
+            "The minibus has sixteen seats.",
+            "Do not miss this once-in-a-lifetime trip.",
+            "Breakfast is served from seven o'clock."
+          ],
+          "answer": 2,
+          "why": "\"Do not miss\" and \"once-in-a-lifetime\" are there to make you want to book. The other sentences only give information."
+        },
+        {
+          "id": "q4", "levels": ["L1", "L2"], "type": "choice", "skill": "features",
+          "prompt": "A leaflet lists what to pack as bullet points. Why are bullet points used?",
+          "options": ["To make the leaflet longer", "To make each item quick to find", "To show which item matters most", "To give the writer's opinion"],
+          "answer": 1,
+          "why": "Bullet points set items out one under another, so a reader can find each one at a glance."
+        },
+        {
+          "id": "q5", "levels": ["L2"], "type": "sort", "skill": "purpose",
+          "prompt": "Which kind of text would you expect each sentence to come from?",
+          "groups": ["Advert", "Instructions", "Review"],
+          "items": [
+            { "label": "We stayed three nights and would happily go back.", "group": 2 },
+            { "label": "Press and hold the button until the light turns green.", "group": 1 },
+            { "label": "Hurry: only six places left for April!", "group": 0 },
+            { "label": "The guide was friendly, but the minibus was cramped.", "group": 2 }
+          ],
+          "why": "A review tells you what someone thought after trying something. Instructions tell you what to do. An advert pushes you to buy or book."
+        }
+      ]
+    }
+  ]
+}

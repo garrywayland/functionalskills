@@ -1,10 +1,18 @@
 // The content rules, shared by the checking tool (tools/validate.mjs, Node) and the "Make a pack" page (browser).
 // One file, so a pack that passes on the page passes on the command line, and the other way round.
 (function (root, factory) {
-  if (typeof module === 'object' && module.exports) module.exports = factory();
-  else root.NextStopRules = factory();
-})(typeof self !== 'undefined' ? self : this, function () {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./activities.js'));
+  else root.NextStopRules = factory(root.NextStopActivities);
+})(typeof self !== 'undefined' ? self : this, function (Activities) {
   'use strict';
+
+// Question types written into the page itself, and the ones that come from js/activities.js.
+const BUILT_IN = ['choice', 'tfns', 'factopinion', 'multi', 'match', 'open'];
+const EXTRA = (Activities && Activities.types) || {};
+const TYPES = BUILT_IN.concat(Object.keys(EXTRA));
+// What a mission practises. Used to suggest what to do next and to draw the skills map.
+const SKILLS = ['information', 'purpose', 'vocabulary', 'features', 'fact-opinion', 'formal-informal', 'compare', 'inference', 'sequence',
+  'punctuation', 'spelling', 'grammar', 'sentences', 'planning', 'format'];
 
 // Longer missions follow the official layouts.
 // Level 1: Q1-3 (Text A), Q4-9 (Text B), Q10-14 (Text C), Q15 (B and C); 30 marks.
@@ -31,7 +39,9 @@ function textWords(text) {
 function checkQuestion(where, q, textIds, errs) {
   const need = (cond, msg) => { if (!cond) errs.push(`${where} ${q.id}: ${msg}`); };
   need(q.id && q.prompt, 'missing id or prompt');
-  need(['choice', 'tfns', 'factopinion', 'multi', 'match', 'open'].includes(q.type), `unknown type ${q.type}`);
+  need(TYPES.includes(q.type), `unknown type ${q.type} (use one of: ${TYPES.join(', ')})`);
+  if (q.skill !== undefined) need(SKILLS.includes(q.skill), `unknown skill ${q.skill}`);
+  if (EXTRA[q.type]) EXTRA[q.type].check(q, need);
   need(Array.isArray(q.levels) && q.levels.length, 'missing levels');
   if (q.text && q.text !== 'both') {
     for (const r of String(q.text).split(',')) need(textIds.includes(r), `refers to missing text ${r}`);
@@ -64,11 +74,22 @@ function checkQuestion(where, q, textIds, errs) {
 
 function checkReadingMission(m, name, errs, notes) {
   const where = `${name} ${m.id}`;
-  const textIds = m.texts.map((t) => t.id);
+  const textIds = (m.texts || []).map((t) => t.id);
   m.questions.forEach((q) => checkQuestion(where, q, textIds, errs));
   const qids = m.questions.map((q) => q.id);
   if (new Set(qids).size !== qids.length) errs.push(`${where}: duplicate question id`);
-  if (m.length === 'long') {
+  if (m.skill !== undefined && !SKILLS.includes(m.skill)) errs.push(`${where}: unknown skill "${m.skill}" (use one of: ${SKILLS.join(', ')})`);
+  if (m.length === 'quick') {
+    // Quick practice: a handful of questions the site can mark by itself. A text is optional.
+    for (const lvl of ['L1', 'L2']) {
+      if (Array.isArray(m.levels) && !m.levels.includes(lvl)) continue;
+      const n = m.questions.filter((q) => !Array.isArray(q.levels) || q.levels.includes(lvl)).length;
+      if (n < 3 || n > 8) errs.push(`${where}: quick practice needs 3 to 8 questions at ${lvl} (has ${n})`);
+    }
+    if (m.questions.some((q) => q.type === 'open')) errs.push(`${where}: quick practice cannot use "open" questions (the site has to be able to mark every one)`);
+    if (!m.skill) errs.push(`${where}: quick practice needs a skill (one of: ${SKILLS.join(', ')})`);
+    notes.push(`${where}: quick practice, ${m.questions.length} questions`);
+  } else if (m.length === 'long') {
     const lvl = (m.levels || []).includes('L2') ? 'L2' : 'L1';
     const ranges = lvl === 'L2' ? TEXT_RANGES_L2 : TEXT_RANGES;
     const wantMarks = lvl === 'L2' ? SECTION_MARKS_L2 : SECTION_MARKS;
@@ -126,7 +147,8 @@ function checkPackData(data, name, errs, notes, opts) {
     }
   };
   each(data.reading, 'reading', (m) => {
-    if (!Array.isArray(m.texts) || !m.texts.length || !Array.isArray(m.questions) || !m.questions.length) { errs.push(`${name} ${m.id}: needs texts and questions`); return; }
+    if (m.length === 'quick' && m.texts === undefined) m.texts = [];
+    if (!Array.isArray(m.texts) || (!m.texts.length && m.length !== 'quick') || !Array.isArray(m.questions) || !m.questions.length) { errs.push(`${name} ${m.id}: needs texts and questions`); return; }
     if (m.texts.some((t) => !t || !t.id || !Array.isArray(t.body))) { errs.push(`${name} ${m.id}: every text needs an id and a body list`); return; }
     checkReadingMission(m, name, errs, notes);
   });
@@ -134,5 +156,5 @@ function checkPackData(data, name, errs, notes, opts) {
   notes.push(`${name}: ${(data.reading || []).length} reading and ${(data.writing || []).length} writing missions`);
 }
 
-  return { TEXT_RANGES, SECTION_MARKS, TEXT_RANGES_L2, SECTION_MARKS_L2, SECTION_BOUNDS, textWords, checkReadingMission, checkWritingMission, checkPackData };
+  return { TYPES, SKILLS, TEXT_RANGES, SECTION_MARKS, TEXT_RANGES_L2, SECTION_MARKS_L2, SECTION_BOUNDS, textWords, checkReadingMission, checkWritingMission, checkPackData };
 });

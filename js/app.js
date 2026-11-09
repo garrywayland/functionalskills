@@ -296,10 +296,11 @@
   }
 
   function readingStop(m) {
+    if (m.length === 'quick') return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes || 5, tag: tagFor(m), meta: forLevel(m.questions).length + ' questions' };
     return { id: m.id, href: '#/reading/' + m.id, title: m.title, minutes: m.minutes, tag: tagFor(m),
       meta: m.length === 'long' ? m.texts.length + ' texts · ' + questionNumbers(m) + ' questions' : forLevel(m.questions).length + ' questions' };
   }
-  function readingSub(m) { return m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }
+  function readingSub(m) { return m.length === 'quick' ? 'Quick practice (about 5 minutes)' : m.length === 'long' ? 'Longer missions (about ' + (m.minutes || 35) + ' minutes)' : 'Short missions (about 10 minutes)'; }
   function writingStop(m) {
     var mm = missionFor(m);
     return { id: m.id, href: '#/writing/' + m.id, title: m.title, minutes: m.task === 1 ? 25 : 15, tag: tagFor(m),
@@ -480,6 +481,8 @@
   // ---------- Reading ----------
 
   var LETTERS = 'ABCDEFGH';
+  // Activity types that live in js/activities.js (put in order, fill the gaps, sort, spot the mistake, find the evidence).
+  var ACT = (window.NextStopActivities && window.NextStopActivities.types) || {};
   var TFNS = [['true', 'True'], ['false', 'False'], ['notstated', 'Not stated']];
   var FO = [['fact', 'Fact'], ['opinion', 'Opinion']];
 
@@ -503,7 +506,7 @@
   }
 
   function readingSteps(m) {
-    var texts = forLevel(m.texts);
+    var texts = forLevel(m.texts || []);
     var steps = texts.map(function (t, i) { return { kind: 'text', text: t, index: i }; });
     forLevel(m.questions).forEach(function (q, i) { steps.push({ kind: 'question', q: q, index: i }); });
     steps.push({ kind: 'done' });
@@ -532,7 +535,7 @@
     function save() { saved.t = Date.now(); store.set(key, saved); }
 
     var wrap = h('article', { class: 'mission reading' });
-    append(wrap, h('p', { class: 'eyebrow', text: 'Reading · ' + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
+    append(wrap, h('p', { class: 'eyebrow', text: (m.length === 'quick' ? 'Quick practice · ' : 'Reading · ') + m.topic + ' · ' + LEVELS[level()] }), draftTag(m));
 
     if (step.kind === 'text') {
       var t = step.text;
@@ -581,7 +584,8 @@
 
       var next = h('a', { class: 'btn', href: hrefFor(pos + 1), text: step.index === questionCount - 1 ? 'Finish' : 'Next question' });
 
-      if (q.type === 'open') append(qCol, openQuestion(q, ans, save));
+      if (ACT[q.type]) append(qCol, ACT[q.type].render(q, ans, save, null, h));
+      else if (q.type === 'open') append(qCol, openQuestion(q, ans, save));
       else if (q.type === 'multi') append(qCol, multiQuestion(q, ans, save));
       else if (q.type === 'match') append(qCol, matchQuestion(q, ans, save));
       else append(qCol, closedQuestion(q, ans, save));
@@ -591,15 +595,17 @@
         next
       ), h('p', { class: 'muted small' }, 'Your answers are saved as you go. ', h('a', { href: '#/', text: 'Finish later' }), ' and pick it up from the front page.'));
 
-      var look = h('details', { class: 'look-back' },
-        h('summary', { text: refTexts.length > 1 ? 'Show the texts' : 'Show the text' }),
-        refTexts.map(function (t) { return sourceText(t, multi, true); })
-      );
-      if (window.matchMedia && window.matchMedia('(min-width: 1000px)').matches) {
-        look.open = true;
-        main.className = 'wide';
+      if (refTexts.length) {
+        var look = h('details', { class: 'look-back' },
+          h('summary', { text: refTexts.length > 1 ? 'Show the texts' : 'Show the text' }),
+          refTexts.map(function (t) { return sourceText(t, multi, true); })
+        );
+        if (window.matchMedia && window.matchMedia('(min-width: 1000px)').matches) {
+          look.open = true;
+          main.className = 'wide';
+        }
+        layout.appendChild(look);
       }
-      layout.appendChild(look);
       append(wrap, layout);
       return wrap;
     }
@@ -609,18 +615,18 @@
     var matched = closed.filter(function (q) { var a = saved.answers[q.id]; return a && a.checked && isCorrect(q, a); }).length;
     var openCount = forLevel(m.questions).length - closed.length;
     markDone(id);
-    logDone({ id: id, kind: 'Reading', title: m.title, topic: m.topic, matched: matched, total: closed.length });
+    logDone({ id: id, kind: m.length === 'quick' ? 'Quick practice' : 'Reading', title: m.title, topic: m.topic, matched: matched, total: closed.length });
     var scoreSlot = h('div', { 'aria-live': 'polite' });
 
     append(wrap,
       h('div', { class: 'done-mark', 'aria-hidden': 'true' }),
       h('h1', { text: 'Mission done' }),
-      h('p', { class: 'lede', text: 'That is one more stop on the reading line. Nice work.' }),
+      h('p', { class: 'lede', text: m.length === 'quick' ? 'Short and done. Nice work.' : 'That is one more stop on the reading line. Nice work.' }),
       h('div', { class: 'actions' },
         h('button', { type: 'button', class: 'btn secondary', onclick: function (e) {
           e.currentTarget.disabled = true;
           scoreSlot.replaceChildren(h('div', { class: 'score-box' },
-            h('p', { text: matched + ' of ' + closed.length + ' choice answers matched the answer key.' }),
+            h('p', { text: matched + ' of ' + closed.length + (m.length === 'quick' ? ' answers' : ' choice answers') + ' matched the answer key.' }),
             openCount ? h('p', { class: 'muted', text: 'You checked ' + openCount + (openCount === 1 ? ' written answer' : ' written answers') + ' yourself against a model answer.' }) : null
           ));
         }, text: 'Show how many matched' }),
@@ -639,6 +645,7 @@
   }
 
   function isCorrect(q, a) {
+    if (ACT[q.type]) return ACT[q.type].isCorrect(q, a);
     if (q.type === 'match') {
       return q.items.every(function (it, i) { return it.given || String((a.map || {})[i]) === String(it.answer); });
     }
@@ -939,12 +946,14 @@
     forLevel(m.questions).forEach(function (q) {
       var a = answers[q.id] || {}, mine;
       opts = optionsFor(q);
-      if (q.type === 'open') mine = a.text || '(left blank)';
+      if (ACT[q.type]) mine = ACT[q.type].mine(q, a);
+      else if (q.type === 'open') mine = a.text || '(left blank)';
       else if (q.type === 'multi') mine = (a.choices || []).slice().sort().map(function (i) { return LETTERS[i] + '. ' + opts[i]; }).join('; ') || '(no answer)';
       else if (q.type === 'match') mine = q.items.map(function (it, i) { return it.label + ': paragraph ' + (it.given ? it.answer : (a.map && a.map[i]) || '?'); }).join('; ');
       else mine = typeof a.choice === 'number' ? (q.type === 'choice' ? LETTERS[a.choice] + '. ' : '') + opts[a.choice] : '(no answer)';
       out.push((q.label ? 'Question ' + q.label + ': ' : '') + q.prompt, 'My answer: ' + mine);
       if (q.type === 'open' && q.model) out.push('One possible answer: ' + q.model);
+      if (ACT[q.type]) out.push('Answer: ' + ACT[q.type].key(q));
       out.push('');
     });
     return out.join('\n');
@@ -2074,7 +2083,8 @@
       h('summary', null, h('span', { class: 'menu-name', text: 'Look back at my answers' })),
       h('ol', { class: 'review-list' }, qs.map(function (q) {
         var a = saved.answers[q.id] || {}, opts = optionsFor(q), mine;
-        if (q.type === 'open') mine = a.text ? a.text : '(left blank)';
+        if (ACT[q.type]) mine = ACT[q.type].mine(q, a);
+        else if (q.type === 'open') mine = a.text ? a.text : '(left blank)';
         else if (q.type === 'multi') mine = (a.choices || []).slice().sort().map(function (i) { return LETTERS[i] + '. ' + opts[i]; }).join('; ') || '(no answer)';
         else if (q.type === 'match') mine = q.items.map(function (it, i) { return it.label + ': ' + (it.given ? it.answer : (a.map && a.map[i]) || '?'); }).join('; ');
         else mine = typeof a.choice === 'number' ? (q.type === 'choice' ? LETTERS[a.choice] + '. ' : '') + opts[a.choice] : '(no answer)';
@@ -2109,6 +2119,7 @@
     var slug = slugOf(theme) || 'my-theme';
     var counts = [];
     if (+f.reading) counts.push(f.reading + ' short reading mission' + (+f.reading === 1 ? '' : 's'));
+    if (+f.quick) counts.push(f.quick + ' quick practice mission' + (+f.quick === 1 ? '' : 's') + ' (about 5 minutes, no long text)');
     if (+f.writingShort) counts.push(f.writingShort + ' shorter writing task' + (+f.writingShort === 1 ? '' : 's') + ' (Task 2, two bullet points)');
     if (+f.writingLong) counts.push(f.writingLong + ' longer writing task' + (+f.writingLong === 1 ? '' : 's') + ' (Task 1, three bullet points)');
     var example = {
@@ -2122,6 +2133,15 @@
           { id: 'q3', levels: lv, type: 'factopinion', text: 'A', prompt: '"A sentence quoted from the text."', answer: 'opinion', why: 'Why it is a fact or an opinion.' },
           { id: 'q4', levels: lv, type: 'multi', text: 'A', label: '4', marks: 2, prompt: 'Which TWO of these are facts?', options: ['One', 'Two', 'Three', 'Four'], answer: [0, 2], why: 'Why those two.' },
           { id: 'q5', levels: lv, type: 'open', text: 'A', prompt: 'A question needing a short written answer.', model: 'A model answer.', check: ['I did this.', 'I did that.'] }
+        ]
+      }, {
+        id: 'qp-' + slug + '-1', topic: theme, title: 'Formal or friendly?', length: 'quick', minutes: 5, skill: 'formal-informal',
+        questions: [
+          { id: 'q1', levels: lv, type: 'sort', prompt: 'Is each sentence formal or informal?', groups: ['Formal', 'Informal'], items: [{ label: 'We regret that the shop is closed.', group: 0 }, { label: 'Sorry, we\'re shut!', group: 1 }, { label: 'Please contact the office.', group: 0 }], why: 'Why, in a sentence or two.' },
+          { id: 'q2', levels: lv, type: 'order', prompt: 'Put these instructions in order.', items: ['First step.', 'Second step.', 'Third step.'], why: 'How you can tell the order.' },
+          { id: 'q3', levels: lv, type: 'gapfill', prompt: 'Choose the word for each gap.', passage: 'I am writing to {{1}} about the opening times. Yours {{2}}, Sam', bank: ['enquire', 'faithfully', 'moan', 'cheers'], answer: [0, 1], why: 'Why those words fit.' },
+          { id: 'q4', levels: lv, type: 'spot', prompt: 'One word is wrong.', words: ['The', 'clubs', 'new', 'kit', 'is', 'blue.'], answer: 1, fix: 'club\'s', why: 'The kit belongs to the club.' },
+          { id: 'q5', levels: lv, type: 'evidence', prompt: 'Which sentence is an opinion?', sentences: ['The match starts at three.', 'It was the best game this year.', 'Tickets cost five pounds.'], answer: 1, why: '"Best" shows it is what someone thinks.' }
         ]
       }],
       writing: [{
@@ -2162,6 +2182,17 @@
       '  multi: label, marks: 2, options (4 or 5), answer (a list of two indexes), why.',
       '  open: model (a model answer) and check (2 or 3 short "I ..." self-check statements).',
       '- Mix the types. Spread correct answers across A, B, C and D. Only one option may be defensible. Wrong options must be plausible but clearly wrong from the text. Every question must be answerable from the text alone. Every "why" must be accurate and, where it helps, quote the text exactly.',
+      '',
+      'QUICK PRACTICE MISSION (about 5 minutes; these also go in the "reading" list)',
+      '- id, topic, title, "length": "quick", minutes: 5, skill, questions. No "texts" needed.',
+      '- skill is ONE of: ' + ((window.NextStopRules && window.NextStopRules.SKILLS) || []).join(', ') + '. Every question in the mission practises that skill.',
+      '- 4 to 6 questions. The site marks every one, so do NOT use "open". Each has id, levels, prompt, why, and a type. Use choice, tfns, factopinion, or these:',
+      '  order: items (3 to 7 steps or events, WRITTEN IN THE RIGHT ORDER; the site mixes them up). Use for instructions, accounts, or the paragraphs of a letter.',
+      '  gapfill: passage with gaps written {{1}}, {{2}}... (2 to 8 gaps); bank (the right words plus 2 or 3 wrong ones, all different); answer (for each gap in turn, the position of its word in bank, counting from 0).',
+      '  sort: groups (2 to 6 names, such as ["Formal", "Informal"] or ["Fact", "Opinion"] or ["To inform", "To persuade", "To instruct"]); items (3 to 10, each {"label": "a sentence", "group": position of its group counting from 0}).',
+      '  spot: words (one sentence as a list of words, punctuation attached to its word); answer (the position of the ONE wrong word, counting from 0); fix (the word as it should be). Use for apostrophes, their/there, verb tense, or a word that is too informal.',
+      '  evidence: sentences (3 to 8); answer (the position of the one sentence that proves what the prompt asks, counting from 0).',
+      '- Count positions carefully from 0. Only one answer may be defensible. Every "why" explains the rule in one or two plain sentences.',
       '',
       'WRITING TASK',
       '- id, topic, task (1 or 2), title, format, context, audience, purpose, instruction, bullets, indicative.',
@@ -2227,7 +2258,7 @@
 
   function makeView() {
     main.className = 'wide-ish';
-    var form = Object.assign({ theme: '', about: '', level: 'both', reading: '2', writingShort: '2', writingLong: '1' }, store.get('make:form', {}) || {});
+    var form = Object.assign({ theme: '', about: '', level: 'both', reading: '2', quick: '2', writingShort: '2', writingLong: '1' }, store.get('make:form', {}) || {});
     function saveForm() { store.set('make:form', form); }
 
     var promptBox = h('textarea', { id: 'make-prompt', class: 'marking-block', readonly: true, rows: '14', 'aria-label': 'The prompt to copy' });
@@ -2353,6 +2384,7 @@
         h('div', { class: 'make-row' },
           field('make-level', 'Level', select('make-level', 'level', [['both', 'Both levels'], ['L1', 'Level 1'], ['L2', 'Level 2']])),
           field('make-reading', 'Short reading missions', select('make-reading', 'reading', nums(3))),
+          field('make-qp', 'Quick practice missions', select('make-qp', 'quick', nums(6))),
           field('make-ws', 'Shorter writing tasks', select('make-ws', 'writingShort', nums(4))),
           field('make-wl', 'Longer writing tasks', select('make-wl', 'writingLong', nums(2)))),
         h('h3', { text: 'Your prompt' }),
